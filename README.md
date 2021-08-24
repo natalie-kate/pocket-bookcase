@@ -164,7 +164,7 @@ Changes from the wireframes to final site are minimal.
 4. [Git](https://git-scm.com/)
     - Version control.
 5. [GitHub](https://github.com/)
-    - For storing code and deploying the site.
+    - For storing project.
 6. [Gitpod](https://www.gitpod.io/)
     - Used for editing my code.
 7. [Balsamiq](https://balsamiq.com/)
@@ -178,6 +178,22 @@ Changes from the wireframes to final site are minimal.
    changing code, to test responsiveness and for testing performance of the final site with lighthouse. 
 11. [jQuery](https://jquery.com/)
     - JavaScript Library making writing JavaScript quicker and easier.
+12. [Heroku](https://dashboard.heroku.com/apps)
+    - For deploying the application
+13. [MongoDB](https://www.mongodb.com/)
+    - Database used for our data
+14. [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+    - Micro framework for building applications.
+15. [Emailjs](https://www.emailjs.com/)
+    - Used to link the contact form to my emails
+16. [RandomKeygen](https://randomkeygen.com/)
+    - Used to generate secret key
+17. [dbdiagram](https://dbdiagram.io/home)
+    - Used to create the database schema.
+18. [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
+    - Dependency of Flask and used security helpers.
+19. [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
+    - Dependency of Flask.
 
 
 ## Challenges 
