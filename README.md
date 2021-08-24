@@ -1,9 +1,11 @@
 # Pocket Bookcase
 
-
 Here is a link to the live project. ()
 
-
+This website was created for Milestone 3 - Datacentric Development project, as part of the Code Institutes diploma in Software development.<br>
+I love books and have the problem of never remembering what book I'm on in the numerous series that i'm in the middle of reading. This means I often start to read a book I've already read and buy books I already have at home.<br>
+I was inspired by an app I used to have which doesn't seem to exist now which was for keeping track of which Terry Pratchett Discworld books that the user had read. It was just a simple list of the books with a checkbox beside them, but it did the trick and I thought how useful it would be to have it for any books.<br>
+Upon pitching my idea to a few people, I was met with how useful that would be and how much they would use it, and so Pocket Bookcase was born.
 
 ![Image showing the website displayed on different screen sizes]()
 
