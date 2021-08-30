@@ -123,9 +123,9 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
 
 Wireframes were created on Balsamiq (see links below)
 
-* [Mobile](assets/readme-assets/wireframes/ms2-mobile.pdf)
-* [Tablet](assets/readme-assets/wireframes/ms2-tablet.pdf)
-* [Desktop](assets/readme-assets/wireframes/ms2-desktop.pdf)
+* [Mobile](static/readme-assets/wireframes/ms3-mobile.pdf)
+* [Tablet](static/readme-assets/wireframes/ms3-tablet.pdf)
+* [Desktop](static/readme-assets/wireframes/ms3-desktop.pdf)
 
 Changes from the wireframes to final site are minimal. 
 
