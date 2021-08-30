@@ -1,16 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:wght@400;700&family=Tangerine:wght@400;700&display=swap');
 .container-fluid{
     background-color: rgb(250, 247, 235);
-    padding: 0px;
+}
+body{
+    font-family: 'Gentium Book Basic', serif;
+}
+.nav-link,
+.navbar-brand,
+.navbar-toggler,
+.footer-link,
+.social{
+    color:  #231709;
+    font-weight: 600;
+}
+.nav-link:hover,
+.navbar-brand:hover,
+.navbar-toggler:hover,
+.footer-link:hover,
+.social:hover{
+    color: #035597;
+}
+.navbar-brand{
+    font-family: 'Tangerine', cursive; 
+    font-size: 36px
+}
+.social{
+    font-size: 30px;
 }
 .title-container {
-    height: 33vh;
-    background: url("../images/app-images/books-med.jpg") no-repeat center center;
+    height: 40vh;
+    background: url("../images/app-images/books-med.jpg") no-repeat top center;
     background-size: cover;
-    padding: 0px;
+    padding: 0;
+    border-radius: 10px;
 }
 .title-container h1 {
     color: rgb(250, 247, 235);
     padding-top: 12vh;
+    font-family: 'Tangerine', cursive;
+    font-size: 70px;
+    font-weight: 700;
+}
+.library h2 {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'Tangerine', cursive;
+    font-size: 60px;
 }
 img { 
     width: 60%;
