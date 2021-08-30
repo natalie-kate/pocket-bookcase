@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Pocket Bookcase</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>Library</h2>
+            </div>
+        </div>
+
+        <div class="row">
+           {% for book in books %}
+            <div class="col-4">
+                <img src="{{ book.cover_image }}" alt="book cover image of {{ book.title }}">
+            </div>
+            <div class="col-8">
+                {{ book.title }}<br>
+                {{ book.author }}<br>
+                {{ book.genre }}<br>
+                {{ book.synopsis }}<br>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
