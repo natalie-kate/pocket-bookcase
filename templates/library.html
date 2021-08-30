@@ -1,38 +1,41 @@
 {% extends "base.html" %} 
 {% block content %}
 
-<div class="container-fluid">
-  <div class="title-container">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h1>Pocket Bookcase</h1>
-      </div>
-    </div>
-  </div>
+<div class="title-container">
   <div class="row">
     <div class="col-12 text-center">
-      <h2>Library</h2>
+      <h1>Pocket Bookcase</h1>
     </div>
-  </div>
-
-  <div class="row">
-    {% for book in books %}
-    <div class="col-2 col-md-4 text-center">
-      <img
-        src="{{ book.cover_image }}"
-        alt="book cover image of {{ book.title }}"
-      />
-    </div>
-    <div class="col-10 col-md-8">
-      <h3>{{ book.title }}</h3>
-      <strong>Author:</strong> {{ book.author }}<br/>
-      <strong>Genre:</strong> {{ book.genre }}<br/>
-      <strong>Synopsis:</strong>{{ book.synopsis }}<br/>
-      <strong>Review:</strong>{{ book.review }}<br/>
-      <strong>Added by:</strong> {{ book.added_by }}
-    </div>
-    <hr>
-    {% endfor %}
   </div>
 </div>
+<div class="row library">
+  <div class="col-12 text-center">
+    <h2>Library</h2>
+  </div>
+</div>
+
+<div class="row">
+  {% for book in books %}
+  <div class="col-2 col-md-4 text-center">
+    <img
+      src="{{ book.cover_image }}"
+      alt="book cover image of {{ book.title }}"
+    />
+  </div>
+  <div class="col-10 col-md-8">
+    <h3>{{ book.title }}</h3>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Genre:</strong> {{ book.genre }}</p>
+    <p><strong>Synopsis:</strong>{{ book.synopsis }}</p>
+    <p><strong>Review:</strong>{{ book.review }}</p>
+    <p><strong>Added by:</strong> {{ book.added_by }}</p>
+  </div>
+  <hr />
+  {% endfor %}
+</div>
 {% endblock %}
+
+{% block link %}
+    <a class="footer-link" href="{{ url_for('library') }}">Back to top</a><br>
+{% endblock %}
+
