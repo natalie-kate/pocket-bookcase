@@ -48,7 +48,7 @@
                             <a class="nav-link" href="">Manage Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=""
+                            <a class="nav-link" href="{{ url_for ('register') }}"
                                 aria-label="">Sign Up</a>
                         </li>
                         <li class="nav-item">
@@ -65,7 +65,7 @@
 
     <footer>
         <div class="row">
-            <div class="col-4 text-center">
+            <div class="col-6 text-center">
                 <p>Social Links</p>
                 <a class="col-1 social" href="https://www.instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"
                         aria-hidden="true"></i><span class="sr-only">Link will open
@@ -80,8 +80,8 @@
                         aria-hidden="true"></i><span class="sr-only">Link will open linkedin in a new
                         page.</span></a>
             </div>
-            <div class="col-8 text-center">
-                <a class="footer-link" href="">Sign Up</a><br>
+            <div class="col-6 text-center">
+                <a class="footer-link" href="{{ url_for ('register') }}">Sign Up</a><br>
                 {% block link %}
 
                 {% endblock %}
