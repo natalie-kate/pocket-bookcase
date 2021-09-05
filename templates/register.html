@@ -1,34 +1,32 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="register-container">
-</div>
-<div class="row register">
-    <div class="col-12 text-center">
-        <h2>Sign Up</h2>
+<div class="image-container">
+    <div class="col-12 register text-center">
+        <h2>Sign Up!</h2>
     </div>
 </div>
 <form id="contactform" method="POST" action="{{ url_for ('register') }}">
     <div class="row">
-        <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
             <fieldset>
                 <legend>Personal details</legend>
                 <label for="firstname">First Name:</label><br />
-                <input id="firstname" type="text" name="first-name" required /><br />
+                <input id="firstname" type="text" name="first_name" pattern="^\S+$" required /><br />
                 <label for="surname">Surname:</label><br />
-                <input id="surname" type="text" name="surname" required /><br />
+                <input id="surname" type="text" name="surname" pattern="^\S+$" required /><br />
                 <label for="email">Email Address:</label><br />
                 <input id="email" type="email" name="email" required /><br />
                 <label for="username">Username:</label><br />
-                <input id="username" type="text" name="username" required /><br />
+                <input id="username" type="text" name="username" pattern="^[a-zA-Z0-9]{5,15}$" required /><br />
                 <label for="password">Password:</label><br />
-                <input id="password" type="password" name="password" required /><br />
+                <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$" required /><br />
                 <label for="password">Confirm Password:</label><br />
-                <input id="confirm-password" type="password" name="confirm-password" required /><br />
+                <input id="confirm-password" type="password" name="confirm-password" pattern="^[a-zA-Z0-9]{5,15}$" required /><br />
                 <label for="genre">Favourite Genre</label><br />
                 <select class="custom-select" id="genre" name="genre" required>
                     <option selected>Pick your favourite genre</option>
                     {% for genre in genres %}
-                    <option value="{{ genre }}">{{ Genre }}</option>
+                    <option value="{{ genre.name }}">{{ genre.name }}</option>
                     {% endfor %}
                 </select>
             </fieldset>
