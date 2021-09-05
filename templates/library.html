@@ -16,7 +16,7 @@
 
 <div class="row">
   {% for book in books %}
-  <div class="col-2 col-md-4 text-center">
+  <div class="col-4 text-center book-image">
 
     {% if book.cover_image %}
     <img
@@ -31,7 +31,7 @@
     {% endif %}
 
   </div>
-  <div class="col-10 col-md-8">
+  <div class="col-8 books">
     <h3>{{ book.title }}</h3>
     <p><strong>Author:</strong> {{ book.author }}</p>
     <p><strong>Genre:</strong> {{ book.genre }}</p>
