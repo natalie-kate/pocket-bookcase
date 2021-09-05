@@ -31,11 +31,17 @@ def register():
             {"username": request.form.get("username").lower()}
         )
         if existing:
-            flash("Username is taken, try adding numbers or choose another username")
+            flash(
+                "Username is taken, try adding numbers or choose",
+                "another username")
+            return redirect(url_for("register"))
+
         if request.form.get("password") != request.form.get(
-            "confirm-password"):
+                "confirm-password"):
             flash("Your passwords did not match, please try again")
-        register = {
+            return redirect(url_for("register"))
+
+        register_user = {
             "first_name": request.form.get("first_name"),
             "surname": request.form.get("surname"),
             "email": request.form.get("email"),
@@ -43,14 +49,22 @@ def register():
             "password": generate_password_hash(request.form.get("password")),
             "genre": request.form.get("genre"),
         }
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(register_user)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        flash("Welcome {{ request.form.get('first_name') }}, you have been successfully registered.")
+        user_name = request.form.get("first_name")
+        flash(
+            f'Welcome {user_name}' +
+            'you have been successfully registered.')
         return redirect(url_for("profile"))
 
     return render_template("register.html", genres=genres)
+
+
+@app.route("/profile")
+def profile():
+    return render_template("profile.html")
 
 
 if __name__ == "__main__":
