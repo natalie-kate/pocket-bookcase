@@ -48,6 +48,7 @@ def register():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "genre": request.form.get("genre"),
+            "admin": "off"
         }
         mongo.db.users.insert_one(register_user)
 
@@ -55,7 +56,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         user_name = request.form.get("first_name")
         flash(
-            f'Welcome {user_name}' +
+            f'Welcome {user_name} ' +
             'you have been successfully registered.')
         return redirect(url_for("profile"))
 
