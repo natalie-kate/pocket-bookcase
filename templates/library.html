@@ -17,10 +17,19 @@
 <div class="row">
   {% for book in books %}
   <div class="col-2 col-md-4 text-center">
+
+    {% if book.cover_image %}
     <img
       src="{{ book.cover_image }}"
-      alt="book cover image of {{ book.title }}"
+      alt="Book cover image of {{ book.title }}"
     />
+    {% else %}
+    <img
+      src="static/images/app-images/bookpile-med.jpg"
+      alt="Image of a pile of books"
+    />
+    {% endif %}
+
   </div>
   <div class="col-10 col-md-8">
     <h3>{{ book.title }}</h3>
