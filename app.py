@@ -3,6 +3,7 @@ from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -20,6 +21,36 @@ mongo = PyMongo(app)
 def library():
     books = list(mongo.db.books.find())
     return render_template("library.html", books=books)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    genres = list(mongo.db.genres.find())
+    if request.method == "POST":
+        existing = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()}
+        )
+        if existing:
+            flash("Username is taken, try adding numbers or choose another username")
+        if request.form.get("password") != request.form.get(
+            "confirm-password"):
+            flash("Your passwords did not match, please try again")
+        register = {
+            "first_name": request.form.get("first_name"),
+            "surname": request.form.get("surname"),
+            "email": request.form.get("email"),
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password")),
+            "genre": request.form.get("genre"),
+        }
+        mongo.db.users.insert_one(register)
+
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Welcome {{ request.form.get('first_name') }}, you have been successfully registered.")
+        return redirect(url_for("profile"))
+
+    return render_template("register.html", genres=genres)
 
 
 if __name__ == "__main__":
