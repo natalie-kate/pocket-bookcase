@@ -33,7 +33,8 @@ def register():
         if existing:
             flash(
                 "Username is taken, try adding numbers or choose",
-                "another username")
+                "another username"
+                )
             return redirect(url_for("register"))
 
         if request.form.get("password") != request.form.get(
@@ -54,18 +55,45 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
-        user_name = request.form.get("first_name")
+        name = request.form.get("first_name")
         flash(
-            f'Welcome {user_name} ' +
+            f'Welcome {name} ' +
             'you have been successfully registered.')
-        return redirect(url_for("profile"))
+        return redirect(url_for("profile", username=session["user"]))
 
     return render_template("register.html", genres=genres)
 
 
-@app.route("/profile")
-def profile():
-    return render_template("profile.html")
+@app.route("/signin", methods=["GET", "POST"])
+def signin():
+    if request.method == "POST":
+        existing = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()}
+        )
+        if existing:
+            if check_password_hash(
+              existing["password"], request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                return redirect(url_for("profile", username=session["user"]))
+            else:
+                flash("Your information did not",
+                      "match our records, please try again.")
+                return redirect(url_for("signin"))
+        else:
+            flash("Your information did not",
+                  "match our records, please try again.")
+            return redirect(url_for("signin"))
+
+    return render_template("signin.html")
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    name = mongo.db.users.find_one(
+        {"username": session["user"]})["first_name"]
+
+    if session["user"]:
+        return render_template("profile.html", name=name)
 
 
 if __name__ == "__main__":
