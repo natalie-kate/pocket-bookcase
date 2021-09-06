@@ -42,7 +42,9 @@ body{
     font-weight: 700;
 }
 .library h2, 
-.register h2 {
+.register h2,
+.sign-up h2,
+.profile h2 {
     padding-top: 15px;
     padding-bottom: 15px;
     font-family: 'Tangerine', cursive;
