@@ -9,7 +9,8 @@ body{
 .navbar-brand,
 .navbar-toggler,
 .footer-link,
-.social{
+.social,
+.sign-up-link a {
     color:  #231709;
     font-weight: 600;
 }
@@ -17,8 +18,10 @@ body{
 .navbar-brand:hover,
 .navbar-toggler:hover,
 .footer-link:hover,
-.social:hover{
+.social:hover,
+.sign-up-link a:hover {
     color: #035597;
+    text-decoration: none;
 }
 .navbar-brand{
     font-family: 'Tangerine', cursive; 
@@ -43,14 +46,15 @@ body{
 }
 .library h2, 
 .register h2,
-.sign-up h2,
+.sign-in h2,
 .profile h2 {
     padding-top: 15px;
     padding-bottom: 15px;
     font-family: 'Tangerine', cursive;
     font-size: 60px;
 }
-.register h2 {
+.register h2,
+.sign-in h2 {
     color:rgb(250, 247, 235);
     padding-top: 5vh;
 }
@@ -99,6 +103,11 @@ input,
 .flashes {
     background-color: #FFBF00;
     color: black;
+}
+.signin.form {
+    border: 1px solid #ced4da;
+    padding: 10px;
+    margin-top: 5vh;
 }
 @media(min-width:750px){
     .my-btn {
