@@ -1,0 +1,32 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<div class="image-container">
+    <div class="col-12 sign-in text-center">
+        <h2>Sign In</h2>
+    </div>
+</div>
+<form id="signin-form" method="POST" action="{{ url_for ('signin') }}">
+    <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
+            <label for="username">Username:</label><br />
+            <input id="username" type="text" name="username" pattern="^[a-zA-Z0-9]{5,15}$" required /><br />
+            <label for="password">Password:</label><br />
+            <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$" required /><br />
+        </div>
+    </div>
+    <div class="row button text-center">
+        <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <button type="submit" class="btn my-btn btn-lg hover">Sign In</button>
+        </div>
+    </div>
+</form>
+<div class="text-center">
+<p>Haven't got an account? <a href="{{ url_for('register') }}">Register Here</a></p>
+</div>
+<hr>
+
+{% endblock %} 
+{% block link %}
+<a class="footer-link" href="{{ url_for('signin') }}">Back to top</a><br />
+{% endblock %}
