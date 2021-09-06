@@ -32,25 +32,30 @@
                         <li class="nav-item">
                             <a class="nav-link" href="">About</a>
                         </li>
+                        {% if session.user %}
                         <li class="nav-item">
-                            <a class="nav-link" href="">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Sign In</a>
+                            <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">Sign Out</a>
                         </li>
+                        {% if session["user"]["admin"] == "on" %}
                         <li class="nav-item">
                             <a class="nav-link" href="">Manage Genres</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="">Manage Users</a>
                         </li>
+                        {% endif %}
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('signin') }}">Sign In</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for ('register') }}"
                                 aria-label="">Sign Up</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="" aria-label="">Contact Us</a>
                         </li>
