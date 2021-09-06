@@ -96,6 +96,14 @@ def profile(username):
         return render_template("profile.html", name=name)
 
 
+@app.route("/signout")
+def signout():
+    # remove user from session cookie
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("signin"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
