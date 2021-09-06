@@ -1,11 +1,12 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+{% block content %}
 
 <div class="image-container">
     <div class="col-12 register text-center">
         <h2>Sign Up!</h2>
     </div>
 </div>
-<form id="contactform" method="POST" action="{{ url_for ('register') }}">
+<form id="register-form" method="POST" action="{{ url_for ('register') }}">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
             <fieldset>
