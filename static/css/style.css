@@ -45,16 +45,13 @@ body{
     font-weight: 700;
 }
 .library h2, 
-.register h2,
-.sign-in h2,
-.profile h2 {
+.header h2 {
     padding-top: 15px;
     padding-bottom: 15px;
     font-family: 'Tangerine', cursive;
     font-size: 60px;
 }
-.register h2,
-.sign-in h2 {
+.header h2 {
     color:rgb(250, 247, 235);
     padding-top: 5vh;
 }
@@ -89,11 +86,13 @@ fieldset {
     width:90%;
     padding-left: 10%;
 }
-label {
+label,
+.rating-stars p {
     margin-bottom: 0;
 }
 input,
-.custom-select {
+.custom-select,
+textarea {
     border: 1px solid #ced4da;
     width: 100%;
 }
@@ -109,6 +108,14 @@ input,
     padding: 10px;
     margin-top: 5vh;
 }
+/*---- Contact Form ----*/
+input[name=rating] {
+    display: none;
+  }
+.rating-stars label {
+    font-size: 20px;
+  }
+
 @media(min-width:750px){
     .my-btn {
         width: 20vw;
