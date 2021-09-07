@@ -1,0 +1,78 @@
+{% extends "base.html" %} 
+{% block content %}
+
+    <!-- Contact form -->
+    <section>
+        <div class="image-container">
+            <div class="col-12 header text-center">
+                <h2 class="text-center">Get in touch! <i class="fas fa-keyboard"></i></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 text-center">
+                <p>We would love to hear your comments and suggestions. Please get in touch.
+                </p>
+            </div>
+        </div>
+        <form id="contactform">
+            <div class="row">
+                <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3">
+                    <fieldset>
+                        <legend>Personal details</legend>
+                        <label for="firstname">First Name:</label><br>
+                        <input id="firstname" type="text" name="first-name" required><br>
+                        <label for="surname">Surname:</label><br>
+                        <input id="surname" type="text" name="surname" required><br>
+                        <label for="email">Email Address:</label><br>
+                        <input id="email" type="email" name="email" required><br>
+                        <label class="form-label" for="textarea">Comments:</label><br>
+                        <textarea id="textarea" name="comments" cols="40" rows="5" required></textarea>
+                        <div role="radiogroup" class="rating-stars">
+                            <p>Rate us: </p>
+                            <label for="rating" tabindex="0" aria-label="1 star"><i class="fas fa-star"></i></label>
+                            <input id="rating" aria-checked="false" type="radio" name="rating" value="1 star">
+                            <label for="rating1" tabindex="0" aria-label="2 stars"><i class="fas fa-star"></i></label>
+                            <input id="rating1" aria-checked="false" type="radio" name="rating" value="2 stars">
+                            <label for="rating2" tabindex="0" aria-label="3 stars"><i class="fas fa-star"></i></label>
+                            <input id="rating2" aria-checked="true" type="radio" name="rating" value="3 stars" checked>
+                            <label for="rating3" tabindex="0" aria-label="4 stars"><i class="fas fa-star"></i></label>
+                            <input id="rating3" aria-checked="false" type="radio" name="rating" value="4 stars">
+                            <label for="rating4" tabindex="0" aria-label="5 stars"><i class="fas fa-star"></i></label>
+                            <input id="rating4" aria-checked="false" type="radio" name="rating" value="5 stars">
+                        </div>
+                </fieldset>
+                </div>
+            </div>
+            <div class="row button text-center">
+                <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+                    <button type="submit" class="btn my-btn btn-lg hover">Send message
+                        <i class="fas fa-envelope"></i></button>
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <!-- Successful submission Modal, mostly code from bootstrap -->
+       <div class="modal" id="submit-modal" role="dialog" tabindex="-1" aria-labelledby="sentmodaltitle"
+       aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <h3 class="modal-title" id="sentmodaltitle">Sent! <i class="fas fa-envelope"></i></h3>
+                   <a href="index.html" class="close" aria-label="Closes modal and takes you back to home page">
+                       <span> <i class="fas fa-times" aria-hidden="true"></i> </span>
+                   </a>
+               </div>
+               <div id="response" class="modal-body">
+               </div>
+               <a href="index.html" class="btn modal-btn hover-btn"
+                   aria-label="Closes modal and takes you back to home page">Close</a>
+           </div>
+       </div>
+   </div>
+
+    {% endblock %}
+    <hr>
+    {% block link %}
+    <a class="footer-link" href="{{ url_for('contact') }}">Back to top</a><br />
+    {% endblock %}
