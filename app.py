@@ -49,7 +49,7 @@ def register():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "genre": request.form.get("genre"),
-            "admin": "off"
+            "admin": "false"
         }
         mongo.db.users.insert_one(register_user)
 
@@ -91,14 +91,14 @@ def signin():
 def profile(username):
     name = mongo.db.users.find_one(
         {"username": session["user"]})["first_name"]
-
+    admin = mongo.db.users.find_one(
+        {"username": session["user"]})["admin"]
     if session["user"]:
-        return render_template("profile.html", name=name)
+        return render_template("profile.html", name=name, admin=admin)
 
 
 @app.route("/signout")
 def signout():
-    # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("signin"))
