@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
             integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="/static/css/style.css">
         <title>Pocket Bookcase</title>
     </head>
     <body class="container-fluid"> 
@@ -39,7 +39,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for('signout') }}">Sign Out</a>
                         </li>
-                        {% if session["user"]["admin"] == "on" %}
+                        {% if admin %}
                         <li class="nav-item">
                             <a class="nav-link" href="">Manage Genres</a>
                         </li>
@@ -57,7 +57,7 @@
                         </li>
                         {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="" aria-label="">Contact Us</a>
+                            <a class="nav-link" href="{{ url_for('contact') }}" aria-label="">Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -102,7 +102,9 @@
                         page.</span></a>
             </div>
             <div class="col-6 text-center">
+                {% if not session.user %}
                 <a class="footer-link" href="{{ url_for ('register') }}">Sign Up</a><br>
+                {% endif %}
                 {% block link %}
 
                 {% endblock %}
