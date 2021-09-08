@@ -114,8 +114,11 @@ input[name=rating] {
   }
 .rating-stars label {
     font-size: 20px;
+    color: rgb(188 150 83);
   }
-
+.rating-stars input:checked~label {
+    color: rgba(137, 37, 23);
+  }
 @media(min-width:750px){
     .my-btn {
         width: 20vw;
