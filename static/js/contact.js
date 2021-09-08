@@ -17,7 +17,8 @@ function contactForm(event) {
 // Assign personalised HTML to modal
     let responseText = `
     <h4>Thanks ${firstName}</h4>
-    <p>The message submitted was: "${comment}"<br>
+    <p>The message submitted was:<br>
+     "${comment}"<br>
     We'll get back to you as soon as possible via ${email}.<br>
     Have a great day of reading <i class="fas fa-book"</p>`;
     response.innerHTML = responseText;  
@@ -48,7 +49,7 @@ function contactForm(event) {
 
     function sendMail (sendForm) {
         emailjs.init("user_wAOlLN2zYLGpP3C5ZlKTc");
-        emailjs.send("service_vk0diqa","date-night", {
+        emailjs.send("service_vk0diqa","pocket-bookcase", {
             "first-name" : firstName,
             "second-name" : secondName,
             "email-address" : email,
