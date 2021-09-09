@@ -104,7 +104,7 @@ def signout():
     return redirect(url_for("signin"))
 
 
-@app.route("/contact", methods=["GET", "POST"])
+@app.route("/contact")
 def contact():
     if session:
         name = mongo.db.users.find_one(
