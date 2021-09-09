@@ -20,11 +20,11 @@
                     <fieldset>
                         <legend>Personal details</legend>
                         <label for="firstname">First Name:</label><br>
-                        <input id="firstname" type="text" name="first-name" required><br>
+                        <input id="firstname" type="text" name="first-name" value="{{ name }}" required><br>
                         <label for="surname">Surname:</label><br>
-                        <input id="surname" type="text" name="surname" required><br>
+                        <input id="surname" type="text" name="surname" value="{{ surname }}" required><br>
                         <label for="email">Email Address:</label><br>
-                        <input id="email" type="email" name="email" required><br>
+                        <input id="email" type="email" name="email" value="{{ email }}" required><br>
                         <label class="form-label" for="textarea">Comments:</label><br>
                         <textarea id="textarea" name="comments" cols="40" rows="5" required></textarea>
                         <div role="radiogroup" class="rating-stars">
