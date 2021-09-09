@@ -90,9 +90,9 @@ def signin():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     name = mongo.db.users.find_one(
-        {"username": session["user"]})["first_name"]
+        {"username": username})["first_name"]
     admin = mongo.db.users.find_one(
-        {"username": session["user"]})["admin"]
+        {"username": username})["admin"]
     if session["user"]:
         return render_template("profile.html", name=name, admin=admin)
 
@@ -106,7 +106,22 @@ def signout():
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if session:
+        name = mongo.db.users.find_one(
+          {"username": session["user"]})["first_name"]
+        surname = mongo.db.users.find_one(
+          {"username": session["user"]})["surname"]
+        email = mongo.db.users.find_one(
+          {"username": session["user"]})["email"]
+        return render_template(
+            "contact.html", name=name, surname=surname, email=email)
+
     return render_template("contact.html")
+
+
+@app.route("/addbook", methods=["GET", "POST"])
+def addbook():
+    return render_template("add-book.html")
 
 
 if __name__ == "__main__":
