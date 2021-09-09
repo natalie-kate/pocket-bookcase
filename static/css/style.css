@@ -49,11 +49,15 @@ footer p {
     font-weight: 700;
 }
 .library h2, 
-.header h2 {
+.header h2,
+.add-book h3 {
     padding-top: 15px;
     font-family: 'Tangerine', cursive;
     font-size: 60px;
     margin-bottom: 0;
+}
+.add-book h3 {
+    font-size: 40px;
 }
 .header h2 {
     color:rgb(250, 247, 235);
@@ -100,6 +104,7 @@ input,
 textarea {
     border: 1px solid #ced4da;
     width: 100%;
+    border-radius: 5px;
 }
 .books p {
     margin-bottom: 0.25rem;
@@ -135,6 +140,11 @@ input[name=rating] {
 }
 .library h2 {
     padding-bottom: none;
+}
+.custom-control {
+    margin-top : 10px;
+    margin-bottom : 10px;
+
 }
 @media(min-width:750px){
     .my-btn {
