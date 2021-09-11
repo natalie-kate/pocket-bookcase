@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{% block image %}
+
+<div class="image-container">
+    <div class="col-12 header text-center">
+        <h2>About</h2>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+<div class="row about">
+    <div class="card col-12 col-md-6 offset-md-3">
+        <h3>What is Pocket Bookcase for?</h3>
+        <p></p>
+    </div>
+    <div class="card col-12 col-md-6 offset-md-3">
+        <h3>How do I use it?</h3>
+        <p></p>
+    </div>
+    <div class="card col-12 col-md-6 offset-md-3">
+        <h3>How do I sign up?</h3>
+        <p></p>
+    </div>
+    <div class="card col-12 col-md-6 offset-md-3">
+        <h3>I'm having trouble logging in!</h3>
+        <p></p>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block link %}
+    <a class="footer-link" href="{{ url_for('profile', username=session['user']) }}">Back to top</a><br>
+{% endblock %}
