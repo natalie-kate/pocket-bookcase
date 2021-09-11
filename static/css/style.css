@@ -122,8 +122,10 @@ textarea {
     margin-bottom: 0.25rem;
 }
 .flashes {
-    background-color: #FFBF00;
-    color: black;
+    margin-top: 10px;
+    background-color: rgba(137, 37, 23, 0.75) ;
+    color: white;
+    border-radius: 5px;
 }
 .signin.form {
     border: 1px solid #ced4da;
