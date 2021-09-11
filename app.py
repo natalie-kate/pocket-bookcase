@@ -119,9 +119,38 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/addbook", methods=["GET", "POST"])
-def addbook():
-    return render_template("add-book.html")
+@app.route("/add_book", methods=["GET", "POST"])
+def add_book():
+    genres = list(mongo.db.genres.find())
+    if request.method == "POST":
+        is_series = "Yes" if request.form.get("series") else "No"
+        existing_book = mongo.db.books.find_one(
+            {"title": request.form.get("title").lower()}
+        )
+        if existing_book:
+            flash("This book is already in our Library")
+            return redirect(url_for("addbook"))
+        else:
+            title = request.form.get("title")
+            book = {
+                "title": title.lower(),
+                "author": request.form.get("author").lower(),
+                "synopsis": request.form.get("synopsis"),
+                "series": is_series,
+                "series_name": request.form.get("series_name").lower(),
+                "genre": request.form.get("genre"),
+                "cover_image": request.form.get("cover_image"),
+                "rating": int(request.form.get("rating")),
+                "review": request.form.get("review"),
+                "added_by": session["user"]
+                }
+            mongo.db.books.insert_one(book)
+            flash(
+                "Thankyou for contributing to the library," +
+                f'{title} has now been added'
+                )
+            return render_template("add-book.html", genres=genres)
+    return render_template("add-book.html", genres=genres)
 
 
 if __name__ == "__main__":
