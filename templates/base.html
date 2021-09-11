@@ -37,7 +37,7 @@
                             <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('signout') }}">Sign Out</a>
+                            <a class="nav-link" href="{{ url_for('sign_out') }}">Sign Out</a>
                         </li>
                         {% if admin %}
                         <li class="nav-item">
@@ -49,7 +49,7 @@
                         {% endif %}
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('signin') }}">Sign In</a>
+                            <a class="nav-link" href="{{ url_for('sign_in') }}">Sign In</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url_for ('register') }}"
@@ -108,6 +108,9 @@
                 {% block link %}
 
                 {% endblock %}
+                {% if session.user %}
+                <a class="footer-link" href="{{ url_for ('sign_out') }}">Sign Out</a><br>
+                {% endif %}
                 <a class="footer-link" href="">Terms and Conditions</a><br>
             </div>
         </div>
