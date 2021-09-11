@@ -1,11 +1,15 @@
 {% extends "base.html" %} 
-{% block content %}
+{% block image %}
 
 <div class="image-container">
     <div class="col-12 header text-center">
         <h2>Add to our Library <i class="fas fa-pen" aria-hidden="true"></i></h2>
     </div>
 </div>
+
+{% endblock %}
+
+{% block content %}
 <div class="add-book text-center">
     <h3>Book Details</h3> 
 </div>
@@ -18,7 +22,7 @@
                 <input id="author" type="text" name="author" required /><br />
                 <label for="genre">Genre:</label><br />
                 <select class="custom-select" id="genre" name="genre" required>
-                    <option selected>Pick genre</option>
+                    <option disabled selected value="">Pick genre</option>
                     {% for genre in genres %}
                     <option value="{{ genre.name }}">{{ genre.name }}</option>
                     {% endfor %}
@@ -26,7 +30,7 @@
                 <label for="cover_image">Cover image url:</label><br />
                 <input id="cover_image" type="text" name="cover_image"/><br />
                 <div class="custom-control custom-switch">
-                    <input type="checkbox" id="series" name="series" class="custom-control-input" required>
+                    <input type="checkbox" id="series" name="series" class="custom-control-input">
                     <label class="custom-control-label" for="series">Is this book part of a series?</label>
                 </div>             
                 <label for="series_name">Series Name:</label><br />
