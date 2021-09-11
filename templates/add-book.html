@@ -9,7 +9,7 @@
 <div class="add-book text-center">
     <h3>Book Details</h3> 
 </div>
-<form id="add-book-form" method="POST" action="{{ url_for ('addbook') }}">
+<form id="add-book-form" method="POST" action="{{ url_for ('add_book') }}">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
                 <label for="title">Title:</label><br />
@@ -26,9 +26,9 @@
                 <label for="cover_image">Cover image url:</label><br />
                 <input id="cover_image" type="text" name="cover_image"/><br />
                 <div class="custom-control custom-switch">
-                    <label class="custom-control-label" for="customSwitch1">Is this book part of a series?</label>
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                </div>
+                    <input type="checkbox" id="series" name="series" class="custom-control-input" required>
+                    <label class="custom-control-label" for="series">Is this book part of a series?</label>
+                </div>             
                 <label for="series_name">Series Name:</label><br />
                 <input id="series_name" type="text" name="series_name"/><br/>
                 <label for="synopsis">Synopsis:</label><br>
@@ -38,15 +38,15 @@
                 <div role="radiogroup" class="rating-stars">
                     <p>Rate book: </p>
                     <label for="rating" tabindex="0" aria-label="1 star"><i class="fas fa-star"></i></label>
-                    <input id="rating" aria-checked="false" type="radio" name="rating" value="1 star">
+                    <input id="rating" aria-checked="false" type="radio" name="rating" value="1">
                     <label for="rating1" tabindex="0" aria-label="2 stars"><i class="fas fa-star"></i></label>
-                    <input id="rating1" aria-checked="false" type="radio" name="rating" value="2 stars">
+                    <input id="rating1" aria-checked="false" type="radio" name="rating" value="2">
                     <label for="rating2" tabindex="0" aria-label="3 stars"><i class="fas fa-star"></i></label>
-                    <input id="rating2" aria-checked="true" type="radio" name="rating" value="3 stars" checked>
+                    <input id="rating2" aria-checked="true" type="radio" name="rating" value="3" checked>
                     <label for="rating3" tabindex="0" aria-label="4 stars"><i class="fas fa-star"></i></label>
-                    <input id="rating3" aria-checked="false" type="radio" name="rating" value="4 stars">
+                    <input id="rating3" aria-checked="false" type="radio" name="rating" value="4">
                     <label for="rating4" tabindex="0" aria-label="5 stars"><i class="fas fa-star"></i></label>
-                    <input id="rating4" aria-checked="false" type="radio" name="rating" value="5 stars">
+                    <input id="rating4" aria-checked="false" type="radio" name="rating" value="5">
                 </div>
         </div>
     </div>
@@ -60,5 +60,5 @@
 {% endblock%}
 
 {% block link %}
-    <a class="footer-link" href="{{ url_for('addbook') }}">Back to top</a><br>
+    <a class="footer-link" href="{{ url_for('add_book') }}">Back to top</a><br>
 {% endblock %}
