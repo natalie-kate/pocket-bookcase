@@ -158,7 +158,15 @@ input[name=rating] {
 .custom-control {
     margin-top : 10px;
     margin-bottom : 10px;
-
+}
+.card {
+    margin-top: 10px;
+}
+.about {
+    margin-bottom: 10px;
+}
+.about h3 {
+    font-size: 24px;
 }
 @media(min-width:750px){
     .my-btn {
