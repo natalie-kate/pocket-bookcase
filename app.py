@@ -64,8 +64,8 @@ def register():
     return render_template("register.html", genres=genres)
 
 
-@app.route("/signin", methods=["GET", "POST"])
-def signin():
+@app.route("/sign_in", methods=["GET", "POST"])
+def sign_in():
     if request.method == "POST":
         existing = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()}
@@ -78,13 +78,13 @@ def signin():
             else:
                 flash("Your information did not",
                       "match our records, please try again.")
-                return redirect(url_for("signin"))
+                return redirect(url_for("sign_in"))
         else:
             flash("Your information did not",
                   "match our records, please try again.")
-            return redirect(url_for("signin"))
+            return redirect(url_for("sign_in"))
 
-    return render_template("signin.html")
+    return render_template("sign-in.html")
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
@@ -97,11 +97,11 @@ def profile(username):
         return render_template("profile.html", name=name, admin=admin)
 
 
-@app.route("/signout")
-def signout():
+@app.route("/sign_out")
+def sign_out():
     flash("You have been logged out")
     session.pop("user")
-    return redirect(url_for("signin"))
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/contact")
