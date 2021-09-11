@@ -48,9 +48,11 @@
     <p><strong>Synopsis:</strong>{{ book.synopsis }}</p>
     <p><strong>Review:</strong>{{ book.review }}</p>
     <p><strong>Added by:</strong> {{ book.added_by }}</p>
-    <a class="btn profile-btn btn-md hover">Add to profile</a>
-    {% if session.user.lower() == book.added_by.lower() %}
-    <a class="btn edit-btn btn-md hover">Edit Book</a>
+    {% if session.user %}
+      <a href="" class="btn profile-btn btn-md hover">Add to profile</a>
+      {% if session.user.lower() == book.added_by.lower() %}
+        <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-md hover">Edit Book</a>
+      {% endif %}
     {% endif %}
   </div>
   <hr />
