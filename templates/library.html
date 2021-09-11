@@ -1,5 +1,5 @@
 {% extends "base.html" %} 
-{% block content %}
+{% block image %}
 
 <div class="title-container">
   <div class="row">
@@ -8,6 +8,10 @@
     </div>
   </div>
 </div>
+
+{% endblock %}
+
+{% block content%}
 <div class="row library">
   <div class="col-12 text-center">
     <h2>Library</h2>
@@ -43,15 +47,15 @@
   </div>
   <div class="col-8 books">
     <h3>{{ book.title.title() }}</h3>
-    <p><strong>Author:</strong> {{ book.author.title() }}</p>
-    <p><strong>Genre:</strong> {{ book.genre }}</p>
-    <p><strong>Synopsis:</strong>{{ book.synopsis }}</p>
+    <p><strong>Author: </strong> {{ book.author.title() }}</p>
+    <p><strong>Genre: </strong> {{ book.genre }}</p>
+    <p><strong>Synopsis: </strong>{{ book.synopsis }}</p>
     {% if book.series == "Yes" %}
-      <p><strong>Series:</strong>{{ book.series }}</p>
-      <p><strong>Series_name:</strong>{{ book.series_name.title() }}</p>
+      <p><strong>Series: </strong>{{ book.series }}</p>
+      <p><strong>Series name: </strong>{{ book.series_name.title() }}</p>
     {% endif %}
-    <p><strong>Review:</strong>{{ book.review }}</p>
-    <p><strong>Added by:</strong> {{ book.added_by }}</p>
+    <p><strong>Review: </strong>{{ book.review }}</p>
+    <p><strong>Added by: </strong> {{ book.added_by }}</p>
     {% if session.user %}
       <a href="" class="btn profile-btn btn-md hover">Add to profile</a>
       {% if session.user.lower() == book.added_by.lower() %}

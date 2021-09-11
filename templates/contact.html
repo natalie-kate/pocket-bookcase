@@ -1,8 +1,17 @@
 {% extends "base.html" %} 
+{% block image %}
+
+<div class="image-container">
+    <div class="col-12 header text-center">
+        <h2 class="text-center">Get in touch! <i class="fas fa-keyboard"></i></h2>
+    </div>
+</div>
+
+{% endblock %}
+
 {% block content %}
 
     <!-- Contact form -->
-    <section>
         <div class="image-container">
             <div class="col-12 header text-center">
                 <h2 class="text-center">Get in touch! <i class="fas fa-keyboard"></i></h2>
@@ -50,7 +59,6 @@
                 </div>
             </div>
         </form>
-    </section>
 
     <!-- Successful submission Modal, mostly code from bootstrap -->
        <div class="modal" id="submit-modal" role="dialog" tabindex="-1" aria-labelledby="sentmodaltitle"

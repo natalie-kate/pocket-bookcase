@@ -1,11 +1,16 @@
 {% extends "base.html" %}
-{% block content %}
+{% block image %}
 
 <div class="image-container">
     <div class="col-12 header text-center">
         <h2>Sign Up!</h2>
     </div>
 </div>
+
+{% endblock %}
+
+{% block content %}
+
 <form id="register-form" method="POST" action="{{ url_for ('register') }}">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
@@ -40,6 +45,8 @@
     </div>
 </form>
 <hr>
-{% endblock %} {% block link %}
+{% endblock %} 
+
+{% block link %}
 <a class="footer-link" href="{{ url_for('register') }}">Back to top</a><br />
 {% endblock %}
