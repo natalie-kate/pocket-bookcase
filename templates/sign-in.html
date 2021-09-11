@@ -6,7 +6,7 @@
         <h2>Sign In</h2>
     </div>
 </div>
-<form id="signin-form" method="POST" action="{{ url_for ('signin') }}">
+<form id="signin-form" method="POST" action="{{ url_for ('sign_in') }}">
     <div class="row">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4 signin form">
             <label for="username">Username:</label><br />
@@ -28,5 +28,5 @@
 
 {% endblock %} 
 {% block link %}
-<a class="footer-link" href="{{ url_for('signin') }}">Back to top</a><br />
+<a class="footer-link" href="{{ url_for('sign_in') }}">Back to top</a><br />
 {% endblock %}
