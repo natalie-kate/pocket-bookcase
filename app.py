@@ -119,6 +119,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
     genres = list(mongo.db.genres.find())
