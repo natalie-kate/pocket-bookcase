@@ -90,6 +90,18 @@ hr {
     background-size: fill;
     margin-top: 20px;
     width: 60vw;
+    padding-left: 0;
+    padding-right: 0;
+}
+.profile-btn {
+    background-color:rgba(137, 37, 23, 0.75);
+    border: 1px solid #231709;
+    color: rgb(250, 247, 235);
+}
+.edit-btn {
+    background-color:rgb(188 150 83);
+    border: 1px solid #231709;
+    color:  #231709;;
 }
 fieldset {
     width:90%;
