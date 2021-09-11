@@ -46,6 +46,10 @@
     <p><strong>Author:</strong> {{ book.author.title() }}</p>
     <p><strong>Genre:</strong> {{ book.genre }}</p>
     <p><strong>Synopsis:</strong>{{ book.synopsis }}</p>
+    {% if book.series == "Yes" %}
+      <p><strong>Series:</strong>{{ book.series }}</p>
+      <p><strong>Series_name:</strong>{{ book.series_name.title() }}</p>
+    {% endif %}
     <p><strong>Review:</strong>{{ book.review }}</p>
     <p><strong>Added by:</strong> {{ book.added_by }}</p>
     {% if session.user %}
