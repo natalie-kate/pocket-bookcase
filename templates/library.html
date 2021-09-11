@@ -18,8 +18,8 @@
     <input class="form-control" type="text" placeholder="Search" aria-label="Search">
   </div>
   {% if session.user %}
-  <div class="col-6 offset-3 col-md-2 offset-md-1">
-    <a href="{{ url_for('addbook') }}" class="btn my-btn btn-lg hover">Add a Book</a>
+  <div class="col-6 offset-3 col-md-3 offset-md-1">
+    <a href="{{ url_for('add_book') }}" class="btn my-btn btn-lg hover"><i class="fas fa-plus"></i> Add a Book</a>
   </div>
   {% endif %}
 </div>
@@ -42,12 +42,16 @@
 
   </div>
   <div class="col-8 books">
-    <h3>{{ book.title }}</h3>
-    <p><strong>Author:</strong> {{ book.author }}</p>
+    <h3>{{ book.title.title() }}</h3>
+    <p><strong>Author:</strong> {{ book.author.title() }}</p>
     <p><strong>Genre:</strong> {{ book.genre }}</p>
     <p><strong>Synopsis:</strong>{{ book.synopsis }}</p>
     <p><strong>Review:</strong>{{ book.review }}</p>
     <p><strong>Added by:</strong> {{ book.added_by }}</p>
+    <a class="btn profile-btn btn-md hover">Add to profile</a>
+    {% if session.user.lower() == book.added_by.lower() %}
+    <a class="btn edit-btn btn-md hover">Edit Book</a>
+    {% endif %}
   </div>
   <hr />
   {% endfor %}
