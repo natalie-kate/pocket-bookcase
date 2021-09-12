@@ -22,7 +22,7 @@ def library():
     books = list(mongo.db.books.find())
     if session["user"]:
         admin = mongo.db.users.find_one(
-        {"username": session["user"]})["admin"]
+          {"username": session["user"]})["admin"]
         return render_template("library.html", books=books, admin=admin)
 
     return render_template("library.html", books=books)
@@ -167,7 +167,7 @@ def add_book():
             mongo.db.books.insert_one(book)
             flash(
                 "Thankyou for contributing to the library," +
-                f'{title} has now been added'
+                f' {title} has now been added'
                 )
             return render_template("add-book.html", genres=genres, admin=admin)
     if session["user"]:
@@ -200,11 +200,11 @@ def edit_book(book_id):
         return render_template("edit-book.html", genres=genres, book=book)
 
 
-
 @app.route("/delete_book, <book_id>")
 def delete_book(book_id):
+    title = mongo.db.books.find_one({"_id": ObjectId(book_id)})["title"]
     mongo.db.books.remove({"_id": ObjectId(book_id)})
-    flash("Book Successfully Deleted")
+    flash(f"{title} Successfully Deleted")
     return redirect(url_for("library"))
 
 
