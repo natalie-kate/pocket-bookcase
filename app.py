@@ -20,6 +20,11 @@ mongo = PyMongo(app)
 @app.route("/library")
 def library():
     books = list(mongo.db.books.find())
+    if session["user"]:
+        admin = mongo.db.users.find_one(
+        {"username": session["user"]})["admin"]
+        return render_template("library.html", books=books, admin=admin)
+
     return render_template("library.html", books=books)
 
 
@@ -107,6 +112,8 @@ def sign_out():
 @app.route("/contact")
 def contact():
     if session:
+        admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
         name = mongo.db.users.find_one(
           {"username": session["user"]})["first_name"]
         surname = mongo.db.users.find_one(
@@ -114,18 +121,26 @@ def contact():
         email = mongo.db.users.find_one(
           {"username": session["user"]})["email"]
         return render_template(
-            "contact.html", name=name, surname=surname, email=email)
+            "contact.html", name=name, surname=surname, email=email,
+            admin=admin)
 
     return render_template("contact.html")
 
 
 @app.route("/about")
 def about():
+    if session:
+        admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
+        return render_template("about.html", admin=admin)
+
     return render_template("about.html")
 
 
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
+    admin = admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
     genres = list(mongo.db.genres.find())
     if request.method == "POST":
         is_series = "Yes" if request.form.get("series") else "No"
@@ -154,9 +169,9 @@ def add_book():
                 "Thankyou for contributing to the library," +
                 f'{title} has now been added'
                 )
-            return render_template("add-book.html", genres=genres)
+            return render_template("add-book.html", genres=genres, admin=admin)
     if session["user"]:
-        return render_template("add-book.html", genres=genres)
+        return render_template("add-book.html", genres=genres, admin=admin)
 
 
 @app.route("/edit_book/<book_id>", methods=["GET", "POST"])
