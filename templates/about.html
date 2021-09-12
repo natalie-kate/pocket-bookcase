@@ -2,36 +2,47 @@
 {% block image %}
 
 <div class="image-container">
-    <div class="col-12 header text-center">
-        <h2>About</h2>
-    </div>
+  <div class="col-12 header text-center">
+    <h2>About</h2>
+  </div>
 </div>
 
-{% endblock %}
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="row about">
-    <div class="card col-12 col-md-6 offset-md-3">
-        <h3>What is Pocket Bookcase for?</h3>
-        <p></p>
-    </div>
-    <div class="card col-12 col-md-6 offset-md-3">
-        <h3>How do I use it?</h3>
-        <p></p>
-    </div>
-    <div class="card col-12 col-md-6 offset-md-3">
-        <h3>How do I sign up?</h3>
-        <p></p>
-    </div>
-    <div class="card col-12 col-md-6 offset-md-3">
-        <h3>I'm having trouble logging in!</h3>
-        <p></p>
-    </div>
-
+  <div class="card col-12 col-md-6 offset-md-3">
+    <h3>What is Pocket Bookcase for?</h3>
+    <p>Do you often buy a book and then realise you've already read it or you
+      already have it on your bookshelf?</p>
+    <p>OR are you just generally a book fiend and can't keep track of where your
+      are in the numerous book series you have started?</p>
+    <p>Then Pocket Bookcase is here to help you keep track.</p>
+  </div>
+  <hr>
+  <div class="card col-12 col-md-6 offset-md-3">
+    <h3>How do I use it?</h3>
+    <p>You can use the Library to find your next book to read by using the search bar.</p>
+    <p>You can sign-up which allows you to add books from the library to your profile. 
+    <p>If a book isn't in our library you can add it yourself.</p>
+    <p>You can edit books you have added to the library.</p>
+    <p>You can also edit or delete books that you have added to your profile.</p>
+  </div>
+  <hr>
+  <div class="card col-12 col-md-6 offset-md-3">
+    <h3>How do I sign up?</h3>
+    <p>You can sign-up by clicking on the Register link in the navigation menu or the footer. 
+        Its free to use and you can delete your account at any time.</p>
+  </div>
+  <hr>
+  <div class="card col-12 col-md-6 offset-md-3">
+    <h3>I'm having trouble logging in!</h3>
+    <p>Contact us via the menu link and our admin will help you out.</p>
+  </div>
+  <hr>
 </div>
 
-{% endblock %}
 
-{% block link %}
-    <a class="footer-link" href="{{ url_for('profile', username=session['user']) }}">Back to top</a><br>
+{% endblock %} {% block link %}
+<a class="footer-link" href="{{ url_for('profile', username=session['user']) }}"
+  >Back to top</a
+><br />
 {% endblock %}
