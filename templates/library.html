@@ -20,7 +20,9 @@
 <div class="row search-box">
   <div class="col-10 offset-1 col-md-6 offset-md-0">
     <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    <button type="submit" class="btn btn-primary hover">Search</button>
   </div>
+
   {% if session.user %}
   <div class="col-6 offset-3 col-md-3 offset-md-1">
     <a href="{{ url_for('add_book') }}" class="btn my-btn btn-lg hover"><i class="fas fa-plus"></i> Add a Book</a>
@@ -60,6 +62,9 @@
       <a href="" class="btn profile-btn btn-md hover">Add to profile</a>
       {% if session.user.lower() == book.added_by.lower() %}
         <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-md hover">Edit Book</a>
+      {% endif %}
+      {% if admin %}
+        <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn delete-btn btn-md hover">Delete Book</a>
       {% endif %}
     {% endif %}
   </div>
