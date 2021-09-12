@@ -208,6 +208,12 @@ def delete_book(book_id):
     return redirect(url_for("library"))
 
 
+@app.route("/manage_genre")
+def manage_genre():
+    genres = list(mongo.db.genres.find())
+    return render_template("manage_genres.html", genres=genres)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
