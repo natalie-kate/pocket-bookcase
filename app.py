@@ -221,6 +221,23 @@ def manage_genre():
         return render_template("manage_genres.html", genres=genres)
 
 
+@app.route("/add_genre", methods=["GET", "POST"])
+def add_genre():
+    if request.method == "POST":
+        existing_genre = mongo.db.genres.find_one(
+            {"name": request.form.get("name").lower()}
+        )
+        if existing_genre:
+            flash("This genre is already in our collection")
+            return redirect(url_for("add_genre"))
+        else:
+            genre_name = request.form.get("name").lower()
+            new_genre = {"name": genre_name}
+            mongo.db.genres.insert_one(new_genre)
+            flash(f'Thanks { genre_name.title() } is now in our collection')
+            return redirect(url_for("manage_genre"))
+
+
 @app.route("/delete_genre, <genre_id>")
 def delete_genre(genre_id):
     genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})["name"]
