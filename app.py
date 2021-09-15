@@ -139,7 +139,7 @@ def about():
 
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
-    admin = admin = mongo.db.users.find_one(
+    admin = mongo.db.users.find_one(
           {"username": session["user"]})["admin"]
     genres = list(mongo.db.genres.find())
     if request.method == "POST":
@@ -178,7 +178,12 @@ def add_book():
 def edit_book(book_id):
     genres = list(mongo.db.genres.find())
     if request.method == "POST":
-        title = mongo.db.books.find_one({"_id": ObjectId(book_id)})["title"]
+        if mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]:
+            title = request.form.get("title").lower(),
+        else:
+            title = mongo.db.books.find_one(
+                {"_id": ObjectId(book_id)})["title"]
         is_series = "Yes" if request.form.get("series") else "No"
         update = {
             "title": title,
