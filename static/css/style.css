@@ -50,7 +50,8 @@ footer p {
 }
 .library h2, 
 .header h2,
-.add-book h3 {
+.add-book h3,
+h3.genres {
     padding-top: 15px;
     font-family: 'Tangerine', cursive;
     font-size: 60px;
@@ -155,7 +156,9 @@ input[name=rating] {
     color: rgba(137, 37, 23);
   }
 .search-box .my-btn,
-.search-box input {
+.search-box input,
+#add-genre-form input,
+#add-genre-form button {
     margin-bottom: 15px;
     margin-top: 0;
     height: 38px;
@@ -172,12 +175,16 @@ input[name=rating] {
 }
 .card {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 .about {
     margin-bottom: 10px;
 }
 .about h3 {
     font-size: 24px;
+}
+.genres-btn button {
+    width: 100%;
 }
 
 @media(min-width:750px){
