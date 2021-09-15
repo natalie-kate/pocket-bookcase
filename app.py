@@ -149,7 +149,7 @@ def add_book():
         )
         if existing_book:
             flash("This book is already in our Library")
-            return redirect(url_for("addbook"))
+            return redirect(url_for("add_book"))
         else:
             title = request.form.get("title")
             book = {
@@ -216,7 +216,17 @@ def delete_book(book_id):
 @app.route("/manage_genre")
 def manage_genre():
     genres = list(mongo.db.genres.find())
-    return render_template("manage_genres.html", genres=genres)
+    if mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]:
+        return render_template("manage_genres.html", genres=genres)
+
+
+@app.route("/delete_genre, <genre_id>")
+def delete_genre(genre_id):
+    genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})["name"]
+    mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+    flash(f"{ genre.title() } Successfully Deleted")
+    return redirect(url_for("manage_genre"))
 
 
 if __name__ == "__main__":
