@@ -17,7 +17,11 @@
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
                 <label for="title">Title:</label><br />
+                {% if admin %}
+                <input id="title" type="text" name="title" value="{{ book.title.title() }}"/><br />
+                {% else %}
                 <input id="title" type="text" name="title" value="{{ book.title.title() }}" disabled /><br />
+                {% endif %}
                 <label for="author">Author:</label><br />
                 <input id="author" type="text" name="author" value="{{ book.author.title() }}"required /><br />
                 <label for="genre">Genre:</label><br />
