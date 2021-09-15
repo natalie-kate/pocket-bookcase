@@ -1,4 +1,4 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% block image %}
 
 <div class="title-container">
@@ -12,21 +12,34 @@
 {% endblock %}
 
 {% block content%}
+<h3 class="genres text-center">Add genre</h3>
+<form id="add-genre-form" method="POST" action="{{ url_for ('add_genre') }}">
+  <div class="row">
+    <div class="col-10 offset-1 col-md-6 offset-md-3">
+      <label for="name">Genre name:</label> 
+      <input id="name" type="text" name="name" placeholder="e.g Fantasy" required /><br />
+    </div>
 
-<div class="col-10 offset-1 col-md-4 offset-md-4 text-center">
-    <a href="{{ url_for('add_book') }}" class="btn my-btn btn-lg hover">
-    <i class="fas fa-plus"></i> Add Genre</a>
+    <div class="col-8 offset-2 col-md-4 offset-md-4 text-center genres-btn">
+      <button type="submit" href="{{ url_for('add_book') }}" class="btn my-btn btn-lg hover">
+        <i class="fas fa-plus"></i> Add Genre</button>
+    </div>
   </div>
+</form>
+<hr>
+
+<h3 class="genres text-center">Current Genres</h3>
 
 {% for genre in genres %}
-<div class="row genres text-center"></iv>
-    <div class="col-6 offset-1 shadow">
-        <h3>{{ genre.name }}</h3>
-    </div>
-    <div class="col-4">
-        <a href="" class="btn btn-sm edit-btn">Edit Genre</a>
-        <a href="" class="btn btn-sm delete-btn">Delete Genre</a>
-    </div>
+<div class="row genres text-center">
+  </iv>
+  <div class="col-10 offset-1 col-md-5 shadow-lg p-1 mb-3 bg-white rounded">
+    <h3>{{ genre.name.title() }}</h3>
+  </div>
+  <div class="col-10 offset-1 col-md-5 offset-md-0">
+    <a href="" class="btn btn-md edit-btn">Edit Genre</a>
+    <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn btn-md delete-btn">Delete Genre</a>
+  </div>
 </div>
 {% endfor %}
 <hr>
@@ -34,5 +47,5 @@
 {% endblock %}
 
 {% block link %}
-    <a class="footer-link" href="{{ url_for('manage_genre') }}">Back to top</a><br>
+<a class="footer-link" href="{{ url_for('manage_genre') }}">Back to top</a><br>
 {% endblock %}
