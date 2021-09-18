@@ -28,6 +28,25 @@ def library():
     return render_template("library.html", books=books)
 
 
+@app.route("/search_library", methods=["GET", "POST"])
+def search_library():
+    if request.method == "POST":
+        search = request.form.get("search").lower()
+        results = list(mongo.db.books.find(
+            {"$text": {"$search": search}}))
+        if results:
+            if session["user"]:
+                admin = mongo.db.users.find_one(
+                  {"username": session["user"]})["admin"]
+                return render_template(
+                    "library.html", admin=admin, results=results)
+            return render_template(
+              "library.html", results=results)
+        else:
+            flash(f"Sorry cannot find { search.title()}")
+            return redirect(url_for("library"))
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     genres = list(mongo.db.genres.find())
@@ -216,9 +235,11 @@ def delete_book(book_id):
 @app.route("/manage_genre")
 def manage_genre():
     genres = list(mongo.db.genres.find())
-    if mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]:
-        return render_template("manage_genres.html", genres=genres)
+    admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
+    if admin:
+        return render_template(
+            "manage_genres.html", genres=genres, admin=admin)
 
 
 @app.route("/add_genre", methods=["GET", "POST"])
