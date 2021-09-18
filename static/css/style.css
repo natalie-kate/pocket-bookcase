@@ -51,7 +51,8 @@ footer p {
 .library h2, 
 .header h2,
 .add-book h3,
-h3.genres {
+h3.genres,
+.search-results h3 {
     padding-top: 15px;
     font-family: 'Tangerine', cursive;
     font-size: 60px;
@@ -82,7 +83,7 @@ hr {
     border-radius: 25px;
     width: 90vw;
     border: none;
-    background-image: linear-gradient(to right, rgba(226, 192, 139, 0), rgba(137, 37, 23, 0.75), rgba(226, 192, 139, 0));
+    background-image: linear-gradient(to right, rgba(226, 192, 139, 0), rgba(112, 66, 65, 1), rgba(226, 192, 139, 0));
 }
 .my-btn {
     color: white;
@@ -96,7 +97,7 @@ hr {
 }
 .profile-btn,
 .edit-genres-btn {
-    background-color:rgba(137, 37, 23, 0.75);
+    background-color: rgb(156 22 12);
     border: 1px solid #231709;
     color: rgb(250, 247, 235);
 }
@@ -116,7 +117,7 @@ hr {
     color:  #231709;
 }
 .delete-btn {
-    background-color:#231709;
+    background-color:#012d50;
     border: 1px solid #231709;
     color: rgb(250, 247, 235);
 }
@@ -164,7 +165,7 @@ input[name=rating] {
     color: rgb(188 150 83);
   }
 .rating-stars input:checked~label {
-    color: rgba(137, 37, 23);
+    color: rgba(137, 37, 23, 0.75) ;
   }
 .search-box .my-btn,
 .search-box input,
@@ -200,6 +201,19 @@ input[name=rating] {
 .edit-genre {
     padding-left: 0;
     padding-right: 0;
+}
+.btn.hover:hover{ 
+    animation: pulse 1s infinite;
+    animation-timing-function: linear;  
+    color: white;
+  }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+.btn.hover {
+    transition: none;
 }
 
 @media(min-width:750px){
