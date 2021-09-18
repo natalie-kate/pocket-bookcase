@@ -1,4 +1,4 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% block image %}
 
 <div class="title-container">
@@ -17,71 +17,108 @@
     <h2>Library</h2>
   </div>
 </div>
-  <form id="search-form" method="POST" action="{{ url_for ('search_library') }}">
-    <div class="row search-box text-center">
-      <div class="col-8">
-        <input type="text" name="search" id="search" placeholder=" e.g genre or title" aria-label="Search library">
-      </div>
-      <div class="col-4">
-        <button type="submit" class="btn btn-primary hover">Search <i class="fas fa-search"></i></button>
-      </div>
+<form id="search-form" method="POST" action="{{ url_for ('search_library') }}">
+  <div class="row search-box">
+    <div class="col-8">
+      <input type="text" name="search" id="search" placeholder=" e.g genre or title" aria-label="Search library">
     </div>
-  </form>
-</div>
-  {% if session.user %}
-  <div class="row text-center">
-    <div class="col-10 offset-1 col-md-4 offset-md-4">
-      <a href="{{ url_for('add_book') }}" class="btn my-btn btn-lg hover">
-      <i class="fas fa-plus"></i> Add a Book</a>
+    <div class="col-4">
+      <button type="submit" class="btn btn-primary hover">Search <i class="fas fa-search"></i></button>
     </div>
   </div>
-  {% endif %}
+</form>
 
+{% if session.user %}
+<div class="row text-center">
+  <div class="col-10 offset-1 col-md-4 offset-md-4">
+    <a href="{{ url_for('add_book') }}" class="btn my-btn btn-lg hover">
+      <i class="fas fa-plus"></i> Add a Book</a>
+  </div>
+</div>
+<hr>
+{% endif %}
 
+{% if results %}
 <div class="row">
-  {% for book in books %}
+  <div class="col-12 text-center search-results">
+    <h3>Search results</h3>
+  </div>
+  {% for result in results %}
   <div class="col-4 text-center book-image">
-
-    {% if book.cover_image %}
-    <img
-      src="{{ book.cover_image }}"
-      alt="Book cover image of {{ book.title }}"
-    />
+    {% if result.cover_image %}
+    <img src="{{ result.cover_image }}" alt="Book cover image of {{ result.title }}" />
     {% else %}
-    <img
-      src="static/images/app-images/bookpile-med.jpg"
-      alt="Image of a pile of books"
-    />
+    <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books" />
     {% endif %}
-
   </div>
   <div class="col-8 books">
-    <h3>{{ book.title.title() }}</h3>
-    <p><strong>Author: </strong> {{ book.author.title() }}</p>
-    <p><strong>Genre: </strong> {{ book.genre }}</p>
-    <p><strong>Synopsis: </strong>{{ book.synopsis }}</p>
-    {% if book.series == "Yes" %}
-      <p><strong>Series: </strong>{{ book.series }}</p>
-      <p><strong>Series name: </strong>{{ book.series_name.title() }}</p>
+    <h3>{{ result.title.title() }}</h3>
+    <p><strong>Author: </strong> {{ result.author.title() }}</p>
+    <p><strong>Genre: </strong> {{ result.genre }}</p>
+    <p><strong>Synopsis: </strong>{{ result.synopsis }}</p>
+    {% if result.series == "Yes" %}
+    <p><strong>Series: </strong>{{ result.series }}</p>
+    <p><strong>Series name: </strong>{{ result.series_name.title() }}</p>
     {% endif %}
-    <p><strong>Review: </strong>{{ book.review }}</p>
-    <p><strong>Added by: </strong> {{ book.added_by }}</p>
+    <p><strong>Review: </strong>{{ result.review }}</p>
+    <p><strong>Added by: </strong> {{ result.added_by }}</p>
     {% if session.user %}
-      <a href="" class="btn profile-btn btn-md hover">Add to profile</a>
-      {% if session.user.lower() == book.added_by.lower() %}
-        <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-md hover">Edit Book</a>
+    <a href="" class="btn profile-btn btn-md hover">Add to profile</a>
+      {% if session.user.lower() == result.added_by.lower() %}
+      <a href="{{ url_for('edit_book', book_id=result._id) }}" class="btn edit-btn btn-md hover">Edit Book</a>
       {% endif %}
       {% if admin %}
-        <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn delete-btn btn-md hover">Delete Book</a>
+      <a href="{{ url_for('delete_book', book_id=result._id) }}" class="btn delete-btn btn-md hover">Delete Book</a>
       {% endif %}
     {% endif %}
   </div>
-  <hr />
   {% endfor %}
 </div>
-{% endblock %}
+<div class="row text-center">
+  <div class="col-12 text-center">
+    <a class="btn btn-lg hover" href="{{ url_for('library') }}">Back to Library</a>
+  </div>
+</div>
+  <hr />
+{% endif %}
 
-{% block link %}
-    <a class="footer-link" href="{{ url_for('library') }}">Back to top</a><br>
-{% endblock %}
+  <div class="row">
+    {% for book in books %}
+    <div class="col-4 text-center book-image">
 
+      {% if book.cover_image %}
+      <img src="{{ book.cover_image }}" alt="Book cover image of {{ book.title }}" />
+      {% else %}
+      <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books" />
+      {% endif %}
+
+    </div>
+    <div class="col-8 books">
+      <h3>{{ book.title.title() }}</h3>
+      <p><strong>Author: </strong> {{ book.author.title() }}</p>
+      <p><strong>Genre: </strong> {{ book.genre }}</p>
+      <p><strong>Synopsis: </strong>{{ book.synopsis }}</p>
+      {% if book.series == "Yes" %}
+      <p><strong>Series: </strong>{{ book.series }}</p>
+      <p><strong>Series name: </strong>{{ book.series_name.title() }}</p>
+      {% endif %}
+      <p><strong>Review: </strong>{{ book.review }}</p>
+      <p><strong>Added by: </strong> {{ book.added_by }}</p>
+      {% if session.user %}
+      <a href="" class="btn profile-btn btn-md hover">Add to profile</a>
+      {% if session.user.lower() == book.added_by.lower() %}
+      <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-md hover">Edit Book</a>
+      {% endif %}
+      {% if admin %}
+      <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn delete-btn btn-md hover">Delete Book</a>
+      {% endif %}
+      {% endif %}
+    </div>
+    <hr />
+    {% endfor %}
+  </div>
+  {% endblock %}
+
+  {% block link %}
+  <a class="footer-link" href="{{ url_for('library') }}">Back to top</a><br>
+  {% endblock %}
