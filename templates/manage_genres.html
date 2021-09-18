@@ -37,8 +37,8 @@
     <h3>{{ genre.name.title() }}</h3>
   </div>
   <div class="col-10 offset-1 col-md-5 offset-md-0">
-    <a data-toggle="collapse" data-target="#{{ genre.name }}-form" class="btn btn-md edit-btn hover">Edit Genre</a>
-    <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn btn-md delete-btn hover">Delete Genre</a>
+    <a data-toggle="collapse" data-target="#{{ genre.name }}-form" class="btn btn-md edit-btn hover">Edit <i class="fas fa-edit"></i></a>
+    <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn btn-md delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
   </div>
 </div>
 <form id="{{ genre.name }}-form" method="POST" action="{{ url_for ('edit_genre', genre_id=genre._id) }}" class="collapse">
@@ -50,7 +50,7 @@
 
     <div class="col-4 col-md-3 genre-edit">
       <button type="submit" class="btn btn-lg  edit-genres-btn hover">
-        <i class="far fa-save"></i> Save</button>
+        Save <i class="far fa-save"></i></button>
     </div>
   </div>
 </form>
