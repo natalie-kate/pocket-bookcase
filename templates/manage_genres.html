@@ -21,7 +21,7 @@
     </div>
 
     <div class="col-8 offset-2 col-md-4 offset-md-4 text-center genres-btn">
-      <button type="submit" href="{{ url_for('add_book') }}" class="btn my-btn btn-lg hover">
+      <button type="submit" class="btn my-btn btn-lg hover">
         <i class="fas fa-plus"></i> Add Genre</button>
     </div>
   </div>
@@ -37,10 +37,23 @@
     <h3>{{ genre.name.title() }}</h3>
   </div>
   <div class="col-10 offset-1 col-md-5 offset-md-0">
-    <a href="" class="btn btn-md edit-btn">Edit Genre</a>
-    <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn btn-md delete-btn">Delete Genre</a>
+    <a data-toggle="collapse" data-target="#{{ genre.name }}-form" class="btn btn-md edit-btn hover">Edit Genre</a>
+    <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn btn-md delete-btn hover">Delete Genre</a>
   </div>
 </div>
+<form id="{{ genre.name }}-form" method="POST" action="{{ url_for ('edit_genre', genre_id=genre._id) }}" class="collapse">
+  <div class="row">
+    <div class="col-7 offset-1 col-md-6 edit-genre">
+      <label for="name">Genre name:</label> 
+      <input id="name" type="text" name="name" required value="{{ genre.name.title() }}"/>
+    </div>
+
+    <div class="col-4 col-md-3 genre-edit">
+      <button type="submit" class="btn btn-lg  edit-genres-btn hover">
+        <i class="far fa-save"></i> Save</button>
+    </div>
+  </div>
+</form>
 {% endfor %}
 <hr>
 
