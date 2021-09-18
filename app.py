@@ -299,6 +299,14 @@ def manage_users():
             "manage_genres.html", users=users, admin=admin)
 
 
+@app.route("/edit_user", methods=["GET", "POST"])
+def edit_user():
+    admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
+    if admin:
+        return render_template("edit_user.html, admin=admin")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
