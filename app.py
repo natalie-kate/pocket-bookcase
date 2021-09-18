@@ -289,6 +289,16 @@ def delete_genre(genre_id):
         return redirect(url_for("manage_genre"))
 
 
+@app.route("/manage_users")
+def manage_users():
+    admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
+    users = mongo.db.users.find()
+    if admin:
+        return render_template(
+            "manage_genres.html", users=users, admin=admin)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
