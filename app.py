@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 @app.route("/library")
 def library():
     books = list(mongo.db.books.find())
-    if session["user"]:
+    if session:
         admin = mongo.db.users.find_one(
           {"username": session["user"]})["admin"]
         return render_template("library.html", books=books, admin=admin)
@@ -193,7 +193,7 @@ def add_book():
         return render_template("add-book.html", genres=genres, admin=admin)
 
 
-@app.route("/edit_book/<book_id>", methods=["GET", "POST"])
+@app.route("/edit_book, <book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
     genres = list(mongo.db.genres.find())
     if request.method == "POST":
