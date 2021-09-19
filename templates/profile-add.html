@@ -1,9 +1,9 @@
-{% extends base.html %}
+{% extends "base.html" %}
 {% block image %}
 
 <div class="title-container">
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-12 text-center header">
       <h2>Add to profile</h2>
     </div>
   </div>
@@ -13,10 +13,12 @@
 
 {% block content%}
 
-<h3>{{ book.title }} </h3>
-<p>Lets get it added, just a few quick questions:</p>
-<form id="profile-add-form" method="POST" action="{{ url_for('profile_add', book_id=book.id) }}">
-    <div class="row">
+<div class="add-book text-center">
+    <h3> book title</h3> 
+    <p>Lets get it added, just a few quick questions:</p>
+</div>
+<form id="profile-add-form" method="POST" action="{{ url_for('profile_add', book_id=book._id) }}">
+    <div class="row text-center">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
             <div class="custom-control custom-switch">
                 <input type="checkbox" id="own" name="own" class="custom-control-input">
@@ -27,16 +29,18 @@
                 <label class="custom-control-label" for="read">Have you read this book?</label>
             </div> 
         </div>
+    </div>
     <div class="row button text-center">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <button type="submit" class="btn my-btn btn-lg hover">Add Book</button>
         </div>
     </div>   
 </form>
+<hr>
 
 {% endblock %}
 
 {% block link %}
-<a class="footer-link" href="{{ url_for('profile_add', book_id=book.id) }}">Back to top</a><br>
+<a class="footer-link" href="{{ url_for('profile_add', book_id=book._id) }}">Back to top</a><br>
 {% endblock %}
 
