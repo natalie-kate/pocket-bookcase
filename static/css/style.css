@@ -100,7 +100,8 @@ hr {
     padding-right: 0;
 }
 .profile-btn,
-.edit-genres-btn {
+.edit-genres-btn,
+.cancel-btn {
     background-color: rgb(156 22 12);
     border: 1px solid #231709;
     color: rgb(250, 247, 235);
@@ -121,7 +122,8 @@ hr {
     color:  #231709;
 }
 .delete-btn,
-.search-btn {
+.search-btn,
+.reset-btn {
     background-color:#012d50;
     border: 1px solid #231709;
     color: rgb(250, 247, 235);
