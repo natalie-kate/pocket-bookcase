@@ -52,14 +52,18 @@ footer p {
 .header h2,
 .add-book h3,
 h3.genres,
-.search-results h3 {
+.search-results h3,
+h3.users {
     padding-top: 15px;
     font-family: 'Tangerine', cursive;
     font-size: 60px;
     margin-bottom: 0;
 }
-.add-book h3 {
-    font-size: 40px;
+.add-book h3,
+h3.genres,
+.search-results h3,
+h3.users {
+    font-size: 50px;
 }
 .header h2 {
     color:rgb(250, 247, 235);
@@ -116,7 +120,8 @@ hr {
     border: 1px solid #231709;
     color:  #231709;
 }
-.delete-btn {
+.delete-btn,
+.search-btn {
     background-color:#012d50;
     border: 1px solid #231709;
     color: rgb(250, 247, 235);
@@ -189,6 +194,9 @@ input[name=rating] {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+input {
+    padding-left: 5px;
+}
 .about {
     margin-bottom: 10px;
 }
@@ -215,7 +223,6 @@ input[name=rating] {
 .btn.hover {
     transition: none;
 }
-
 @media(min-width:750px){
     .my-btn {
         width: 20vw;
