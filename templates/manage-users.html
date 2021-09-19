@@ -13,13 +13,14 @@
 
 {% block content%}
 
-<form id="search-form" method="POST" action="{{ url_for ('search_users') }}">
+<h3 class="users text-center">Search Users</h3>
+<form id="user-search-form" method="POST" action="{{ url_for ('search_users') }}">
   <div class="row search-box">
     <div class="col-8">
-      <input type="text" name="search" id="search" placeholder=" username" aria-label="Search users">
+      <input type="text" name="search" id="search" placeholder="Search username or admin" aria-label="Search users">
     </div>
     <div class="col-4">
-      <button type="submit" class="btn btn-primary hover">Search <i class="fas fa-search"></i></button>
+      <button type="submit" class="btn btn-md search-btn hover">Search <i class="fas fa-search"></i></button>
     </div>
   </div>
 </form> 
@@ -30,7 +31,6 @@
 
 {% for user in users %}
 <div class="row users text-center">
-  </iv>
   <div class="col-10 offset-1 col-md-5 shadow-lg p-1 mb-3 bg-white rounded">
     <h3>{{ user.username }}</h3>
   </div>
@@ -42,6 +42,7 @@
 
 {% endfor %}
 <hr>
+{% endif %}
 
 {% endblock %}
 
