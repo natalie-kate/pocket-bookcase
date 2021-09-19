@@ -333,6 +333,18 @@ def edit_user():
         return render_template("edit-user.html, admin=admin")
 
 
+@app.route("/delete_user, <user_id>")
+def delete_user(user_id):
+    admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
+    username = mongo.db.users.find_one(
+          {"_id": user_id})["username"]
+    if admin:
+        mongo.db.users.remove({"_id": ObjectId(user_id)})
+        flash(f"{ username } Successfully Deleted")
+        return redirect(url_for("manage_users"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
