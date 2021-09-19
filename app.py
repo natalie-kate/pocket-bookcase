@@ -121,12 +121,14 @@ def profile(username):
         return render_template("profile.html", name=name, admin=admin)
 
 
-@app.route("/profile_add", methods=["GET", "POST"])
-def profile_add():
+@app.route("/profile_add, <book_id>", methods=["GET", "POST"])
+def profile_add(book_id):
     admin = mongo.db.users.find_one(
         {"username": session["user"]})["admin"]
+    book = mongo.db.books.find_one(
+        {"_id": ObjectId(book_id)})
     if session["user"]:
-        return render_template("profile-add.html", admin=admin)
+        return render_template("profile-add.html", admin=admin, book=book)
 
 
 @app.route("/sign_out")
