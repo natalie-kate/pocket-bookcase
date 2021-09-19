@@ -41,6 +41,13 @@ footer p {
     padding: 0;
     border-radius: 10px;
 }
+.image-container {
+    height: 20vh;
+    background: url("../images/app-images/books-med.jpg") no-repeat top center;
+    background-size: cover;
+    padding: 0;
+    border-radius: 10px;
+}
 .title-container h1 {
     color: rgb(250, 247, 235);
     padding-top: 10vh;
@@ -69,13 +76,6 @@ h3.users {
     color:rgb(250, 247, 235);
     padding-top: 5vh;
     padding-bottom: 15px;
-}
-.image-container {
-    height: 20vh;
-    background: url("../images/app-images/books-med.jpg") no-repeat top center;
-    background-size: cover;
-    padding: 0;
-    border-radius: 10px;
 }
 img { 
     width: 60%;
@@ -228,5 +228,14 @@ input {
 @media(min-width:750px){
     .my-btn {
         width: 20vw;
+    }
+    .title-container {
+        height: 40vh;
+    }
+    .image-container{
+        height: 30vh;
+    }
+    .header h2 {
+        padding-top: 10vh;
     }
 }
