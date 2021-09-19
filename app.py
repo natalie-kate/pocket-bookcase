@@ -327,6 +327,38 @@ def search_users():
 def edit_user(user_id):
     admin = mongo.db.users.find_one(
           {"username": session["user"]})["admin"]
+    if request.method == "POST":
+        username = mongo.db.users.find_one(
+            {"_id": ObjectId(user_id)})["username"]
+        is_admin = bool("true") if request.form.get("admin") else bool("")
+        if request.form.get("password") != request.form.get(
+                "confirm-password"):
+            flash("Your passwords did not match, please try again")
+            return redirect(url_for("edit_user"))
+        if request.form.get("password"):
+            update_user = {
+                "email": request.form.get("email"),
+                "admin": is_admin,
+                "password": generate_password_hash(
+                    request.form.get("password"))
+            }
+            mongo.db.users.update(
+                {"_id": ObjectId(user_id)}, {"$set": update_user})
+
+            flash(f"Thankyou {username} has been updated,") + (
+                "email them with their new password")
+            return redirect(url_for("manage_users"))
+        else:
+            update_user = {
+                "email": request.form.get("email"),
+                "admin": is_admin
+            }
+            mongo.db.users.update(
+                {"_id": ObjectId(user_id)}, {"$set": update_user})
+
+            flash(f"Thankyou {username} has been updated")
+            return redirect(url_for("manage_users"))
+
     if admin:
         user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
         return render_template("edit-user.html", user=user, admin=admin)
