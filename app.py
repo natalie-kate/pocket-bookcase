@@ -239,7 +239,7 @@ def manage_genre():
           {"username": session["user"]})["admin"]
     if admin:
         return render_template(
-            "manage_genres.html", genres=genres, admin=admin)
+            "manage-genres.html", genres=genres, admin=admin)
 
 
 @app.route("/add_genre", methods=["GET", "POST"])
@@ -296,7 +296,33 @@ def manage_users():
     users = mongo.db.users.find()
     if admin:
         return render_template(
-            "manage_genres.html", users=users, admin=admin)
+            "manage-users.html", users=users, admin=admin)
+
+
+@app.route("/search_users", methods=["GET", "POST"])
+def search_users():
+    admin = mongo.db.users.find_one(
+        {"username": session["user"]})["admin"]
+    if admin:
+        if request.method == "POST":
+            search = request.form.get("search").lower()
+            if search == "admin":
+                users = list(mongo.db.users.find(
+                    {"admin": bool("true")})
+                )
+                return render_template(
+                    "manage-users.html", users=users, admin=admin)
+            elif search:
+                users = list(mongo.db.users.find(
+                    {"username": search}))
+                if users:
+                    return render_template(
+                        "manage-users.html", users=users, admin=admin)
+                else:
+                    flash(f"Sorry couldn't find {search}")
+                    return redirect(url_for("manage_users"))
+        return render_template(
+            "manage-users.html", users=users, admin=admin)
 
 
 @app.route("/edit_user", methods=["GET", "POST"])
@@ -304,7 +330,7 @@ def edit_user():
     admin = mongo.db.users.find_one(
           {"username": session["user"]})["admin"]
     if admin:
-        return render_template("edit_user.html, admin=admin")
+        return render_template("edit-user.html, admin=admin")
 
 
 if __name__ == "__main__":
