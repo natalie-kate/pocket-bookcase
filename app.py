@@ -73,7 +73,7 @@ def register():
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password")),
             "genre": request.form.get("genre"),
-            "admin": "false"
+            "admin": bool("")
         }
         mongo.db.users.insert_one(register_user)
 
@@ -307,30 +307,29 @@ def search_users():
         if request.method == "POST":
             search = request.form.get("search").lower()
             if search == "admin":
-                users = list(mongo.db.users.find(
+                results = list(mongo.db.users.find(
                     {"admin": bool("true")})
                 )
                 return render_template(
-                    "manage-users.html", users=users, admin=admin)
+                    "manage-users.html", results=results, admin=admin)
             elif search:
-                users = list(mongo.db.users.find(
+                results = list(mongo.db.users.find(
                     {"username": search}))
-                if users:
+                if results:
                     return render_template(
-                        "manage-users.html", users=users, admin=admin)
+                        "manage-users.html", results=results, admin=admin)
                 else:
                     flash(f"Sorry couldn't find {search}")
                     return redirect(url_for("manage_users"))
-        return render_template(
-            "manage-users.html", users=users, admin=admin)
 
 
-@app.route("/edit_user", methods=["GET", "POST"])
-def edit_user():
+@app.route("/edit_user, <user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
     admin = mongo.db.users.find_one(
           {"username": session["user"]})["admin"]
     if admin:
-        return render_template("edit-user.html, admin=admin")
+        user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+        return render_template("edit-user.html", user=user, admin=admin)
 
 
 @app.route("/delete_user, <user_id>")
@@ -338,7 +337,7 @@ def delete_user(user_id):
     admin = mongo.db.users.find_one(
           {"username": session["user"]})["admin"]
     username = mongo.db.users.find_one(
-          {"_id": user_id})["username"]
+          {"_id": ObjectId(user_id)})["username"]
     if admin:
         mongo.db.users.remove({"_id": ObjectId(user_id)})
         flash(f"{ username } Successfully Deleted")
