@@ -121,6 +121,14 @@ def profile(username):
         return render_template("profile.html", name=name, admin=admin)
 
 
+@app.route("/profile_add", methods=["GET", "POST"])
+def profile_add():
+    admin = mongo.db.users.find_one(
+        {"username": session["user"]})["admin"]
+    if session["user"]:
+        return render_template("profile-add.html", admin=admin)
+
+
 @app.route("/sign_out")
 def sign_out():
     flash("You have been logged out")
