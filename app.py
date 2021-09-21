@@ -129,8 +129,54 @@ def profile(username):
 def profile_add(book_id):
     admin = mongo.db.users.find_one(
         {"username": session["user"]})["admin"]
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
     book = mongo.db.books.find_one(
         {"_id": ObjectId(book_id)})
+    book_title = mongo.db.books.find_one(
+        {"_id": ObjectId(book_id)})["title"]
+    if request.method == "POST":
+        read = request.form.get("read")
+        own = request.form.get("own")
+        if own and read:
+            update = mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$push": {"own_books": book_title}}
+            ), mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$push": {"read_books": book_title}}
+            )
+            if update:
+                flash("Great thats been added to your profile")
+                return redirect(url_for("library"))
+        elif not own and read:
+            update = mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$push": {"read_books": book_title}}
+            )
+            if update:
+                flash("Great thats been added to your profile")
+                return redirect(url_for("library"))
+        elif own and not read:
+            update = mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$push": {"to_read_books": book_title}}
+            ), mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$push": {"own_books": book_title}}
+            )
+            if update:
+                flash("Great thats been added to your profile")
+                return redirect(url_for("library"))
+        elif not read:
+            update = mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$push": {"to_read_books": book_title}}
+            )
+            if update:
+                flash("Great thats been added to your profile")
+                return redirect(url_for("library"))
+
     if session["user"]:
         return render_template("profile-add.html", admin=admin, book=book)
 
