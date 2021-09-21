@@ -79,7 +79,11 @@ def register():
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
+        user_id = mongo.db.users.find_one(
+            {"username": session["user"]})["_id"]
         name = request.form.get("first_name")
+        mongo.db.profiles.insert_one(
+            {"user_id": ObjectId(user_id)})
         flash(
             f'Welcome {name} ' +
             'you have been successfully registered.')
@@ -100,12 +104,12 @@ def sign_in():
                 session["user"] = request.form.get("username").lower()
                 return redirect(url_for("profile", username=session["user"]))
             else:
-                flash("Your information did not",
-                      "match our records, please try again.")
+                flash("Your information did not match our records " +
+                      "please try again.")
                 return redirect(url_for("sign_in"))
         else:
-            flash("Your information did not",
-                  "match our records, please try again.")
+            flash("Your information did not match our records " +
+                  "please try again.")
             return redirect(url_for("sign_in"))
 
     return render_template("sign-in.html")
