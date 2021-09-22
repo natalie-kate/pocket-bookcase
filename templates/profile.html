@@ -11,7 +11,41 @@
 
 {% block content %}
 
-<hr>
+<h3 class="genres text-center">My Bookcase</h3>
+
+<div class="row genres text-center">
+    <a data-toggle="collapse" data-target="#read_books" class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 btn btn-md my-btn hover">Books I've read bookshelf<i class="fas fa-caret-down"></i></a>
+</div>
+{% for book in read_books %}
+<form id="read_books" method="POST" action="{{ url_for ('edit_profile', book=book) }}" class="collapse profile-books">
+  <div class="row">
+    <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <input id="{{ book }}" type="text" name="name" disabled value="{{ book.title() }}"/>
+      <button type="submit" class="btn btn-md edit-btn hover">
+        Not read? <i class="far fa-edit"></i></button>
+        <a href="" class="btn btn-md delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+    </div>
+  </div>
+</form>
+{% endfor %}
+
+<div class="row genres text-center">
+    <a data-toggle="collapse" data-target="#books_to_read" class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 btn btn-md my-btn hover">Books to read bookshelf<i class="fas fa-caret-down"></i></a>
+</div>
+
+{% for book in books_to_read %}
+<form id="books_to_read" method="POST" action="{{ url_for ('edit_profile', book=book) }}" class="collapse profile-books">
+  <div class="row">
+    <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+      <input id="{{ book }}" type="text" name="name" disabled value="{{ book.title() }}"/>
+      <button type="submit" class="btn btn-md edit-btn hover">
+        Read? <i class="far fa-edit"></i></button>
+        <a href="" class="btn btn-md delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+    </div>
+  </div>
+</form>
+{% endfor %}
+
 {% endblock %}
 
 {% block link %}
