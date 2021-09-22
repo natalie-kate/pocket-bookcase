@@ -92,7 +92,7 @@ hr {
 .my-btn {
     color: white;
     border: 1px solid #231709;
-    background: url("../images/app-images/book-spine.png") no-repeat left center;
+    background: url("../images/app-images/book-spine.png") repeat left center;
     background-size: fill;
     margin-top: 20px;
     width: 60vw;
@@ -162,6 +162,9 @@ textarea {
 }
 .genres .btn {
     height: 41px;
+}
+.profile-books input {
+    width: 60%;
 }
 /*---- Contact Form ----*/
 input[name=rating] {
