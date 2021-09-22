@@ -181,7 +181,12 @@ def profile_add(book_id):
                 return redirect(url_for("library"))
 
     if session["user"]:
-        return render_template("profile-add.html", admin=admin, book=book)
+        user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+        read_books = mongo.db.profiles.find_one(
+            {"user_id": ObjectId(user_id)})["read_books"]
+        return render_template(
+            "profile.html", name=name, admin=admin, read_books=read_books)
 
 
 @app.route("/edit_profile, <book>", methods=["GET", "POST"])
