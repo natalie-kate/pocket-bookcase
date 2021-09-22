@@ -181,6 +181,22 @@ def profile_add(book_id):
         return render_template("profile-add.html", admin=admin, book=book)
 
 
+@app.route("/edit_profile, <book>", methods=["GET", "POST"])
+def edit_profile(book):
+    if request.method == "POST":
+        if session:
+            user_id = mongo.db.users.find_one(
+                   {"username": session["user"]})["_id"]
+        update = mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$pull": {"to_read_books": book}},
+              {"$push": {"read_books": book}}
+            )
+        if update:
+            flash("Thats moved to read bookshelf")
+            return redirect(url_for("library"))
+
+
 @app.route("/sign_out")
 def sign_out():
     flash("You have been logged out")
