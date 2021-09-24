@@ -11,39 +11,41 @@
 
 {% block content %}
 
-<h3 class="genres text-center">My Bookcase</h3>
+<h3 class="bookcase text-center">My Bookcase</h3>
 
-<div class="row genres text-center">
-    <a data-toggle="collapse" data-target="#read_books" class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 btn btn-md my-btn hover">Books I've read bookshelf<i class="fas fa-caret-down"></i></a>
+<div class="row bookshelf text-center">
+    <a data-toggle="collapse" data-target="#read_books" class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Read books <i class="fas fa-caret-down"></i></a>
 </div>
 {% for book in read_books %}
-<form id="read_books" method="POST" action="{{ url_for ('edit_profile', book=book) }}" class="collapse profile-books">
-  <div class="row">
-    <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-      <input id="{{ book }}" type="text" name="name" disabled value="{{ book.title() }}"/>
-      <button type="submit" class="btn btn-md edit-btn hover">
-        Not read? <i class="far fa-edit"></i></button>
-        <a href="" class="btn btn-md delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+  <div id="read_books" class="row collapse profile-books">
+    <div class="col-10 offset-1 col-md-6 offset-md-1 col-lg-4 offset-lg-2 text-center">
+      <p class="text-center card">{{ book.title() }}</p>
+    </div>
+    <div class="col-10 offset-1 col-md-5 offset-md-0 col-lg-4">
+      <a href="" class="btn btn-sm read-btn hover">Not read? <i class="far fa-edit"></i></button>
+      <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
     </div>
   </div>
-</form>
 {% endfor %}
 
-<div class="row genres text-center">
-    <a data-toggle="collapse" data-target="#books_to_read" class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 btn btn-md my-btn hover">Books to read bookshelf<i class="fas fa-caret-down"></i></a>
+<div class="row bookshelf text-center">
+    <a data-toggle="collapse" data-target="#books_to_read" class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Books to read <i class="fas fa-caret-down"></i></a>
 </div>
 
 {% for book in books_to_read %}
-<form id="books_to_read" method="POST" action="{{ url_for ('edit_profile', book=book) }}" class="collapse profile-books">
-  <div class="row">
-    <div class="col-10 offset-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-      <input id="{{ book }}" type="text" name="name" disabled value="{{ book.title() }}"/>
-      <button type="submit" class="btn btn-md edit-btn hover">
+  <div id="books_to_read" class="row collapse profile-books">
+    <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 text-center">
+      <p class="text-center card">{{ book.title() }}</p>
+    </div>
+    <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
+      <a href="" class="btn btn-sm read-btn hover">
         Read? <i class="far fa-edit"></i></button>
-        <a href="" class="btn btn-md delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+      <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+      {% if book not in own_books %}
+      <a href="" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
+      {% endif %}
     </div>
   </div>
-</form>
 {% endfor %}
 
 {% endblock %}
