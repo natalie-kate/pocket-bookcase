@@ -222,7 +222,7 @@ def not_read(book):
     {"$push": {"books_to_read": book}})
     if update:
         return redirect(url_for("profile"))
-        
+
 
 @app.route("/books_read_delete, <book>")
 def books_read_delete(book):
@@ -237,6 +237,19 @@ def books_read_delete(book):
         return redirect(url_for("profile"))
 
 
+@app.route("/own_book_add, <book>", methods=["GET", "POST"])
+def own_book_add(book):
+    user_id = mongo.db.users.find_one(
+        {username: session[user]})["_id"]
+    profile = mongo.db.profiles.find_one(
+        {user_id: ObjectId(user_id)})
+    update = mongo.db.profiles.update(
+    {profile},
+    {"$push": {"own_books": book}})
+    if update:
+        return redirect(url_for("profile"))
+
+        
 @app.route("/sign_out")
 def sign_out():
     flash("You have been logged out")
