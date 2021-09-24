@@ -125,7 +125,16 @@ def profile(username):
     admin = mongo.db.users.find_one(
         {"username": username})["admin"]
     if session["user"]:
-        return render_template("profile.html", name=name, admin=admin)
+        user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+        user_profile = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})
+        read_books = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["read_books"]
+        own_books = user_profile["own_books"]
+        books_to_read = user_profile["books_to_read"]
+    return render_template(
+        "profile.html", name=name, admin=admin, read_books=read_books, own_books=own_books, books_to_read=books_to_read)
 
 
 @app.route("/profile_add, <book_id>", methods=["GET", "POST"])
@@ -181,12 +190,8 @@ def profile_add(book_id):
                 return redirect(url_for("library"))
 
     if session["user"]:
-        user_id = mongo.db.users.find_one(
-        {"username": session["user"]})["_id"]
-        read_books = mongo.db.profiles.find_one(
-            {"user_id": ObjectId(user_id)})["read_books"]
         return render_template(
-            "profile.html", name=name, admin=admin, read_books=read_books)
+            "profile-add.html", admin=admin, book=book)
 
 
 @app.route("/edit_profile, <book>", methods=["GET", "POST"])
