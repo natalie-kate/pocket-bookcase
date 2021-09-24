@@ -60,7 +60,8 @@ footer p {
 .add-book h3,
 h3.genres,
 .search-results h3,
-h3.users {
+h3.users,
+h3.bookcase {
     padding-top: 15px;
     font-family: 'Tangerine', cursive;
     font-size: 60px;
@@ -69,8 +70,12 @@ h3.users {
 .add-book h3,
 h3.genres,
 .search-results h3,
-h3.users {
+h3.users,
+h3.bookcase {
     font-size: 50px;
+}
+.bookshelf a {
+    font-size: 24px;
 }
 .header h2 {
     color:rgb(250, 247, 235);
@@ -99,12 +104,13 @@ hr {
     padding-left: 0;
     padding-right: 0;
 }
-.profile-btn,
+.delete-btn,
 .edit-genres-btn,
 .cancel-btn {
     background-color: rgb(156 22 12);
     border: 1px solid #231709;
     color: rgb(250, 247, 235);
+    margin-right: 5px;
 }
 .edit-genres-btn,
 #edit-genre-form input {
@@ -116,12 +122,14 @@ hr {
     margin-top: 25px;
     margin-bottom: 25px;
 }
-.edit-btn {
+.edit-btn,
+.read-btn {
     background-color:rgb(188 150 83);
     border: 1px solid #231709;
     color:  #231709;
+    margin-right: 5px;
 }
-.delete-btn,
+.profile-btn,
 .search-btn,
 .reset-btn {
     background-color:#012d50;
@@ -135,6 +143,9 @@ fieldset {
 label,
 .rating-stars p {
     margin-bottom: 0;
+}
+.profile-books {
+    text-align: center;
 }
 input,
 .custom-select,
@@ -163,8 +174,13 @@ textarea {
 .genres .btn {
     height: 41px;
 }
-.profile-books input {
-    width: 60%;
+.profile-books .btn,
+.profile-books p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.profile-books .card {
+    height: 31px;
 }
 /*---- Contact Form ----*/
 input[name=rating] {
@@ -228,6 +244,16 @@ input {
 .btn.hover {
     transition: none;
 }
+.own-btn {
+    background-color: #043c04;
+    border: 1px solid #231709;
+    color: rgb(250, 247, 235);
+}
+@media(max-width:750px){
+    .btn i {
+        display: none;
+    }
+}
 @media(min-width:750px){
     .my-btn {
         width: 20vw;
@@ -240,5 +266,13 @@ input {
     }
     .header h2 {
         padding-top: 10vh;
+    }
+}
+@media(min-width:770px){
+    .profile-books {
+        text-align: left;
+    }
+    .profile-books .card {
+        text-align: center;
     }
 }
