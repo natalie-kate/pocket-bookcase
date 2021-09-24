@@ -22,9 +22,11 @@
       <p class="text-center card">{{ book.title() }}</p>
     </div>
     <div class="col-10 offset-1 col-md-5 offset-md-0 col-lg-4">
-      <a href="" class="btn btn-sm read-btn hover">Not read? <i class="far fa-edit"></i></button>
-      <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
-    </div>
+      <a href="{{ url_for ('not_read', book=book) }}" class="btn btn-sm read-btn hover">Not read? <i class="far fa-edit"></i></button>
+      <a href="{{ url_for ('books_read_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+      {% if book not in own_books %}
+      <a href="{{ url_for ('own_book_add', book=book) }}" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
+      {% endif %}
   </div>
 {% endfor %}
 
