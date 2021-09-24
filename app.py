@@ -210,6 +210,20 @@ def edit_profile(book):
             return redirect(url_for("library"))
 
 
+@app.route("/not_read, <book>", methods=["GET", "POST"])
+def not_read(book):
+    user_id = mongo.db.users.find_one(
+        {username: session[user]})["_id"]
+    profile = mongo.db.profiles.find_one(
+        {user_id: ObjectId(user_id)})
+    update = mongo.db.profiles.update(
+    {profile},
+    {"$pull": {"read_books": {"$in": book}}},
+    {"$push": {"books_to_read": book}})
+    if update:
+        return redirect(url_for("profile"))
+        
+
 @app.route("/books_read_delete, <book>")
 def books_read_delete(book):
     user_id = mongo.db.users.find_one(
