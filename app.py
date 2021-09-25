@@ -194,31 +194,15 @@ def profile_add(book_id):
             "profile-add.html", admin=admin, book=book)
 
 
-@app.route("/edit_profile, <book>", methods=["GET", "POST"])
-def edit_profile(book):
-    if request.method == "POST":
-        if session:
-            user_id = mongo.db.users.find_one(
-                   {"username": session["user"]})["_id"]
-        update = mongo.db.profiles.update(
-              {"user_id": ObjectId(user_id)},
-              {"$pull": {"to_read_books": book}},
-              {"$push": {"read_books": book}}
-            )
-        if update:
-            flash("Thats moved to read bookshelf")
-            return redirect(url_for("library"))
-
-
 @app.route("/not_read, <book>", methods=["GET", "POST"])
 def not_read(book):
     user_id = mongo.db.users.find_one(
-        {username: session[user]})["_id"]
-    profile = mongo.db.profiles.find_one(
-        {user_id: ObjectId(user_id)})
+        {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {profile},
-    {"$pull": {"read_books": {"$in": book}}},
+    {"user_id": ObjectId(user_id)},
+    {"$pull": {"read_books": book}}),
+    mongo.db.profiles.update(
+    {"user_id": ObjectId(user_id)},
     {"$push": {"books_to_read": book}})
     if update:
         return redirect(url_for("profile"))
@@ -227,29 +211,24 @@ def not_read(book):
 @app.route("/books_read_delete, <book>")
 def books_read_delete(book):
     user_id = mongo.db.users.find_one(
-        {username: session[user]})["_id"]
-    profile = mongo.db.profiles.find_one(
-        {user_id: ObjectId(user_id)})
+        {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {profile},
-    {"$pull": {"read_books": {"$in": book}}})
+    {"user_id": ObjectId(user_id)},
+    {"$pull": {"read_books": book}})
     if update:
-        return redirect(url_for("profile"))
+        return redirect(url_for("profile", username=session["user"]))
 
 
 @app.route("/own_book_add, <book>", methods=["GET", "POST"])
 def own_book_add(book):
     user_id = mongo.db.users.find_one(
-        {username: session[user]})["_id"]
-    profile = mongo.db.profiles.find_one(
-        {user_id: ObjectId(user_id)})
+        {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {profile},
+    {"user_id": ObjectId(user_id)},
     {"$push": {"own_books": book}})
     if update:
         return redirect(url_for("profile"))
 
-        
 @app.route("/sign_out")
 def sign_out():
     flash("You have been logged out")
