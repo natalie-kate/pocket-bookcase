@@ -17,17 +17,17 @@
             <fieldset>
                 <legend>Personal details</legend>
                 <label for="firstname">First Name:</label><br />
-                <input id="firstname" type="text" name="first_name" pattern="^\S+$" required /><br />
+                <input id="firstname" type="text" name="first_name" pattern="^\S+$" data-toggle="tooltip" data-placement="top" title="No spaces" required/><br/>
                 <label for="surname">Surname:</label><br />
-                <input id="surname" type="text" name="surname" pattern="^\S+$" required /><br />
+                <input id="surname" type="text" name="surname" pattern="^\S+$" data-toggle="tooltip" data-placement="top" title="No spaces" required/><br/>
                 <label for="email">Email Address:</label><br />
-                <input id="email" type="email" name="email" required /><br />
+                <input id="email" type="email" name="email" pattern="^\S+$" data-toggle="tooltip" data-placement="top" title="No spaces" required/><br />
                 <label for="username">Username:</label><br />
-                <input id="username" type="text" name="username" pattern="^[a-zA-Z0-9]{5,15}$" required /><br />
+                <input id="username" type="text" name="username" pattern="^[a-zA-Z0-9]{5,15}$" data-toggle="tooltip" data-placement="top" title="Between 5 & 15 characters with no spaces." required /><br />
                 <label for="password">Password:</label><br />
-                <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$" required /><br />
+                <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$" data-toggle="tooltip" data-placement="top" title="Between 5 & 15 characters with no spaces." required /><br />
                 <label for="password">Confirm Password:</label><br />
-                <input id="confirm-password" type="password" name="confirm-password" pattern="^[a-zA-Z0-9]{5,15}$" required /><br />
+                <input id="confirm-password" type="password" name="confirm-password" pattern="^[a-zA-Z0-9]{5,15}$" data-toggle="tooltip" data-placement="top" title="Between 5 & 15 characters with no spaces." required /><br />
                 <label for="genre">Favourite Genre</label><br />
                 <select class="custom-select" id="genre" name="genre" required>
                     <option selected>Pick your favourite genre</option>
