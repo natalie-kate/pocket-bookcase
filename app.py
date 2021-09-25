@@ -209,7 +209,7 @@ def not_read(book):
         return redirect(url_for("profile", username=session["user"]))
 
 
-@app.route("/books_read_delete, <book>")
+@app.route("/books_read_delete, <book>", methods=["GET", "POST"])
 def books_read_delete(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -232,7 +232,7 @@ def own_book_add(book):
         return redirect(url_for("profile", username=session["user"]))
 
 
-@app.route("/books_to_read_delete, <book>")
+@app.route("/books_to_read_delete, <book>", methods=["GET", "POST"])
 def books_to_read_delete(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -258,7 +258,7 @@ def read_book(book):
         return redirect(url_for("profile", username=session["user"]))     
 
 
-@app.route("/own_book_delete, <book>")
+@app.route("/own_book_delete, <book>", methods=["GET", "POST"])
 def own_book_delete(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -269,7 +269,7 @@ def own_book_delete(book):
         flash(f"Thats {book} removed.")
         return redirect(url_for("profile", username=session["user"])) 
 
-        
+
 @app.route("/sign_out")
 def sign_out():
     flash("You have been logged out")
