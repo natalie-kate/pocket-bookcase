@@ -32,7 +32,11 @@
                     {% endfor %}
                 </select>
                 <label for="cover_image">Cover image url:</label><br />
-                <input id="cover_image" type="text" name="cover_image" value="{{ book.cover_image }}"/><br />
+                {% if book.cover_image %}
+                <input id="cover_image" type="text" name="cover_image" value="{{ book.cover_image }}"><br>
+                {% else %}
+                <input id="cover_image" type="text" name="cover_image"><br>
+                {% endif %}
                 <div class="custom-control custom-switch">
                     {% if book.series == "Yes" %}
                     <input type="checkbox" id="series" name="series" class="custom-control-input" checked>
@@ -46,7 +50,11 @@
                 <label for="synopsis">Synopsis:</label><br>
                 <textarea id="synopsis" name="synopsis" cols="40" rows="5" required>{{ book.synopsis }}</textarea>
                 <label for="review">Review:</label><br>
-                <textarea id="review" name="review" cols="40" rows="5" required>{{ book.review }}</textarea>
+                {% if book.review %}
+                <textarea id="review" name="review" cols="40" rows="5">{{ book.review }}</textarea>
+                {% else %}
+                <textarea id="review" name="review" cols="40" rows="5" placeholder="Optional, you can do this later."></textarea>
+                {% endif %}
                 <div role="radiogroup" class="rating-stars">
                     <p>Rate book: </p>
                     <label for="rating" tabindex="0" aria-label="1 star"><i class="fas fa-star"></i></label>
