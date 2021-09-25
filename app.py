@@ -243,7 +243,21 @@ def books_to_read_delete(book):
         flash(f"Thats {book} removed.")
         return redirect(url_for("profile", username=session["user"]))       
 
+@app.route("/read_book, <book>", methods=["GET", "POST"])
+def read_book(book):
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    update = mongo.db.profiles.update(
+    {"user_id": ObjectId(user_id)},
+    {"$pull": {"books_to_read": book}}),
+    mongo.db.profiles.update(
+    {"user_id": ObjectId(user_id)},
+    {"$addToSet": {"read_books": book}})
+    if update:
+        flash(f"Thats {book} moved to the read bookshelf")
+        return redirect(url_for("profile", username=session["user"]))     
         
+          
 @app.route("/sign_out")
 def sign_out():
     flash("You have been logged out")
