@@ -114,8 +114,7 @@ hr {
     padding-right: 0;
 }
 .delete-btn,
-.edit-genres-btn,
-.cancel-btn {
+.edit-genres-btn {
     background-color: rgb(156 22 12);
     border: 1px solid #231709;
     color: rgb(250, 247, 235);
@@ -253,10 +252,26 @@ input {
 .btn.hover {
     transition: none;
 }
-.own-btn {
+.own-btn,
+.cancel-btn {
     background-color: #043c04;
     border: 1px solid #231709;
     color: rgb(250, 247, 235);
+}
+.search {
+    padding-left: 0;
+}
+.users .col-10,
+.genres .col-10 {
+    margin-bottom: 8px;
+}
+.users p,
+.genres p {
+    margin-bottom: 0px;
+    font-size: 20px;
+}
+.warning a {
+    margin-bottom: 8px;
 }
 @media(max-width:750px){
     .btn i {
