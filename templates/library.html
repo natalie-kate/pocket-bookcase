@@ -60,10 +60,13 @@
     <p><strong>Series: </strong>{{ result.series }}</p>
     <p><strong>Series name: </strong>{{ result.series_name.title() }}</p>
     {% endif %}
+    {% if result.review %}
     <p><strong>Review: </strong>{{ result.review }}</p>
+    <p><strong>Rating: </strong>{{ result.rating }}/5</p>
+    {% endif %}
     <p><strong>Added by: </strong> {{ result.added_by }}</p>
     {% if session.user %}
-    <a href="{{ url_for('profile_add', book_id=book._id) }}" class="btn profile-btn btn-md hover">Add to profile</a>
+      <a href="{{ url_for('profile_add', book_id=result._id) }}" class="btn profile-btn btn-md hover">Add to profile</a>
       {% if session.user.lower() == result.added_by.lower() %}
       <a href="{{ url_for('edit_book', book_id=result._id) }}" class="btn edit-btn btn-md hover">Edit Book</a>
       {% endif %}
@@ -76,7 +79,7 @@
 </div>
 <div class="row text-center">
   <div class="col-12 text-center">
-    <a class="btn btn-lg hover" href="{{ url_for('library') }}">Back to Library</a>
+    <a class="library-link" href="{{ url_for('library') }}">Back to Library</a>
   </div>
 </div>
   <hr />
@@ -102,7 +105,10 @@
       <p><strong>Series: </strong>{{ book.series }}</p>
       <p><strong>Series name: </strong>{{ book.series_name.title() }}</p>
       {% endif %}
+      {% if book.review %}
       <p><strong>Review: </strong>{{ book.review }}</p>
+      <p><strong>Rating: </strong>{{ book.rating }}/5</p>
+      {% endif %}
       <p><strong>Added by: </strong> {{ book.added_by }}</p>
       {% if session.user %}
       <a href="{{ url_for('profile_add', book_id=book._id) }}" class="btn profile-btn btn-md hover">Add to profile</a>
