@@ -10,17 +10,26 @@ body{
 .navbar-toggler,
 .footer-link,
 .social,
-.sign-up-link a {
+.sign-up-link,
+.register-link,
+.library-link,
+.sign-in-link {
     color:  #231709;
     font-weight: 600;
+}
+.library-link {
+    font-size: 24px;
 }
 .nav-link:hover,
 .navbar-brand:hover,
 .navbar-toggler:hover,
 .footer-link:hover,
 .social:hover,
-.sign-up-link a:hover {
-    color: #035597;
+.sign-up-link a:hover,
+.register-link:hover,
+.library-link:hover,
+.sign-in-link:hover {
+    color: #012d50;
     text-decoration: none;
 }
 .navbar-brand{
@@ -191,7 +200,7 @@ input[name=rating] {
     color: rgb(188 150 83);
   }
 .rating-stars input:checked~label {
-    color: rgba(137, 37, 23, 0.75) ;
+    color: rgb(156 22 12) ;
   }
 .search-box .my-btn,
 .search-box input,
@@ -274,5 +283,13 @@ input {
     }
     .profile-books .card {
         text-align: center;
+    }
+}
+@media(min-width:1000px){
+    .nav-link {
+        font-size: 20px;
+    }
+    .navbar-brand{
+        font-size: 40px;
     }
 }
