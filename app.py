@@ -311,33 +311,37 @@ def add_book():
           {"username": session["user"]})["admin"]
     genres = list(mongo.db.genres.find())
     if request.method == "POST":
-        is_series = "Yes" if request.form.get("series") else "No"
-        existing_book = mongo.db.books.find_one(
-            {"title": request.form.get("title").lower()}
-        )
-        if existing_book:
-            flash("This book is already in our Library")
-            return redirect(url_for("add_book"))
+        if not request.form.get("title").strip():
+            flash("Please provide a title")
+            return redirect(url_for('add_book'))
         else:
-            title = request.form.get("title")
-            book = {
-                "title": title.lower(),
-                "author": request.form.get("author").lower(),
-                "synopsis": request.form.get("synopsis"),
-                "series": is_series,
-                "series_name": request.form.get("series_name").lower(),
-                "genre": request.form.get("genre"),
-                "cover_image": request.form.get("cover_image"),
-                "rating": int(request.form.get("rating")),
-                "review": request.form.get("review"),
-                "added_by": session["user"]
-                }
-            mongo.db.books.insert_one(book)
-            flash(
-                "Thankyou for contributing to the library," +
-                f' {title} has now been added'
-                )
-            return render_template("add-book.html", genres=genres, admin=admin)
+            is_series = "Yes" if request.form.get("series") else "No"
+            existing_book = mongo.db.books.find_one(
+                {"title": request.form.get("title").lower()}
+            )
+            if existing_book:
+                flash("This book is already in our Library")
+                return redirect(url_for("add_book"))
+            else:
+                title = request.form.get("title")
+                book = {
+                    "title": title.lower(),
+                    "author": request.form.get("author").lower(),
+                    "synopsis": request.form.get("synopsis"),
+                    "series": is_series,
+                    "series_name": request.form.get("series_name").lower(),
+                    "genre": request.form.get("genre"),
+                    "cover_image": request.form.get("cover_image"),
+                    "rating": int(request.form.get("rating")),
+                    "review": request.form.get("review"),
+                    "added_by": session["user"]
+                    }
+                mongo.db.books.insert_one(book)
+                flash(
+                    "Thankyou for contributing to the library," +
+                    f' {title} has now been added'
+                    )
+                return render_template("add-book.html", genres=genres, admin=admin)
     if session["user"]:
         return render_template("add-book.html", genres=genres, admin=admin)
 
