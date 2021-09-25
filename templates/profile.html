@@ -50,11 +50,11 @@
         <p class="text-center card">{{ book.title() }}</p>
       </div>
       <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
-        <a href="" class="btn btn-sm read-btn hover">
+        <a href="{{ url_for ('read_book', book=book) }}" class="btn btn-sm read-btn hover">
           Read? <i class="far fa-edit"></i></button>
-        <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+        <a href="{{ url_for ('books_to_read_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
         {% if book not in own_books %}
-        <a href="" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
+        <a href="{{ url_for ('own_book_add', book=book) }}" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
         {% endif %}
       </div>
     </div>
@@ -78,16 +78,16 @@
         <p class="text-center card">{{ book.title() }}</p>
       </div>
       <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
-          <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+          <a href="{{ url_for ('own_book_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
       </div>
     </div>
   {% endfor %}
 {% else %}
-<div id="own_books" class="row collapse profile-books text-center">
-  <div class="col-8 offset-2 text-center">
-     <p>You have no books yet, why not add some! <a class="page-link" href="{{ url_for('library') }}">Take me to Library</a></p> 
+  <div id="own_books" class="row collapse profile-books text-center">
+    <div class="col-8 offset-2 text-center">
+       <p>You have no books yet, why not add some! <a class="page-link" href="{{ url_for('library') }}">Take me to Library</a></p> 
+    </div>
   </div>
-</div>
 {% endif %}
 <hr>
 
