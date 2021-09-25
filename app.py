@@ -256,8 +256,20 @@ def read_book(book):
     if update:
         flash(f"Thats {book} moved to the read bookshelf")
         return redirect(url_for("profile", username=session["user"]))     
+
+
+@app.route("/own_book_delete, <book>")
+def own_book_delete(book):
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    update = mongo.db.profiles.update(
+    {"user_id": ObjectId(user_id)},
+    {"$pull": {"own_books": book}})
+    if update:
+        flash(f"Thats {book} removed.")
+        return redirect(url_for("profile", username=session["user"])) 
+
         
-          
 @app.route("/sign_out")
 def sign_out():
     flash("You have been logged out")
