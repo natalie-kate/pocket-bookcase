@@ -220,6 +220,7 @@ def books_read_delete(book):
         flash(f"Thats {book} removed.")
         return redirect(url_for("profile", username=session["user"]))
 
+
 @app.route("/own_book_add, <book>", methods=["GET", "POST"])
 def own_book_add(book):
     user_id = mongo.db.users.find_one(
@@ -242,6 +243,7 @@ def books_to_read_delete(book):
     if update:
         flash(f"Thats {book} removed.")
         return redirect(url_for("profile", username=session["user"]))       
+
 
 @app.route("/read_book, <book>", methods=["GET", "POST"])
 def read_book(book):
@@ -341,7 +343,7 @@ def add_book():
                     "Thankyou for contributing to the library," +
                     f' {title} has now been added'
                     )
-                return render_template("add-book.html", genres=genres, admin=admin)
+                return redirect(url_for("library"))
     if session["user"]:
         return render_template("add-book.html", genres=genres, admin=admin)
 
@@ -349,10 +351,11 @@ def add_book():
 @app.route("/edit_book, <book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
     genres = list(mongo.db.genres.find())
+    admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
     if request.method == "POST":
-        if mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]:
-            title = request.form.get("title").lower(),
+        if admin:
+            title = request.form.get("title").lower()
         else:
             title = mongo.db.books.find_one(
                 {"_id": ObjectId(book_id)})["title"]
@@ -370,11 +373,11 @@ def edit_book(book_id):
             "added_by": session["user"]
             }
         mongo.db.books.update({"_id": ObjectId(book_id)}, update)
-        flash(f"Thankyou {title} has been updated")
+        flash(f"Thankyou {title.title()} has been updated")
         return redirect(url_for("library"))
     if session["user"]:
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-        return render_template("edit-book.html", genres=genres, book=book)
+        return render_template("edit-book.html", genres=genres, book=book, admin=admin)
 
 
 @app.route("/delete_book, <book_id>")
