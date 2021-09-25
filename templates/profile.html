@@ -16,54 +16,79 @@
 <div class="row bookshelf text-center">
     <a data-toggle="collapse" data-target="#read_books" class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Read books <i class="fas fa-caret-down"></i></a>
 </div>
-{% for book in read_books %}
-  <div id="read_books" class="row collapse profile-books">
-    <div class="col-10 offset-1 col-md-6 offset-md-1 col-lg-4 offset-lg-2 text-center">
-      <p class="text-center card">{{ book.title() }}</p>
+
+{% if read_books %}
+  {% for book in read_books %}
+    <div id="read_books" class="row collapse profile-books">
+      <div class="col-10 offset-1 col-md-6 offset-md-1 col-lg-4 offset-lg-2 text-center">
+        <p class="text-center card">{{ book.title() }}</p>
+      </div>
+      <div class="col-10 offset-1 col-md-5 offset-md-0 col-lg-4">
+        <a href="{{ url_for ('not_read', book=book) }}" class="btn btn-sm read-btn hover">Not read? <i class="far fa-edit"></i></button>
+        <a href="{{ url_for ('books_read_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+        {% if book not in own_books %}
+        <a href="{{ url_for ('own_book_add', book=book) }}" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
+        {% endif %}
+      </div>
     </div>
-    <div class="col-10 offset-1 col-md-5 offset-md-0 col-lg-4">
-      <a href="{{ url_for ('not_read', book=book) }}" class="btn btn-sm read-btn hover">Not read? <i class="far fa-edit"></i></button>
-      <a href="{{ url_for ('books_read_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
-      {% if book not in own_books %}
-      <a href="{{ url_for ('own_book_add', book=book) }}" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
-      {% endif %}
+  {% endfor %}
+{% else %}
+<div id="read_books" class="row collapse profile-books text-center">
+  <div class="col-8 offset-2 text-center">
+     <p>You have no books yet, why not add some! <a class="page-link" href="{{ url_for('library') }}">Take me to Library</a></p> 
   </div>
-{% endfor %}
+</div>
+{% endif %}
 
 <div class="row bookshelf text-center">
     <a data-toggle="collapse" data-target="#books_to_read" class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Books to read <i class="fas fa-caret-down"></i></a>
 </div>
-
-{% for book in books_to_read %}
-  <div id="books_to_read" class="row collapse profile-books">
-    <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 text-center">
-      <p class="text-center card">{{ book.title() }}</p>
+{% if books_to_read %}
+  {% for book in books_to_read %}
+    <div id="books_to_read" class="row collapse profile-books">
+      <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 text-center">
+        <p class="text-center card">{{ book.title() }}</p>
+      </div>
+      <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
+        <a href="" class="btn btn-sm read-btn hover">
+          Read? <i class="far fa-edit"></i></button>
+        <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+        {% if book not in own_books %}
+        <a href="" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
+        {% endif %}
+      </div>
     </div>
-    <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
-      <a href="" class="btn btn-sm read-btn hover">
-        Read? <i class="far fa-edit"></i></button>
-      <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
-      {% if book not in own_books %}
-      <a href="" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
-      {% endif %}
+  {% endfor %}
+{% else %}
+  <div id="books_to_read" class="row collapse profile-books text-center">
+    <div class="col-8 offset-2 text-center">
+       <p>You have no books yet, why not add some! <a class="page-link" href="{{ url_for('library') }}">Take me to Library</a></p> 
     </div>
   </div>
-{% endfor %}
+{% endif %}
 
 <div class="row bookshelf text-center">
   <a data-toggle="collapse" data-target="#own_books" class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Books I own <i class="fas fa-caret-down"></i></a>
 </div>
 
-{% for book in own_books %}
-  <div id="own_books" class="row collapse profile-books">
-    <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 text-center">
-      <p class="text-center card">{{ book.title() }}</p>
+{% if own_books  %}
+  {% for book in own_books %}
+    <div id="own_books" class="row collapse profile-books">
+      <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 text-center">
+        <p class="text-center card">{{ book.title() }}</p>
+      </div>
+      <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
+          <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+      </div>
     </div>
-    <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
-        <a href="" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
-    </div>
+  {% endfor %}
+{% else %}
+<div id="own_books" class="row collapse profile-books text-center">
+  <div class="col-8 offset-2 text-center">
+     <p>You have no books yet, why not add some! <a class="page-link" href="{{ url_for('library') }}">Take me to Library</a></p> 
   </div>
-{% endfor %}
+</div>
+{% endif %}
 <hr>
 
 
