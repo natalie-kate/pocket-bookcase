@@ -231,6 +231,19 @@ def own_book_add(book):
         flash(f"Thats {book} added to own books.")
         return redirect(url_for("profile", username=session["user"]))
 
+
+@app.route("/books_to_read_delete, <book>")
+def books_to_read_delete(book):
+    user_id = mongo.db.users.find_one(
+        {"username": session["user"]})["_id"]
+    update = mongo.db.profiles.update(
+    {"user_id": ObjectId(user_id)},
+    {"$pull": {"books_to_read": book}})
+    if update:
+        flash(f"Thats {book} removed.")
+        return redirect(url_for("profile", username=session["user"]))       
+
+        
 @app.route("/sign_out")
 def sign_out():
     flash("You have been logged out")
