@@ -205,7 +205,7 @@ def not_read(book):
     {"user_id": ObjectId(user_id)},
     {"$addToSet": {"books_to_read": book}})
     if update:
-        return redirect(url_for("profile"))
+        return redirect(url_for("profile", username=session["user"]))
 
 
 @app.route("/books_read_delete, <book>")
@@ -226,7 +226,7 @@ def own_book_add(book):
     {"user_id": ObjectId(user_id)},
     {"$addToSet": {"own_books": book}})
     if update:
-        return redirect(url_for("profile"))
+        return redirect(url_for("profile", username=session["user"]))
 
 @app.route("/sign_out")
 def sign_out():
