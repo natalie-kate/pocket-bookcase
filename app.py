@@ -205,6 +205,7 @@ def not_read(book):
     {"user_id": ObjectId(user_id)},
     {"$addToSet": {"books_to_read": book}})
     if update:
+        flash(f"Thats {book} moved to the books to read bookshelf")
         return redirect(url_for("profile", username=session["user"]))
 
 
@@ -216,6 +217,7 @@ def books_read_delete(book):
     {"user_id": ObjectId(user_id)},
     {"$pull": {"read_books": book}})
     if update:
+        flash(f"Thats {book} removed.")
         return redirect(url_for("profile", username=session["user"]))
 
 @app.route("/own_book_add, <book>", methods=["GET", "POST"])
@@ -226,6 +228,7 @@ def own_book_add(book):
     {"user_id": ObjectId(user_id)},
     {"$addToSet": {"own_books": book}})
     if update:
+        flash(f"Thats {book} added to own books.")
         return redirect(url_for("profile", username=session["user"]))
 
 @app.route("/sign_out")
