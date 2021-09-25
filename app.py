@@ -153,10 +153,10 @@ def profile_add(book_id):
         if own and read:
             update = mongo.db.profiles.update(
               {"user_id": ObjectId(user_id)},
-              {"$push": {"own_books": book_title}}
+              {"$addToSet": {"own_books": book_title}}
             ), mongo.db.profiles.update(
               {"user_id": ObjectId(user_id)},
-              {"$push": {"read_books": book_title}}
+              {"$addToSet": {"read_books": book_title}}
             )
             if update:
                 flash("Great thats been added to your profile")
@@ -164,7 +164,7 @@ def profile_add(book_id):
         elif not own and read:
             update = mongo.db.profiles.update(
               {"user_id": ObjectId(user_id)},
-              {"$push": {"read_books": book_title}}
+              {"$addToSet": {"read_books": book_title}}
             )
             if update:
                 flash("Great thats been added to your profile")
@@ -172,10 +172,10 @@ def profile_add(book_id):
         elif own and not read:
             update = mongo.db.profiles.update(
               {"user_id": ObjectId(user_id)},
-              {"$push": {"to_read_books": book_title}}
+              {"$addToSet": {"to_read_books": book_title}}
             ), mongo.db.profiles.update(
               {"user_id": ObjectId(user_id)},
-              {"$push": {"own_books": book_title}}
+              {"$addToSet": {"own_books": book_title}}
             )
             if update:
                 flash("Great thats been added to your profile")
@@ -183,7 +183,7 @@ def profile_add(book_id):
         elif not read:
             update = mongo.db.profiles.update(
               {"user_id": ObjectId(user_id)},
-              {"$push": {"to_read_books": book_title}}
+              {"$addToSet": {"to_read_books": book_title}}
             )
             if update:
                 flash("Great thats been added to your profile")
@@ -203,7 +203,7 @@ def not_read(book):
     {"$pull": {"read_books": book}}),
     mongo.db.profiles.update(
     {"user_id": ObjectId(user_id)},
-    {"$push": {"books_to_read": book}})
+    {"$addToSet": {"books_to_read": book}})
     if update:
         return redirect(url_for("profile"))
 
@@ -218,14 +218,13 @@ def books_read_delete(book):
     if update:
         return redirect(url_for("profile", username=session["user"]))
 
-
 @app.route("/own_book_add, <book>", methods=["GET", "POST"])
 def own_book_add(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
     {"user_id": ObjectId(user_id)},
-    {"$push": {"own_books": book}})
+    {"$addToSet": {"own_books": book}})
     if update:
         return redirect(url_for("profile"))
 
