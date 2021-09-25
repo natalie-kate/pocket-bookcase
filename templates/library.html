@@ -71,7 +71,16 @@
       <a href="{{ url_for('edit_book', book_id=result._id) }}" class="btn edit-btn btn-md hover">Edit Book</a>
       {% endif %}
       {% if admin %}
-      <a href="{{ url_for('delete_book', book_id=result._id) }}" class="btn delete-btn btn-md hover">Delete Book</a>
+      <a data-toggle="collapse" data-target="#{{ result.title.replace(' ', '') }}-delete" class="btn delete-btn btn-md hover">Delete Book</a>
+      <div id="{{ result.title.replace(' ', '') }}-delete" class="row collapse text-center warning">
+        <div class="col-12">
+          <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete {{ result.title }}?</strong>
+          <div>
+            <a href="{{ url_for('library') }}" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
+            <a href="{{ url_for('delete_book', book_id=result._id) }}"class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
+          </div>
+        </div>
+      </div>
       {% endif %}
     {% endif %}
   </div>
@@ -99,7 +108,7 @@
     <div class="col-8 books">
       <h3>{{ book.title.title() }}</h3>
       <p><strong>Author: </strong> {{ book.author.title() }}</p>
-      <p><strong>Genre: </strong> {{ book.genre }}</p>
+      <p><strong>Genre: </strong> {{ book.genre.title() }}</p>
       <p><strong>Synopsis: </strong>{{ book.synopsis }}</p>
       {% if book.series == "Yes" %}
       <p><strong>Series: </strong>{{ book.series }}</p>
@@ -111,12 +120,21 @@
       {% endif %}
       <p><strong>Added by: </strong> {{ book.added_by }}</p>
       {% if session.user %}
-      <a href="{{ url_for('profile_add', book_id=book._id) }}" class="btn profile-btn btn-md hover">Add to profile</a>
+      <a href="{{ url_for('profile_add', book_id=book._id) }}" class="btn profile-btn btn-sm hover">Add to profile</a>
       {% if session.user.lower() == book.added_by.lower() %}
-      <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-md hover">Edit Book</a>
+      <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-sm hover">Edit Book</a>
       {% endif %}
       {% if admin %}
-      <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn delete-btn btn-md hover">Delete Book</a>
+      <a data-toggle="collapse" data-target="#{{ book.title.replace(' ', '') }}-delete" class="btn delete-btn btn-sm hover">Delete Book</a>
+      <div id="{{ book.title.replace(' ', '') }}-delete" class="row collapse warning">
+        <div class="col-12">
+          <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete {{ book.title }}?</strong>
+          <div>
+            <a href="{{ url_for('library') }}" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
+            <a href="{{ url_for('delete_book', book_id=book._id) }}"class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
+          </div>
+        </div>
+      </div>
       {% endif %}
       {% endif %}
     </div>
