@@ -28,7 +28,7 @@
                     {% endfor %}
                 </select>
                 <label for="cover_image">Cover image url:</label><br />
-                <input id="cover_image" type="text" name="cover_image"/><br />
+                <input id="cover_image" type="text" name="cover_image" placeholder="Optional"><br>
                 <div class="custom-control custom-switch">
                     <input type="checkbox" id="series" name="series" class="custom-control-input">
                     <label class="custom-control-label" for="series">Is this book part of a series?</label>
@@ -38,7 +38,7 @@
                 <label for="synopsis">Synopsis:</label><br>
                 <textarea id="synopsis" name="synopsis" cols="40" rows="5" required></textarea>
                 <label for="review">Review:</label><br>
-                <textarea id="review" name="review" cols="40" rows="5" required></textarea>
+                <textarea id="review" name="review" cols="40" rows="5" placeholder="Optional, you can do this later."></textarea>
                 <div role="radiogroup" class="rating-stars">
                     <p>Rate book: </p>
                     <label for="rating" tabindex="0" aria-label="1 star"><i class="fas fa-star"></i></label>
