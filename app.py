@@ -82,11 +82,11 @@ def register():
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
         name = request.form.get("first_name")
-        mongo.db.profiles.insert_one(
-            {"user_id": ObjectId(user_id)},
-            {"to_read_books": []},
-            {"own_books": []},
-            {"read_books": []})
+        mongo.db.profiles.insert_one({
+            "user_id": ObjectId(user_id),
+            "books_to_read": [],
+            "own_books": [],
+            "read_books": []})
         flash(
             f'Welcome {name} ' +
             'you have been successfully registered.')
