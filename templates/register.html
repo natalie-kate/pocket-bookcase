@@ -32,7 +32,7 @@
                 <select class="custom-select" id="genre" name="genre" required>
                     <option selected>Pick your favourite genre</option>
                     {% for genre in genres %}
-                    <option value="{{ genre.name }}">{{ genre.name }}</option>
+                    <option value="{{ genre.name }}">{{ genre.name.title() }}</option>
                     {% endfor %}
                 </select>
             </fieldset>
@@ -44,6 +44,9 @@
         </div>
     </div>
 </form>
+<div class="text-center">
+    <p class="sign-in-link">Already got an account? <a href="{{ url_for('sign_in') }}">Sign In Here</a></p>
+    </div>
 <hr>
 {% endblock %} 
 
