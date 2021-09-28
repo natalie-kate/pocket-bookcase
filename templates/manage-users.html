@@ -4,7 +4,7 @@
 <div class="title-container">
   <div class="row">
     <div class="col-12 text-center header">
-      <h2>Manage Users</h2>
+      <h2>Manage Users <i class="fas fa-user"></i></h2>
     </div>
   </div>
 </div>
@@ -15,7 +15,7 @@
 
 <h3 class="users text-center">Search Users</h3>
 <form id="user-search-form" method="POST" action="{{ url_for ('search_users') }}">
-  <div class="row search-box">
+  <div class="row search-box text-center">
     <div class="col-8">
       <input type="text" name="search" id="search" placeholder="Username or admin" aria-label="Search users">
     </div>
@@ -24,6 +24,7 @@
     </div>
   </div>
 </form> 
+<hr>
 
 {% if results %}
 
