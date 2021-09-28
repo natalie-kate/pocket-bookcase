@@ -534,6 +534,61 @@ def delete_user(user_id):
         return redirect(url_for("manage_users"))
 
 
+@app.route("/edit_account", methods=["GET", "POST"])
+def edit_account():
+    admin = mongo.db.users.find_one(
+          {"username": session["user"]})["admin"]
+    user = mongo.db.users.find_one(
+          {"username": session["user"]})
+    genres = list(mongo.db.genres.find())
+    if request.method == "POST":
+        if request.form.get("password") != request.form.get(
+                "confirm-password"):
+            flash("Your passwords did not match, please try again")
+            return redirect(url_for("edit_account"))
+
+        if request.form.get("password"):
+            if check_password_hash(
+               user["password"], request.form.get("current-password")):
+                if request.form.get("password") != request.form.get(
+                  "confirm-password"):
+                    flash("Your passwords did not match, please try again")
+                    return redirect(url_for("edit_account"))
+                else:
+                    update_user = {
+                        "first_name": request.form.get("first_name"),
+                        "surname": request.form.get("surname"),
+                        "email": request.form.get("email"),
+                        "genre": request.form.get("genre"),
+                        "password": generate_password_hash(
+                            request.form.get("password"))
+                    }
+                    mongo.db.users.update(user, {"$set": update_user})
+
+                    flash("Thankyou that's been updated")
+                    return redirect(url_for(
+                        "profile", username=session["user"]))
+            else:
+                flash("Your information did not match our records " +
+                      "please try again.")
+                return redirect(url_for("edit_account"))
+        else:
+            update_profile = {
+                "first_name": request.form.get("first_name"),
+                "surname": request.form.get("surname"),
+                "email": request.form.get("email"),
+                "genre": request.form.get("genre")
+            }
+            mongo.db.users.update(
+                user, {"$set": update_profile})
+
+            flash("Thankyou that's been updated")
+            return redirect(url_for("profile", username=session["user"]))
+    if session["user"]:
+        return render_template(
+            "edit-account.html", user=user, admin=admin, genres=genres)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
