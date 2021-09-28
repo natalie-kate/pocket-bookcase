@@ -148,6 +148,10 @@ fieldset {
     width:90%;
     padding-left: 10%;
 }
+#edit-account select {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 label,
 .rating-stars p {
     margin-bottom: 0;
@@ -272,6 +276,9 @@ input {
 }
 .warning a {
     margin-bottom: 8px;
+}
+.nav-link {
+    line-height: 1;
 }
 @media(max-width:750px){
     .btn i {
