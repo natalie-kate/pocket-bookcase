@@ -589,6 +589,14 @@ def edit_account():
             "edit-account.html", user=user, admin=admin, genres=genres)
 
 
+@app.route("/delete_account")
+def delete_account():
+    mongo.db.users.remove({"username": session["user"]})
+    session.pop("user")
+    flash("Account Successfully Deleted, We're sorry to see you go.")
+    return redirect(url_for("library"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
