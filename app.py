@@ -126,15 +126,16 @@ def profile(username):
         {"username": username})["admin"]
     if session["user"]:
         user_id = mongo.db.users.find_one(
-        {"username": session["user"]})["_id"]
+            {"username": session["user"]})["_id"]
         user_profile = mongo.db.profiles.find_one(
-        {"user_id": ObjectId(user_id)})
+            {"user_id": ObjectId(user_id)})
         read_books = mongo.db.profiles.find_one(
-        {"user_id": ObjectId(user_id)})["read_books"]
+            {"user_id": ObjectId(user_id)})["read_books"]
         own_books = user_profile["own_books"]
         books_to_read = user_profile["books_to_read"]
     return render_template(
-        "profile.html", name=name, admin=admin, read_books=read_books, own_books=own_books, books_to_read=books_to_read)
+        "profile.html", name=name, admin=admin, read_books=read_books,
+        own_books=own_books, books_to_read=books_to_read)
 
 
 @app.route("/profile_add, <book_id>", methods=["GET", "POST"])
@@ -199,11 +200,11 @@ def not_read(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {"user_id": ObjectId(user_id)},
-    {"$pull": {"read_books": book}}),
+        {"user_id": ObjectId(user_id)},
+        {"$pull": {"read_books": book}}),
     mongo.db.profiles.update(
-    {"user_id": ObjectId(user_id)},
-    {"$addToSet": {"books_to_read": book}})
+        {"user_id": ObjectId(user_id)},
+        {"$addToSet": {"books_to_read": book}})
     if update:
         flash(f"Thats {book} moved to the books to read bookshelf")
         return redirect(url_for("profile", username=session["user"]))
@@ -214,8 +215,8 @@ def books_read_delete(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {"user_id": ObjectId(user_id)},
-    {"$pull": {"read_books": book}})
+        {"user_id": ObjectId(user_id)},
+        {"$pull": {"read_books": book}})
     if update:
         flash(f"Thats {book} removed.")
         return redirect(url_for("profile", username=session["user"]))
@@ -226,8 +227,8 @@ def own_book_add(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {"user_id": ObjectId(user_id)},
-    {"$addToSet": {"own_books": book}})
+        {"user_id": ObjectId(user_id)},
+        {"$addToSet": {"own_books": book}})
     if update:
         flash(f"Thats {book} added to own books.")
         return redirect(url_for("profile", username=session["user"]))
@@ -238,11 +239,11 @@ def books_to_read_delete(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {"user_id": ObjectId(user_id)},
-    {"$pull": {"books_to_read": book}})
+        {"user_id": ObjectId(user_id)},
+        {"$pull": {"books_to_read": book}})
     if update:
         flash(f"Thats {book} removed.")
-        return redirect(url_for("profile", username=session["user"]))       
+        return redirect(url_for("profile", username=session["user"]))
 
 
 @app.route("/read_book, <book>", methods=["GET", "POST"])
@@ -250,14 +251,14 @@ def read_book(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {"user_id": ObjectId(user_id)},
-    {"$pull": {"books_to_read": book}}),
+        {"user_id": ObjectId(user_id)},
+        {"$pull": {"books_to_read": book}}),
     mongo.db.profiles.update(
-    {"user_id": ObjectId(user_id)},
-    {"$addToSet": {"read_books": book}})
+        {"user_id": ObjectId(user_id)},
+        {"$addToSet": {"read_books": book}})
     if update:
         flash(f"Thats {book} moved to the read bookshelf")
-        return redirect(url_for("profile", username=session["user"]))     
+        return redirect(url_for("profile", username=session["user"]))
 
 
 @app.route("/own_book_delete, <book>", methods=["GET", "POST"])
@@ -265,11 +266,11 @@ def own_book_delete(book):
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     update = mongo.db.profiles.update(
-    {"user_id": ObjectId(user_id)},
-    {"$pull": {"own_books": book}})
+        {"user_id": ObjectId(user_id)},
+        {"$pull": {"own_books": book}})
     if update:
         flash(f"Thats {book} removed.")
-        return redirect(url_for("profile", username=session["user"])) 
+        return redirect(url_for("profile", username=session["user"]))
 
 
 @app.route("/sign_out")
@@ -377,7 +378,8 @@ def edit_book(book_id):
         return redirect(url_for("library"))
     if session["user"]:
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
-        return render_template("edit-book.html", genres=genres, book=book, admin=admin)
+        return render_template(
+            "edit-book.html", genres=genres, book=book, admin=admin)
 
 
 @app.route("/delete_book, <book_id>")
