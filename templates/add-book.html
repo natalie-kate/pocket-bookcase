@@ -24,7 +24,7 @@
                 <select class="custom-select" id="genre" name="genre" required>
                     <option disabled selected value="">Pick genre</option>
                     {% for genre in genres %}
-                    <option value="{{ genre.name }}">{{ genre.name }}</option>
+                    <option value="{{ genre.name }}">{{ genre.name.title() }}</option>
                     {% endfor %}
                 </select>
                 <label for="cover_image">Cover image url:</label><br />
