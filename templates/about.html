@@ -1,13 +1,17 @@
-{% extends "base.html" %} 
-{% block image %}
+<!-- Gets code from base.html -->
+{% extends "base.html" %}
 
+<!-- Page header on image background -->
+{% block image %}
 <div class="image-container">
   <div class="col-12 header text-center">
     <h2>About</h2>
   </div>
 </div>
+{% endblock %}
 
-{% endblock %} {% block content %}
+<!-- Page content -->
+{% block content %}
 <div class="row about">
   <div class="card col-12 col-md-6 offset-md-3">
     <h3>What is Pocket Bookcase for?</h3>
@@ -21,16 +25,16 @@
   <div class="card col-12 col-md-6 offset-md-3">
     <h3>How do I use it?</h3>
     <p>You can use the Library to find your next book to read by using the search bar.</p>
-    <p>You can sign-up which allows you to add books from the library to your profile. 
-    <p>If a book isn't in our library you can add it yourself.</p>
-    <p>You can edit books you have added to the library.</p>
-    <p>You can also edit or delete books that you have added to your profile.</p>
+    <p>You can sign-up which allows you to add books from the library to your profile.
+      <p>If a book isn't in our library you can add it yourself.</p>
+      <p>You can edit books you have added to the library.</p>
+      <p>You can also edit or delete books that you have on your profile.</p>
   </div>
   <hr>
   <div class="card col-12 col-md-6 offset-md-3">
     <h3>How do I sign up?</h3>
-    <p>You can sign-up by clicking on the Register link in the navigation menu or the footer. 
-        Its free to use and you can delete your account at any time by contacting us.</p>
+    <p>You can sign-up by clicking on the Register link in the navigation menu or the footer.
+      Its free to use and you can delete your account at any time, via the edit account link in the footer.</p>
   </div>
   <hr>
   <div class="card col-12 col-md-6 offset-md-3">
@@ -39,10 +43,9 @@
   </div>
   <hr>
 </div>
+{% endblock %}
 
-
-{% endblock %} {% block link %}
-<a class="footer-link" href="{{ url_for('profile', username=session['user']) }}"
-  >Back to top</a
-><br />
+<!-- Footer link specific for the page -->
+{% block link %}
+<a class="footer-link" href="{{ url_for('about') }}">Back to top</a><br>
 {% endblock %}
