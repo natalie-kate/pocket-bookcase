@@ -1,21 +1,24 @@
+<!-- Gets code from base.html -->
 {% extends "base.html" %}
-{% block image %}
 
+<!-- Page header on image background -->
+{% block image %}
 <div class="image-container">
     <div class="col-12 header text-center">
         <h2>Edit Account <i class="fas fa-edit"></i></h2>
     </div>
 </div>
-
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
-
+<!-- Edit account form -->
 <form id="edit_account-form" method="POST" action="{{ url_for ('edit_account') }}">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
             <fieldset>
                 <legend>Personal details</legend>
+                <!-- Fields prefilled with the existing information where they can -->
                 <label for="username">Username:</label><br />
                 <input id="username" type="text" name="username" value="{{ user.username }}" disabled required /><br />
                 <label for="firstname">First Name:</label><br />
@@ -30,10 +33,12 @@
                     <option value="{{ genre.name }}">{{ genre.name.title() }}</option>
                     {% endfor %}
                 </select> 
+                <!-- Buttons that toggle, change-password and delete account confirmation -->
                 <div class="text-center">
                     <a data-toggle="collapse" data-target="#change-password" class="btn btn-md reset-btn hover">Want to change your password?</a>
                     <a data-toggle="collapse" data-target="#{{ user.username }}-delete" class="btn btn-md delete-btn hover">Delete my account <i class="fas fa-trash-alt"></i></a>
                 </div>
+                <!-- Delete account confirmation with delete and cancel buttons -->
                 <div id="{{ user.username }}-delete" class="row collapse text-center warning">
                   <div class="col-12">
                     <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete your account {{ user.first_name }}?</strong>
@@ -43,6 +48,7 @@
                     </div>
                   </div>
                 </div>
+                <!-- Change password collapse section so that user cannot accidentally change password. -->
                 <div id="change-password" class="collapse">
                     <label for="current-password">Current Password:</label><br />
                     <input id="current-password" type="password" name="current-password" pattern="^[a-zA-Z0-9]{5,15}$" /><br />
@@ -54,6 +60,7 @@
             </fieldset>
         </div>
     </div>
+    <!-- Submit button -->
     <div class="row button text-center">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <button type="submit" class="btn my-btn btn-lg hover">Update Account</button>
@@ -61,9 +68,9 @@
     </div>
 </form>
 <hr>
-
 {% endblock %} 
 
+<!-- Footer link specific for the page -->
 {% block link %}
-<a class="footer-link" href="{{ url_for('register') }}">Back to top</a><br />
+<a class="footer-link" href="{{ url_for('edit_account') }}">Back to top</a><br />
 {% endblock %}
