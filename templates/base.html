@@ -1,118 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="description" content="book app">
-        <meta name="keywords" content="books, book reviews, book ratings, bookcase, bookshelf, book tracker">
-        <meta name="author" content="Natalie Kate Alexander">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-            integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
-        <link rel="stylesheet" href="/static/css/style.css">
-        <title>Pocket Bookcase</title>
-    </head>
-    <body class="container-fluid"> 
+<head>
+    <!-- Metadata and external links -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="book app">
+    <meta name="keywords" content="books, book reviews, book ratings, bookcase, bookshelf, book tracker">
+    <meta name="author" content="Natalie Kate Alexander">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Pocket Bookcase</title>
+</head>
 
-        <!-- Header and Nav, modified bootstrap nav -->
-        <header>
-            <nav class="navbar navbar-expand-md">
-                <a class="navbar-brand" href="{{ url_for('library') }}" aria-label="Logo and link to home">Pocket Bookcase</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navdropdownmenu"
-                    aria-controls="navdropdownmenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <span><i class="fas fa-bars"></i></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navdropdownmenu">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('library') }}">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('about') }}">About</a>
-                        </li>
-                        {% if session.user %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('sign_out') }}">Sign Out</a>
-                        </li>
-                        {% if admin %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('manage_genre') }}">Manage Genres</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('manage_users') }}">Manage Users</a>
-                        </li>
-                        {% endif %}
-                        {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('sign_in') }}">Sign In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for ('register') }}"
-                                aria-label="">Sign Up</a>
-                        </li>
-                        {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for('contact') }}" aria-label="">Contact Us</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+<body class="container-fluid">
+    <!-- Header and Nav, modified bootstrap nav -->
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <a class="navbar-brand" href="{{ url_for('library') }}" aria-label="Logo and link to home">
+                Pocket Bookcase</a>
+            <!-- Dropdown menu button for smaller screens -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navdropdownmenu"
+                aria-controls="navdropdownmenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span><i class="fas fa-bars"></i></span>
+            </button>
+            <!-- Nav links -->
+            <div class="collapse navbar-collapse" id="navdropdownmenu">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('library') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                    </li>
+                    <!-- Shown only for signed in users -->
+                    {% if session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('sign_out') }}">Sign Out</a>
+                    </li>
+                    <!-- Shown only for admin users -->
+                    {% if admin %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('manage_genre') }}">Manage Genres</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('manage_users') }}">Manage Users</a>
+                    </li>
+                    {% endif %}
+                    <!-- Shown if not signed in -->
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('sign_in') }}">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for ('register') }}" aria-label="">Sign Up</a>
+                    </li>
+                    {% endif %}
+                    <!-- Last nav link shown for everyone -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}" aria-label="">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
+    <!-- Individual page header on an image background gets inserted here -->
     {% block image %}
 
     {% endblock %}
 
+    <!-- Section for flash messages to be displayed -->
     <div class="row">
         <div class="col-12">
+            <!-- Get messages using function from flash imported from flask -->
             {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="flashes text-center">
-                            <h4 class="warning">
-                                <i class="fas fa-bell"></i>
-                                 {{ message }}
-                                <i class="fas fa-bell"></i>
-                            </h4>
-                        </div>
-                    {% endfor %}
-                {% endif %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="flashes text-center">
+                <h4 class="warning">
+                    <i class="fas fa-bell"></i>
+                    {{ message }}
+                    <i class="fas fa-bell"></i>
+                </h4>
+            </div>
+            {% endfor %}
+            {% endif %}
             {% endwith %}
         </div>
     </div>
-    
+
+    <!-- Individual page content will be inserted here -->
     {% block content %}
 
     {% endblock %}
+
+    <!-- Footer with links -->
     <footer>
         <div class="row">
+            <!-- Social Links -->
             <div class="col-6 text-center">
                 <p>Social Links</p>
-                <a class="col-1 social" href="https://www.instagram.com" target="_blank" rel="noopener"><i class="fab fa-instagram"
-                        aria-hidden="true"></i><span class="sr-only">Link will open
+                <a class="col-1 social" href="https://www.instagram.com" target="_blank" rel="noopener"><i
+                        class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Link will open
                         instagram in a new page.</span></a>
-                <a class="col-1 social" href="https://www.github.com" target="_blank" rel="noopener"><i class="fab fa-github"
-                        aria-hidden="true"></i><span class="sr-only">Link will open github in a new
-                        page.</span></a>
-                <a class="col-1 social" href="https://www.youtube.com" target="_blank" rel="noopener"><i class="fab fa-youtube"
-                        aria-hidden="true"></i><span class="sr-only">Link will open youtube in a new
-                        page.</span></a>
-                <a class="col-1 social" href="https://www.linkedin.com" target="_blank" rel="noopener"><i class="fab fa-linkedin"
-                        aria-hidden="true"></i><span class="sr-only">Link will open linkedin in a new
-                        page.</span></a>
+                <a class="col-1 social" href="https://www.github.com" target="_blank" rel="noopener"><i
+                        class="fab fa-github" aria-hidden="true"></i><span class="sr-only">Link will open github in a
+                        new page.</span></a>
+                <a class="col-1 social" href="https://www.youtube.com" target="_blank" rel="noopener"><i
+                        class="fab fa-youtube" aria-hidden="true"></i><span class="sr-only">Link will open youtube in a
+                        new page.</span></a>
+                <a class="col-1 social" href="https://www.linkedin.com" target="_blank" rel="noopener"><i
+                        class="fab fa-linkedin" aria-hidden="true"></i><span class="sr-only">Link will open linkedin in
+                        a new page.</span></a>
             </div>
+            <!-- Nav Links -->
             <div class="col-6 text-center">
+                <!-- If user not signed these links will be displayed -->
                 {% if not session.user %}
                 <a class="footer-link" href="{{ url_for ('register') }}">Sign Up</a><br>
+                <a class="footer-link" href="{{ url_for ('sign_in') }}">Sign In</a><br>
                 {% endif %}
+
+                <!-- Individual page "back to top" link will be inserted -->
                 {% block link %}
 
                 {% endblock %}
+
+                <!-- If user logged in these links will be displayed -->
                 {% if session.user %}
                 <a class="footer-link" href="{{ url_for ('sign_out') }}">Sign Out</a><br>
                 <a class="footer-link" href="{{ url_for ('edit_account') }}">Edit account</a><br>
@@ -121,17 +142,21 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-    crossorigin="anonymous"></script>
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-    integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
-    crossorigin="anonymous"></script>
+        integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous">
+    </script>
+
+    <!-- Any individual page scripts to be inserted here -->
     {% block script %}
-    
+
     {% endblock %}
 </body>
+
 </html>
