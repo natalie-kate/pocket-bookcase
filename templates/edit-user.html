@@ -1,41 +1,50 @@
+<!-- Adds to code from base.html -->
 {% extends "base.html" %}
-{% block image %}
 
+<!-- Page header on image background -->
+{% block image %}
 <div class="image-container">
     <div class="col-12 header text-center">
         <h2>Edit User</h2>
     </div>
 </div>
-
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
-
+<!-- Edit user form -->
 <form id="edit_user-form" method="POST" action="{{ url_for ('edit_user', user_id=user._id) }}">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
             <fieldset>
                 <legend>Personal details</legend>
-                <label for="username">Username:</label><br />
-                <input id="username" type="text" name="username" value="{{ user.username }}" disabled required /><br />
-                <label for="email">Email Address:</label><br />
-                <input id="email" type="email" name="email" value="{{ user.email }}" required /><br />
+                <!-- Fields prefilled with the existing information -->
+                <label for="username">Username:</label><br>
+                <input id="username" type="text" name="username" value="{{ user.username }}" disabled required><br>
+                <label for="email">Email Address:</label><br>
+                <input id="email" type="email" name="email" value="{{ user.email }}" required><br>
+                <!-- Switch to make user an admin -->
                 <div class="custom-control custom-switch">
                     <input type="checkbox" id="admin" name="admin" class="custom-control-input">
                     <label class="custom-control-label" for="admin">Is user an Admin?</label>
-                </div>  
-                <div class="text-center">
-                    <a data-toggle="collapse" data-target="#reset-password" class="btn btn-md reset-btn hover">Reset Users Password?</a>
                 </div>
+                <!-- Buttons to toggle change-password form section if required-->
+                <div class="text-center">
+                    <a data-toggle="collapse" data-target="#reset-password" class="btn btn-md reset-btn hover">Reset
+                        Users Password?</a>
+                </div>
+                <!-- Change password collapse section so that cannot accidentally change password. -->
                 <div id="reset-password" class="collapse">
-                    <label for="password">Password:</label><br />
-                    <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$" /><br />
-                    <label for="password">Confirm Password:</label><br />
-                    <input id="confirm-password" type="password" name="confirm-password" pattern="^[a-zA-Z0-9]{5,15}$" /><br />
+                    <label for="password">Password:</label><br>
+                    <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$"><br>
+                    <label for="password">Confirm Password:</label><br>
+                    <input id="confirm-password" type="password" name="confirm-password"
+                        pattern="^[a-zA-Z0-9]{5,15}$"><br>
                 </div>
             </fieldset>
         </div>
     </div>
+    <!-- Submit button -->
     <div class="row button text-center">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <button type="submit" class="btn my-btn btn-lg hover">Update User</button>
@@ -43,8 +52,9 @@
     </div>
 </form>
 <hr>
-{% endblock %} 
+{% endblock %}
 
+<!-- Footer link specific for the page -->
 {% block link %}
-<a class="footer-link" href="{{ url_for('register') }}">Back to top</a><br />
+<a class="footer-link" href="{{ url_for('edit_user', user_id=user._id)) }}">Back to top</a><br>
 {% endblock %}
