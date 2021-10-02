@@ -13,7 +13,8 @@ body{
 .sign-up-link,
 .register-link,
 .library-link,
-.sign-in-link {
+.sign-in-link,
+.profile-link {
     color:  #231709;
     font-weight: 600;
 }
@@ -28,7 +29,8 @@ body{
 .sign-up-link a:hover,
 .register-link:hover,
 .library-link:hover,
-.sign-in-link:hover {
+.sign-in-link:hover,
+.profile-link:hover {
     color: #012d50;
     text-decoration: none;
 }
@@ -107,7 +109,7 @@ hr {
     color: white;
     border: 1px solid #231709;
     background: url("../images/app-images/book-spine.png") repeat left center;
-    background-size: fill;
+    background-size: cover;
     margin-top: 20px;
     width: 60vw;
     padding-left: 0;
@@ -156,8 +158,12 @@ label,
 .rating-stars p {
     margin-bottom: 0;
 }
-.profile-books {
-    text-align: center;
+.profile-books .book-title{
+    padding-right: 0;
+    padding-left: 30px;
+}
+.profile-books .buttons {
+    padding-left: 0;
 }
 input,
 .custom-select,
@@ -193,6 +199,9 @@ textarea {
 }
 .profile-books .card {
     height: 31px;
+}
+.buttons .btn {
+    margin-left: 5px;
 }
 /*---- Contact Form ----*/
 input[name=rating] {
