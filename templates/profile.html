@@ -20,10 +20,10 @@
 {% if read_books %}
   {% for book in read_books %}
     <div id="read_books" class="row collapse profile-books">
-      <div class="col-10 offset-1 col-md-6 offset-md-1 col-lg-4 offset-lg-2 text-center">
+      <div class="col-6 offset-0 col-md-4 offset-md-2 book-title">
         <p class="text-center card">{{ book.title() }}</p>
       </div>
-      <div class="col-10 offset-1 col-md-5 offset-md-0 col-lg-4">
+      <div class="col-6 col-md-4 offset-md-0 buttons">
         <a href="{{ url_for ('not_read', book=book) }}" class="btn btn-sm read-btn hover">Not read? <i class="far fa-edit"></i></button>
         <a href="{{ url_for ('books_read_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
         {% if book not in own_books %}
@@ -34,8 +34,9 @@
   {% endfor %}
 {% else %}
 <div id="read_books" class="row collapse profile-books text-center">
-  <div class="col-8 offset-2 text-center">
-     <p>You have no books yet, why not add some! <a class="page-link" href="{{ url_for('library') }}">Take me to Library</a></p> 
+  <div class="col-12 col-md-6 offset-md-3">
+    <p>You have no books yet, why not add some!</p>
+    <a class="profile-link" href="{{ url_for('library') }}">Take me to Library</a>
   </div>
 </div>
 {% endif %}
@@ -46,10 +47,10 @@
 {% if books_to_read %}
   {% for book in books_to_read %}
     <div id="books_to_read" class="row collapse profile-books">
-      <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 text-center">
+      <div class="col-6 offset-0 col-md-4 offset-md-2 book-title">
         <p class="text-center card">{{ book.title() }}</p>
       </div>
-      <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
+      <div class="col-6 col-md-4 offset-md-0 buttons">
         <a href="{{ url_for ('read_book', book=book) }}" class="btn btn-sm read-btn hover">
           Read? <i class="far fa-edit"></i></button>
         <a href="{{ url_for ('books_to_read_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
@@ -61,8 +62,9 @@
   {% endfor %}
 {% else %}
   <div id="books_to_read" class="row collapse profile-books text-center">
-    <div class="col-8 offset-2 text-center">
-       <p>You have no books yet, why not add some! <a class="page-link" href="{{ url_for('library') }}">Take me to Library</a></p> 
+    <div class="col-10 offset-1 col-md-6 offset-md-3">
+      <p>You have no books yet, why not add some!</p>
+      <a class="profile-link" href="{{ url_for('library') }}">Take me to Library</a>
     </div>
   </div>
 {% endif %}
@@ -74,26 +76,26 @@
 {% if own_books  %}
   {% for book in own_books %}
     <div id="own_books" class="row collapse profile-books">
-      <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4 offset-lg-2 text-center">
+      <div class="col-6 offset-0 col-md-4 offset-md-2 book-title">
         <p class="text-center card">{{ book.title() }}</p>
       </div>
-      <div class="col-10 offset-1 col-md-6 offset-md-0 col-lg-4">
+      <div class="col-6 col-md-4 offset-md-0 buttons">
           <a href="{{ url_for ('own_book_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
       </div>
     </div>
   {% endfor %}
 {% else %}
   <div id="own_books" class="row collapse profile-books text-center">
-    <div class="col-8 offset-2 text-center">
-       <p>You have no books yet, why not add some! <a class="page-link" href="{{ url_for('library') }}">Take me to Library</a></p> 
+    <div class="col-10 offset-1 col-md-6 offset-md-3">
+      <p>You have no books yet, why not add some!</p>
+      <a class="profile-link" href="{{ url_for('library') }}">Take me to Library</a>
     </div>
   </div>
 {% endif %}
 <hr>
-
-
 {% endblock %}
 
+<!-- Footer link specific for the page -->
 {% block link %}
     <a class="footer-link" href="{{ url_for('profile', username=session['user']) }}">Back to top</a><br>
 {% endblock %}
