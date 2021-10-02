@@ -16,19 +16,31 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+def admin():
+    admin = mongo.db.users.find_one(
+        {"username": session["user"]})["admin"]
+    return admin
+
+
+def books():
+    books = mongo.db.books.find()
+    return books
+
+
+def genres():
+    genres = mongo.db.genres.find()
+    return genres
+
+
 # "library" view
 @app.route("/")
 @app.route("/library")
 def library():
-    # finds books in db to pass into template
-    books = list(mongo.db.books.find())
     # If a user is logged in then admin will be passed
     # into template as well.
     if session:
-        admin = mongo.db.users.find_one(
-            {"username": session["user"]})["admin"]
-        return render_template("library.html", books=books, admin=admin)
-    return render_template("library.html", books=books)
+        return render_template("library.html", books=books(), admin=admin())
+    return render_template("library.html", books=books())
 
 
 # "search_library" view, gets user input from search box and looks
@@ -43,10 +55,8 @@ def search_library():
         # to determine whether admin needs passed in or not.
         if results:
             if session:
-                admin = mongo.db.users.find_one(
-                    {"username": session["user"]})["admin"]
                 return render_template(
-                    "library.html", admin=admin, results=results)
+                    "library.html", admin=admin(), results=results)
             else:
                 return render_template(
                     "library.html", results=results)
@@ -59,8 +69,6 @@ def search_library():
 # "register" view
 @app.route("/register", methods=["GET", "POST"])
 def register():
-    # Get genres from db to pass into template
-    genres = list(mongo.db.genres.find())
     # If registration form submitted check whether username already taken
     if request.method == "POST":
         existing = mongo.db.users.find_one(
@@ -107,7 +115,7 @@ def register():
             'you have been successfully registered.')
         return redirect(url_for("profile", username=session["user"]))
     # Use register.html template, passing in genres.
-    return render_template("register.html", genres=genres)
+    return render_template("register.html", genres=genres())
 
 
 # "sign_in" view
@@ -145,9 +153,6 @@ def profile(username):
     # Get users username from db to pass into template
     name = mongo.db.users.find_one(
         {"username": username})["first_name"]
-    # See if user is an admin to pass into template
-    admin = mongo.db.users.find_one(
-        {"username": username})["admin"]
     # If user logged in get profile information to pass into template
     if session["user"]:
         user_id = mongo.db.users.find_one(
@@ -160,7 +165,7 @@ def profile(username):
         books_to_read = user_profile["books_to_read"]
         # Use profile.html template passing in required variables
         return render_template(
-            "profile.html", name=name, admin=admin, read_books=read_books,
+            "profile.html", name=name, admin=admin(), read_books=read_books,
             own_books=own_books, books_to_read=books_to_read)
 
 
@@ -168,8 +173,6 @@ def profile(username):
 @app.route("/profile_add, <book_id>", methods=["GET", "POST"])
 def profile_add(book_id):
     # Get info from database and store in variables
-    admin = mongo.db.users.find_one(
-        {"username": session["user"]})["admin"]
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
     book = mongo.db.books.find_one(
@@ -232,7 +235,7 @@ def profile_add(book_id):
     # Use profile add template passing in required variables
     if session["user"]:
         return render_template(
-            "profile-add.html", admin=admin, book=book)
+            "profile-add.html", admin=admin(), book=book)
 
 
 # "not_read" view, to move book from read_books to books_to_read
@@ -358,8 +361,6 @@ def contact():
     # if user logged in user info passed in with template to prefill
     # contact form
     if session:
-        admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
         name = mongo.db.users.find_one(
           {"username": session["user"]})["first_name"]
         surname = mongo.db.users.find_one(
@@ -368,7 +369,7 @@ def contact():
           {"username": session["user"]})["email"]
         return render_template(
             "contact.html", name=name, surname=surname, email=email,
-            admin=admin)
+            admin=admin())
     return render_template("contact.html")
 
 
@@ -377,19 +378,13 @@ def contact():
 def about():
     # if user logged in admin status passed in with template
     if session:
-        admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
-        return render_template("about.html", admin=admin)
+        return render_template("about.html", admin=admin())
     return render_template("about.html")
 
 
 # "add_book" view to add book to library
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
-    # Assign information from db to variables to pass into template
-    admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
-    genres = list(mongo.db.genres.find())
     # if add_book form submitted get information from form
     if request.method == "POST":
         # If title stripped of spaces is empty then display
@@ -430,16 +425,12 @@ def add_book():
                 return redirect(url_for("library"))
     # Use add_book template, passing in admin and genre
     if session["user"]:
-        return render_template("add-book.html", genres=genres, admin=admin)
+        return render_template("add-book.html", genres=genres(), admin=admin())
 
 
 # "edit_book" view to edit books in library
 @app.route("/edit_book, <book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
-    # Assign information from db to variables to pass into template
-    genres = list(mongo.db.genres.find())
-    admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
     # if edit_book form submitted get information from form
     if request.method == "POST":
         # if admin get title from form otherwise from the book document
@@ -471,7 +462,7 @@ def edit_book(book_id):
     if session["user"]:
         book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
         return render_template(
-            "edit-book.html", genres=genres, book=book, admin=admin)
+            "edit-book.html", genres=genres(), book=book, admin=admin())
 
 
 # "delete_book" view to delete book from library
@@ -487,14 +478,10 @@ def delete_book(book_id):
 # "manage_genre" view to see all current genres
 @app.route("/manage_genre")
 def manage_genre():
-    # Assign data from database to variables to send into template
-    genres = list(mongo.db.genres.find())
-    admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
     # if user is an admin use manage_genres template
-    if admin:
+    if admin():
         return render_template(
-            "manage-genres.html", genres=genres, admin=admin)
+            "manage-genres.html", genres=genres(), admin=admin)
 
 
 # "add_genre" view to add genre
@@ -562,11 +549,9 @@ def delete_genre(genre_id):
 @app.route("/manage_users")
 def manage_users():
     # Assign data from database to variables to send into template
-    admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
     users = mongo.db.users.find()
     # if user is an admin use manage_users template
-    if admin:
+    if admin():
         return render_template(
             "manage-users.html", users=users, admin=admin)
 
@@ -574,10 +559,8 @@ def manage_users():
 # "search_users" view to search current users by admin
 @app.route("/search_users", methods=["GET", "POST"])
 def search_users():
-    admin = mongo.db.users.find_one(
-        {"username": session["user"]})["admin"]
     # Check if user is an admin
-    if admin:
+    if admin():
         # If form submitted get info from form fields
         if request.method == "POST":
             # if search is for admin, find all users that are admin
@@ -607,8 +590,6 @@ def search_users():
 # "edit_user" view to edit users information by admin
 @app.route("/edit_user, <user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
-    admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
     # When form is submitted get information from fields
     if request.method == "POST":
         username = mongo.db.users.find_one(
@@ -648,7 +629,7 @@ def edit_user(user_id):
             flash(f"Thankyou {username} has been updated")
             return redirect(url_for("manage_users"))
     # If admin use edit_user template
-    if admin:
+    if admin():
         user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
         return render_template("edit-user.html", user=user, admin=admin)
 
@@ -656,12 +637,10 @@ def edit_user(user_id):
 # "delete_user" view to delete users account by admin
 @app.route("/delete_user, <user_id>")
 def delete_user(user_id):
-    admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
     username = mongo.db.users.find_one(
           {"_id": ObjectId(user_id)})["username"]
     # If admin delete user, display message and reload page
-    if admin:
+    if admin():
         mongo.db.users.remove({"_id": ObjectId(user_id)})
         flash(f"{ username } Successfully Deleted")
         return redirect(url_for("manage_users"))
@@ -671,11 +650,8 @@ def delete_user(user_id):
 @app.route("/edit_account", methods=["GET", "POST"])
 def edit_account():
     # Get information from db and assign to variables
-    admin = mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]
     user = mongo.db.users.find_one(
           {"username": session["user"]})
-    genres = list(mongo.db.genres.find())
     # If form submitted get information from form fields
     if request.method == "POST":
         # If password and confirm_password don't match display message
@@ -731,13 +707,15 @@ def edit_account():
     # If user logged in use edit_account template, passing in variables
     if session["user"]:
         return render_template(
-            "edit-account.html", user=user, admin=admin, genres=genres)
+            "edit-account.html", user=user, admin=admin(), genres=genres())
 
 
 # "delete_account" view allows users to delete their own account
 @app.route("/delete_account")
 def delete_account():
     # Delete user, end session, display messsage and redirect to library
+    user_id = mongo.db.users.find_one(
+          {"username": session["user"]})["_id"]
     mongo.db.users.remove({"username": session["user"]})
     session.pop("user")
     flash("Account Successfully Deleted, We're sorry to see you go.")
