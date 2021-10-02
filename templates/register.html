@@ -1,16 +1,18 @@
+<!-- In addition to base.html code -->
 {% extends "base.html" %}
-{% block image %}
 
+<!-- Page header on image background -->
+{% block image %}
 <div class="image-container">
     <div class="col-12 header text-center">
         <h2>Sign Up!</h2>
     </div>
 </div>
-
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
-
+<!-- Sign up form -->
 <form id="register-form" method="POST" action="{{ url_for ('register') }}">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
@@ -38,18 +40,22 @@
             </fieldset>
         </div>
     </div>
+    <!-- Sign up form button-->
     <div class="row button text-center">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <button type="submit" class="btn my-btn btn-lg hover">REGISTER</button>
         </div>
     </div>
 </form>
+
+<!-- Link to sign in for existing users -->
 <div class="text-center">
     <p class="sign-in-link">Already got an account? <a href="{{ url_for('sign_in') }}">Sign In Here</a></p>
     </div>
 <hr>
 {% endblock %} 
 
+<!-- Footer link specific for the page -->
 {% block link %}
 <a class="footer-link" href="{{ url_for('register') }}">Back to top</a><br />
 {% endblock %}
