@@ -1,35 +1,40 @@
+<!-- In addition to base.html code -->
 {% extends "base.html" %}
-{% block image %}
 
-<div class="title-container">
+<!-- Page header on image background -->
+{% block image %}
+<div class="image-container">
   <div class="row">
     <div class="col-12 text-center header">
       <h2>Add to profile</h2>
     </div>
   </div>
 </div>
-
 {% endblock %}
 
+<!-- Page content -->
 {% block content%}
-
 <div class="add-book text-center">
     <h3> {{ book.title.title() }}</h3> 
     <p>Lets get it added, just a few quick questions:</p>
 </div>
+<!-- Add to profile form -->
 <form id="profile-add-form" method="POST" action="{{ url_for('profile_add', book_id=book._id) }}">
     <div class="row text-center">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
+            <!-- Do you own this book switch -->
             <div class="custom-control custom-switch">
                 <input type="checkbox" id="own" name="own" class="custom-control-input">
                 <label class="custom-control-label" for="own">Do you own this book?</label>
             </div>    
+            <!-- Have you read this book switch -->
             <div class="custom-control custom-switch">
                 <input type="checkbox" id="read" name="read" class="custom-control-input">
                 <label class="custom-control-label" for="read">Have you read this book?</label>
             </div> 
         </div>
     </div>
+    <!-- Add book to profile submit button -->
     <div class="row button text-center">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <button type="submit" class="btn my-btn btn-lg hover">Add Book</button>
@@ -37,9 +42,9 @@
     </div>   
 </form>
 <hr>
-
 {% endblock %}
 
+<!-- Footer link specific for the page -->
 {% block link %}
 <a class="footer-link" href="{{ url_for('profile_add', book_id=book._id) }}">Back to top</a><br>
 {% endblock %}
