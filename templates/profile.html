@@ -1,22 +1,23 @@
+<!-- In addition to base.html code -->
 {% extends "base.html" %} 
-{% block image %}
 
+<!-- Page header on image background -->
+{% block image %}
 <div class="image-container">
     <div class="col-12 header text-center">
         <h2>{{ name }}'s Profile</h2>
     </div>
 </div>
-
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
-
 <h3 class="bookcase text-center">My Bookcase</h3>
-
 <div class="row bookshelf text-center">
     <a data-toggle="collapse" data-target="#read_books" class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Read books <i class="fas fa-caret-down"></i></a>
 </div>
 
+<!-- If user has read books display them -->
 {% if read_books %}
   {% for book in read_books %}
     <div id="read_books" class="row collapse profile-books">
@@ -24,14 +25,17 @@
         <p class="text-center card">{{ book.title() }}</p>
       </div>
       <div class="col-6 col-md-4 offset-md-0 buttons">
+        <!-- Not read and remove buttons -->
         <a href="{{ url_for ('not_read', book=book) }}" class="btn btn-sm read-btn hover">Not read? <i class="far fa-edit"></i></button>
         <a href="{{ url_for ('books_read_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+        <!-- If user doesn't own book, display Own button -->
         {% if book not in own_books %}
         <a href="{{ url_for ('own_book_add', book=book) }}" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
         {% endif %}
       </div>
     </div>
   {% endfor %}
+<!-- If user doesn't have any read books then display link to library -->
 {% else %}
 <div id="read_books" class="row collapse profile-books text-center">
   <div class="col-12 col-md-6 offset-md-3">
@@ -44,6 +48,8 @@
 <div class="row bookshelf text-center">
     <a data-toggle="collapse" data-target="#books_to_read" class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Books to read <i class="fas fa-caret-down"></i></a>
 </div>
+
+<!-- If user has books to read display them -->
 {% if books_to_read %}
   {% for book in books_to_read %}
     <div id="books_to_read" class="row collapse profile-books">
@@ -51,15 +57,18 @@
         <p class="text-center card">{{ book.title() }}</p>
       </div>
       <div class="col-6 col-md-4 offset-md-0 buttons">
+        <!-- Read and remove buttons -->
         <a href="{{ url_for ('read_book', book=book) }}" class="btn btn-sm read-btn hover">
           Read? <i class="far fa-edit"></i></button>
         <a href="{{ url_for ('books_to_read_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i class="fas fa-trash-alt"></i></a>
+         <!-- If user doesn't own book, display Own button -->
         {% if book not in own_books %}
         <a href="{{ url_for ('own_book_add', book=book) }}" class="btn btn-sm own-btn hover">Own? <i class="fas fa-plus"></i></a>
         {% endif %}
       </div>
     </div>
   {% endfor %}
+<!-- If user doesn't have any books to read then display link to library -->
 {% else %}
   <div id="books_to_read" class="row collapse profile-books text-center">
     <div class="col-10 offset-1 col-md-6 offset-md-3">
@@ -73,6 +82,7 @@
   <a data-toggle="collapse" data-target="#own_books" class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Books I own <i class="fas fa-caret-down"></i></a>
 </div>
 
+<!-- If user has own books, display them -->
 {% if own_books  %}
   {% for book in own_books %}
     <div id="own_books" class="row collapse profile-books">
@@ -84,6 +94,7 @@
       </div>
     </div>
   {% endfor %}
+<!-- If user doesn't have any own books then display link to library -->
 {% else %}
   <div id="own_books" class="row collapse profile-books text-center">
     <div class="col-10 offset-1 col-md-6 offset-md-3">
