@@ -43,7 +43,7 @@
                   <div class="col-12">
                     <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete your account {{ user.first_name }}?</strong>
                     <div>
-                      <a href="{{ url_for('edit_account') }}" class="btn btn-md cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
+                      <a data-toggle="collapse" data-target="#{{ user.username }}-delete" class="btn btn-md cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
                       <a href="{{ url_for('delete_account') }}"class="btn btn-md delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
                     </div>
                   </div>
