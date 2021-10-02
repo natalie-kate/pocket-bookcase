@@ -88,7 +88,7 @@
       <div class="col-12">
         <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete {{ result.title }}?</strong>
         <div>
-          <a href="{{ url_for('library') }}" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
+          <a data-toggle="collapse" data-target="#{{ book.title.replace(' ', '') }}-delete" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
           <a href="{{ url_for('delete_book', book_id=result._id) }}" class="btn btn-sm delete-btn hover">Delete <i
               class="fas fa-trash-alt"></i></a>
         </div>
@@ -152,7 +152,7 @@
       <div class="col-12">
         <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete {{ book.title }}?</strong>
         <div>
-          <a href="{{ url_for('library') }}" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
+          <a data-toggle="collapse" data-target="#{{ book.title.replace(' ', '') }}-delete" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
           <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn btn-sm delete-btn hover">Delete <i
               class="fas fa-trash-alt"></i></a>
         </div>
