@@ -641,6 +641,7 @@ def delete_user(user_id):
           {"_id": ObjectId(user_id)})["username"]
     # If admin delete user, display message and reload page
     if admin():
+        mongo.db.profiles.remove({"user_id": ObjectId(user_id)})
         mongo.db.users.remove({"_id": ObjectId(user_id)})
         flash(f"{ username } Successfully Deleted")
         return redirect(url_for("manage_users"))
@@ -716,6 +717,7 @@ def delete_account():
     # Delete user, end session, display messsage and redirect to library
     user_id = mongo.db.users.find_one(
           {"username": session["user"]})["_id"]
+    mongo.db.profiles.remove({"user_id": ObjectId(user_id)})
     mongo.db.users.remove({"username": session["user"]})
     session.pop("user")
     flash("Account Successfully Deleted, We're sorry to see you go.")
