@@ -46,6 +46,6 @@
 
 <!-- Footer link specific for the page -->
 {% block link %}
-<a class="footer-link" href="{{ url_for('profile_add', book_id=book._id) }}">Back to top</a><br>
+<a class="footer-link" href="{{ url_for('profile_add', book_id=book._id) }}" aria-label="Back to top link">Back to top</a><br>
 {% endblock %}
 
