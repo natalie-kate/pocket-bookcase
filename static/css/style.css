@@ -81,6 +81,9 @@ h3.bookcase {
 .about h3{
     margin-top: 10px;
 }
+.image-container i {
+    font-size: 40px;
+}
 .add-book h3,
 h3.genres,
 .search-results h3,
@@ -318,9 +321,6 @@ input {
     .image-container{
         height: 30vh;
     }
-    .header h2 {
-        padding-top: 10vh;
-    }
     .title-container h1 {
         color: rgb(250, 247, 235);
         padding-top: 10vh;
@@ -339,6 +339,9 @@ input {
         font-family: 'Tangerine', cursive;
         font-size: 60px;
         margin-bottom: 0;
+    }
+    .header h2 {
+        padding-top: 10vh;
     }
     .flashes {
         font-size: 24px;
