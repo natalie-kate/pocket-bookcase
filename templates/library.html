@@ -176,8 +176,13 @@
     {% endif %}
     {% endif %}
   </div>
-  <hr />
+  <hr>
   {% endfor %}
+</div>
+<div class="row">
+  <div class="col-6 offset-3 pagination-links text-center">
+    {{ pagination.links }}   
+  </div>
 </div>
 {% endblock %}
 
