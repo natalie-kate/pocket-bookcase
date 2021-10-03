@@ -5,7 +5,7 @@
 {% block image %}
 <div class="image-container">
     <div class="col-12 header text-center">
-        <h2>Edit Account <i class="fas fa-edit"></i></h2>
+        <h2>Edit Account <i class="fas fa-edit" aria-hidden="true"></i></h2>
     </div>
 </div>
 {% endblock %}
@@ -22,40 +22,53 @@
                 <label for="username">Username:</label><br />
                 <input id="username" type="text" name="username" value="{{ user.username }}" disabled required /><br />
                 <label for="firstname">First Name:</label><br />
-                <input id="firstname" type="text" name="first_name" value="{{ user.first_name }}" pattern="^\S+$" data-toggle="tooltip" data-placement="top" title="No spaces" required/><br/>
+                <input id="firstname" type="text" name="first_name" value="{{ user.first_name }}" pattern="^\S+$"
+                    data-toggle="tooltip" data-placement="top" title="No spaces" required /><br />
                 <label for="surname">Surname:</label><br />
-                <input id="surname" type="text" name="surname" value="{{ user.surname }}" pattern="^\S+$" data-toggle="tooltip" data-placement="top" title="No spaces" required/><br/>
+                <input id="surname" type="text" name="surname" value="{{ user.surname }}" pattern="^\S+$"
+                    data-toggle="tooltip" data-placement="top" title="No spaces" required /><br />
                 <label for="email">Email Address:</label><br />
-                <input id="email" type="email" name="email" value="{{ user.email }}" pattern="^\S+$" data-toggle="tooltip" data-placement="top" title="No spaces" required /><br />
+                <input id="email" type="email" name="email" value="{{ user.email }}" pattern="^\S+$"
+                    data-toggle="tooltip" data-placement="top" title="No spaces" required /><br />
                 <select class="custom-select" id="genre" name="genre" required>
                     <option selected disabled value="">Pick your favourite genre</option>
                     {% for genre in genres %}
                     <option value="{{ genre.name }}">{{ genre.name.title() }}</option>
                     {% endfor %}
-                </select> 
+                </select>
                 <!-- Buttons that toggle, change-password and delete account confirmation -->
                 <div class="text-center">
-                    <a data-toggle="collapse" data-target="#change-password" class="btn btn-md reset-btn hover">Want to change your password?</a>
-                    <a data-toggle="collapse" data-target="#{{ user.username }}-delete" class="btn btn-md delete-btn hover">Delete my account <i class="fas fa-trash-alt"></i></a>
+                    <a data-toggle="collapse" data-target="#change-password" class="btn btn-md reset-btn hover">Want to
+                        change your password?</a>
+                    <a data-toggle="collapse" data-target="#{{ user.username }}-delete"
+                        class="btn btn-md delete-btn hover" aria-label="Will open delete confirmation section">Delete my
+                        account <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
                 </div>
                 <!-- Delete account confirmation with delete and cancel buttons -->
                 <div id="{{ user.username }}-delete" class="row collapse text-center warning">
-                  <div class="col-12">
-                    <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete your account {{ user.first_name }}?</strong>
-                    <div>
-                      <a data-toggle="collapse" data-target="#{{ user.username }}-delete" class="btn btn-md cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
-                      <a href="{{ url_for('delete_account') }}"class="btn btn-md delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
+                    <div class="col-12">
+                        <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete your account
+                            {{ user.first_name }}?</strong>
+                        <div>
+                            <a data-toggle="collapse" data-target="#{{ user.username }}-delete"
+                                aria-label="Will close delete confirmation section"
+                                class="btn btn-md cancel-btn hover">Cancel <i class="fas fa-times"
+                                    aria-hidden="true"></i></a>
+                            <a href="{{ url_for('delete_account') }}" class="btn btn-md delete-btn hover">Delete <i
+                                    class="fas fa-trash-alt" aria-hidden="true"></i></a>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <!-- Change password collapse section so that user cannot accidentally change password. -->
                 <div id="change-password" class="collapse">
                     <label for="current-password">Current Password:</label><br />
-                    <input id="current-password" type="password" name="current-password" pattern="^[a-zA-Z0-9]{5,15}$" /><br />
+                    <input id="current-password" type="password" name="current-password"
+                        pattern="^[a-zA-Z0-9]{5,15}$" /><br />
                     <label for="password">Password:</label><br />
                     <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$" /><br />
                     <label for="confirm-password">Confirm Password:</label><br />
-                    <input id="confirm-password" type="password" name="confirm-password" pattern="^[a-zA-Z0-9]{5,15}$" /><br />
+                    <input id="confirm-password" type="password" name="confirm-password"
+                        pattern="^[a-zA-Z0-9]{5,15}$" /><br />
                 </div>
             </fieldset>
         </div>
@@ -68,9 +81,9 @@
     </div>
 </form>
 <hr>
-{% endblock %} 
+{% endblock %}
 
 <!-- Footer link specific for the page -->
 {% block link %}
-<a class="footer-link" href="{{ url_for('edit_account') }}">Back to top</a><br />
+<a class="footer-link" href="{{ url_for('edit_account') }}" aria-label="Back to top link">Back to top</a><br />
 {% endblock %}
