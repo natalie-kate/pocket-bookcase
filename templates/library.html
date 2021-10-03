@@ -50,16 +50,16 @@
     <h3>Search results</h3>
   </div>
   {% for result in results %}
-  <div class="col-4 text-center book-image">
+  <div class="col-8 offset-2 col-md-4 offset-md-0 text-center book-image">
     <!-- If book has a cover image then use it -->
     {% if result.cover_image %}
-    <img src="{{ result.cover_image }}" alt="Book cover image of {{ result.title }}">
+    <img src="{{ result.cover_image }}" alt="Book cover image of {{ result.title }}" class="book-image">
     <!-- If book doesn't have a cover image then use alternative image -->
     {% else %}
-    <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books">
+    <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books" class="book-image">
     {% endif %}
   </div>
-  <div class="col-8 books">
+  <div class="col-12 col-md-8 books">
     <h3>{{ result.title.title() }}</h3>
     <p><strong>Author: </strong> {{ result.author.title() }}</p>
     <p><strong>Genre: </strong> {{ result.genre }}</p>
@@ -114,16 +114,16 @@
 <!-- When page loads normally i.e not a search, display books in library-->
 <div class="row">
   {% for book in books %}
-  <div class="col-4 text-center book-image">
+  <div class="col-8 offset-2 col-md-4 offset-md-0 text-center book-image">
     <!-- If book has a cover image then use it -->
     {% if book.cover_image %}
-    <img src="{{ book.cover_image }}" alt="Book cover image of {{ book.title }}">
+    <img src="{{ book.cover_image }}" alt="Book cover image of {{ book.title }}" class="book-image">
     <!-- If book doesn't have a cover image then use alternative image -->
     {% else %}
-    <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books">
+    <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books" class="book-image">
     {% endif %}
   </div>
-  <div class="col-8 books">
+  <div class="col-12 col-md-8 offset-md-0 books">
     <h3>{{ book.title.title() }}</h3>
     <p><strong>Author: </strong> {{ book.author.title() }}</p>
     <p><strong>Genre: </strong> {{ book.genre.title() }}</p>
