@@ -27,7 +27,8 @@
       <input type="text" name="search" id="search" placeholder="e.g genre or title" aria-label="Search library">
     </div>
     <div class="col-4">
-      <button type="submit" class="btn btn-md search-btn hover">Search <i class="fas fa-search"></i></button>
+      <button type="submit" class="btn btn-md search-btn hover">Search <i class="fas fa-search"
+          aria-hidden="true"></i></button>
     </div>
   </div>
 </form>
@@ -37,7 +38,7 @@
 <div class="row text-center">
   <div class="col-10 offset-1 col-md-4 offset-md-4">
     <a href="{{ url_for('add_book') }}" class="btn my-btn btn-lg hover">
-      <i class="fas fa-plus"></i> Add a Book</a>
+      <i class="fas fa-plus" aria-hidden="true"></i> Add a Book</a>
   </div>
 </div>
 <hr>
@@ -77,18 +78,22 @@
     <p><strong>Added by: </strong> {{ result.added_by }}</p>
     <!-- If user logged in show add to profile button -->
     {% if session.user %}
-    <a href="{{ url_for('profile_add', book_id=result._id) }}" class="btn profile-btn btn-sm hover">Add to profile</a>
+    <a href="{{ url_for('profile_add', book_id=result._id) }}" class="btn profile-btn btn-sm hover"
+      aria-label="Link to add to profile page">Add to profile</a>
     <!-- If user is an admin then show edit and delete button -->
     {% if admin %}
-    <a href="{{ url_for('edit_book', book_id=result._id) }}" class="btn edit-btn btn-sm hover">Edit Book</a>
+    <a href="{{ url_for('edit_book', book_id=result._id) }}" class="btn edit-btn btn-sm hover"
+      aria-label="Link to edit book page">Edit Book</a>
     <a data-toggle="collapse" data-target="#{{ result.title.replace(' ', '') }}-delete"
-      class="btn delete-btn btn-md hover">Delete Book</a>
+      class="btn delete-btn btn-md hover" aria-label="Will open delete confirmation section">Delete Book</a>
     <!-- Delete book confirmation with delete and cancel buttons -->
     <div id="{{ result.title.replace(' ', '') }}-delete" class="row collapse text-center warning">
       <div class="col-12">
         <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete {{ result.title }}?</strong>
         <div>
-          <a data-toggle="collapse" data-target="#{{ book.title.replace(' ', '') }}-delete" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
+          <a data-toggle="collapse" data-target="#{{ book.title.replace(' ', '') }}-delete"
+            aria-label="Will close delete confirmation section" class="btn btn-sm cancel-btn hover">Cancel <i
+              class="fas fa-times"></i></a>
           <a href="{{ url_for('delete_book', book_id=result._id) }}" class="btn btn-sm delete-btn hover">Delete <i
               class="fas fa-trash-alt"></i></a>
         </div>
@@ -96,7 +101,8 @@
     </div>
     <!-- If user is the same user that added the book then show edit book button -->
     {% elif session.user.lower() == result.added_by.lower() %}
-    <a href="{{ url_for('edit_book', book_id=result._id) }}" class="btn edit-btn btn-sm hover">Edit Book</a>
+    <a href="{{ url_for('edit_book', book_id=result._id) }}" class="btn edit-btn btn-sm hover"
+      aria-label="Link to edit book page">Edit Book</a>
     {% endif %}
     {% endif %}
   </div>
@@ -105,7 +111,7 @@
 <!-- Back to library button -->
 <div class="row text-center">
   <div class="col-12 text-center">
-    <a class="library-link" href="{{ url_for('library') }}">Back to Library</a>
+    <a class="library-link" href="{{ url_for('library') }}" aria-label="Link to home page">Back to Library</a>
   </div>
 </div>
 <hr />
@@ -141,26 +147,32 @@
     <p><strong>Added by: </strong> {{ book.added_by }}</p>
     <!-- If user logged in show add to profile button -->
     {% if session.user %}
-    <a href="{{ url_for('profile_add', book_id=book._id) }}" class="btn profile-btn btn-sm hover">Add to profile</a>
+    <a href="{{ url_for('profile_add', book_id=book._id) }}" class="btn profile-btn btn-sm hover"
+      aria-label="Link to add to profile page">Add to profile</a>
     <!-- If user is an admin then show edit and delete button -->
     {% if admin %}
-    <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-sm hover">Edit Book</a>
+    <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-sm hover"
+      aria-label="Link to edit book page">Edit Book</a>
     <a data-toggle="collapse" data-target="#{{ book.title.replace(' ', '') }}-delete"
-      class="btn delete-btn btn-sm hover">Delete Book</a>
+      class="btn delete-btn btn-sm hover" aria-label="Will open delete confirmation section">Delete Book</a>
     <!-- Delete book confirmation with delete and cancel buttons -->
     <div id="{{ book.title.replace(' ', '') }}-delete" class="row collapse warning">
       <div class="col-12">
-        <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete {{ book.title }}?</strong>
+        <strong><i class="fas fa-exclamation" aria-hidden="true"></i> Are you sure you want to delete
+          {{ book.title }}?</strong>
         <div>
-          <a data-toggle="collapse" data-target="#{{ book.title.replace(' ', '') }}-delete" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
+          <a data-toggle="collapse" data-target="#{{ book.title.replace(' ', '') }}-delete"
+            class="btn btn-sm cancel-btn hover" aria-label="Will close delete confirmation section">Cancel <i
+              class="fas fa-times" aria-hidden="true"></i></a>
           <a href="{{ url_for('delete_book', book_id=book._id) }}" class="btn btn-sm delete-btn hover">Delete <i
-              class="fas fa-trash-alt"></i></a>
+              class="fas fa-trash-alt" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
     <!-- If user is the same user that added the book then show edit book button -->
     {% elif session.user.lower() == book.added_by.lower() %}
-    <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-sm hover">Edit Book</a>
+    <a href="{{ url_for('edit_book', book_id=book._id) }}" class="btn edit-btn btn-sm hover"
+      aria-label="Link to edit book page">Edit Book</a>
     {% endif %}
     {% endif %}
   </div>
@@ -171,5 +183,5 @@
 
 <!-- Footer link specific for the page -->
 {% block link %}
-<a class="footer-link" href="{{ url_for('library') }}">Back to top</a><br>
+<a class="footer-link" href="{{ url_for('library') }}" aria-label="Back to top link">Back to top</a><br>
 {% endblock %}
