@@ -6,7 +6,7 @@
 <div class="image-container">
   <div class="row">
     <div class="col-12 text-center header">
-      <h2>Manage Users <i class="fas fa-user"></i></h2>
+      <h2>Manage Users <i class="fas fa-user" aria-hidden="true"></i></h2>
     </div>
   </div>
 </div>
@@ -23,7 +23,7 @@
     </div>
     <!-- Search User submit button -->
     <div class="col-3 search">
-      <button type="submit" class="btn btn-md search-btn hover">Search <i class="fas fa-search"></i></button>
+      <button type="submit" class="btn btn-md search-btn hover">Search <i class="fas fa-search" aria-hidden="true"></i></button>
     </div>
   </div>
 </form> 
@@ -40,17 +40,17 @@
     </div>
     <!-- Edit and delete buttons -->
     <div class="col-5 col-md-5 offset-md-0">
-      <a href="{{ url_for('edit_user', user_id=result._id) }}"class="btn btn-sm p-1 edit-btn hover">Edit <i class="fas fa-edit"></i></a>
-      <a data-toggle="collapse" data-target="#{{ result.username }}-delete" class="btn btn-sm p-1 delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
+      <a href="{{ url_for('edit_user', user_id=result._id) }}" aria-label="Opens edit user page" class="btn btn-sm p-1 edit-btn hover">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+      <a data-toggle="collapse" data-target="#{{ result.username }}-delete" aria-label="Opens delete user confirmation section" class="btn btn-sm p-1 delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
     </div>
   </div>
   <!-- Delete user confirmation with delete and cancel buttons -->
   <div id="{{ result.username }}-delete" class="row collapse text-center warning">
     <div class="col-12">
-      <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete {{ result.username }}?</strong>
+      <strong><i class="fas fa-exclamation" aria-hidden="true"></i> Are you sure you want to delete {{ result.username }}?</strong>
       <div>
-        <a data-toggle="collapse" data-target="#{{ result.username }}-delete" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
-        <a href="{{ url_for('delete_user', user_id=result._id) }}"class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
+        <a data-toggle="collapse" data-target="#{{ result.username }}-delete" aria-label="Closes delete user confirmation section" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times" aria-hidden="true"></i></a>
+        <a href="{{ url_for('delete_user', user_id=result._id) }}"class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
@@ -65,17 +65,17 @@
   </div>
   <!-- Edit and delete buttons -->
   <div class="col-4 col-md-5 offset-md-0">
-    <a href="{{ url_for('edit_user', user_id=user._id) }}"class="btn btn-sm p-1 edit-btn hover">Edit <i class="fas fa-edit"></i></a>
-    <a data-toggle="collapse" data-target="#{{ user.username }}-delete" class="btn btn-sm p-1 delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
+    <a href="{{ url_for('edit_user', user_id=user._id) }}" aria-label="Opens edit user page" class="btn btn-sm p-1 edit-btn hover">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+    <a data-toggle="collapse" data-target="#{{ user.username }}-delete" aria-label="Opens delete user confirmation section" class="btn btn-sm p-1 delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
   </div>
 </div>
 <!-- Delete user confirmation with delete and cancel buttons -->
 <div id="{{ user.username }}-delete" class="row collapse text-center warning">
   <div class="col-12">
-    <strong><i class="fas fa-exclamation"></i> Are you sure you want to delete {{ user.username }}?</strong>
+    <strong><i class="fas fa-exclamation" aria-hidden="true"></i> Are you sure you want to delete {{ user.username }}?</strong>
     <div>
-      <a data-toggle="collapse" data-target="#{{ user.username }}-delete" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times"></i></a>
-      <a href="{{ url_for('delete_user', user_id=user._id) }}"class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt"></i></a>
+      <a data-toggle="collapse" data-target="#{{ user.username }}-delete" aria-label="Closes delete genre confirmation section" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times" aria-hidden="true"></i></a>
+      <a href="{{ url_for('delete_user', user_id=user._id) }}"class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
     </div>
   </div>
 </div>
@@ -85,5 +85,5 @@
 
 <!-- Footer link specific for the page -->
 {% block link %}
-<a class="footer-link" href="{{ url_for('manage_users') }}">Back to top</a><br>
+<a class="footer-link" href="{{ url_for('manage_users') }}" aria-label="Back to top link">Back to top</a><br>
 {% endblock %}
