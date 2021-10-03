@@ -255,6 +255,15 @@ input {
     animation-timing-function: linear;  
     color: white;
   }
+.pagination-links a.page-link {
+    color: #012d50;
+}
+.pagination-links .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #012d50;
+    border-color: #012d50;
+}
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
