@@ -31,40 +31,40 @@
             <div class="collapse navbar-collapse" id="navdropdownmenu">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('library') }}">Home</a>
+                        <a class="nav-link" href="{{ url_for('library') }}" aria-label="link to home page">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}">About</a>
+                        <a class="nav-link" href="{{ url_for('about') }}" aria-label="link to about page">About</a>
                     </li>
                     <!-- Shown only for signed in users -->
                     {% if session.user %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                        <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}" aria-label="link to profile page">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('sign_out') }}">Sign Out</a>
+                        <a class="nav-link" href="{{ url_for('sign_out') }}" aria-label="link to sign out">Sign Out</a>
                     </li>
                     <!-- Shown only for admin users -->
                     {% if admin %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('manage_genre') }}">Manage Genres</a>
+                        <a class="nav-link" href="{{ url_for('manage_genre') }}" aria-label="link to manage genrespage">Manage Genres</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('manage_users') }}">Manage Users</a>
+                        <a class="nav-link" href="{{ url_for('manage_users') }}" aria-label="link to manage users page">Manage Users</a>
                     </li>
                     {% endif %}
                     <!-- Shown if not signed in -->
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('sign_in') }}">Sign In</a>
+                        <a class="nav-link" href="{{ url_for('sign_in') }}" aria-label="link to sign in page">Sign In</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for ('register') }}" aria-label="">Sign Up</a>
+                        <a class="nav-link" href="{{ url_for ('register') }}" aria-label="link to sign up page">Sign Up</a>
                     </li>
                     {% endif %}
                     <!-- Last nav link shown for everyone -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('contact') }}" aria-label="">Contact Us</a>
+                        <a class="nav-link" href="{{ url_for('contact') }}" aria-label="link to contact us page">Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -85,9 +85,9 @@
             {% for message in messages %}
             <div class="flashes text-center">
                 <h4 class="warning">
-                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-bell" aria-hidden="true"></i>
                     {{ message }}
-                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-bell" aria-hidden="true"></i>
                 </h4>
             </div>
             {% endfor %}
@@ -124,8 +124,8 @@
             <div class="col-6 text-center">
                 <!-- If user not signed these links will be displayed -->
                 {% if not session.user %}
-                <a class="footer-link" href="{{ url_for ('register') }}">Sign Up</a><br>
-                <a class="footer-link" href="{{ url_for ('sign_in') }}">Sign In</a><br>
+                <a class="footer-link" href="{{ url_for ('register') }}" aria-label="link to sign up page">Sign Up</a><br>
+                <a class="footer-link" href="{{ url_for ('sign_in') }}" aria-label="link to sign in page">Sign In</a><br>
                 {% endif %}
 
                 <!-- Individual page "back to top" link will be inserted -->
@@ -135,8 +135,8 @@
 
                 <!-- If user logged in these links will be displayed -->
                 {% if session.user %}
-                <a class="footer-link" href="{{ url_for ('sign_out') }}">Sign Out</a><br>
-                <a class="footer-link" href="{{ url_for ('edit_account') }}">Edit account</a><br>
+                <a class="footer-link" href="{{ url_for ('sign_out') }}" aria-label="link to sign out page">Sign Out</a><br>
+                <a class="footer-link" href="{{ url_for ('edit_account') }}" aria-label="link to edit account">Edit account</a><br>
                 {% endif %}
             </div>
         </div>
