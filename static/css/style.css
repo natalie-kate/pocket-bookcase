@@ -182,6 +182,7 @@ textarea {
     background-color: rgba(137, 37, 23, 0.75) ;
     color: white;
     border-radius: 5px;
+    font-size: 18px;
 }
 .signin.form {
     border: 1px solid #ced4da;
@@ -338,6 +339,9 @@ input {
         font-family: 'Tangerine', cursive;
         font-size: 60px;
         margin-bottom: 0;
+    }
+    .flashes {
+        font-size: 24px;
     }
 }
 @media(min-width:770px){
