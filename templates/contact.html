@@ -5,7 +5,7 @@
 {% block image %}
 <div class="image-container">
     <div class="col-12 header text-center">
-        <h2 class="text-center">Get in touch! <i class="fas fa-keyboard"></i></h2>
+        <h2 class="text-center">Get in touch! <i class="fas fa-keyboard" aria-hidden="true"></i></h2>
     </div>
 </div>
 {% endblock %}
@@ -53,7 +53,7 @@
     <div class="row button text-center">
         <div class="col-10 offset-1 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
             <button id="submit-button" type="submit" class="btn my-btn btn-lg hover">Send message
-                <i class="fas fa-envelope"></i></button>
+                <i class="fas fa-envelope" aria-hidden="true"></i></button>
         </div>
     </div>
 </form>
@@ -81,7 +81,7 @@
 
 <!-- Footer link specific for the page -->
 {% block link %}
-<a class="footer-link" href="{{ url_for('contact') }}">Back to top</a><br />
+<a class="footer-link" href="{{ url_for('contact') }}" aria-label="Back top top link">Back to top</a><br />
 {% endblock %}
 
 <!-- Script specific for the page -->
