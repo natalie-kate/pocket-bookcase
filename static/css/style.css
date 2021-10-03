@@ -10,7 +10,7 @@ body{
 .navbar-toggler,
 .footer-link,
 .social,
-.sign-up-link,
+.sign-up-link a,
 .register-link,
 .library-link,
 .sign-in-link,
@@ -77,6 +77,9 @@ h3.bookcase {
     font-family: 'Tangerine', cursive;
     font-size: 60px;
     margin-bottom: 0;
+}
+.about h3{
+    margin-top: 10px;
 }
 .add-book h3,
 h3.genres,
@@ -231,10 +234,6 @@ input[name=rating] {
 .custom-control {
     margin-top : 10px;
     margin-bottom : 10px;
-}
-.card {
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 input {
     padding-left: 5px;
