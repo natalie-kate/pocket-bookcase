@@ -2,6 +2,7 @@
 import os
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
+from flask_paginate import Pagination, get_page_args
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -23,12 +24,6 @@ def admin():
     return admin
 
 
-# books function to find all book documents in database
-def books():
-    books = mongo.db.books.find().limit(8)
-    return books
-
-
 # genres function to find all current genre documents
 def genres():
     genres = mongo.db.genres.find()
@@ -39,11 +34,30 @@ def genres():
 @app.route("/")
 @app.route("/library")
 def library():
+    # Find all books
+    books = list(mongo.db.books.find())
+
+    # Pagination, code mostly from
+    # https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9
+    def get_books(offset=0, per_page=5):
+        offset = page * per_page - per_page
+        return books[offset: offset + per_page]
+
+    page, per_page, offset = get_page_args(
+        page_parameter='page', per_page_parameter='per_page')
+    per_page = 5
+    pagination_books = get_books(offset=offset, per_page=per_page)
+    pagination = Pagination(
+        page=page, per_page=per_page, total=len(books),
+        css_framework='bootstrap4')
     # If a user is logged in then admin will be passed
     # into template as well.
     if session:
-        return render_template("library.html", books=books(), admin=admin())
-    return render_template("library.html", books=books())
+        return render_template('library.html', admin=admin(),
+                               books=pagination_books, page=page,
+                               per_page=per_page, pagination=pagination)
+    return render_template('library.html', books=pagination_books, page=page,
+                           per_page=per_page, pagination=pagination)
 
 
 # "search_library" view, gets user input from search box and looks
@@ -54,15 +68,31 @@ def search_library():
         search = request.form.get("search").lower()
         results = list(mongo.db.books.find(
             {"$text": {"$search": search}}))
+
+        # Pagination, code mostly from
+        # https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9
+        def get_books(offset=0, per_page=5):
+            offset = page * per_page - per_page
+            return results[offset: offset + per_page]
+
+        page, per_page, offset = get_page_args(
+            page_parameter='page', per_page_parameter='per_page')
+        per_page = 5
+        pagination_results = get_books(offset=offset, per_page=per_page)
+        pagination = Pagination(
+            page=page, per_page=per_page, total=len(results),
+            css_framework='bootstrap4')
         # If there are results then check whether user logged in
         # to determine whether admin needs passed in or not.
         if results:
             if session:
                 return render_template(
-                    "library.html", admin=admin(), results=results)
+                    "library.html", admin=admin(), results=pagination_results,
+                    page=page, per_page=per_page, pagination=pagination)
             else:
                 return render_template(
-                    "library.html", results=results)
+                    "library.html", results=pagination_results, page=page,
+                    per_page=per_page, pagination=pagination)
         # If there are no results then display flash message.
         else:
             flash(f"Sorry cannot find { search.title()}")
