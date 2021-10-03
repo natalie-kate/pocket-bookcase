@@ -16,17 +16,20 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# admin function to find users admin status
 def admin():
     admin = mongo.db.users.find_one(
         {"username": session["user"]})["admin"]
     return admin
 
 
+# books function to find all book documents in database
 def books():
-    books = mongo.db.books.find()
+    books = mongo.db.books.find().limit(8)
     return books
 
 
+# genres function to find all current genre documents
 def genres():
     genres = mongo.db.genres.find()
     return genres
