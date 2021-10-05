@@ -539,15 +539,13 @@ def manage_genre():
 # "add_genre" view to add genre
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
-    # if form submitted get info from form field
-    if request.method == "POST":
-        # Check user is admin
-        if mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]:
+    # Check if user is admin prior to commencing
+    if admin():
+        # If form submitted get info from form field
+        if request.method == "POST":
             # Check genre doesn't already exist in database
             existing_genre = mongo.db.genres.find_one(
-                {"name": request.form.get("name").lower()}
-            )
+                {"name": request.form.get("name").lower()})
             # If genre already exists display message and refresh form
             if existing_genre:
                 flash("This genre is already in our collection")
@@ -561,6 +559,9 @@ def add_genre():
                 flash(
                     f'Thanks { genre_name.title() } is now in our collection')
                 return redirect(url_for("manage_genre"))
+    else:
+        flash("Sorry, admin only")
+        return redirect(url_for("library"))
 
 
 # "edit_genre" view to edit current genres
