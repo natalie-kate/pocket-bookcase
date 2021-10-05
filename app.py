@@ -516,11 +516,15 @@ def edit_book(book_id):
 # "delete_book" view to delete book from library
 @app.route("/delete_book, <book_id>")
 def delete_book(book_id):
-    # Delete book, display message and reload library
-    title = mongo.db.books.find_one({"_id": ObjectId(book_id)})["title"]
-    mongo.db.books.remove({"_id": ObjectId(book_id)})
-    flash(f"{title} Successfully Deleted")
-    return redirect(url_for("library"))
+    if admin():
+        # Delete book, display message and reload library
+        title = mongo.db.books.find_one({"_id": ObjectId(book_id)})["title"]
+        mongo.db.books.remove({"_id": ObjectId(book_id)})
+        flash(f"{title} Successfully Deleted")
+        return redirect(url_for("library"))
+    else:
+        flash("You can't delete that")
+        return redirect(url_for("library"))
 
 
 # "manage_genre" view to see all current genres
