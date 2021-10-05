@@ -473,6 +473,7 @@ def add_book():
 # "edit_book" view to edit books in library
 @app.route("/edit_book, <book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
+    book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     # if edit_book form submitted get information from form
     if request.method == "POST":
         # if admin get title from form otherwise from the book document
@@ -501,10 +502,15 @@ def edit_book(book_id):
         return redirect(url_for("library"))
     # Check user is logged in before using edit_book template and pass
     # in genre, book and admin variables
-    if session["user"]:
-        book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    if admin():
         return render_template(
-            "edit-book.html", genres=genres(), book=book, admin=admin())
+            "edit-book.html", genres=genres(), book=book, admin=admin)
+    elif session["user"] == book["added_by"]:
+        return render_template(
+            "edit-book.html", genres=genres(), book=book)
+    else:
+        flash("You can't edit that")
+        return redirect(url_for("library"))
 
 
 # "delete_book" view to delete book from library
