@@ -154,7 +154,7 @@ def register():
 # "sign_in" view
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
-    # When user submits sign in form check that username exists
+    # When user submits sign in form, check that username exists
     if request.method == "POST":
         existing = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()}
@@ -200,6 +200,9 @@ def profile(username):
         return render_template(
             "profile.html", name=name, admin=admin(), read_books=read_books,
             own_books=own_books, books_to_read=books_to_read)
+    else:
+        flash("You need to be signed in to do that")
+        return redirect(url_for("sign_in"))
 
 
 # "profile_add" view for adding books from library to profile
@@ -269,6 +272,9 @@ def profile_add(book_id):
     if session["user"]:
         return render_template(
             "profile-add.html", admin=admin(), book=book)
+    else:
+        flash("You need to be signed in to do that")
+        return redirect(url_for("sign_in"))
 
 
 # "not_read" view, to move book from read_books to books_to_read
@@ -459,6 +465,9 @@ def add_book():
     # Use add_book template, passing in admin and genre
     if session["user"]:
         return render_template("add-book.html", genres=genres(), admin=admin())
+    else:
+        flash("You need to be signed in to do that")
+        return redirect(url_for("sign_in"))
 
 
 # "edit_book" view to edit books in library
