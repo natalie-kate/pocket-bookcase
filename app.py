@@ -704,14 +704,18 @@ def edit_user(user_id):
 # "delete_user" view to delete users account by admin
 @app.route("/delete_user, <user_id>")
 def delete_user(user_id):
-    username = mongo.db.users.find_one(
-          {"_id": ObjectId(user_id)})["username"]
     # If admin delete user, display message and reload page
     if admin():
+        username = mongo.db.users.find_one(
+          {"_id": ObjectId(user_id)})["username"]
         mongo.db.profiles.remove({"user_id": ObjectId(user_id)})
         mongo.db.users.remove({"_id": ObjectId(user_id)})
         flash(f"{ username } Successfully Deleted")
         return redirect(url_for("manage_users"))
+    else:
+        flash("Sorry, admin only")
+        return redirect(url_for("library"))
+
 
 
 # "edit_account" view for user to edit their information
