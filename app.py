@@ -592,12 +592,14 @@ def edit_genre(genre_id):
 def delete_genre(genre_id):
     # if user an admin then delete genre, display message
     # and reload manage_genre.
-    if mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]:
+    if admin():
         genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})["name"]
         mongo.db.genres.remove({"_id": ObjectId(genre_id)})
         flash(f"{ genre.title() } Successfully Deleted")
         return redirect(url_for("manage_genre"))
+    else:
+        flash("Sorry, you can't delete that")
+        return redirect(url_for("library"))
 
 
 # "manage_users" view to allow admin to view current users
