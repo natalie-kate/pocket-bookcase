@@ -653,48 +653,52 @@ def search_users():
 # "edit_user" view to edit users information by admin
 @app.route("/edit_user, <user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
-    # When form is submitted get information from fields
-    if request.method == "POST":
-        username = mongo.db.users.find_one(
-            {"_id": ObjectId(user_id)})["username"]
-        is_admin = bool("true") if request.form.get("admin") else bool("")
-        # If password and confirm password don't match, display message
-        # and refresh form
-        if request.form.get("password") != request.form.get(
-                "confirm-password"):
-            flash("Your passwords did not match, please try again")
-            return redirect(url_for("edit_user"))
-        # If password filled in, update three fields in the document
-        # display message and reload page
-        if request.form.get("password"):
-            update_user = {
-                "email": request.form.get("email"),
-                "admin": is_admin,
-                "password": generate_password_hash(
-                    request.form.get("password"))
-            }
-            mongo.db.users.update(
-                {"_id": ObjectId(user_id)}, {"$set": update_user})
-
-            flash(f"Thankyou {username} has been updated,") + (
-                "email them with their new password")
-            return redirect(url_for("manage_users"))
-        # If password not needing updated, update two fields in the document
-        # display message and reload page
-        else:
-            update_user = {
-                "email": request.form.get("email"),
-                "admin": is_admin
-            }
-            mongo.db.users.update(
-                {"_id": ObjectId(user_id)}, {"$set": update_user})
-
-            flash(f"Thankyou {username} has been updated")
-            return redirect(url_for("manage_users"))
-    # If admin use edit_user template
+    # Check if user is an admin
     if admin():
         user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+        # When form is submitted get information from fields
+        if request.method == "POST":
+            username = mongo.db.users.find_one(
+                {"_id": ObjectId(user_id)})["username"]
+            is_admin = bool("true") if request.form.get("admin") else bool("")
+            # If password and confirm password don't match, display message
+            # and refresh form
+            if request.form.get("password") != request.form.get(
+                    "confirm-password"):
+                flash("Your passwords did not match, please try again")
+                return redirect(url_for("edit_user"))
+            # If password filled in, update three fields in the document
+            # display message and reload page
+            if request.form.get("password"):
+                update_user = {
+                    "email": request.form.get("email"),
+                    "admin": is_admin,
+                    "password": generate_password_hash(
+                        request.form.get("password"))
+                }
+                mongo.db.users.update(
+                    {"_id": ObjectId(user_id)}, {"$set": update_user})
+
+                flash(f"Thankyou {username} has been updated,") + (
+                    "email them with their new password")
+                return redirect(url_for("manage_users"))
+            # If password not needing updated, update two fields in the
+            # document display message and reload page
+            else:
+                update_user = {
+                    "email": request.form.get("email"),
+                    "admin": is_admin
+                }
+                mongo.db.users.update(
+                    {"_id": ObjectId(user_id)}, {"$set": update_user})
+
+                flash(f"Thankyou {username} has been updated")
+                return redirect(url_for("manage_users"))
+        # If user is admin use edit_user template
         return render_template("edit-user.html", user=user, admin=admin)
+    else:
+        flash("Sorry, admin only")
+        return redirect(url_for("library"))
 
 
 # "delete_user" view to delete users account by admin
