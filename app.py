@@ -717,69 +717,72 @@ def delete_user(user_id):
         return redirect(url_for("library"))
 
 
-
 # "edit_account" view for user to edit their information
 @app.route("/edit_account", methods=["GET", "POST"])
 def edit_account():
-    # Get information from db and assign to variables
-    user = mongo.db.users.find_one(
-          {"username": session["user"]})
-    # If form submitted get information from form fields
-    if request.method == "POST":
-        # If password and confirm_password don't match display message
-        if request.form.get("password") != request.form.get(
-                "confirm-password"):
-            flash("Your passwords did not match, please try again")
-            return redirect(url_for("edit_account"))
-        # Check password matches username
-        if request.form.get("password"):
-            if check_password_hash(
-               user["password"], request.form.get("current-password")):
-                # If password and confirm password don't match display
-                # message and reload page
-                if request.form.get("password") != request.form.get(
-                  "confirm-password"):
-                    flash("Your passwords did not match, please try again")
-                    return redirect(url_for("edit_account"))
-                # If password matches username update 5 fields, display
-                # message and redirect to profile
-                else:
-                    update_user = {
-                        "first_name": request.form.get("first_name"),
-                        "surname": request.form.get("surname"),
-                        "email": request.form.get("email"),
-                        "genre": request.form.get("genre"),
-                        "password": generate_password_hash(
-                            request.form.get("password"))
-                    }
-                    mongo.db.users.update(user, {"$set": update_user})
-
-                    flash("Thankyou that's been updated")
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
-            # If password doesn't match that in user document display
-            # message and reload page
-            else:
-                flash("Your information did not match our records " +
-                      "please try again.")
-                return redirect(url_for("edit_account"))
-        # If password not filled in, update four fields in the document
-        # display message and reload page
-        else:
-            update_profile = {
-                "first_name": request.form.get("first_name"),
-                "surname": request.form.get("surname"),
-                "email": request.form.get("email"),
-                "genre": request.form.get("genre")
-            }
-            mongo.db.users.update(
-                user, {"$set": update_profile})
-            flash("Thankyou that's been updated")
-            return redirect(url_for("profile", username=session["user"]))
-    # If user logged in use edit_account template, passing in variables
+    # Check user is logged in prior to commencing
     if session["user"]:
+        # Get information from db and assign to variables
+        user = mongo.db.users.find_one(
+            {"username": session["user"]})
+        # If form submitted get information from form fields
+        if request.method == "POST":
+            # If password and confirm_password don't match display message
+            if request.form.get("password") != request.form.get(
+                    "confirm-password"):
+                flash("Your passwords did not match, please try again")
+                return redirect(url_for("edit_account"))
+            # Check password matches username
+            if request.form.get("password"):
+                if check_password_hash(
+                      user["password"], request.form.get("current-password")):
+                    # If password and confirm password don't match display
+                    # message and reload page
+                    if request.form.get("password") != request.form.get(
+                          "confirm-password"):
+                        flash("Your passwords did not match, please try again")
+                        return redirect(url_for("edit_account"))
+                    # If password matches username update 5 fields, display
+                    # message and redirect to profile
+                    else:
+                        update_user = {
+                            "first_name": request.form.get("first_name"),
+                            "surname": request.form.get("surname"),
+                            "email": request.form.get("email"),
+                            "genre": request.form.get("genre"),
+                            "password": generate_password_hash(
+                                request.form.get("password"))
+                        }
+                        mongo.db.users.update(user, {"$set": update_user})
+
+                        flash("Thankyou that's been updated")
+                        return redirect(url_for(
+                            "profile", username=session["user"]))
+                # If password doesn't match that in user document display
+                # message and reload page
+                else:
+                    flash("Your information did not match our records " +
+                          "please try again.")
+                    return redirect(url_for("edit_account"))
+            # If password not filled in, update four fields in the document
+            # display message and reload page
+            else:
+                update_profile = {
+                    "first_name": request.form.get("first_name"),
+                    "surname": request.form.get("surname"),
+                    "email": request.form.get("email"),
+                    "genre": request.form.get("genre")
+                }
+                mongo.db.users.update(
+                    user, {"$set": update_profile})
+                flash("Thankyou that's been updated")
+                return redirect(url_for("profile", username=session["user"]))
+        # If user logged in use edit_account template, passing in variables
         return render_template(
             "edit-account.html", user=user, admin=admin(), genres=genres())
+    else:
+        flash("You need to be logged in to do that")
+        return redirect(url_for("sign_in"))
 
 
 # "delete_account" view allows users to delete their own account
