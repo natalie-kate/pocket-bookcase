@@ -165,7 +165,7 @@ label,
 }
 .profile-books .book-title{
     padding-right: 0;
-    padding-left: 30px;
+    padding-left: 0;
 }
 .profile-books .buttons {
     padding-left: 0;
@@ -300,6 +300,10 @@ input {
 .nav-link {
     line-height: 1;
 }
+.profile-books .btn {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
 @media(max-width:350px){
     .social{
         font-size: 16px;
@@ -309,6 +313,9 @@ input {
 @media(max-width:750px){
     .btn i {
         display: none;
+    }
+    .buttons {
+        text-align: center;
     }
 }
 @media(min-width:750px){
@@ -345,6 +352,10 @@ input {
     }
     .flashes {
         font-size: 24px;
+    }
+    .profile-books .book-title{
+        padding-right: 0;
+        padding-left: 30px;
     }
 }
 @media(min-width:770px){
