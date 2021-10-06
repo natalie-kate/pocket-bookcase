@@ -645,6 +645,9 @@ def search_users():
                 else:
                     flash(f"Sorry couldn't find {search}")
                     return redirect(url_for("manage_users"))
+    else:
+        flash("Sorry, admin only")
+        return redirect(url_for("library"))
 
 
 # "edit_user" view to edit users information by admin
