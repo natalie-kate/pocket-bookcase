@@ -605,12 +605,15 @@ def delete_genre(genre_id):
 # "manage_users" view to allow admin to view current users
 @app.route("/manage_users")
 def manage_users():
-    # Assign data from database to variables to send into template
-    users = mongo.db.users.find()
     # if user is an admin use manage_users template
     if admin():
+        # Assign data from database to variables to send into template
+        users = mongo.db.users.find()
         return render_template(
             "manage-users.html", users=users, admin=admin)
+    else:
+        flash("Sorry, admin only")
+        return redirect(url_for("library"))
 
 
 # "search_users" view to search current users by admin
