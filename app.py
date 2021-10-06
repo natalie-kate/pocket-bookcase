@@ -567,14 +567,13 @@ def add_genre():
 # "edit_genre" view to edit current genres
 @app.route("/edit_genre, <genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
-    # if form submitted get info from field form
-    if request.method == "POST":
-        genre_name = mongo.db.genres.find_one(
-            {"_id": ObjectId(genre_id)})["name"]
-        # if user is admin update genre, display message
-        # and reload manage_genre page.
-        if mongo.db.users.find_one(
-          {"username": session["user"]})["admin"]:
+    # Check if user is admin prior to commencing
+    if admin():
+        # if form submitted get info from field form, display
+        # message and reload manage_genre
+        if request.method == "POST":
+            genre_name = mongo.db.genres.find_one(
+                {"_id": ObjectId(genre_id)})["name"]
             update_genre = {
                 "name": request.form.get("name").lower()
                 }
@@ -583,6 +582,9 @@ def edit_genre(genre_id):
             flash(f"Thankyou { genre_name.title() } has been updated to") + (
                 f"{ updated_name }")
             return redirect(url_for("manage_genre"))
+    else:
+        flash("Sorry, admin only")
+        return redirect(url_for("library"))
 
 
 # "delete_genre" view to delete a genre document from database
