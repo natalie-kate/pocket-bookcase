@@ -1,10 +1,77 @@
+/*---- Fonts ----*/
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic:wght@400;700&family=Tangerine:wght@400;700&display=swap');
-.container-fluid{
-    background-color: rgb(250, 247, 235);
-}
+
+/*---- General ----*/
 body{
     font-family: 'Gentium Book Basic', serif;
 }
+hr {
+    height: 10px;
+    border-radius: 25px;
+    width: 90vw;
+    border: none;
+    background-image: linear-gradient(to right, rgba(226, 192, 139, 0), rgba(112, 66, 65, 1), rgba(226, 192, 139, 0));
+}
+
+/*---- Containers ----*/
+.container-fluid{
+    background-color: rgb(250, 247, 235);
+}
+.title-container {
+    height: 25vh;
+    background: url("../images/app-images/books-med.jpg") no-repeat top center;
+    background-size: cover;
+    padding: 0;
+    border-radius: 10px;
+}
+.image-container {
+    height: 20vh;
+    background: url("../images/app-images/books-med.jpg") no-repeat top center;
+    background-size: cover;
+    padding: 0;
+    border-radius: 10px;
+}
+
+/*---- Headings ----*/
+.title-container h1,
+.header h1 {
+    color: rgb(250, 247, 235);
+    padding-top: 7vh;
+    font-family: 'Tangerine', cursive;
+    font-size: 60px;
+    font-weight: 700;
+}
+.library h2, 
+.header h2,
+h3.footer,
+.add-book h3,
+h3.genres,
+.search-results h3,
+h3.users,
+h3.bookcase {
+    padding-top: 5px;
+    font-family: 'Tangerine', cursive;
+    font-size: 50px;
+    margin-bottom: 0;
+}
+.header h2 {
+    color:rgb(250, 247, 235);
+    padding-top: 5vh;
+    padding-bottom: 15px;
+}
+.about h3{
+    margin-top: 10px;
+    text-decoration: underline;
+    text-align: center;
+}
+.library h2 {
+    padding-bottom: none;
+}
+.about h3 {
+    font-size: 24px;
+}
+
+/*---- Links ----*/
 .nav-link,
 .navbar-brand,
 .navbar-toggler,
@@ -32,7 +99,8 @@ body{
 .library-link:hover,
 .sign-in-link:hover,
 .profile-link:hover,
-.issue-link a:hover {
+.issue-link a:hover,
+.pagination-links a.page-link {
     color: #012d50;
     text-decoration: none;
 }
@@ -44,79 +112,23 @@ body{
     font-size: 20px;
     padding: 0 5px;
 }
-footer p {
-    margin-bottom: 0;
-}
-.title-container {
-    height: 25vh;
-    background: url("../images/app-images/books-med.jpg") no-repeat top center;
-    background-size: cover;
-    padding: 0;
-    border-radius: 10px;
-}
-.image-container {
-    height: 20vh;
-    background: url("../images/app-images/books-med.jpg") no-repeat top center;
-    background-size: cover;
-    padding: 0;
-    border-radius: 10px;
-}
-.title-container h1,
-.header h1 {
-    color: rgb(250, 247, 235);
-    padding-top: 7vh;
-    font-family: 'Tangerine', cursive;
-    font-size: 60px;
-    font-weight: 700;
-}
-.library h2, 
-.header h2,
-.add-book h3,
-h3.genres,
-.search-results h3,
-h3.users,
-h3.bookcase {
-    padding-top: 5px;
-    font-family: 'Tangerine', cursive;
-    font-size: 50px;
-    margin-bottom: 0;
-}
-.about h3{
-    margin-top: 10px;
-}
-.image-container i {
-    font-size: 40px;
-}
-.add-book h3,
-h3.genres,
-.search-results h3,
-h3.users,
-h3.bookcase {
-    font-size: 50px;
-}
 .bookshelf a {
     font-size: 24px;
 }
-.header h2 {
-    color:rgb(250, 247, 235);
-    padding-top: 5vh;
-    padding-bottom: 15px;
+.warning a {
+    margin-bottom: 8px;
 }
-img { 
-    width: 60%;
-    height: auto;
-    border-radius: 10px;
+.nav-link {
+    line-height: 1;
 }
-hr {
-    height: 10px;
-    border-radius: 25px;
-    width: 90vw;
-    border: none;
-    background-image: linear-gradient(to right, rgba(226, 192, 139, 0), rgba(112, 66, 65, 1), rgba(226, 192, 139, 0));
+.pagination-links .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #012d50;
+    border-color: #012d50;
 }
-.error-message {
-    padding-top: 10px;
-}
+
+/*---- Buttons ----*/
 .my-btn {
     color: white;
     border: 1px solid #231709;
@@ -126,11 +138,13 @@ hr {
     padding-left: 0;
     padding-right: 0;
 }
+.btn {
+    border: 1px solid #231709;
+    color: #FAF7EB;
+}
 .delete-btn,
 .edit-genres-btn {
-    background-color: rgb(156 22 12);
-    border: 1px solid #231709;
-    color: rgb(250, 247, 235);
+    background-color: #9C160C;
     margin-right: 5px;
 }
 .edit-genres-btn,
@@ -145,8 +159,7 @@ hr {
 }
 .edit-btn,
 .read-btn {
-    background-color:rgb(188 150 83);
-    border: 1px solid #231709;
+    background-color:#BC9653;
     color:  #231709;
     margin-right: 0px;
 }
@@ -154,8 +167,52 @@ hr {
 .search-btn,
 .reset-btn {
     background-color:#012d50;
-    border: 1px solid #231709;
-    color: rgb(250, 247, 235);
+}
+.genres-btn button {
+    width: 100%;
+}
+.edit-genre {
+    padding-left: 0;
+    padding-right: 0;
+}
+.btn.hover:hover{ 
+    animation: pulse 1s infinite;
+    animation-timing-function: linear;  
+    color: white;
+}
+.genres .btn {
+    height: 41px;
+}
+.profile-books .btn,
+.profile-books p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.buttons .btn {
+    margin-left: 5px;
+}
+.btn.hover {
+    transition: none;
+}
+.own-btn,
+.cancel-btn {
+    background-color: #043c04;
+}
+.profile-books .btn {
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
+.search-box .my-btn {
+    width: 100%;
+}
+
+/*---- Forms ----*/
+input,
+.custom-select,
+textarea {
+    border: 1px solid #ced4da;
+    width: 100%;
+    border-radius: 5px;
 }
 fieldset {
     width:90%;
@@ -169,53 +226,6 @@ label,
 .rating-stars p {
     margin-bottom: 0;
 }
-.profile-books .book-title{
-    padding-right: 0;
-    padding-left: 0;
-}
-.profile-books .buttons {
-    padding-left: 0;
-}
-input,
-.custom-select,
-textarea {
-    border: 1px solid #ced4da;
-    width: 100%;
-    border-radius: 5px;
-}
-.books p {
-    margin-bottom: 0.25rem;
-}
-.flashes {
-    margin-top: 10px;
-    background-color: rgba(137, 37, 23, 0.75) ;
-    color: white;
-    border-radius: 5px;
-    font-size: 18px;
-}
-.signin.form {
-    border: 1px solid #ced4da;
-    padding: 10px;
-    margin-top: 5vh;
-}
-.row.genres {
-    margin-top: 10px;
-}
-.genres .btn {
-    height: 41px;
-}
-.profile-books .btn,
-.profile-books p {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-.profile-books .card {
-    height: 31px;
-}
-.buttons .btn {
-    margin-left: 5px;
-}
-/*---- Contact Form ----*/
 input[name=rating] {
     display: none;
   }
@@ -234,12 +244,6 @@ input[name=rating] {
     margin-top: 0;
     height: 38px;
 }
-.search-box .my-btn {
-    width: 100%;
-}
-.library h2 {
-    padding-bottom: none;
-}
 .custom-control {
     margin-top : 10px;
     margin-bottom : 10px;
@@ -250,47 +254,16 @@ input {
 .about {
     margin-bottom: 10px;
 }
-.about h3 {
-    font-size: 24px;
-}
-.genres-btn button {
-    width: 100%;
-}
-.edit-genre {
-    padding-left: 0;
-    padding-right: 0;
-}
-.btn.hover:hover{ 
-    animation: pulse 1s infinite;
-    animation-timing-function: linear;  
-    color: white;
-  }
-.pagination-links a.page-link {
-    color: #012d50;
-}
-.pagination-links .page-item.active .page-link {
-    z-index: 3;
-    color: #fff;
-    background-color: #012d50;
-    border-color: #012d50;
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-.btn.hover {
-    transition: none;
-}
-.own-btn,
-.cancel-btn {
-    background-color: #043c04;
-    border: 1px solid #231709;
-    color: rgb(250, 247, 235);
+.signin.form {
+    border: 1px solid #ced4da;
+    padding: 10px;
+    margin-top: 5vh;
 }
 .search {
     padding-left: 0;
 }
+
+/*---- Page content ----*/
 .users .col-10,
 .genres .col-10 {
     margin-bottom: 8px;
@@ -300,16 +273,52 @@ input {
     margin-bottom: 0px;
     font-size: 20px;
 }
-.warning a {
-    margin-bottom: 8px;
+.error-message {
+    padding-top: 10px;
 }
-.nav-link {
-    line-height: 1;
+footer p {
+    margin-bottom: 0;
 }
-.profile-books .btn {
-    margin-left: 2.5px;
-    margin-right: 2.5px;
+.image-container i {
+    font-size: 40px;
 }
+img { 
+    width: 60%;
+    height: auto;
+    border-radius: 10px;
+}
+.profile-books .book-title{
+    padding-right: 0;
+    padding-left: 0;
+}
+.profile-books .buttons {
+    padding-left: 0;
+}
+.books p {
+    margin-bottom: 0.25rem;
+}
+.flashes {
+    margin-top: 10px;
+    background-color: rgba(137, 37, 23, 0.75) ;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.row.genres {
+    margin-top: 10px;
+}
+.profile-books .card {
+    height: 31px;
+}
+
+/*---- Keyframes ----*/
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+/*---- Media Queries ----*/
 @media(max-width:350px){
     .social{
         font-size: 16px;
@@ -325,6 +334,9 @@ input {
     }
 }
 @media(min-width:750px){
+    body {
+        font-size: 20px;
+    }
     .my-btn {
         width: 20vw;
     }
