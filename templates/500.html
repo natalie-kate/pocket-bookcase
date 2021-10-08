@@ -1,0 +1,28 @@
+<!-- Gets code from base.html -->
+{% extends "base.html" %}
+
+<!-- Page header on image background -->
+{% block image %}
+<div class="image-container">
+    <div class="col-12 header text-center">
+        <h1>500 Error </h1>
+    </div>
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+<!-- Error message with back to home button -->
+<div class="row text-center error-message">
+    <div class="col-12 col-md-4 offset-md-4">
+        <h2>Oh no something went wrong with our server.<span> <i class="fas fa-sad-cry" aria-hidden="true"></i></span></h2>
+        <h2>Let's get you out of here!</h2>
+        <a class="btn btn-lg my-btn hover" href="{{ url_for('library') }}" aria-label="link back to home page">Back To Home Page</a>
+    </div>
+    <!-- Report issue button -->
+    <div class="col-12 col-md-4 offset-md-4 issue-link">
+        <a href="{{ url_for('contact') }}" aria-label="link to contact page">Report issue</a>
+    </div>
+</div>
+<hr>
+{% endblock %}
