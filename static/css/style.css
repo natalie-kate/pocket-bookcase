@@ -396,4 +396,31 @@ img {
     .navbar-brand{
         font-size: 40px;
     }
+    .title-container h1,
+    .header h1 {
+        padding-top: 15vh;
+        font-size: 100px;
+    }
+    .library h2, 
+    .header h2,
+    .add-book h3,
+    h3.genres,
+    .search-results h3,
+    h3.users,
+    h3.bookcase {
+        font-size: 80px;
+    }
+}
+@media(min-width:1450px){
+    .nav-link {
+        font-size: 24px;
+    }
+    .navbar-brand{
+        font-size: 50px;
+    }
+    .btn-sm,
+    .profile-books .card {
+        height: 45px;
+        font-size: 20px;
+    }
 }
