@@ -14,7 +14,8 @@ body{
 .register-link,
 .library-link,
 .sign-in-link,
-.profile-link {
+.profile-link,
+.issue-link a {
     color:  #231709;
     font-weight: 600;
 }
@@ -30,7 +31,8 @@ body{
 .register-link:hover,
 .library-link:hover,
 .sign-in-link:hover,
-.profile-link:hover {
+.profile-link:hover,
+.issue-link a:hover {
     color: #012d50;
     text-decoration: none;
 }
@@ -59,7 +61,8 @@ footer p {
     padding: 0;
     border-radius: 10px;
 }
-.title-container h1 {
+.title-container h1,
+.header h1 {
     color: rgb(250, 247, 235);
     padding-top: 7vh;
     font-family: 'Tangerine', cursive;
@@ -110,6 +113,9 @@ hr {
     width: 90vw;
     border: none;
     background-image: linear-gradient(to right, rgba(226, 192, 139, 0), rgba(112, 66, 65, 1), rgba(226, 192, 139, 0));
+}
+.error-message {
+    padding-top: 10px;
 }
 .my-btn {
     color: white;
@@ -328,7 +334,8 @@ input {
     .image-container{
         height: 30vh;
     }
-    .title-container h1 {
+    .title-container h1,
+    .header h1 {
         color: rgb(250, 247, 235);
         padding-top: 10vh;
         font-family: 'Tangerine', cursive;
