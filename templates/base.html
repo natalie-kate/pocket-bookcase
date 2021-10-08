@@ -103,9 +103,14 @@
 
     <!-- Footer with links -->
     <footer>
+        <div class="row text-center">
+            <div class="col-12">
+                <h3 class="footer"> Useful Links </h3>
+            </div>
+        </div>
         <div class="row">
             <!-- Social Links -->
-            <div class="col-6 text-center">
+            <div class="col-6 col-lg-3 offset-lg-3 text-center">
                 <p>Social Links</p>
                 <a class="col-1 social" href="https://www.instagram.com" target="_blank" rel="noopener"><i
                         class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Link will open
@@ -121,7 +126,7 @@
                         a new page.</span></a>
             </div>
             <!-- Nav Links -->
-            <div class="col-6 text-center">
+            <div class="col-6 col-lg-3 text-center">
                 <!-- If user not signed these links will be displayed -->
                 {% if not session.user %}
                 <a class="footer-link" href="{{ url_for ('register') }}" aria-label="link to sign up page">Sign Up</a><br>
