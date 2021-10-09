@@ -13,11 +13,19 @@
 <!-- Page content -->
 {% block content %}
 <!-- Edit account form -->
+<div class="row edit-account">
+    <div class="col-6 offset-3 header">
+        <h3>Personal Details</h3>
+    </div>
+    <div class="col-2 text-center">
+        <a href="{{ url_for('library') }}" aria-label="Go back to library" 
+        class="btn btn-sm delete-btn hover">Cancel <i class="fas fa-times" aria-hidden="true"></i></a>
+    </div>
+</div>
 <form id="edit-account-form" method="POST" action="{{ url_for ('edit_account') }}">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
             <fieldset>
-                <legend>Personal details</legend>
                 <!-- Fields prefilled with the existing information where they can -->
                 <label for="username">Username:</label><br />
                 <input id="username" type="text" name="username" value="{{ user.username }}" disabled required /><br />
