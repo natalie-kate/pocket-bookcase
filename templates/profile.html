@@ -15,7 +15,7 @@
 <h3 class="bookcase text-center">My Bookcase</h3>
 <div class="row bookshelf text-center">
   <a data-toggle="collapse" data-target="#read_books"
-    class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Read books <i
+    class="col-10 offset-1 col-md-8 offset-md-2 col-xl-6 offset-xl-3 btn btn-lg my-btn hover">Read books <i
       class="fas fa-caret-down"></i></a>
 </div>
 
@@ -23,10 +23,10 @@
 {% if read_books %}
 {% for book in read_books %}
 <div id="read_books" class="row collapse profile-books">
-  <div class="col-8 offset-2 col-md-4 book-title">
+  <div class="col-8 offset-2 col-md-4 col-xl-3 offset-xl-3 book-title">
     <p class="text-center card">{{ book.title() }}</p>
   </div>
-  <div class="col-10 offset-1 col-md-6 offset-md-0 buttons">
+  <div class="col-10 offset-1 col-md-6 offset-md-0 col-xl-3 buttons">
     <!-- Not read and remove buttons -->
     <a href="{{ url_for ('not_read', book=book) }}" class="btn btn-sm read-btn hover">Not read? <i
         class="far fa-edit"></i></a>
@@ -52,7 +52,7 @@
 
 <div class="row bookshelf text-center">
   <a data-toggle="collapse" data-target="#books_to_read"
-    class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Books to read <i
+    class="col-10 offset-1 col-md-8 offset-md-2 col-xl-6 offset-xl-3 btn btn-lg my-btn hover">Books to read <i
       class="fas fa-caret-down"></i></a>
 </div>
 
@@ -60,10 +60,10 @@
 {% if books_to_read %}
 {% for book in books_to_read %}
 <div id="books_to_read" class="row collapse profile-books">
-  <div class="col-8 offset-2 col-md-4 book-title">
+  <div class="col-8 offset-2 col-md-4 col-xl-3 offset-xl-3 book-title">
     <p class="text-center card">{{ book.title() }}</p>
   </div>
-  <div class="col-10 offset-1 col-md-6 offset-md-0 buttons">
+  <div class="col-10 offset-1 col-md-6 offset-md-0 col-xl-3 buttons">
     <!-- Read and remove buttons -->
     <a href="{{ url_for ('read_book', book=book) }}" class="btn btn-sm read-btn hover">
       Read? <i class="far fa-edit"></i></a>
@@ -89,7 +89,7 @@
 
 <div class="row bookshelf text-center">
   <a data-toggle="collapse" data-target="#own_books"
-    class="col-10 offset-1 col-md-8 offset-md-2 btn btn-md my-btn hover">Books I own <i
+    class="col-10 offset-1 col-md-8 offset-md-2 col-xl-6 offset-xl-3 btn btn-lg my-btn hover">Books I own <i
       class="fas fa-caret-down"></i></a>
 </div>
 
@@ -97,10 +97,10 @@
 {% if own_books  %}
 {% for book in own_books %}
 <div id="own_books" class="row collapse profile-books">
-  <div class="col-6 offset-1 col-md-5 offset-md-2 book-title">
+  <div class="col-6 offset-2 col-md-4 col-lg-3 offset-xl-3 book-title">
     <p class="text-center card">{{ book.title() }}</p>
   </div>
-  <div class="col-4 col-md-4 offset-md-0 buttons">
+  <div class="col-4 col-md-4 offset-md-0 col-xl-3 buttons">
     <a href="{{ url_for ('own_book_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i
         class="fas fa-trash-alt"></i></a>
   </div>
