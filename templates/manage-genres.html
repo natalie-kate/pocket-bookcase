@@ -65,17 +65,17 @@
 <!-- Edit genre form -->
 <form id="{{ genre.name.replace(' ', '') }}-form" method="POST" action="{{ url_for ('edit_genre', genre_id=genre._id) }}"
   class="collapse">
-  <div class="row text-center">
+  <div class="row">
     <div class="col-5 offset-1 col-md-6 offset-md-1 edit-genre">
       <label for="name">Genre name:</label>
       <input id="name" type="text" name="name" required value="{{ genre.name.title() }}" />
     </div>
     <!-- Edit genre submit and cancel buttons -->
-    <div class="col-6 col-md-5 offset-md-0 genre-edit">
+    <div class="col-6 col-md-5 offset-md-0 genre-edit text-center">
       <a data-toggle="collapse" data-target="#{{ genre.name.replace(' ', '') }}-form"
-        aria-label="Closes edit genre section" class="btn btn-sm cancel-btn hover">Cancel <i
+        aria-label="Closes edit genre section" class="btn btn-sm delete-genre-btn cancel-btn hover">Cancel <i
           class="fas fa-times" aria-hidden="true"></i></a>
-      <button type="submit" class="btn btn-md  edit-genres-btn hover">
+      <button type="submit" class="btn btn-md edit-genres-btn hover">
         Save <i class="far fa-save" aria-hidden="true"></i></button>
     </div>
   </div>
