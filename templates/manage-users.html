@@ -18,11 +18,11 @@
 <!-- Search User form -->
 <form id="user-search-form" method="POST" action="{{ url_for ('search_users') }}">
   <div class="row search-box text-center">
-    <div class="col-8">
+    <div class="col-8 col-xl-4 offset-xl-4">
       <input type="text" name="search" id="search" placeholder="Username or admin" aria-label="Search users">
     </div>
     <!-- Search User submit button -->
-    <div class="col-3 search">
+    <div class="col-3 col-lg-2 search">
       <button type="submit" class="btn btn-md search-btn hover">Search <i class="fas fa-search" aria-hidden="true"></i></button>
     </div>
   </div>
