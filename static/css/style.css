@@ -366,7 +366,7 @@ img {
     .edit-book h3,
     .edit-account h3,
     .edit-user h3 {
-        font-size: 40px;
+        font-size: 36px;
     }
 }
 @media(min-width:750px){
