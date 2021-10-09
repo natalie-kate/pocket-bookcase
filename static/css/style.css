@@ -46,6 +46,8 @@ hr {
 h3.footer,
 .add-book h3,
 .edit-book h3,
+.edit-user h3,
+.edit-account h3,
 h3.genres,
 .search-results h3,
 h3.users,
@@ -216,7 +218,9 @@ h3.footer {
 .search-box .my-btn {
     width: 100%;
 }
-.edit-book a {
+.edit-book a,
+.edit-account a,
+.edit-user a {
     margin-top: 10px;
 }
 
@@ -232,7 +236,7 @@ fieldset {
     width:90%;
     padding-left: 10%;
 }
-#edit-account select {
+#edit-account-form select {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -265,9 +269,13 @@ input[name=rating] {
 input {
     padding-left: 5px;
 }
-.about,
-.password {
+.about {
     margin-bottom: 10px;
+}
+.password,
+.delete {
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .signin.form {
     border: 1px solid #ced4da;
@@ -355,7 +363,9 @@ img {
         text-align: center;
     }
     .add-book h3,
-    .edit-book h3 {
+    .edit-book h3,
+    .edit-account h3,
+    .edit-user h3 {
         font-size: 40px;
     }
 }
@@ -437,9 +447,6 @@ img {
     h3.users,
     h3.bookcase {
         font-size: 80px;
-    }
-    .edit-book .header h3 {
-        text-align: center;
     }
 }
 @media(min-width:1450px){
