@@ -13,8 +13,8 @@
 <!-- Page content -->
 {% block content %}
 <div class="row">
-    <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 text-center">
-        <p>We would love to hear your comments and suggestions. Please get in touch.
+    <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 text-center contact">
+        <p>We would love to hear your comments and suggestions.<br> Please get in touch.
         </p>
     </div>
 </div>
@@ -57,6 +57,7 @@
         </div>
     </div>
 </form>
+<hr>
 
 <!-- Successful submission Modal, mostly code from bootstrap -->
 <div class="modal" id="submit-modal" role="dialog" tabindex="-1" aria-labelledby="sentmodaltitle" aria-hidden="true">
@@ -69,10 +70,12 @@
                     <span> <i class="fas fa-times" aria-hidden="true"></i> </span>
                 </a>
             </div>
-            <div id="response" class="modal-body">
+            <!-- Response text gets injected here by javascript -->
+            <div id="response" class="modal-body"></div>
+            <div class="text-center modal-btn">
+                <a href="{{ url_for('library') }}" class="btn btn-md my-btn hover"
+                    aria-label="Closes modal and takes you back to home page">Close</a>
             </div>
-            <a href="{{ url_for('library') }}" class="btn modal-btn hover-btn"
-                aria-label="Closes modal and takes you back to home page">Close</a>
         </div>
     </div>
 </div>
