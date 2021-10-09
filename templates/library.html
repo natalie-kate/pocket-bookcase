@@ -23,10 +23,10 @@
 <!-- Search box form -->
 <form id="search-form" method="POST" action="{{ url_for ('search_library') }}">
   <div class="row search-box">
-    <div class="col-8">
+    <div class="col-8 col-xl-4 offset-xl-4">
       <input type="text" name="search" id="search" placeholder="e.g genre or title" aria-label="Search library">
     </div>
-    <div class="col-4">
+    <div class="col-4 col-lg-2">
       <button type="submit" class="btn btn-md search-btn hover">Search <i class="fas fa-search"
           aria-hidden="true"></i></button>
     </div>
@@ -51,7 +51,7 @@
     <h3>Search results</h3>
   </div>
   {% for result in results %}
-  <div class="col-8 offset-2 col-md-4 offset-md-0 text-center book-image">
+  <div class="col-8 offset-2 col-md-4 offset-md-0 offset-lg-1 text-center book-image">
     <!-- If book has a cover image then use it -->
     {% if result.cover_image %}
     <img src="{{ result.cover_image }}" alt="Book cover image of {{ result.title }}" class="book-image">
@@ -60,7 +60,7 @@
     <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books" class="book-image">
     {% endif %}
   </div>
-  <div class="col-12 col-md-8 books">
+  <div class="col-12 col-md-8 col-lg-5 books">
     <h3>{{ result.title.title() }}</h3>
     <p><strong>Author: </strong> {{ result.author.title() }}</p>
     <p><strong>Genre: </strong> {{ result.genre.title() }}</p>
@@ -120,16 +120,16 @@
 <!-- When page loads normally i.e not a search, display books in library-->
 <div class="row">
   {% for book in books %}
-  <div class="col-8 offset-2 col-md-4 offset-md-0 text-center book-image">
+  <div class="col-8 offset-2 col-md-4 offset-md-0 offset-lg-1 text-center book-image">
     <!-- If book has a cover image then use it -->
     {% if book.cover_image %}
-    <img src="{{ book.cover_image }}" alt="Book cover image of {{ book.title }}" class="book-image">
+    <img src="{{ book.cover_image }}" alt="Book cover image of {{ book.title }}" class="book-image" >
     <!-- If book doesn't have a cover image then use alternative image -->
     {% else %}
     <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books" class="book-image">
     {% endif %}
   </div>
-  <div class="col-12 col-md-8 offset-md-0 books">
+  <div class="col-12 col-md-8 offset-md-0 col-lg-5 books">
     <h3>{{ book.title.title() }}</h3>
     <p><strong>Author: </strong> {{ book.author.title() }}</p>
     <p><strong>Genre: </strong> {{ book.genre.title() }}</p>
@@ -180,7 +180,7 @@
   {% endfor %}
 </div>
 <div class="row">
-  <div class="col-6 offset-3 pagination-links text-center">
+  <div class="col-6 offset-1 offset-lg-2 pagination-links">
     {{ pagination.links }}   
   </div>
 </div>
