@@ -13,11 +13,18 @@
 <!-- Page content -->
 {% block content %}
 <!-- Edit user form -->
-<form id="edit_user-form" method="POST" action="{{ url_for ('edit_user', user_id=user._id) }}">
-    <div class="row">
+    <div class="row edit-book text-center">
+        <div class="col-7 col-md-8 offset-1 header">
+            <h3>Personal Details</h3>
+        </div>
+        <div class="col-3 col-md-2">
+            <a href="{{ url_for('manage_users') }}" aria-label="Go back to manage users" 
+            class="btn btn-sm delete-btn hover">Cancel <i class="fas fa-times" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <form class="row" id="edit_user-form" method="POST" action="{{ url_for ('edit_user', user_id=user._id) }}"></form>
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
             <fieldset>
-                <legend>Personal details</legend>
                 <!-- Fields prefilled with the existing information -->
                 <label for="username">Username:</label><br>
                 <input id="username" type="text" name="username" value="{{ user.username }}" disabled required><br>
@@ -29,13 +36,13 @@
                     <label class="custom-control-label" for="admin">Is user an Admin?</label>
                 </div>
                 <!-- Buttons to toggle change-password form section if required-->
-                <div class="text-center">
-                    <a data-toggle="collapse" data-target="#reset-password" class="btn btn-md reset-btn hover"
+                <div class="text-center password">
+                    <a data-toggle="collapse" data-target="#reset-password" class="btn btn-sm reset-btn hover"
                         aria-label="Will open change password section">Reset
                         Users Password?</a>
                 </div>
                 <!-- Change password collapse section so that cannot accidentally change password. -->
-                <div id="reset-password" class="collapse">
+                <div id="reset-password" class="collapse password">
                     <label for="password">Password:</label><br>
                     <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$"><br>
                     <label for="password">Confirm Password:</label><br>
