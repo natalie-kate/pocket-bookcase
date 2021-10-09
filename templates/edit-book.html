@@ -12,11 +12,18 @@
 
 <!-- Page content -->
 {% block content %}
-<div class="add-book text-center">
-    <h3>Book Details</h3>
+<div class="row edit-book text-left">
+    <div class="col-7 col-md-8 offset-1 header">
+        <h3>Book Details</h3>
+    </div>
+    <div class="col-3 col-md-2">
+        <a href="{{ url_for('library') }}" aria-label="Go back to library" 
+        class="btn btn-sm delete-btn hover">Cancel <i class="fas fa-times" aria-hidden="true"></i></a>
+    </div>
 </div>
+
 <!-- Edit book form -->
-<form id="add-book-form" method="POST" action="{{ url_for ('edit_book', book_id=book._id) }}">
+<form id="edit-book-form" method="POST" action="{{ url_for ('edit_book', book_id=book._id) }}">
     <div class="row">
         <div class="col-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3 form">
             <label for="title">Title:</label><br>
@@ -90,6 +97,7 @@
         </div>
     </div>
 </form>
+<hr>
 {% endblock %}
 
 <!-- Footer link specific for the page -->
