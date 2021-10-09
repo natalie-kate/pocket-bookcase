@@ -54,7 +54,8 @@
   <div class="col-8 offset-2 col-md-4 offset-md-0 offset-lg-1 text-center book-image">
     <!-- If book has a cover image then use it -->
     {% if result.cover_image %}
-    <img src="{{ result.cover_image }}" alt="Book cover image of {{ result.title }}" class="book-image">
+    <img src="{{ result.cover_image }}" alt="Book cover image of {{ result.title }}" class="book-image"
+    onerror="this.onerror=null;this.src='static/images/app-images/bookpile-med.jpg'">
     <!-- If book doesn't have a cover image then use alternative image -->
     {% else %}
     <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books" class="book-image">
@@ -123,7 +124,8 @@
   <div class="col-8 offset-2 col-md-4 offset-md-0 offset-lg-1 text-center book-image">
     <!-- If book has a cover image then use it -->
     {% if book.cover_image %}
-    <img src="{{ book.cover_image }}" alt="Book cover image of {{ book.title }}" class="book-image" >
+    <img src="{{ book.cover_image }}" alt="Book cover image of {{ book.title }}" class="book-image" 
+    onerror="this.onerror=null;this.src='static/images/app-images/bookpile-med.jpg'">
     <!-- If book doesn't have a cover image then use alternative image -->
     {% else %}
     <img src="static/images/app-images/bookpile-med.jpg" alt="Image of a pile of books" class="book-image">
