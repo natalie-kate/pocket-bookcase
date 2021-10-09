@@ -45,6 +45,7 @@ hr {
 .header h2,
 h3.footer,
 .add-book h3,
+.edit-book h3,
 h3.genres,
 .search-results h3,
 h3.users,
@@ -69,6 +70,10 @@ h3.bookcase {
 }
 .about h3 {
     font-size: 24px;
+}
+h3.footer {
+    font-size: 40px;
+    text-decoration: underline;
 }
 
 /*---- Links ----*/
@@ -329,8 +334,15 @@ img {
     .btn i {
         display: none;
     }
+    .bookshelf i {
+        display: inline;
+    }
     .buttons {
         text-align: center;
+    }
+    .add-book h3,
+    .edit-book h3 {
+        font-size: 40px;
     }
 }
 @media(min-width:750px){
@@ -340,19 +352,10 @@ img {
     .my-btn {
         width: 20vw;
     }
-    .title-container {
-        height: 40vh;
-    }
-    .image-container{
-        height: 30vh;
-    }
     .title-container h1,
     .header h1 {
-        color: rgb(250, 247, 235);
         padding-top: 10vh;
-        font-family: 'Tangerine', cursive;
         font-size: 70px;
-        font-weight: 700;
     }
     .library h2, 
     .header h2,
@@ -362,12 +365,7 @@ img {
     h3.users,
     h3.bookcase {
         padding-top: 15px;
-        font-family: 'Tangerine', cursive;
         font-size: 60px;
-        margin-bottom: 0;
-    }
-    .header h2 {
-        padding-top: 10vh;
     }
     .flashes {
         font-size: 24px;
@@ -375,6 +373,12 @@ img {
     .profile-books .book-title{
         padding-right: 0;
         padding-left: 30px;
+    }
+    .nav-link {
+        font-size: 16px;
+    }
+    .header h2 {
+        padding-top: 7vh;
     }
 }
 @media(min-width:770px){
@@ -389,7 +393,7 @@ img {
         padding: 0 10px;
     }
 }
-@media(min-width:1000px){
+@media(min-width:992px){
     .nav-link {
         font-size: 20px;
     }
@@ -401,14 +405,27 @@ img {
         padding-top: 15vh;
         font-size: 100px;
     }
+    .title-container {
+        height: 40vh;
+    }
+    .image-container{
+        height: 30vh;
+    }
+    .header h2 {
+        padding-top: 10vh;
+    }
     .library h2, 
     .header h2,
     .add-book h3,
+    .edit-book h3
     h3.genres,
     .search-results h3,
     h3.users,
     h3.bookcase {
         font-size: 80px;
+    }
+    .edit-book .header h3 {
+        text-align: center;
     }
 }
 @media(min-width:1450px){
