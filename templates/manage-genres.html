@@ -19,8 +19,8 @@
 <form id="add-genre-form" method="POST" action="{{ url_for ('add_genre') }}">
   <div class="row">
     <div class="col-10 offset-1 col-md-6 offset-md-3">
-      <label for="name">Genre name:</label>
-      <input id="name" type="text" name="name" placeholder="e.g Fantasy" required /><br />
+      <label for="new-genre">Genre name:</label>
+      <input id="new-genre" type="text" name="name" placeholder="e.g Fantasy" required /><br />
     </div>
     <!-- Add genre submit button -->
     <div class="col-8 offset-2 col-md-4 offset-md-4 text-center genres-btn">
@@ -58,7 +58,7 @@
         aria-label="Closes delete genre confirmation section" class="btn btn-sm cancel-btn hover">Cancel <i
           class="fas fa-times" aria-hidden="true"></i></a>
       <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn btn-sm delete-btn hover">Delete <i
-          class="fas fa-trash-alt aria-hidden=" true""></i></a>
+          class="fas fa-trash-alt" aria-hidden="true"></i></a>
     </div>
   </div>
 </div>
@@ -67,8 +67,8 @@
   class="collapse">
   <div class="row">
     <div class="col-5 offset-1 col-md-6 offset-md-1 edit-genre">
-      <label for="name">Genre name:</label>
-      <input id="name" type="text" name="name" required value="{{ genre.name.title() }}" />
+      <label for="{{ genre.name.replace(' ', '') }}-update">Genre name:</label>
+      <input id="{{ genre.name.replace(' ', '') }}-update" type="text" name="name" required value="{{ genre.name.title() }}" />
     </div>
     <!-- Edit genre submit and cancel buttons -->
     <div class="col-6 col-md-5 offset-md-0 genre-edit text-center">
