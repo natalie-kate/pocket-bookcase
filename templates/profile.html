@@ -20,9 +20,9 @@
 </div>
 
 <!-- If user has read books display them -->
-{% if read_books %}
-{% for book in read_books %}
 <div id="read_books" class="row collapse profile-books">
+{% if read_books %}
+  {% for book in read_books %}
   <div class="col-8 offset-2 col-md-4 col-xl-3 offset-xl-3 book-title">
     <p class="text-center card">{{ book.title() }}</p>
   </div>
@@ -38,17 +38,15 @@
         class="fas fa-plus"></i></a>
     {% endif %}
   </div>
-</div>
-{% endfor %}
+  {% endfor %}
 <!-- If user doesn't have any read books then display link to library -->
 {% else %}
-<div id="read_books" class="row collapse profile-books text-center">
-  <div class="col-10 offset-1 col-md-6 offset-md-3">
-    <p>You have no books yet, why not add some!</p>
-    <a class="profile-link" href="{{ url_for('library') }}">Take me to Library</a>
-  </div>
+<div class="col-10 offset-1 col-md-6 offset-md-3 text-center">
+  <p>You have no books yet, why not add some!</p>
+  <a class="profile-link" href="{{ url_for('library') }}">Take me to Library</a>
 </div>
 {% endif %}
+</div>
 
 <div class="row bookshelf text-center">
   <a data-toggle="collapse" data-target="#books_to_read"
@@ -57,9 +55,9 @@
 </div>
 
 <!-- If user has books to read display them -->
-{% if books_to_read %}
-{% for book in books_to_read %}
 <div id="books_to_read" class="row collapse profile-books">
+{% if books_to_read %}
+  {% for book in books_to_read %}
   <div class="col-8 offset-2 col-md-4 col-xl-3 offset-xl-3 book-title">
     <p class="text-center card">{{ book.title() }}</p>
   </div>
@@ -74,18 +72,16 @@
     <a href="{{ url_for ('own_book_add', book=book) }}" class="btn btn-sm own-btn hover">Own? <i
         class="fas fa-plus"></i></a>
     {% endif %}
-  </div>
-</div>
-{% endfor %}
+  </div>  
+  {% endfor %}
 <!-- If user doesn't have any books to read then display link to library -->
 {% else %}
-<div id="books_to_read" class="row collapse profile-books text-center">
-  <div class="col-10 offset-1 col-md-6 offset-md-3">
+  <div class="col-10 offset-1 col-md-6 offset-md-3 text-center">
     <p>You have no books yet, why not add some!</p>
     <a class="profile-link" href="{{ url_for('library') }}">Take me to Library</a>
   </div>
-</div>
 {% endif %}
+</div>
 
 <div class="row bookshelf text-center">
   <a data-toggle="collapse" data-target="#own_books"
@@ -94,9 +90,9 @@
 </div>
 
 <!-- If user has own books, display them -->
-{% if own_books  %}
-{% for book in own_books %}
 <div id="own_books" class="row collapse profile-books">
+{% if own_books  %}
+  {% for book in own_books %}
   <div class="col-6 offset-2 col-md-4 col-lg-3 offset-xl-3 book-title">
     <p class="text-center card">{{ book.title() }}</p>
   </div>
@@ -104,17 +100,15 @@
     <a href="{{ url_for ('own_book_delete', book=book) }}" class="btn btn-sm delete-btn hover">Remove <i
         class="fas fa-trash-alt"></i></a>
   </div>
-</div>
-{% endfor %}
+  {% endfor %}
 <!-- If user doesn't have any own books then display link to library -->
 {% else %}
-<div id="own_books" class="row collapse profile-books text-center">
-  <div class="col-10 offset-1 col-md-6 offset-md-3">
+  <div class="col-10 offset-1 col-md-6 offset-md-3 text-center">
     <p>You have no books yet, why not add some!</p>
     <a class="profile-link" href="{{ url_for('library') }}">Take me to Library</a>
   </div>
-</div>
 {% endif %}
+</div>
 <hr>
 {% endblock %}
 
