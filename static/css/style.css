@@ -87,7 +87,7 @@ h3.footer {
 .sign-up-link a,
 .register-link,
 .library-link,
-.sign-in-link,
+.sign-in-link a,
 .profile-link,
 .issue-link a,
 .delete a {
@@ -105,7 +105,7 @@ h3.footer {
 .sign-up-link a:hover,
 .register-link:hover,
 .library-link:hover,
-.sign-in-link:hover,
+.sign-in-link a:hover,
 .profile-link:hover,
 .issue-link a:hover,
 .pagination-links a.page-link,
