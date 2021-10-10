@@ -69,9 +69,7 @@
         </div>
     </div>
     <div class="text-center delete">
-        <a data-toggle="collapse" data-target="#{{ user.username }}-delete"
-            class="btn btn-sm delete-btn hover" aria-label="Will open delete confirmation section">Delete my
-            account <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
+        <a href="{{ user.username }}-delete" data-toggle="collapse">Delete my account</a>
     </div>
      <!-- Delete account confirmation with delete and cancel buttons -->
      <div id="{{ user.username }}-delete" class="row collapse text-center warning">
