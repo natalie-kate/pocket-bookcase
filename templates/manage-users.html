@@ -50,7 +50,7 @@
       <strong><i class="fas fa-exclamation" aria-hidden="true"></i> Are you sure you want to delete {{ result.username }}?</strong>
       <div>
         <a data-toggle="collapse" data-target="#{{ result.username }}-delete" aria-label="Closes delete user confirmation section" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times" aria-hidden="true"></i></a>
-        <a href="{{ url_for('delete_user', user_id=result._id) }}"class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
+        <a href="{{ url_for('delete_user', user_id=result._id) }}" class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
       </div>
     </div>
   </div>
