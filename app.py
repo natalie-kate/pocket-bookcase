@@ -187,7 +187,7 @@ def profile(username):
     name = mongo.db.users.find_one(
         {"username": username})["first_name"]
     # If user logged in get profile information to pass into template
-    if session["user"]:
+    if session:
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
         user_profile = mongo.db.profiles.find_one(
@@ -463,7 +463,7 @@ def add_book():
                     f' {title} has now been added')
                 return redirect(url_for("library"))
     # Use add_book template, passing in admin and genre
-    if session["user"]:
+    if session:
         return render_template("add-book.html", genres=genres(), admin=admin())
     else:
         flash("You need to be signed in to do that")
@@ -502,226 +502,274 @@ def edit_book(book_id):
         return redirect(url_for("library"))
     # Check user is logged in before using edit_book template and pass
     # in genre, book and admin variables
-    if admin():
-        return render_template(
-            "edit-book.html", genres=genres(), book=book, admin=admin)
-    elif session["user"] == book["added_by"]:
-        return render_template(
-            "edit-book.html", genres=genres(), book=book)
+    elif session:
+        if admin():
+            return render_template(
+                "edit-book.html", genres=genres(), book=book, admin=admin)
+        elif session["user"] == book["added_by"]:
+            return render_template(
+                "edit-book.html", genres=genres(), book=book)
+        else:
+            flash("You can't edit that")
+            return redirect(url_for("library"))
     else:
-        flash("You can't edit that")
-        return redirect(url_for("library"))
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "delete_book" view to delete book from library
 @app.route("/delete_book, <book_id>")
 def delete_book(book_id):
-    if admin():
-        # Delete book, display message and reload library
-        title = mongo.db.books.find_one({"_id": ObjectId(book_id)})["title"]
-        mongo.db.books.remove({"_id": ObjectId(book_id)})
-        flash(f"{title} Successfully Deleted")
-        return redirect(url_for("library"))
-    else:
-        flash("You can't delete that")
-        return redirect(url_for("library"))
+    if session:
+        if admin():
+            # Delete book, display message and reload library
+            title = mongo.db.books.find_one(
+                {"_id": ObjectId(book_id)})["title"]
+            mongo.db.books.remove({"_id": ObjectId(book_id)})
+            flash(f"{title} Successfully Deleted")
+            return redirect(url_for("library"))
+        else:
+            flash("You can't delete that")
+            return redirect(url_for("library"))
+    flash("You need to be logged in to do that!")
+    return redirect(url_for("sign_in"))
 
 
 # "manage_genre" view to see all current genres
 @app.route("/manage_genre")
 def manage_genre():
-    # if user is an admin use manage_genres template
-    if admin():
-        return render_template(
-            "manage-genres.html", genres=genres(), admin=admin)
+    if session:
+        # if user is an admin use manage_genres template
+        if admin():
+            return render_template(
+                "manage-genres.html", genres=genres(), admin=admin)
+        else:
+            flash("Sorry, admin only")
+            return redirect(url_for("library"))
+    else:
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "add_genre" view to add genre
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
-    # Check if user is admin prior to commencing
-    if admin():
-        # If form submitted get info from form field
-        if request.method == "POST":
-            # Check genre doesn't already exist in database
-            existing_genre = mongo.db.genres.find_one(
-                {"name": request.form.get("name").lower()})
-            # If genre already exists display message and refresh form
-            if existing_genre:
-                flash("This genre is already in our collection")
-                return redirect(url_for("add_genre"))
-            # If genre doesn't exist insert new genre document, display
-            # message and reload manage_genre
-            else:
-                genre_name = request.form.get("name").lower()
-                new_genre = {"name": genre_name}
-                mongo.db.genres.insert_one(new_genre)
-                flash(
-                    f'Thanks { genre_name.title() } is now in our collection')
-                return redirect(url_for("manage_genre"))
+    if session:
+        # Check if user is admin prior to commencing
+        if admin():
+            # If form submitted get info from form field
+            if request.method == "POST":
+                # Check genre doesn't already exist in database
+                existing_genre = mongo.db.genres.find_one(
+                    {"name": request.form.get("name").lower()})
+                # If genre already exists display message and refresh form
+                if existing_genre:
+                    flash("This genre is already in our collection")
+                    return redirect(url_for("add_genre"))
+                # If genre doesn't exist insert new genre document, display
+                # message and reload manage_genre
+                else:
+                    genre_name = request.form.get("name").lower()
+                    new_genre = {"name": genre_name}
+                    mongo.db.genres.insert_one(new_genre)
+                    flash(
+                        f'Thanks { genre_name.title() } is' +
+                        'now in our collection')
+                    return redirect(url_for("manage_genre"))
+        else:
+            flash("Sorry, admin only")
+            return redirect(url_for("library"))
     else:
-        flash("Sorry, admin only")
-        return redirect(url_for("library"))
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "edit_genre" view to edit current genres
 @app.route("/edit_genre, <genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
-    # Check if user is admin prior to commencing
-    if admin():
-        # if form submitted get info from field form, display
-        # message and reload manage_genre
-        if request.method == "POST":
-            genre_name = mongo.db.genres.find_one(
-                {"_id": ObjectId(genre_id)})["name"]
-            update_genre = {
-                "name": request.form.get("name").lower()
-                }
-            updated_name = request.form.get("name").title()
-            mongo.db.genres.update({"_id": ObjectId(genre_id)}, update_genre)
-            flash(f"Thankyou { genre_name.title() } has been updated to") + (
-                f"{ updated_name }")
-            return redirect(url_for("manage_genre"))
+    if session:
+        # Check if user is admin prior to commencing
+        if admin():
+            # if form submitted get info from field form, display
+            # message and reload manage_genre
+            if request.method == "POST":
+                genre_name = mongo.db.genres.find_one(
+                    {"_id": ObjectId(genre_id)})["name"]
+                update_genre = {
+                    "name": request.form.get("name").lower()
+                    }
+                updated_name = request.form.get("name").title()
+                mongo.db.genres.update(
+                    {"_id": ObjectId(genre_id)}, update_genre)
+                flash(
+                    f"Thankyou { genre_name.title() } has been updated to") + (
+                    f"{ updated_name }")
+                return redirect(url_for("manage_genre"))
+        else:
+            flash("Sorry, admin only")
+            return redirect(url_for("library"))
     else:
-        flash("Sorry, admin only")
-        return redirect(url_for("library"))
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "delete_genre" view to delete a genre document from database
 @app.route("/delete_genre, <genre_id>")
 def delete_genre(genre_id):
-    # if user an admin then delete genre, display message
-    # and reload manage_genre.
-    if admin():
-        genre = mongo.db.genres.find_one({"_id": ObjectId(genre_id)})["name"]
-        mongo.db.genres.remove({"_id": ObjectId(genre_id)})
-        flash(f"{ genre.title() } Successfully Deleted")
-        return redirect(url_for("manage_genre"))
+    if session:
+        # if user an admin then delete genre, display message
+        # and reload manage_genre.
+        if admin():
+            genre = mongo.db.genres.find_one(
+                {"_id": ObjectId(genre_id)})["name"]
+            mongo.db.genres.remove({"_id": ObjectId(genre_id)})
+            flash(f"{ genre.title() } Successfully Deleted")
+            return redirect(url_for("manage_genre"))
+        else:
+            flash("Sorry, you can't delete that")
+            return redirect(url_for("library"))
     else:
-        flash("Sorry, you can't delete that")
-        return redirect(url_for("library"))
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "manage_users" view to allow admin to view current users
 @app.route("/manage_users")
 def manage_users():
-    # if user is an admin use manage_users template
-    if admin():
-        # Assign data from database to variables to send into template
-        users = mongo.db.users.find()
-        return render_template(
-            "manage-users.html", users=users, admin=admin)
+    if session:
+        # if user is an admin use manage_users template
+        if admin():
+            # Assign data from database to variables to send into template
+            users = mongo.db.users.find()
+            return render_template(
+                "manage-users.html", users=users, admin=admin)
+        else:
+            flash("Sorry, admin only")
+            return redirect(url_for("library"))
     else:
-        flash("Sorry, admin only")
-        return redirect(url_for("library"))
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "search_users" view to search current users by admin
 @app.route("/search_users", methods=["GET", "POST"])
 def search_users():
-    # Check if user is an admin
-    if admin():
-        # If form submitted get info from form fields
-        if request.method == "POST":
-            # if search is for admin, find all users that are admin
-            # and assign to results variable and pass in with template
-            search = request.form.get("search").lower()
-            if search == "admin":
-                results = list(mongo.db.users.find(
-                    {"admin": bool("true")})
-                )
-                return render_template(
-                    "manage-users.html", results=results, admin=admin)
-            # If search is not for admin then search database for usernames
-            # matching input from user.
-            elif search:
-                results = list(mongo.db.users.find(
-                    {"username": search}))
-                # If there is a result pass into template
-                if results:
+    if session:
+        # Check if user is an admin
+        if admin():
+            # If form submitted get info from form fields
+            if request.method == "POST":
+                # if search is for admin, find all users that are admin
+                # and assign to results variable and pass in with template
+                search = request.form.get("search").lower()
+                if search == "admin":
+                    results = list(mongo.db.users.find(
+                        {"admin": bool("true")})
+                    )
                     return render_template(
                         "manage-users.html", results=results, admin=admin)
-                # If there isn't a result display message and reload page
-                else:
-                    flash(f"Sorry couldn't find {search}")
-                    return redirect(url_for("manage_users"))
+                # If search is not for admin then search database for usernames
+                # matching input from user.
+                elif search:
+                    results = list(mongo.db.users.find(
+                        {"username": search}))
+                    # If there is a result pass into template
+                    if results:
+                        return render_template(
+                            "manage-users.html", results=results, admin=admin)
+                    # If there isn't a result display message and reload page
+                    else:
+                        flash(f"Sorry couldn't find {search}")
+                        return redirect(url_for("manage_users"))
+        else:
+            flash("Sorry, admin only")
+            return redirect(url_for("library"))
     else:
-        flash("Sorry, admin only")
-        return redirect(url_for("library"))
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "edit_user" view to edit users information by admin
 @app.route("/edit_user, <user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
-    # Check if user is an admin
-    if admin():
-        user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
-        # When form is submitted get information from fields
-        if request.method == "POST":
-            username = mongo.db.users.find_one(
-                {"_id": ObjectId(user_id)})["username"]
-            is_admin = bool("true") if request.form.get("admin") else bool("")
-            # If password and confirm password don't match, display message
-            # and refresh form
-            if request.form.get("password") != request.form.get(
-                    "confirm-password"):
-                flash("Your passwords did not match, please try again")
-                return redirect(url_for("edit_user"))
-            # If password filled in, update three fields in the document
-            # display message and reload page
-            if request.form.get("password"):
-                update_user = {
-                    "email": request.form.get("email"),
-                    "admin": is_admin,
-                    "password": generate_password_hash(
-                        request.form.get("password"))
-                }
-                mongo.db.users.update(
-                    {"_id": ObjectId(user_id)}, {"$set": update_user})
+    if session:
+        # Check if user is an admin
+        if admin():
+            user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+            # When form is submitted get information from fields
+            if request.method == "POST":
+                username = mongo.db.users.find_one(
+                    {"_id": ObjectId(user_id)})["username"]
+                is_admin = bool("true") if request.form.get(
+                    "admin") else bool("")
+                # If password and confirm password don't match, display message
+                # and refresh form
+                if request.form.get("password") != request.form.get(
+                        "confirm-password"):
+                    flash("Your passwords did not match, please try again")
+                    return redirect(url_for("edit_user"))
+                # If password filled in, update three fields in the document
+                # display message and reload page
+                if request.form.get("password"):
+                    update_user = {
+                        "email": request.form.get("email"),
+                        "admin": is_admin,
+                        "password": generate_password_hash(
+                            request.form.get("password"))
+                    }
+                    mongo.db.users.update(
+                        {"_id": ObjectId(user_id)}, {"$set": update_user})
 
-                flash(f"Thankyou {username} has been updated,") + (
-                    "email them with their new password")
-                return redirect(url_for("manage_users"))
-            # If password not needing updated, update two fields in the
-            # document display message and reload page
-            else:
-                update_user = {
-                    "email": request.form.get("email"),
-                    "admin": is_admin
-                }
-                mongo.db.users.update(
-                    {"_id": ObjectId(user_id)}, {"$set": update_user})
+                    flash(f"Thankyou {username} has been updated,") + (
+                        "email them with their new password")
+                    return redirect(url_for("manage_users"))
+                # If password not needing updated, update two fields in the
+                # document display message and reload page
+                else:
+                    update_user = {
+                        "email": request.form.get("email"),
+                        "admin": is_admin
+                    }
+                    mongo.db.users.update(
+                        {"_id": ObjectId(user_id)}, {"$set": update_user})
 
-                flash(f"Thankyou {username} has been updated")
-                return redirect(url_for("manage_users"))
-        # If user is admin use edit_user template
-        return render_template("edit-user.html", user=user, admin=admin)
+                    flash(f"Thankyou {username} has been updated")
+                    return redirect(url_for("manage_users"))
+            # If user is admin use edit_user template
+            return render_template("edit-user.html", user=user, admin=admin)
+        else:
+            flash("Sorry, admin only")
+            return redirect(url_for("library"))
     else:
-        flash("Sorry, admin only")
-        return redirect(url_for("library"))
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "delete_user" view to delete users account by admin
 @app.route("/delete_user, <user_id>")
 def delete_user(user_id):
-    # If admin delete user, display message and reload page
-    if admin():
-        username = mongo.db.users.find_one(
-          {"_id": ObjectId(user_id)})["username"]
-        mongo.db.profiles.remove({"user_id": ObjectId(user_id)})
-        mongo.db.users.remove({"_id": ObjectId(user_id)})
-        flash(f"{ username } Successfully Deleted")
-        return redirect(url_for("manage_users"))
+    if session:
+        # If admin delete user, display message and reload page
+        if admin():
+            username = mongo.db.users.find_one(
+              {"_id": ObjectId(user_id)})["username"]
+            mongo.db.profiles.remove({"user_id": ObjectId(user_id)})
+            mongo.db.users.remove({"_id": ObjectId(user_id)})
+            flash(f"{ username } Successfully Deleted")
+            return redirect(url_for("manage_users"))
+        else:
+            flash("Sorry, admin only")
+            return redirect(url_for("library"))
     else:
-        flash("Sorry, admin only")
-        return redirect(url_for("library"))
+        flash("You need to be logged in to do that!")
+        return redirect(url_for("sign_in"))
 
 
 # "edit_account" view for user to edit their information
 @app.route("/edit_account", methods=["GET", "POST"])
 def edit_account():
     # Check user is logged in prior to commencing
-    if session["user"]:
+    if session:
         # Get information from db and assign to variables
         user = mongo.db.users.find_one(
             {"username": session["user"]})
