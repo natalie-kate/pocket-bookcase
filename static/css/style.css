@@ -89,7 +89,8 @@ h3.footer {
 .library-link,
 .sign-in-link,
 .profile-link,
-.issue-link a {
+.issue-link a,
+.delete a {
     color:  #231709;
     font-weight: 600;
 }
@@ -107,7 +108,8 @@ h3.footer {
 .sign-in-link:hover,
 .profile-link:hover,
 .issue-link a:hover,
-.pagination-links a.page-link {
+.pagination-links a.page-link,
+.delete a:hover {
     color: #012d50;
     text-decoration: none;
 }
