@@ -477,7 +477,7 @@ def edit_book(book_id):
     # if edit_book form submitted get information from form
     if request.method == "POST":
         # if admin get title from form otherwise from the book document
-        if admin:
+        if admin():
             title = request.form.get("title").lower()
         else:
             title = mongo.db.books.find_one(
