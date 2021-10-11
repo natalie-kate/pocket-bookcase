@@ -95,7 +95,7 @@ def search_library():
                     per_page=per_page, pagination=pagination)
         # If there are no results then display flash message.
         else:
-            flash(f"Sorry cannot find { search.title()}")
+            flash(f"Sorry cannot find {search.title()}")
             return redirect(url_for("library"))
 
 
@@ -294,7 +294,7 @@ def not_read(book):
         {"$addToSet": {"books_to_read": book}})
     # Display flash confirmation message and redirect to profile
     if update:
-        flash(f"Thats {book} moved to the books to read bookshelf")
+        flash(f"Thats {book.title()} moved to the books to read bookshelf")
         return redirect(url_for("profile", username=session["user"]))
 
 
@@ -310,7 +310,7 @@ def books_read_delete(book):
         {"$pull": {"read_books": book}})
     # Display flash confirmation message and redirect to profile
     if update:
-        flash(f"Thats {book} removed.")
+        flash(f"Thats {book.title()} removed.")
         return redirect(url_for("profile", username=session["user"]))
 
 
@@ -327,7 +327,7 @@ def own_book_add(book):
         {"$addToSet": {"own_books": book}})
     # Display flash confirmation message and redirect to profile
     if update:
-        flash(f"Thats {book} added to own books.")
+        flash(f"Thats {book.title()} added to own books.")
         return redirect(url_for("profile", username=session["user"]))
 
 
@@ -344,7 +344,7 @@ def books_to_read_delete(book):
         {"$pull": {"books_to_read": book}})
     # Display flash confirmation message and redirect to profile
     if update:
-        flash(f"Thats {book} removed.")
+        flash(f"Thats {book.title()} removed.")
         return redirect(url_for("profile", username=session["user"]))
 
 
@@ -365,7 +365,7 @@ def read_book(book):
         {"$addToSet": {"read_books": book}})
     # Display flash confirmation message and redirect to profile
     if update:
-        flash(f"Thats {book} moved to the read bookshelf")
+        flash(f"Thats {book.title()} moved to the read bookshelf")
         return redirect(url_for("profile", username=session["user"]))
 
 
@@ -381,7 +381,7 @@ def own_book_delete(book):
         {"$pull": {"own_books": book}})
     # Display flash confirmation message and redirect to profile
     if update:
-        flash(f"Thats {book} removed.")
+        flash(f"Thats {book.title()} removed.")
         return redirect(url_for("profile", username=session["user"]))
 
 
@@ -460,7 +460,7 @@ def add_book():
                 mongo.db.books.insert_one(book)
                 flash(
                     "Thankyou for contributing to the library," +
-                    f' {title} has now been added')
+                    f' {title.title()} has now been added')
                 return redirect(url_for("library"))
     # Use add_book template, passing in admin and genre
     if session:
@@ -495,9 +495,8 @@ def edit_book(book_id):
             "cover_image": request.form.get("cover_image"),
             "rating": int(request.form.get("rating")),
             "review": request.form.get("review"),
-            "added_by": session["user"]
             }
-        mongo.db.books.update({"_id": ObjectId(book_id)}, update)
+        mongo.db.books.update({"_id": ObjectId(book_id)}, {"$set": update})
         flash(f"Thankyou {title.title()} has been updated")
         return redirect(url_for("library"))
     # Check user is logged in before using edit_book template and pass
@@ -526,7 +525,7 @@ def delete_book(book_id):
             title = mongo.db.books.find_one(
                 {"_id": ObjectId(book_id)})["title"]
             mongo.db.books.remove({"_id": ObjectId(book_id)})
-            flash(f"{title} Successfully Deleted")
+            flash(f"{title.title()} Successfully Deleted")
             return redirect(url_for("library"))
         else:
             flash("You can't delete that")
