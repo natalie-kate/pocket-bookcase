@@ -16,7 +16,9 @@
 {% block content%}
 <div class="add-book text-center">
     <h3> {{ book.title.title() }}</h3> 
-    <p>Lets get it added, just a few quick questions:</p>
+    <p>Lets get it added, just answer two quick questions:<br>
+    (Click switch for yes, if no leave as is.)</p>
+
 </div>
 <!-- Add to profile form -->
 <form id="profile-add-form" method="POST" action="{{ url_for('profile_add', book_id=book._id) }}">
