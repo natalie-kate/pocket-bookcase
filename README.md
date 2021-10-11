@@ -1,9 +1,9 @@
 # Pocket Bookcase
 
-Here is a link to the live project. (https://pocket-bookcase.herokuapp.com/)
+Here is a [link](https://pocket-bookcase.herokuapp.com/) to the live project.
 
 This website was created for Milestone 3 - Datacentric Development project, as part of the Code Institutes diploma in Software development.<br>
-I love books and have the problem of never remembering what book I'm on in the numerous series that i'm in the middle of reading. This means I often start to read a book I've already read and buy books I already have at home.<br>
+I love books and have the problem of never remembering what book I'm on in the numerous series that I'm in the middle of reading. This means I often start to read a book I've already read and buy books I already have at home.<br>
 I was inspired by an app I used to have which doesn't seem to exist now which was for keeping track of which Terry Pratchett Discworld books that the user had read. It was just a simple list of the books with a checkbox beside them, but it did the trick and I thought how useful it would be to have it for any books.<br>
 Upon pitching my idea to a few people, I was met with how useful that would be and how much they would use it, and so Pocket Bookcase was born.
 
@@ -50,7 +50,7 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
    - Site owner/ business goals
      * As the site owner I want my site to be responsive to different screen sizes.
      * As the site owner I want my site to be accessible to my visitors.
-     * As the site owner I want to build up media presence, to ultimately build up users so that I can earn money from   affiliate links.
+     * As the site owner I want to build up media presence, to ultimately build up users so that I can earn money from affiliate links.
      * Ultimately though I want to use the application to track my own books.
 
    ### User Stories
@@ -69,7 +69,7 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
 
         1. As a returning visitor, I want to add books to my "bookshelves".
         2. As a returning visitor, I want to follow on social media so I can hear of any new features.
-        3. As a returning visitor, I want to be able to add a book review.
+3. As a returning visitor, I want to be able to add a book review.
         4. As a returning visitor, I want to be able to add books to the applications library.
         5. As a returning visitor, I want the option of being able to see my password to ensure I have typed it correctly.
 
@@ -111,7 +111,9 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
 
    #### Features to implement in the future
 
--   
+-   Book suggestions based on the users favourite genre, which will crosscheck which books are in the library of that genre, which books they have on their profile and display 1 or 2 books at random so they also aren't seeing the same suggestions everytime they log in.
+- Users can add a review to books they didn't add.
+- Users can rate books they didn't add, the rating displayed will then be the average.
 
    ### Structure
 -  We start with a landing page with a start button, this then takes the user to the beginning of the options and the timer will start. The user goes through the options until only one is left. The result page is opened, displaying the result, with accompanying picture and short paragraph, some will also have accompanying links or map.<br>
