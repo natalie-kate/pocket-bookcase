@@ -7,7 +7,7 @@ I love books and have the problem of never remembering what book I'm on in the n
 I was inspired by an app I used to have which doesn't seem to exist now which was for keeping track of which Terry Pratchett Discworld books that the user had read. It was just a simple list of the books with a checkbox beside them, but it did the trick and I thought how useful it would be to have it for any books.<br>
 Upon pitching my idea to a few people, I was met with how useful that would be and how much they would use it, and so Pocket Bookcase was born.
 
-![Image showing the website displayed on different screen sizes]()
+![Image showing the website displayed on different screen sizes](/static/images/readme-images/responsive.png)
 
 ## Contents 
 
@@ -69,17 +69,19 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
 
         1. As a returning visitor, I want to add books to my "bookshelves".
         2. As a returning visitor, I want to follow on social media so I can hear of any new features.
-3. As a returning visitor, I want to be able to add a book review.
-        4. As a returning visitor, I want to be able to add books to the applications library.
-        5. As a returning visitor, I want the option of being able to see my password to ensure I have typed it correctly.
+        3. As a returning visitor, I want to be able to add books to the applications library.
+        4. As a returning visitor, I want to be able to change my password.
+        5. As a returning visitor, I want to be able to rate the app.
+        6. As a returning visitor, I want to get feedback so I know that something has went through or if i've been redirected, why.
 
    - #### Frequent Visitor Goals
 
         1. As a frequent visitor, I want to be able to edit a book that I've added to the applications library.
-        2. As a frequent visitor, I want to be able to contact the owner with suggestions of new genres.
+        2. As a frequent visitor, I want to be able to contact the owner with suggestions.
         3. As a frequent visitor, I want to be able to move or delete books on my "bookshelves".
-        4. As a frequent visitor, I want to be able to change my password.
-        5. As a frequent visitor, I want to be able to edit or delete a review I have written.
+        4. As a frequent visitor, I want to be able to update my profile.
+        5. As a frequent visitor, I want to be able to change my account information
+        6. As a frequent visitor, I don't want to have never ending scrolling up or down.
 
    - #### Admin goals
       
@@ -87,6 +89,7 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
         2. As admin, I want to be able to add, delete or edit a genre.
         3. As admin, I want to be able to delete a user.
         4. As admin, I want to be able to make another user an admin.
+        5. As admin, I want to be able to reset a users password if they're having trouble logging in.
 
    ### Scope
 
