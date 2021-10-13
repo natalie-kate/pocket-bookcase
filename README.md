@@ -118,13 +118,24 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
 - Users can add a review to books they didn't add.
 - Users can rate books they didn't add, the rating displayed will then be the average.
 
-   ### Structure
--  We start with a landing page with a start button, this then takes the user to the beginning of the options and the timer will start. The user goes through the options until only one is left. The result page is opened, displaying the result, with accompanying picture and short paragraph, some will also have accompanying links or map.<br>
--  The About section is a modal outlining the premise of the game.
--  The contact form I chose to put on its own page instead of a modal as I wanted a decently sized text area for people to write in and to have a confirmation modal to pop up on successful submission.<br>
--  All pages will have nav links to Home, About and Contact at the top and social links at the bottom as this is what users expect to see.<br>
+### Structure
 
-  ### Skeleton 
+- Home/library page all users will be able to use regardless of whether they are logged in or not. The home page will have an add book button and add to profile buttons visible for logged in users. Those books that were added by the user will also have an edit button visible and admin will have a delete button in addition to the rest. <br>
+- Add book button allows logged in users to add a new book to the library by filling out the form on the add-book page.<br>
+- The add to profile buttons beside the books allows the user to add a book to their profile bookshelves, the profile-add page has two questions requiring a yes or no which determines which bookshelf(or bookshelves) the book gets added to.<br>
+- The edit button beside a book allows the user that added it or admin to edit it on the edit-book page. The user can't change the title as they could potentially change it to a completely different book. The admin however can change the title i.e in the case of a spelling mistake.<br>
+- The delete button beside the books are to allow admin to delete a book from the database, if required for any reason. <br>
+- All users will have access to About and Contact pages. The nav links to these are therefore also seen by all. The about page explains to users what the purpose of the site is and how to use it and benefits of registering. <br>
+- For logged in users the nav menu will change, sign-in and sign-up will be replaced with sign-out and profile, and the footer links will also change to sign me out and edit account links <br>
+- Profile page has got the users name at the top and three collapsible bookshelves for their saved books, these books can be moved between bookshelves or removed entirely from the profile using the buttons beside the books themselves. <br>
+- The edit-account page allows a user to change everything except their username, this was because any books they had added to the library would then not be available to them to edit as the username would not match up to the the added_by field attached to the books. They can also delete their account from this page, a confirmation of deletion is requested so that user can't accidentally delete account.<br>
+- Admin users have additional nav links of manage genre and manage users. Manage user allows admin to delete a user, requiring confirmation prior to deletion. Edit will take admin to edit-user page. Here admin can make another user an admin, change their email address for them or their password if required. They are then prompted to contact user with password and the user would then log in and change their password again. Have put change password in a collapsible so that its not filled in by accident.<br>
+- The manage genre page has a section at top to add a new genre wih submit button and edit just opens up an edit genre collapsible. I felt what with genre information being just that, the genre neither adding or editing warranted a seperate page.<br>
+- Have added in error pages so that the user is shown a comforting error message and a button back to home, which in the event of an error doesn't put the user off from using again.<br>
+- Created a database schema using [dbdiagram](https://dbdiagram.io/home), see below. 
+![database schema](/static/images/readme-images/database-schema.png)
+
+### Skeleton 
 
 Wireframes were created on Balsamiq (see links below)
 
@@ -134,7 +145,7 @@ Wireframes were created on Balsamiq (see links below)
 
 Changes from the wireframes to final site are minimal. 
 
- ### Surface
+### Surface
 
  -   #### Colour Scheme
         
