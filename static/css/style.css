@@ -340,6 +340,9 @@ img {
 .profile-books .card {
     height: 31px;
 }
+.error-message p {
+    font-size: 28px;
+}
 
 /*---- Keyframes ----*/
 @keyframes pulse {
