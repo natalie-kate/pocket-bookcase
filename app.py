@@ -1,4 +1,5 @@
-# imports
+"""Imports used to connect with and use MongoDB,use flask templates and
+pagination and werkzeug for password security"""
 import os
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
@@ -17,24 +18,23 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-# admin function to find users admin status
 def admin():
-    admin = mongo.db.users.find_one(
+    """ admin function to find users admin status """
+    is_admin = mongo.db.users.find_one(
         {"username": session["user"]})["admin"]
-    return admin
+    return is_admin
 
 
-# genres function to find all current genre documents
 def genres():
-    genres = mongo.db.genres.find()
-    return genres
+    """ genres function to find all current genre documents """
+    get_genres = mongo.db.genres.find()
+    return get_genres
 
 
-# "library" view
 @app.route("/")
 @app.route("/library")
 def library():
-    # Find all books
+    """library view , finds all books and returns them with the template """
     books = list(mongo.db.books.find())
 
     # Pagination, code mostly from
@@ -60,10 +60,10 @@ def library():
                            per_page=per_page, pagination=pagination)
 
 
-# "search_library" view, gets user input from search box and looks
-# for a match in the db.
 @app.route("/search_library", methods=["GET", "POST"])
 def search_library():
+    """search_library view, gets user input from search box and
+    looks for a match in the db."""
     if request.method == "POST":
         search = request.form.get("search").lower()
         results = list(mongo.db.books.find(
@@ -72,6 +72,7 @@ def search_library():
         # Pagination, code mostly from
         # https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9
         def get_books(offset=0, per_page=5):
+            """ paginates books """
             offset = page * per_page - per_page
             return results[offset: offset + per_page]
 
@@ -99,9 +100,10 @@ def search_library():
             return redirect(url_for("library"))
 
 
-# "register" view
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    """ register view, gets genre and passes in with template.
+    When form submitted, creates new database document """
     # If registration form submitted check whether username already taken
     if request.method == "POST":
         existing = mongo.db.users.find_one(
@@ -151,9 +153,11 @@ def register():
     return render_template("register.html", genres=genres())
 
 
-# "sign_in" view
 @app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
+    """ sign_in view, sends in template. When form submitted
+    checks db for match and checks password correct, successful
+    login redirects user to profile page """
     # When user submits sign in form, check that username exists
     if request.method == "POST":
         existing = mongo.db.users.find_one(
@@ -180,9 +184,9 @@ def sign_in():
     return render_template("sign-in.html")
 
 
-# "profile" view
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    """ profile view, finds users books and passes in with template """
     # Get users username from db to pass into template
     name = mongo.db.users.find_one(
         {"username": username})["first_name"]
@@ -205,9 +209,9 @@ def profile(username):
         return redirect(url_for("sign_in"))
 
 
-# "profile_add" view for adding books from library to profile
 @app.route("/profile_add, <book_id>", methods=["GET", "POST"])
 def profile_add(book_id):
+    """ profile_add" view for adding books from library to profile """
     # Get info from database and store in variables
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -277,10 +281,10 @@ def profile_add(book_id):
         return redirect(url_for("sign_in"))
 
 
-# "not_read" view, to move book from read_books to books_to_read
-# array in profile
 @app.route("/not_read, <book>", methods=["GET", "POST"])
 def not_read(book):
+    """ not_read" view, to move book from read_books to 
+    books_to_read array in profile """
     # Get user_id of user to find profile
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
