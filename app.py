@@ -283,7 +283,7 @@ def profile_add(book_id):
 
 @app.route("/not_read, <book>", methods=["GET", "POST"])
 def not_read(book):
-    """ not_read" view, to move book from read_books to 
+    """ not_read view, to move book from read_books to
     books_to_read array in profile """
     # Get user_id of user to find profile
     user_id = mongo.db.users.find_one(
@@ -300,6 +300,8 @@ def not_read(book):
     if update:
         flash(f"Thats {book.title()} moved to the books to read bookshelf")
         return redirect(url_for("profile", username=session["user"]))
+    flash("Sorry something went wrong, please try again")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 # "books_read_delete" view to delete book from read_books
@@ -316,6 +318,8 @@ def books_read_delete(book):
     if update:
         flash(f"Thats {book.title()} removed.")
         return redirect(url_for("profile", username=session["user"]))
+    flash("Sorry something went wrong, please try again")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 # "own_books_add" view is for updating profile books that weren't
@@ -333,6 +337,8 @@ def own_book_add(book):
     if update:
         flash(f"Thats {book.title()} added to own books.")
         return redirect(url_for("profile", username=session["user"]))
+    flash("Sorry something went wrong, please try again")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 # "books_to_read_delete" view is for deleting books from
@@ -350,6 +356,8 @@ def books_to_read_delete(book):
     if update:
         flash(f"Thats {book.title()} removed.")
         return redirect(url_for("profile", username=session["user"]))
+    flash("Sorry something went wrong, please try again")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 # "read_book" view is for moving a book from books_to_read
@@ -371,6 +379,8 @@ def read_book(book):
     if update:
         flash(f"Thats {book.title()} moved to the read bookshelf")
         return redirect(url_for("profile", username=session["user"]))
+    flash("Sorry something went wrong, please try again")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 # "own_book_delete" view to delete book from own_books
@@ -387,6 +397,8 @@ def own_book_delete(book):
     if update:
         flash(f"Thats {book.title()} removed.")
         return redirect(url_for("profile", username=session["user"]))
+    flash("Sorry something went wrong, please try again")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 # "sign_out" view to end users session, display message
