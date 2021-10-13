@@ -272,6 +272,8 @@ def profile_add(book_id):
             if update:
                 flash("Great thats been added to your profile")
                 return redirect(url_for("library"))
+            flash("Sorry something went wrong, please try again")
+            return redirect(url_for("library"))
     # Use profile add template passing in required variables
     if session["user"]:
         return render_template(
@@ -304,9 +306,9 @@ def not_read(book):
     return redirect(url_for("profile", username=session["user"]))
 
 
-# "books_read_delete" view to delete book from read_books
 @app.route("/books_read_delete, <book>", methods=["GET", "POST"])
 def books_read_delete(book):
+    """ books_read_delete view to delete book from users read_books """
     # Get user_id of user to find profile
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -322,10 +324,10 @@ def books_read_delete(book):
     return redirect(url_for("profile", username=session["user"]))
 
 
-# "own_books_add" view is for updating profile books that weren't
-# owned when initially added to profile.
 @app.route("/own_book_add, <book>", methods=["GET", "POST"])
 def own_book_add(book):
+    """ own_books_add view is for updating profile books that weren't
+    owned when initially added to profile."""
     # Get user_id of user to find profile
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -341,10 +343,10 @@ def own_book_add(book):
     return redirect(url_for("profile", username=session["user"]))
 
 
-# "books_to_read_delete" view is for deleting books from
-# books_to_read array
 @app.route("/books_to_read_delete, <book>", methods=["GET", "POST"])
 def books_to_read_delete(book):
+    """books_to_read_delete view is for deleting books from
+    users books_to_read array """
     # Get user_id of user to find profile
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -360,10 +362,10 @@ def books_to_read_delete(book):
     return redirect(url_for("profile", username=session["user"]))
 
 
-# "read_book" view is for moving a book from books_to_read
-# array to read_book array
 @app.route("/read_book, <book>", methods=["GET", "POST"])
 def read_book(book):
+    """read_book view is for moving a book from users books_to_read
+    array to read_book array """
     # Get user_id of user to find profile
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -383,9 +385,9 @@ def read_book(book):
     return redirect(url_for("profile", username=session["user"]))
 
 
-# "own_book_delete" view to delete book from own_books
 @app.route("/own_book_delete, <book>", methods=["GET", "POST"])
 def own_book_delete(book):
+    """own_book_delete view to delete book from own_books """
     # Get user_id of user to find profile
     user_id = mongo.db.users.find_one(
         {"username": session["user"]})["_id"]
@@ -401,18 +403,18 @@ def own_book_delete(book):
     return redirect(url_for("profile", username=session["user"]))
 
 
-# "sign_out" view to end users session, display message
-# and redirect to sign in
 @app.route("/sign_out")
 def sign_out():
+    """ sign_out view to end users session, display message
+    and redirect to sign in """
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("sign_in"))
 
 
-# "contact" view to display contact template
 @app.route("/contact")
 def contact():
+    """ contact view to display contact template """
     # if user logged in user info passed in with template to prefill
     # contact form
     if session:
@@ -428,18 +430,18 @@ def contact():
     return render_template("contact.html")
 
 
-# "about" view to display about template
 @app.route("/about")
 def about():
+    """ about view to display about template """
     # if user logged in admin status passed in with template
     if session:
         return render_template("about.html", admin=admin())
     return render_template("about.html")
 
 
-# "add_book" view to add book to library
 @app.route("/add_book", methods=["GET", "POST"])
 def add_book():
+    """ add_book view to add book to library """
     # if add_book form submitted get information from form
     if request.method == "POST":
         # If title stripped of spaces is empty then display
@@ -486,9 +488,9 @@ def add_book():
         return redirect(url_for("sign_in"))
 
 
-# "edit_book" view to edit books in library
 @app.route("/edit_book, <book_id>", methods=["GET", "POST"])
 def edit_book(book_id):
+    """ edit_book view to edit books in library """
     book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     # if edit_book form submitted get information from form
     if request.method == "POST":
@@ -532,9 +534,9 @@ def edit_book(book_id):
         return redirect(url_for("sign_in"))
 
 
-# "delete_book" view to delete book from library
 @app.route("/delete_book, <book_id>")
 def delete_book(book_id):
+    """delete_book view to delete book from library """
     if session:
         if admin():
             # Delete book, display message and reload library
@@ -550,9 +552,9 @@ def delete_book(book_id):
     return redirect(url_for("sign_in"))
 
 
-# "manage_genre" view to see all current genres
 @app.route("/manage_genre")
 def manage_genre():
+    """ manage_genre view to see all current genres """
     if session:
         # if user is an admin use manage_genres template
         if admin():
@@ -566,9 +568,9 @@ def manage_genre():
         return redirect(url_for("sign_in"))
 
 
-# "add_genre" view to add genre
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
+    """ add_genre view to add genre """
     if session:
         # Check if user is admin prior to commencing
         if admin():
@@ -599,9 +601,9 @@ def add_genre():
         return redirect(url_for("sign_in"))
 
 
-# "edit_genre" view to edit current genres
 @app.route("/edit_genre, <genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
+    """ edit_genre view to edit current genres """
     if session:
         # Check if user is admin prior to commencing
         if admin():
@@ -628,9 +630,9 @@ def edit_genre(genre_id):
         return redirect(url_for("sign_in"))
 
 
-# "delete_genre" view to delete a genre document from database
 @app.route("/delete_genre, <genre_id>")
 def delete_genre(genre_id):
+    """ delete_genre" view to delete a genre document from database """
     if session:
         # if user an admin then delete genre, display message
         # and reload manage_genre.
@@ -648,9 +650,9 @@ def delete_genre(genre_id):
         return redirect(url_for("sign_in"))
 
 
-# "manage_users" view to allow admin to view current users
 @app.route("/manage_users")
 def manage_users():
+    """manage_users view to allow admin to view current users """
     if session:
         # if user is an admin use manage_users template
         if admin():
@@ -666,9 +668,9 @@ def manage_users():
         return redirect(url_for("sign_in"))
 
 
-# "search_users" view to search current users by admin
 @app.route("/search_users", methods=["GET", "POST"])
 def search_users():
+    """ search_users view to search current users by admin """
     if session:
         # Check if user is an admin
         if admin():
@@ -704,9 +706,9 @@ def search_users():
         return redirect(url_for("sign_in"))
 
 
-# "edit_user" view to edit users information by admin
 @app.route("/edit_user, <user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
+    """ edit_user view to edit users information by admin """
     if session:
         # Check if user is an admin
         if admin():
@@ -734,7 +736,6 @@ def edit_user(user_id):
                     }
                     mongo.db.users.update(
                         {"_id": ObjectId(user_id)}, {"$set": update_user})
-
                     flash(f"Thankyou {username} has been updated,") + (
                         "email them with their new password")
                     return redirect(url_for("manage_users"))
@@ -760,9 +761,9 @@ def edit_user(user_id):
         return redirect(url_for("sign_in"))
 
 
-# "delete_user" view to delete users account by admin
 @app.route("/delete_user, <user_id>")
 def delete_user(user_id):
+    """ delete_user view to delete users account by admin """
     if session:
         # If admin delete user, display message and reload page
         if admin():
@@ -780,9 +781,9 @@ def delete_user(user_id):
         return redirect(url_for("sign_in"))
 
 
-# "edit_account" view for user to edit their information
 @app.route("/edit_account", methods=["GET", "POST"])
 def edit_account():
+    """edit_account view for user to edit their information """
     # Check user is logged in prior to commencing
     if session:
         # Get information from db and assign to variables
@@ -848,9 +849,9 @@ def edit_account():
         return redirect(url_for("sign_in"))
 
 
-# "delete_account" view allows users to delete their own account
 @app.route("/delete_account")
 def delete_account():
+    """ delete_account" view allows users to delete their own account """
     # Delete user, end session, display messsage and redirect to library
     user_id = mongo.db.users.find_one(
           {"username": session["user"]})["_id"]
@@ -861,15 +862,15 @@ def delete_account():
     return redirect(url_for("library"))
 
 
-# 404 error handling from flask documentation
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(error):
+    """ 404 error handling from flask documentation """
     return render_template('404.html'), 404
 
 
-# 500 error handling from flask documentation
 @app.errorhandler(500)
-def internal_server_error(e):
+def internal_server_error(error):
+    """ 500 error handling from flask documentation """
     return render_template('500.html'), 500
 
 
