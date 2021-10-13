@@ -620,9 +620,10 @@ def edit_genre(genre_id):
                 updated_name = request.form.get("name").title()
                 mongo.db.genres.update(
                     {"_id": ObjectId(genre_id)}, update_genre)
-                flash(
+                flash_message = (
                     f"Thankyou { genre_name.title() } has been updated to") + (
-                    f"{ updated_name }")
+                    f" { updated_name }")
+                flash(flash_message)
                 return redirect(url_for("manage_genre"))
         else:
             flash("Sorry, admin only")
@@ -738,8 +739,9 @@ def edit_user(user_id):
                     }
                     mongo.db.users.update(
                         {"_id": ObjectId(user_id)}, {"$set": update_user})
-                    flash(f"Thankyou {username} has been updated,") + (
-                        "email them with their new password")
+                    flash_message = (f"Thankyou {username} has been") + (
+                        "updated, email them with their new password")
+                    flash(flash_message)
                     return redirect(url_for("manage_users"))
                 # If password not needing updated, update two fields in the
                 # document display message and reload page
