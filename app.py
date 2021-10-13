@@ -293,11 +293,12 @@ def not_read(book):
     # Update profile by deleting book from read_books
     # and add to books_to_read array
     update = mongo.db.profiles.update(
-        {"user_id": ObjectId(user_id)},
-        {"$pull": {"read_books": book}}),
-    mongo.db.profiles.update(
-        {"user_id": ObjectId(user_id)},
-        {"$addToSet": {"books_to_read": book}})
+              {"user_id": ObjectId(user_id)},
+              {"$pull": {"read_books": book}}
+            ), mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$addToSet": {"books_to_read": book}}
+            )
     # Display flash confirmation message and redirect to profile
     if update:
         flash(f"Thats {book.title()} moved to the books to read bookshelf")
@@ -372,11 +373,12 @@ def read_book(book):
     # Update profile by deleting book from books_to_read array
     # and adding to read_books array
     update = mongo.db.profiles.update(
-        {"user_id": ObjectId(user_id)},
-        {"$pull": {"books_to_read": book}}),
-    mongo.db.profiles.update(
-        {"user_id": ObjectId(user_id)},
-        {"$addToSet": {"read_books": book}})
+              {"user_id": ObjectId(user_id)},
+              {"$pull": {"books_to_read": book}}
+            ), mongo.db.profiles.update(
+              {"user_id": ObjectId(user_id)},
+              {"$addToSet": {"read_books": book}}
+            )
     # Display flash confirmation message and redirect to profile
     if update:
         flash(f"Thats {book.title()} moved to the read bookshelf")
