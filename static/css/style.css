@@ -15,7 +15,7 @@ hr {
 
 /*---- Containers ----*/
 .container-fluid{
-    background-color: rgb(250, 247, 235);
+    background-color: #FAF7EB;
 }
 .title-container {
     height: 25vh;
@@ -35,7 +35,7 @@ hr {
 /*---- Headings ----*/
 .title-container h1,
 .header h1 {
-    color: rgb(250, 247, 235);
+    color: #FAF7EB;
     padding-top: 7vh;
     font-family: 'Tangerine', cursive;
     font-size: 60px;
@@ -58,7 +58,7 @@ h3.bookcase {
     margin-bottom: 0;
 }
 .header h2 {
-    color:rgb(250, 247, 235);
+    color:#FAF7EB;
     padding-top: 5vh;
     padding-bottom: 15px;
 }
