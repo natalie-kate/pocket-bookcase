@@ -149,16 +149,24 @@ Changes from the wireframes to final site are minimal.
 
  -   #### Colour Scheme
         
-        Found a picture for the background image and used that to pick colours from. 
+        In the past few years I have started collecting nice editions of the classics, I have always loved old books, the smell, the textures and the colours. This started with a weekly magazine that I collected as a child, you would get the magazine that told you all about the book and a nice copy of the book itself, bold colours with gold embellishment. 
+
+        ![colour inspiration, childhood book collection](static/images/readme-images/colour-inspo.png)<br>
+
+        I used this to style my site, off white background colour to represent the colour of aged pages, the red, green, blue and gold for the numerous types of buttons as theses colours draw attention. In place of black I have used a dark brown to soften while retaining contrast, I have also used a warm brown for the horizontal rule to emulate the wooden shelves of a bookcase. Used [convertingcolors.com](https://convertingcolors.com/color-bucket.html) to create the image below to show the colors I took from the inspo image.
       
-        ![Colour scheme]()
+        ![colour scheme](static/images/readme-images/color-palette.png)
 
 -   #### Typography
          
       Used [Google Fonts](https://fonts.google.com/) to import the fonts used for this site.
+      I used 'Tangerine' for the titles and logo as it has that ornate handwriting style that you would often see on the cover of vintage books.
+      For the main text I chose 'Gentium Book Basic' which does exactly what it says on the tin, it looks like the writing you would see inside any book, plain and easy to read.
       
 -   #### Imagery
-
+      The picture I have chosen for the site on every page is that of a full to the brim, bookcase. I want the user to feel like they are surrounded by books, books of adventure, romance, fantasy all at hand waiting for them to reach out and immerse themselves in another world so they can forget about theirs for a time. <br>
+      It invokes memories of excitment of being in a book shop deciding what book to get next, or in a second hand or antique book shop wondering what treasure they'll find, or in the peacefulness of the library surrounded by knowledge just waiting to be gained.
+      The other images on the site are the book covers which speak for themselves, I have got a backup image incase a url is not provided or doesn't work, it's a close up of a pile of books, which you can almost smell, adding to the feel of the site.
 
 ## Technologies 
 
