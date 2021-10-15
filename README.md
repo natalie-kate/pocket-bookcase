@@ -143,7 +143,12 @@ Wireframes were created on Balsamiq (see links below)
 * [Tablet](static/readme-assets/wireframes/ms3-tablet.pdf)
 * [Desktop](static/readme-assets/wireframes/ms3-desktop.pdf)
 
-Changes from the wireframes to final site are minimal. 
+Changed a few things from the wireframes:
+- Realised that having icons instead of buttons, may have looked better but felt if I needed a key to tell the users what they all meant it wasn't intuitive. Similarly for the checkboxes on the profile page, if the user had a small device and a few books they would have to scroll up to see the checkbox column titles. <br>
+- Incorporated the add and edit genre pages into the manage genres page and added a manage users page. <br>
+- Changed the look of the manage genres page to match that of the manage users page to keep things simple to use. <br>
+- On mobile devices the cover image had to be really small to be side by side with the book information, toyed with the idea of not having the book cover image, but felt without the images, all the text was off putting, an image pulls you in. Due to the same issue for desktop, didn't have two books side by side as originally had planned, I think it definately looks better for it.
+
 
 ### Surface
 
