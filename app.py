@@ -593,7 +593,7 @@ def add_genre():
                     mongo.db.genres.insert_one(new_genre)
                     flash(
                         f'Thanks { genre_name.title() } is' +
-                        'now in our collection')
+                        ' now in our collection')
                     return redirect(url_for("manage_genre"))
         else:
             flash("Sorry, admin only")
