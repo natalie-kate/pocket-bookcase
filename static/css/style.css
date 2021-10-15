@@ -192,7 +192,8 @@ h3.footer {
     animation-timing-function: linear;  
     color: white;
 }
-.genres .btn {
+.genres .btn,
+.users .btn {
     height: 41px;
 }
 .profile-books .btn,
@@ -334,7 +335,8 @@ img {
     border-radius: 5px;
     font-size: 18px;
 }
-.row.genres {
+.row.genres,
+.row.users {
     margin-top: 10px;
 }
 .profile-books .card {
