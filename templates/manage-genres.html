@@ -40,10 +40,10 @@
   </div>
   <!-- Edit and delete buttons, both open their own collapsible section -->
   <div class="col-6 col-md-5 offset-md-0">
-    <a data-toggle="collapse" data-target="#{{ genre.name.replace(' ', '') }}-form"
+    <a data-toggle="collapse" href="#{{ genre.name.replace(' ', '') }}-form"
       aria-label="Opens edit genre section" class="btn btn-md edit-btn hover">Edit <i class="fas fa-edit"
         aria-hidden="true"></i></a>
-    <a data-toggle="collapse" data-target="#{{ genre.name.replace(' ', '') }}-delete"
+    <a data-toggle="collapse" href="#{{ genre.name.replace(' ', '') }}-delete"
       aria-label="Opens delete genre confirmation section" class="btn btn-md delete-btn hover">Delete <i
         class="fas fa-trash-alt" aria-hidden="true"></i></a>
   </div>
@@ -54,7 +54,7 @@
     <strong><i class="fas fa-exclamation" aria-hidden="true"></i> Are you sure you want to delete
       {{ genre.name }}?</strong>
     <div>
-      <a data-toggle="collapse" data-target="#{{ genre.name.replace(' ', '') }}-delete"
+      <a data-toggle="collapse" href="#{{ genre.name.replace(' ', '') }}-delete"
         aria-label="Closes delete genre confirmation section" class="btn btn-sm cancel-btn hover">Cancel <i
           class="fas fa-times" aria-hidden="true"></i></a>
       <a href="{{ url_for('delete_genre', genre_id=genre._id) }}" class="btn btn-sm delete-btn hover">Delete <i
@@ -72,7 +72,7 @@
     </div>
     <!-- Edit genre submit and cancel buttons -->
     <div class="col-6 col-md-5 offset-md-0 genre-edit text-center">
-      <a data-toggle="collapse" data-target="#{{ genre.name.replace(' ', '') }}-form"
+      <a data-toggle="collapse" href="#{{ genre.name.replace(' ', '') }}-form"
         aria-label="Closes edit genre section" class="btn btn-sm delete-genre-btn cancel-btn hover">Cancel <i
           class="fas fa-times" aria-hidden="true"></i></a>
       <button type="submit" class="btn btn-md edit-genres-btn hover">
