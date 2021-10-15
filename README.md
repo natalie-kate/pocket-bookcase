@@ -187,9 +187,9 @@ Changed a few things from the wireframes:
 1. [Bootstrap v4.6.0](https://getbootstrap.com/docs/4.6.0/getting-started/introduction/)
     - Bootstrap was used for the initial layout and styling before customising it.
 2. [Google Fonts](https://fonts.google.com/)
-    - Google fonts were used to import the Noto Sans KR and Montserrat. 
+    - Google fonts were used to import the Tangerine and Gentium Book Basic. 
 3. [Font Awesome](https://fontawesome.com/)
-    - Social media icons in footer and section icons on evidence page.
+    - The icons used throughout.
 4. [Git](https://git-scm.com/)
     - Version control.
 5. [GitHub](https://github.com/)
@@ -206,7 +206,7 @@ Changed a few things from the wireframes:
     - This was used massively throughout development to troubleshoot, try out changes before 
    changing code, to test responsiveness and for testing performance of the final site with lighthouse. 
 11. [jQuery](https://jquery.com/)
-    - JavaScript Library making writing JavaScript quicker and easier.
+    - Required for some of the bootstrap elements such as collapsibles, modal and tooltips.
 12. [Heroku](https://dashboard.heroku.com/apps)
     - For deploying the application
 13. [MongoDB](https://www.mongodb.com/)
@@ -222,8 +222,9 @@ Changed a few things from the wireframes:
 18. [Werkzeug](https://werkzeug.palletsprojects.com/en/2.0.x/)
     - Dependency of Flask and used security helpers.
 19. [Jinja](https://jinja.palletsprojects.com/en/3.0.x/)
-    - Dependency of Flask.
-
+    - Dependency of Flask, templating language used in all my pages.
+20. [convertingcolors.com](https://convertingcolors.com/color-bucket.html)
+    - For making my colour palette picture
 
 ## Challenges 
    These are aspects of the development that took me a while to figure out due to inexperience.
