@@ -39,9 +39,9 @@
       <p>{{ result.username }}<p>
     </div>
     <!-- Edit and delete buttons -->
-    <div class="col-5 col-md-5 offset-md-0">
-      <a href="{{ url_for('edit_user', user_id=result._id) }}" aria-label="Opens edit user page" class="btn btn-sm p-1 edit-btn hover">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
-      <a data-toggle="collapse" href="#{{ result.username }}-delete" aria-label="Opens delete user confirmation section" class="btn btn-sm p-1 delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
+    <div class="col-6 col-md-5 offset-md-0">
+      <a href="{{ url_for('edit_user', user_id=result._id) }}" aria-label="Opens edit user page" class="btn btn-md edit-btn hover">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+      <a data-toggle="collapse" href="#{{ result.username }}-delete" aria-label="Opens delete user confirmation section" class="btn btn-md delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
     </div>
   </div>
   <!-- Delete user confirmation with delete and cancel buttons -->
@@ -60,13 +60,13 @@
 <!-- On normal page load i.e not a search display existing users -->
 {% for user in users %}
 <div class="row users text-center">
-  <div class="col-6 offset-1 col-md-6 offset-md-1 shadow-lg p-1 bg-white rounded">
+  <div class="col-5 offset-1 col-md-6 offset-md-1 shadow-lg p-1 bg-white rounded">
     <p>{{ user.username }}<p>
   </div>
   <!-- Edit and delete buttons -->
-  <div class="col-4 col-md-5 offset-md-0">
-    <a href="{{ url_for('edit_user', user_id=user._id) }}" aria-label="Opens edit user page" class="btn btn-sm p-1 edit-btn hover">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
-    <a data-toggle="collapse" href="#{{ user.username }}-delete" aria-label="Opens delete user confirmation section" class="btn btn-sm p-1 delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
+  <div class="col-6 col-md-5 offset-md-0">
+    <a href="{{ url_for('edit_user', user_id=user._id) }}" aria-label="Opens edit user page" class="btn btn-md edit-btn hover">Edit <i class="fas fa-edit" aria-hidden="true"></i></a>
+    <a data-toggle="collapse" href="#{{ user.username }}-delete" aria-label="Opens delete user confirmation section" class="btn btn-md delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
   </div>
 </div>
 <!-- Delete user confirmation with delete and cancel buttons -->
