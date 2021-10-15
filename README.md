@@ -264,12 +264,53 @@ Testing and results can be found [here](TESTING.md)
         would like to clone, if you choose https, SSH or Github CLI, select the clipboard icon to copy the URL.
         +  In your workspace that you've created, in the terminal , type git clone, paste the URL and enter.
 
-     ![Image showing the cloning options](static/images/readme-images/clone.png)
+        ![Image showing the cloning options](static/images/readme-images/clone.png)
+
     *  Desktop Github
         + If you choose to clone by selecting open with desktop Github, it will guide you through the clone with prompts.<br>
 
     For more information or troubleshooting see the Github documentation 
     [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#about-cloning-a-repository)
+
+- ### Setting up MongoDB 
+    - Create account, create cluster, I used the free tier, so chose the region closest to me that had it, gave cluster a name and clicked green 'Create Cluster' button.
+    - In menu, choose Database Access then select green 'Add New Database User'. Here choose a username and password(use only numbers and letters) and under priviledges select 'read and write to any database' and then click the green 'Add user' button at bottom.
+    - Now back in menu select Network Access and then Add IP address, I selected Allow access from anywhere & then clicked green confirm button.
+    - Next choose collections and click 'Create Database', see picture below.
+
+      ![Image showing the collections tab and create database button](static/images/readme-images/collections.png)
+
+    - Complete the form that open up wth a name for your database and a collection name, mine was pocket-bookcase and my first collection for it was books and we want to use our own data. Click create button.
+    - Then add the rest of our collections, by the '+' button, see picture below for collections used.
+
+      ![Image showing the database collections](static/images/readme-images/add-collections.png)
+
+    - To create a document, click 'Insert Document' button, a window will open, _id will already be present and the fields, data and data type can be completed.
+
+      ![Image showing insert document button](static/images/readme-images/insert-document.png)
+      ![Image showing insert document window](static/images/readme-images/insert.png)
+
+    - I also set up a text search on the book collection by selecting indexes and clicking create index button.
+
+      ![Image showing indexes](static/images/readme-images/create-index.png)
+
+      Within fields fill in the following: {
+                    "title": "text",
+                    "author": "text",
+                    "genre": "text",
+                    "series_name": "text",
+                    "added_by": "text"
+                    }
+      Select review and then confirm to add.
+
+- ### Setting Up app
+    - Create env.py file containing the following and add to .gitignore. I created my secret key using [RandomKeygen](https://randomkeygen.com/). The mongo URI is 
+
+    ![Image showing the env.py file](static/images/readme-images/env.png)
+
+    - Install requirements in terminal using pip3 install, see requirements below
+    
+    ![Image showing the requirements](static/images/readme-images/requirements.png)
 
    
 ## Credits
