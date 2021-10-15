@@ -243,8 +243,8 @@ Testing and results can be found [here](TESTING.md)
     (a) Logging into Github and clicked the green new button.<br>
     (b) This took me to the page below. I selected the code institute template, input a repository name and clicked the green create repository button.<br>
 
-    ![image showing green new button](static/images/readme-images/new.png)
-    ![Image showing the create repository page](static/images/readme-images/new-repo.png)
+    ![image showing green new button](static/images/readme-images/deployment/new.png)
+    ![Image showing the create repository page](static/images/readme-images/deployment/new-repo.png)
 
     (c) Opened new repository and clicked green Gitpod button to create a workspace in Gitpod for editing.
 
@@ -253,18 +253,18 @@ Testing and results can be found [here](TESTING.md)
     (b) Above and to the right of the settings there are three options and the far right one says Fork, select this.<br>
     (c) The fork is now in your repositories.
 
-    ![Image showing fork button](static/images/readme-images/fork.png)
+    ![Image showing fork button](static/images/readme-images/deployment/fork.png)
 
   - ### Clone
     To clone my project sign in to Github and go to my [repository](https://github.com/natalie-kate/pocket-bookcase)<br>
-    See [Setting up MongoDB](#setting-up-mongodb) and [Setting Up App](#setting-up-app) for more information about what will be required to run Pocket Bookcase.
+    See [Setting up MongoDB](#setting-up-mongodb), [Setting Up App](#setting-up-app), [Connecting to MongoDB](#connecting-to-mongodb) and [Heroku Deployment](#heroku-deploment) for more information about what will be required to run Pocket Bookcase.
 
     *  Clone using command line 
         +  Next to the green Gitpod button is a button that says code, select this. There is a few options as to how you 
         would like to clone, if you choose https, SSH or Github CLI, select the clipboard icon to copy the URL.
         +  In your workspace that you've created, in the terminal , type git clone, paste the URL and enter.
 
-        ![Image showing the cloning options](static/images/readme-images/clone.png)
+        ![Image showing the cloning options](static/images/readme-images/deployment/clone.png)
 
     *  Desktop Github
         + If you choose to clone by selecting open with desktop Github, it will guide you through the clone with prompts.<br>
@@ -278,21 +278,21 @@ Testing and results can be found [here](TESTING.md)
     - Now back in menu select Network Access and then Add IP address, I selected Allow access from anywhere & then clicked green confirm button.
     - Next choose collections and click 'Create Database', see picture below.
 
-      ![Image showing the collections tab and create database button](static/images/readme-images/collections.png)
+      ![Image showing the collections tab and create database button](static/images/readme-images/deployment/collections.png)
 
     - Complete the form that open up wth a name for your database and a collection name, mine was pocket-bookcase and my first collection for it was books and we want to use our own data. Click create button.
     - Then add the rest of our collections, by the '+' button, see picture below for collections used.
 
-      ![Image showing the database collections](static/images/readme-images/add-collections.png)
+      ![Image showing the database collections](static/images/readme-images/deployment/add-collections.png)
 
     - To create a document, click 'Insert Document' button, a window will open, _id will already be present and the fields, data and data type can be completed.
 
-      ![Image showing insert document button](static/images/readme-images/insert-document.png)
-      ![Image showing insert document window](static/images/readme-images/insert.png)
+      ![Image showing insert document button](static/images/readme-images/deployment/insert-document.png)
+      ![Image showing insert document window](static/images/readme-images/deployment/insert.png)
 
     - I also set up a text search on the book collection by selecting indexes and clicking create index button.
 
-      ![Image showing indexes](static/images/readme-images/create-index.png)
+      ![Image showing indexes](static/images/readme-images/deployment/create-index.png)
 
       Within fields fill in the following: {
                     "title": "text",
@@ -304,21 +304,52 @@ Testing and results can be found [here](TESTING.md)
       Select review and then confirm to add.
 
 - ### Setting Up app
-    - Create env.py file containing the following and add to .gitignore. I created my secret key using [RandomKeygen](https://randomkeygen.com/). The mongo URI is 
+    - Create env.py file containing the following and add to .gitignore. I created my secret key using [RandomKeygen](https://randomkeygen.com/). The mongo URI we get when we connect MongoDB to our app.
 
-    ![Image showing the env.py file](static/images/readme-images/env.png)
+      ![Image showing the env.py file](static/images/readme-images/deployment/env.png)
 
-    - Install requirements in terminal using pip3 install, see requirements below
+    - Install requirements in terminal using pip3 install, see requirements below. 
     
-    ![Image showing the requirements](static/images/readme-images/requirements.png)
+      ![Image showing the requirements](static/images/readme-images/deployment/requirements.png)
 
-   
+    - Create requirements.txt file and Procfile by typing below into the console. These are required by Heroku so ensure these are pushed to github prior to deployment.
+
+      ![Image showing the commands in console](static/images/readme-images/deployment/pip3-freeze.png)
+
+- ### Connecting to MongoDB
+    - Back in mongoDB on your cluster page select connect button.
+
+      ![Image showing connect button](static/images/readme-images/deployment/mongodb-connect.png)
+
+    - In the window that appears, select 'Connect Your Application and on the next page, select Python and version, you can then copy the connection string it supplies. 
+
+      ![Image showing connect to cluster page](static/images/readme-images/deployment/connect-to-cluster.png)
+
+    - Go back into the env.py file and paste in the connection string in the space left for the MONGO_URI. As outlined in the connect to cluster page, "password" needs replaced with the password created on the database access page. "myFirstDatabase" in the connection string also needs replaced with the actual database name. Copy this amended URI and paste it into the config vars in heroku.
+
+- ### Heroku deployment
+    - Log in to Heroku, click 'New' and select 'Create New App'. In window give the app a name and choose region closest to you and then click 'Create App'.
+    - In new app page select settings from menu, click reveal config vars and complete the following
+      
+      ![Image showing the config vars required](static/images/readme-images/deployment/input-config.png)
+
+    - Next select 'Deploy' from menu, three options of deployment are available. If you select Heroku Git, it gives you step by step of what you need to do.
+
+      ![Image showing the Heroku deployment methods](static/images/readme-images/deployment/deployment-methods.png)
+
+    - I chose to use Github, so you have to search and connect to your github repository. 
+
+      ![Image showing connect to github](static/images/readme-images/deployment/github-connect.png)
+    
+    - Click enable automatic deployment, below that in manual deploy section, you can pick and deploy a branch to ensure everything is et up correctly. 
+
+      ![Image showing automatic and manual deploy](static/images/readme-images/deployment/deploy.png)
+        
 ## Credits
 
 ### Code
 
 -   [Bootstrap4](https://getbootstrap.com/docs/4.1/getting-started/introduction/): Bootstrap Library used for the layout and styling and modals.
-
 
 
 ### Content
@@ -332,14 +363,13 @@ Testing and results can be found [here](TESTING.md)
     * [byllsa](https://github.com/byIlsa/Aloy-from-outcast-to-heroine)
 
 ### Media
-
  - 
  
 
 ### Acknowledgements
 
 -   Code institute.
--   Student Support
 -   My mentor Spencer Barriball
 -   My mini feb 2021 team on slack for their feedback and support.
 -   The slack community.
+-   My partner for taking the lions share of raising our baby and the cooking so that I can study.
