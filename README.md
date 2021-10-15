@@ -241,50 +241,36 @@ Testing and results can be found [here](TESTING.md)
 
     I created this repository by:<br>
     (a) Logging into Github and clicked the green new button.<br>
-    (b) This took me to the page below. I selected the code institute template, input a repository name and clicked the 
-    green create repository button.<br>
+    (b) This took me to the page below. I selected the code institute template, input a repository name and clicked the green create repository button.<br>
 
-    ![image showing green new button](assets/readme-assets/readme-images/new.png)
-    ![Image showing the create repository page](assets/readme-assets/readme-images/new-repo.png)
+    ![image showing green new button](static/images/readme-images/new.png)
+    ![Image showing the create repository page](static/images/readme-images/new-repo.png)
 
     (c) Opened new repository and clicked green Gitpod button to create a workspace in Gitpod for editing.
 
- - ### Github pages
-    I deployed my project to Github pages by:
+  - ### Forking
+    (a) To fork my project sign in to Github and go to my [repository](https://github.com/natalie-kate/pocket-bookcase)<br>
+    (b) Above and to the right of the settings there are three options and the far right one says Fork, select this.<br>
+    (c) The fork is now in your repositories.
 
-    (a) Logged in to Github and opened my [repository](https://github.com/natalie-kate/date-night)<br>
-    (b) From here clicked settings, see picture below and selected pages.
+    ![Image showing fork button](static/images/readme-images/fork.png)
 
-    ![Image showing where pages is in settings](assets/readme-assets/readme-images/pages.png)
+  - ### Clone
+    To clone my project sign in to Github and go to my [repository](https://github.com/natalie-kate/pocket-bookcase)<br>
+    See [Setting up MongoDB](#setting-up-mongodb) and [Setting Up App](#setting-up-app) for more information about what will be required to run Pocket Bookcase.
 
-    (c) In pages under source branch I selected Master 
-           and kept the default root and then clicked save.
+    *  Clone using command line 
+        +  Next to the green Gitpod button is a button that says code, select this. There is a few options as to how you 
+        would like to clone, if you choose https, SSH or Github CLI, select the clipboard icon to copy the URL.
+        +  In your workspace that you've created, in the terminal , type git clone, paste the URL and enter.
 
-    ![Image showing the Github pages options](assets/readme-assets/readme-images/source.png) <br>
+     ![Image showing the cloning options](static/images/readme-images/clone.png)
+    *  Desktop Github
+        + If you choose to clone by selecting open with desktop Github, it will guide you through the clone with prompts.<br>
 
-    (d) After a minute or two the page has now published and the site address is available in the Github page section.
+    For more information or troubleshooting see the Github documentation 
+    [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#about-cloning-a-repository)
 
-    ![Image showing that the site has been successfully published](assets/readme-assets/readme-images/published.png)
-
- - ### Forking
-   (a) To fork my project sign in to Github and go to my [repository](https://github.com/natalie-kate/date-night)<br>
-   (b) Above and to the right of the settings there are three options and the far right one says Fork, select this.<br>
-   (c) The fork is now in your repositories.
-
-
- - ### Clone
-   To clone my project sign in to Github and go to my [repository](https://github.com/natalie-kate/date-night)<br>
-   * Clone using command line
-     + Next to the green Gitpod button is a button that says code, select this. There is a few options as to how you 
-       would like to clone, if you choose https, SSH or Github CLI, select the clipboard icon to copy the URL.
-     + In your workspace that you've created, in the terminal , type git clone, paste the URL and enter.
-
-     ![Image showing the cloning options](assets/readme-assets/readme-images/clone.png)
-   * Desktop Github
-     + If you choose to clone by selecting open with desktop Github, it will guide you through the clone with prompts.<br>
-
-For more information or troubleshooting see the Github documentation 
-[here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#about-cloning-a-repository)
    
 ## Credits
 
