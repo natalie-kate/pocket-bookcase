@@ -351,7 +351,17 @@ Testing and results can be found [here](TESTING.md)
 ### Code
 
 -   [Bootstrap4](https://getbootstrap.com/docs/4.1/getting-started/introduction/): Bootstrap Library used for the layout and styling and modals.
-
+-   [Anthony Mouse on Stack Overflow](https://stackoverflow.com/questions/43634440/html-pattern-regex-for-no-spaces): For preventing people from entering spaces in some of the text input boxes.
+-   [Iklinac on Stack Overflow](https://stackoverflow.com/questions/62839298/static-files-not-loading-on-one-template-but-loading-on-another): Fix for CSS not loading for profile page when fine on others.
+-   [Joyrex on Github](https://github.com/twbs/bootstrap/issues/25179): Fix for my custom checkbox switch not working
+-   [Color Meanings](https://www.color-meanings.com/shades-of-brown-color-names-html-hex-rgb-codes/): Fothe hex code for the dark brown I used instead of black throughout the site.
+-   [Josh Comeau](https://www.joshwcomeau.com/animation/css-transitions/?utm_source=Responsive+Design+Weekly&utm_campaign=3e225460b1-RWD_Newsletter_449&utm_medium=): Hover effect on buttons.
+-   [MongoDb documentation](https://docs.mongodb.com/manual/): Used for push, pull, and addToSet.
+-   [Maya and Claire on Slack](https://code-institute-room.slack.com/archives/C7JQY2RHC/p1632052548400100): $set operator was Claires suggestion for Maya's question and it looked useful so I took note of it and ended up using it.
+-   [Grepper](https://www.codegrepper.com/code-examples/python/how+to+remove+spaces+from+input+in+python): Used to check that book title was not just spaces as user can't edit book title once added, only admin can. 
+-   [Cédric Julien on stack overflow](https://stackoverflow.com/questions/8270092/remove-all-whitespace-in-a-string): Used to change genre names to one word e.g in the case of science fiction to sciencefiction as use the genre name as id and the space doesn't work for that.
+-   [mozillazg on Github](https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9)(https://github.com/: Pagination code, but also needed [Sam Laubscher's](samlaubscher/Bristol-Blackbook/blob/main/app.py) and [Russ Oakham's](https://github.com/RussOakham/wanderlust-recipes/blob/master/app.py) pagination code to figure out why mine wasn't working.
+-   [Etdashou on stack overflow](https://stackoverflow.com/questions/3984287/how-to-show-alternate-image-if-source-image-is-not-found-onerror-working-in-ie): Attributes to add to my book images. In case the url provided by a user doesn't work, the backup image will show instead.
 
 ### Content
 
@@ -364,9 +374,12 @@ Testing and results can be found [here](TESTING.md)
     * [byllsa](https://github.com/byIlsa/Aloy-from-outcast-to-heroine)
 
 ### Media
- - 
+ - [Stanislav Kondratiev](https://www.pexels.com/@technobulka): Main Bookcase Image
+ - [Jess Bailey Designs](https://www.pexels.com/@jessbaileydesign?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels): Pile of books used for back up image.
+ - Book cover images I have used to start the database have came from [wikipedia](https://en.wikipedia.org/wiki/Main_Page).
+ - Book synopsis text have come from [Waterstones](https://www.waterstones.com/)
+ - Some reviews are quotes and such are within quotation marks and attributed.
  
-
 ### Acknowledgements
 
 -   Code institute.
