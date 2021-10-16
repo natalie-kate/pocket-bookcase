@@ -17,38 +17,100 @@
 
 The W3C Markup Validator and W3C CSS Validator were used to validate every page of the project to ensure there were no syntax errors in the project.
 
--   ## [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) 
+-   ## [W3C Markup Validator](https://validator.w3.org/) 
 
     ### Initial testing
     - index.html
 
-    ![Initial index html test](assets/readme-assets/validations/index-html-validation.png)
+    ![Initial index.html test](static/images/testing-images/validations/index-html.png)
 
-    - decision.html
+    - about.html
 
-    ![Initial decision html test](assets/readme-assets/validations/decision-html-validation.png)
+    ![Initial about.html test](static/images/testing-images/validations/about-html.png)
 
     - contact.html
 
-     ![Initial contact html test](assets/readme-assets/validations/contact-html-validation.png)
+     ![Initial contact.html test](static/images/testing-images/validations/contact-html.png)
 
-     Removed type attributes from scripts on all my pages which prevented me getting html errors on them as well as this was the first page I validated. 
-     Removed type attribute from text-box and the extra anchor closing tag that was present.
-
-     ![Initial contact html test, second picture](assets/readme-assets/validations/contact-html-validation.png)
-
-     The role and aria-checked I had put on all my labels for the star ratings as I have hidden the actual checkboxes and styled the labels to be the stars so I tried to use accessible attributes on the labels which caused the error. Removed them.
+     I was getting warnings for using aria-checked on my radio buttons, I googled it and seems common practice to do so and couldn't see an alternative so I left them in.
   
+    - edit-account.html
+
+     ![Initial edit-account.html test](static/images/testing-images/validations/edit-account-html.png)
+
+    - edit-user.html
+
+     ![Initial edit-user.html test](static/images/testing-images/validations/initial-edit-user.png)
+
+     Had an extra closing div and form tag so removed them.
+
+    - manage-genres.html
+
+     ![Initial manage-genres.html test](static/images/testing-images/validations/initial-manage-genres.png)
+
+     Had misplaced a " and so this was causing some issues, put in the correct place. Duplicate id error was coming from forgetting that a list was getting iterated and so numerous genres were getting the same id. So changed to what I had done in other pages and made the id's the genre names.
+
+    - manage-users.html
+
+     ![Initial manage-users.html test](static/images/testing-images/validations/initial-manage-users.png)
+
+     Hadn't left a space after an attribute which due to iteration meant numerous lines were missing a space.
+
+    - profile.html
+
+     ![Initial profile.html test](static/images/testing-images/validations/initial-profile-html.png)
+
+     Had two divs for each of the profile bookshelves as the same id. These were the books and if there weren't any the link to the library. As they wouldn't both get shown at the same time it hadn't occurred to me that it would be an issue. Put both divs in one div with conditions to dictate which got shown when the collapsible was toggled.
+
+    - profile-add.html
+
+     ![Initial profile-add.html test](static/images/testing-images/validations/profile-add.png)
+
+    - register.html
+
+     ![Initial register.html test](static/images/testing-images/validations/register-html.png)
+
+    - sign-in.html
+
+     ![Initial sign-in.html test](static/images/testing-images/validations/sign-in-html.png)
+
+    - edit-book.html
+
+     ![Initial edit-book.html test](static/images/testing-images/validations/update-book-html.png)
+
+     Same issue as contact.html, with the aria-checked attribute.
+
+    - add-book.html
+
+     ![Initial add-book.html test](static/images/testing-images/validations/add-book-html.png)
+
+     Same issue as contact.html, with the aria-checked attribute.
+
     - 404.html
 
-     ![Initial contact html test](assets/readme-assets/validations/404-html-validation.png)
+     ![Initial 404.html test](static/images/testing-images/validations/404-html.png)
+
+    - 500.html
+
+      Issues raised by inputting the 500.html code was due to the templating language and therefore raised errors of needing a head, doctype, language etc.
     
     ### Final testing (for those that needed fixed)
 
-    Fortuitously I only had the contact.html to fix so below is the final validation for it.
+    - manage-genres.html
     
-    ![Initial contact html test](assets/readme-assets/validations/contact-html-validation-final.png)
+     ![Final manage-genres.html test](static/images/testing-images/validations/manage-genres-html.png)
 
+   - manage-users.html
+    
+     ![Final manage-users.html test](static/images/testing-images/validations/manage-users-html.png)
+
+   - profile.html
+    
+     ![Final profile.html test](static/images/testing-images/validations/profile-html.png)
+
+   - edit-user.html
+    
+     ![Initial edit-user.html test](static/images/testing-images/validations/edit-user-html.png)
 
 -   ## [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) 
     
