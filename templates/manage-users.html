@@ -75,7 +75,7 @@
     <strong><i class="fas fa-exclamation" aria-hidden="true"></i> Are you sure you want to delete {{ user.username }}?</strong>
     <div>
       <a data-toggle="collapse" href="#{{ user.username }}-delete" aria-label="Closes delete genre confirmation section" class="btn btn-sm cancel-btn hover">Cancel <i class="fas fa-times" aria-hidden="true"></i></a>
-      <a href="{{ url_for('delete_user', user_id=user._id) }}"class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
+      <a href="{{ url_for('delete_user', user_id=user._id) }}" class="btn btn-sm delete-btn hover">Delete <i class="fas fa-trash-alt" aria-hidden="true"></i></a>
     </div>
   </div>
 </div>
