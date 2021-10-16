@@ -164,14 +164,47 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
    - #### First Time Visitor 
 
-         1. As a first time visitor, I want to easily understand the main purpose of the site. 
-        2. As a first time visitor, I want to be able to intuitively use the site.
-        3. As a first time visitor, I expect to see an attractive, visually appealing site.
-        4. As a first time visitor, I expect an accessible site.
-        5. As a first time visitor, I expect the site to look good on my mobile device.
-        6. As a first time visitor, I want to easily search the books.
-        7. As a first time visitor, I want to easily register.
+      1. As a first time visitor, I want to easily understand the main purpose of the site.<br>
+        The words bookcase and library are on the home page aswell as five books. There is also a nav link to the About page in the menu whch explains how to use the app.
 
+         ![app menu](static/images/testing-images/user-stories/menu.png)
+         
+      2. As a first time visitor, I want to be able to intuitively use the site.<br>
+         I have put social links and other useful links in the footer. The brand is a link to home and home is also in the menu which is expected by users. In the sign in page, sign-up link is also there incase user has not joined yet for ease of use and vice versa sign-in is on sign-up page.
+
+         ![app footer links](static/images/testing-images/user-stories/footer-links.png)
+
+
+      3. As a first time visitor, I expect to see an attractive, visually appealing site.<br>
+         I have used the same picture and colours all through the site so that there is nothing drastically different that could be off putting. Likewise none of the colours are jarring.<br> Have kept the design fairly simple as the book covers themselves add colours and imagery to the site so didnt want it to look too busy. Following on from that I have limited the number of books per page to 5 using pagination so that too many books aren't overwhelming to the user.<br> Didn't want any gaps in the site from lack of supplied url or a broken link and so supplied a back up image.
+
+         ![app pagination](static/images/testing-images/user-stories/pagination.png)
+         ![app alt image](static/images/testing-images/user-stories/display-alt-image.png)
+
+      4. As a first time visitor, I expect an accessible site.<br>
+         All links have aria-labels, all images have alt text and icons are aria-hidden. Accessibility scores on lighthouse are 100.
+
+      5. As a first time visitor, I expect the site to look good on my mobile device.<br>
+         The site was built with mobile first in mind. I have hidden icons on the buttons for small screens as the buttons were taking up too much real estate. Also the book cover is on top of the book text rather than beside as otherwise the book image would be too small to fully appreciate the covers. But aim was that site would look good on all devices.
+
+         ![mobile view](static/images/testing-images/user-stories/mobile.png)
+         ![mobile view](static/images/testing-images/user-stories/about.png)
+         ![mobile view](static/images/testing-images/user-stories/profile.png)
+         ![mobile view](static/images/testing-images/user-stories/sign-in.png)
+         ![mobile view](static/images/testing-images/user-stories/contact.png)
+         ![tablet view](static/images/testing-images/user-stories/tablet.png)
+         ![desktop view](static/images/testing-images/user-stories/desktop.png)
+
+      6. As a first time visitor, I want to easily search the books.<br>
+         The search bar is at the top of the home page, the user can use it to search for author, book title, books added by a certain user, book series name or genre.
+
+         ![app search bar](static/images/testing-images/user-stories/search-bar.png)
+
+      7. As a first time visitor, I want to easily register.<br>
+         There is a nav link in the menu to sign-up, aswell as in the footer, there is also another one on the sign-in page. When there, the registration form is no different from any other online forms and you won't be allowed to submit it without the required information.
+
+         ![app register link](static/images/testing-images/user-stories/register-link.png)
+         ![app registration form](static/images/testing-images/user-stories/register-form.png)
 
    - #### Returning Visitor Goals
 
