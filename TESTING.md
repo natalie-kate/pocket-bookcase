@@ -112,127 +112,59 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
     
      ![Initial edit-user.html test](static/images/testing-images/validations/edit-user-html.png)
 
+
 -   ## [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) 
     
-    ### Initial/final testing
-
-    ![Initial contact html test](assets/readme-assets/validations/css-validation.png)
-   
-    The only errors were for bootstrap. There was a warning for my CSS which was that my button background color and border were the same colour. But as I wanted that border on the hover effect I kept it as is. When I tried to fix the warning by removing the border from the button and add it into the hover effect the button size naturally changed size which I didn't like the look of.
-   
-
--   ## [JSHint JavaScript Validator](https://jshint.com/) 
-    
     ### Initial testing
-  
-    - contact.js
 
-    ![Initial contact javascript test](assets/readme-assets/validations/contactjs-validation-initial.png)
+      ![Initial css test](static/images/testing-images/validations/initial-css.png)
 
-    Added in the missing semi-colon. The undefined variables I left, as one was $ for jquery and the other is emailjs so neither need defined.
-
-    - decision.js
-
-     ![Initial decision javascript test](assets/readme-assets/validations/decisionjs-validation.png)
-     ![Initial decision javascript test](assets/readme-assets/validations/decisionjs-validation2.png)
-     ![Initial decision javascript test](assets/readme-assets/validations/decisionjs-validation3.png)
-
-     Fixed all the semi-colons. I had two read only warnings. This was due to me using length as a variable name so I renamed it which did the trick. Again $ for jquery was being flagged as well as google (for google maps) for being undefined so I added in /*globals $:false */ and /*globals google:false */ to stop them being flagged.
-     The other undefined variables I went through and declared them all.
-     It was flagging initMap as unused, this is due to it not being called in my JS file. It is called however by the Google Maps API when a going out result creates the script for it. So it has been left as is.
+      Changed padding to 0 from none. Also changed border-color to match the other buttons.
 
     ### Final testing
 
+      ![css test](static/images/testing-images/validations/css.png)
+    
+
+-   ## [JSHint JavaScript Validator](https://jshint.com/) 
+    
+    ### Initial/final testing
+  
     - contact.js
 
-     ![Final contact javascript test](assets/readme-assets/validations/contactjs-validation-final.png)
+      ![Initial contact javascript test](static/images/testing-images/validations/contactjs.png)
 
-    - decision.js
+      Errors raised was undefined variables EmailJS and $. These didn't need defined as $ is for jquery and emailjs is an external API.
 
-     ![Final decision javascript test](assets/readme-assets/validations/decisionjs-validation-final.png)
+-   ## [Pep8 validation](http://pep8online.com/) 
+    
+    ### Initial/final testing
+  
+    - app.py 
 
+      ![Initial contact javascript test](static/images/testing-images/validations/python-validation.png)
 
+    
 -   ## [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) in devtools
     
     ### Initial scores 
 
-    #### Landing page
+    #### 
 
     + Initial mobile
-
-    ![Initial landing page scores for mobile](assets/readme-assets/lighthouse-testing/initial-mobile-index.png)
-
-    #### Game page
-
-    + Initial mobile
-
-    ![Initial game page scores for mobile](assets/readme-assets/lighthouse-testing/initial-mobile-decision.png)
-
-    #### Contact Page
-
-    - Initial mobile
-      + No issues to work on.
-
-    #### 404 page
-
-    - Initial mobile
-      + Scores were all fine, best practices wasn't 100% though so added in meta description.
 
     ### Actions taken from initial test.
 
-    - One of the image file paths was wrong affecting best practice scores. Amended.
-    - The contrast between the brown writing and pink background of the buttons wasn't passing and so increased font-weight of all the buttons.
-    - The result images were causing performance score to be low. As only one image is required for the result, added lazy loading to them.
-    - Script loading was also impacting the lighthouse scores so added defer to them.
-    - Changed cloudfare CDN's for font-awesome and bootstrap to the regular CDN's.
-
     ### Final test 
 
-    #### Landing page
+    #### 
 
-    + Final mobile (see report [here](assets/readme-assets/lighthouse-testing/mobile-landing-report.pdf))
-
-    ![Final landing page scores for mobile](assets/readme-assets/lighthouse-testing/mobile-index.png)
-
-    + Final Desktop (see report [here](assets/readme-assets/lighthouse-testing/desktop-index-report.pdf))
-
-    ![Final landing page scores for desktop](assets/readme-assets/lighthouse-testing/desktop-index.png)
-
-    #### Game page
-
-    + Final mobile (see report [here](assets/readme-assets/lighthouse-testing/mobile-decision-report.pdf))
-
-    ![Final evidence page scores for mobile](assets/readme-assets/lighthouse-testing/mobile-decision.png)
-
-    + Final desktop (see report [here](assets/readme-assets/lighthouse-testing/desktop-decision-report.pdf))
-
-    ![Final evidence page scores for desktop](assets/readme-assets/lighthouse-testing/desktop-decision.png)
-
-    #### Contact Page
-
-    + Final Mobile (see report [here](assets/readme-assets/lighthouse-testing/mobile-contact-report.pdf))
-
-    ![Contact page scores for mobile](assets/readme-assets/lighthouse-testing/mobile-contact.png)
-
-    + Final Desktop (see report [here](assets/readme-assets/lighthouse-testing/desktop-contact-report.pdf))
-
-    ![Contact page scores for desktop](assets/readme-assets/lighthouse-testing/desktop-contact.png)
-
-    #### 404 Page
-
-    + Final Mobile (see report [here](assets/readme-assets/lighthouse-testing/mobile-404-report.pdf))
-
-    ![Contact page scores for mobile](assets/readme-assets/lighthouse-testing/mobile-404.png)
-
-    + Final Desktop (see report [here](assets/readme-assets/lighthouse-testing/desktop-404-report.pdf))
-
-    ![Contact page scores for desktop](assets/readme-assets/lighthouse-testing/desktop-404.png)
 
 ## Testing User Stories 
 
-- #### First Time Visitor 
+   - #### First Time Visitor 
 
-        1. As a first time visitor, I want to easily understand the main purpose of the site. 
+         1. As a first time visitor, I want to easily understand the main purpose of the site. 
         2. As a first time visitor, I want to be able to intuitively use the site.
         3. As a first time visitor, I expect to see an attractive, visually appealing site.
         4. As a first time visitor, I expect an accessible site.
@@ -240,31 +172,32 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
         6. As a first time visitor, I want to easily search the books.
         7. As a first time visitor, I want to easily register.
 
+
    - #### Returning Visitor Goals
 
-        1. As a returning visitor, I want to add books to my "bookshelves".
-        2. As a returning visitor, I want to follow on social media so I can hear of any new features.
-        3. As a returning visitor, I want to be able to add books to the applications library.
-        4. As a returning visitor, I want to be able to change my password.
-        5. As a returning visitor, I want to be able to rate the app.
-        6. As a returning visitor, I want to get feedback so I know that something has went through or if i've been redirected, why.
+      1. As a returning visitor, I want to add books to my "bookshelves".
+      2. As a returning visitor, I want to follow on social media so I can hear of any new features.
+      3. As a returning visitor, I want to be able to add books to the applications library.
+      4. As a returning visitor, I want to be able to change my password.
+      5. As a returning visitor, I want to be able to rate the app.
+      6. As a returning visitor, I want to get feedback so I know that something has went through or if i've been redirected, why.
 
    - #### Frequent Visitor Goals
 
-        1. As a frequent visitor, I want to be able to edit a book that I've added to the applications library.
-        2. As a frequent visitor, I want to be able to contact the owner with suggestions.
-        3. As a frequent visitor, I want to be able to move or delete books on my "bookshelves".
-        4. As a frequent visitor, I want to be able to update my profile.
-        5. As a frequent visitor, I want to be able to change my account information
-        6. As a frequent visitor, I don't want to have never ending scrolling up or down.
+      1. As a frequent visitor, I want to be able to edit a book that I've added to the applications library.
+      2. As a frequent visitor, I want to be able to contact the owner with suggestions.
+      3. As a frequent visitor, I want to be able to move or delete books on my "bookshelves".
+      4. As a frequent visitor, I want to be able to update my profile.
+      5. As a frequent visitor, I want to be able to change my account information
+      6. As a frequent visitor, I don't want to have never ending scrolling up or down.
 
    - #### Admin goals
       
-        1. As admin, I want to be able to add, delete or edit a book.
-        2. As admin, I want to be able to add, delete or edit a genre.
-        3. As admin, I want to be able to delete a user.
-        4. As admin, I want to be able to make another user an admin.
-        5. As admin, I want to be able to reset a users password if they're having trouble logging in.
+      1. As admin, I want to be able to add, delete or edit a book.
+      2. As admin, I want to be able to add, delete or edit a genre.
+      3. As admin, I want to be able to delete a user.
+      4. As admin, I want to be able to make another user an admin.
+      5. As admin, I want to be able to reset a users password if they're having trouble logging in.
 
 
 ## Manual Testing
