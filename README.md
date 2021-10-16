@@ -1,6 +1,6 @@
 # Pocket Bookcase
 
-Here is a [link](https://pocket-bookcase.herokuapp.com/) to the live project.
+Here is a link to the live project. (https://pocket-bookcase.herokuapp.com/)
 
 This website was created for Milestone 3 - Datacentric Development project, as part of the Code Institutes diploma in Software development.<br>
 I love books and have the problem of never remembering what book I'm on in the numerous series that I'm in the middle of reading. This means I often start to read a book I've already read and buy books I already have at home.<br>
