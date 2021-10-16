@@ -15,8 +15,7 @@
 
 ## Automated Testing
 
-The W3C Markup Validator and W3C CSS Validator were used to validate every page of the project to ensure there were no 
-syntax errors in the project.
+The W3C Markup Validator and W3C CSS Validator were used to validate every page of the project to ensure there were no syntax errors in the project.
 
 -   ## [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input) 
 
@@ -169,106 +168,42 @@ syntax errors in the project.
 
 ## Testing User Stories 
 
-- ### First Time Visitor 
-   1. As a first time visitor, I want to easily understand the main purpose of the site. 
-      - The overlay box on the landing page has the main title "Date Night" with an accompanying sentence of "Let us help you decide what to do". In addition there is a link to about in the nav to explain it more thoroughly.
-   
-      ![Picture showing title and accompanying sentence](assets/readme-assets/testing-images/title.png)
-      ![Picture showing About modal](assets/readme-assets/testing-images/about-modal.png)
+- #### First Time Visitor 
 
-   2. As a first time visitor, I want to be able to intuitively use the site.
-      - The layout is what users expect to see, nav menu at the top of all pages and social links at the bottom. In the event of an error the 404.html page has links back to home page and another to report error which takes them to the contact page. If the timer runs out there is a start again button that reloads the decision.html so the user doesn't have to go back to the home page to then restart the game.
+        1. As a first time visitor, I want to easily understand the main purpose of the site. 
+        2. As a first time visitor, I want to be able to intuitively use the site.
+        3. As a first time visitor, I expect to see an attractive, visually appealing site.
+        4. As a first time visitor, I expect an accessible site.
+        5. As a first time visitor, I expect the site to look good on my mobile device.
+        6. As a first time visitor, I want to easily search the books.
+        7. As a first time visitor, I want to easily register.
 
-      ![Picture showing nav menu](assets/readme-assets/testing-images/nav.png)
-      ![Picture showing social links](assets/readme-assets/testing-images/social.png)
-      ![Picture showing error message links](assets/readme-assets/testing-images/404.png)
-      ![Picture showing start again button](assets/readme-assets/testing-images/time-out.png)
+   - #### Returning Visitor Goals
 
-   3. As a first time visitor, I expect to see an attractive, visually appealing site.
-      - Used landing page image to pick colours from to ensure a pleasing colour palette. Hover effects draw attention to links and call to action buttons. Hover effects being size increase for social links, colour change on the result links, nav links, image attribute links and main buttons. The same colours were consistently used across the site for predictability and doesn't look too busy which can be off putting. 
+        1. As a returning visitor, I want to add books to my "bookshelves".
+        2. As a returning visitor, I want to follow on social media so I can hear of any new features.
+        3. As a returning visitor, I want to be able to add books to the applications library.
+        4. As a returning visitor, I want to be able to change my password.
+        5. As a returning visitor, I want to be able to rate the app.
+        6. As a returning visitor, I want to get feedback so I know that something has went through or if i've been redirected, why.
 
-      ![Picture showing button hover effect](assets/readme-assets/testing-images/button.png)
-      ![Picture showing link hover effect](assets/readme-assets/testing-images/link.png)
-    
-   4. As a first time visitor, I expect an accessible site.
-      - Aria labels, screen reader only text and alternative text have been used throughout the site. Styled the outline of keyboard focus making it more obvious as to where they are on the page and colour ties in with the design of the page. All colour contrast scores were a pass in chrome dev tools and accessibility score was 100%. Added in a media query for reduce motion to remove the pulse effect of the timer at 0 and the transition effects on the social links and buttons. Kept colour change on button and introduced one for the social links so that interactivity is still noticeable.
+   - #### Frequent Visitor Goals
 
-       ![Picture showing keyboard focus](assets/readme-assets/testing-images/focus.png)
+        1. As a frequent visitor, I want to be able to edit a book that I've added to the applications library.
+        2. As a frequent visitor, I want to be able to contact the owner with suggestions.
+        3. As a frequent visitor, I want to be able to move or delete books on my "bookshelves".
+        4. As a frequent visitor, I want to be able to update my profile.
+        5. As a frequent visitor, I want to be able to change my account information
+        6. As a frequent visitor, I don't want to have never ending scrolling up or down.
 
-   5. As a first time visitor, I expect the site to look good on my mobile device.
-      - Designed mobile first. As hover effects not in use, main landing page button has a shadow effect border giving it a more obvious button look and on screens smaller than 1000px the useful links in the result page have the underline text decoration that users are used to being indicative of a link.  Have ensured the site is responsive on all screen sizes by using bootstrap and media queries.
-
-      ![Picture showing landing page on mobile](assets/readme-assets/testing-images/mobile-landing.png)
-      ![Picture showing game page on mobile](assets/readme-assets/testing-images/mobile-game.png)
-      ![Picture showing stay in result on mobile](assets/readme-assets/testing-images/mobile-in-result.png)
-      ![Picture showing go out result on mobile](assets/readme-assets/testing-images/mobile-out-result.png)
-      ![Picture showing contact page on mobile](assets/readme-assets/testing-images/mobile-contact.png)
-      ![Picture showing landing page on tablet](assets/readme-assets/testing-images/tablet-landing.png)
-      ![Picture showing game page on tablet](assets/readme-assets/testing-images/tablet-game.png)
-      ![Picture showing stay in result on tablet](assets/readme-assets/testing-images/tablet-in-result.png)
-      ![Picture showing go out result on tablet](assets/readme-assets/testing-images/tablet-out-result.png)
-      ![Picture showing contact page on tablet](assets/readme-assets/testing-images/tablet-contact.png)
-      ![Picture showing landing page on desktop](assets/readme-assets/testing-images/desktop-landing.png)
-      ![Picture showing game page on desktop](assets/readme-assets/testing-images/desktop-game.png)
-      ![Picture showing stay in result on desktop](assets/readme-assets/testing-images/desktop-in-result.png)
-      ![Picture showing go out result on desktop](assets/readme-assets/testing-images/desktop-out-result.png)
-      ![Picture showing contact page on desktop](assets/readme-assets/testing-images/desktop-contact.png)
+   - #### Admin goals
       
-   6. As a first time visitor, I want a quick and fun way to choose what to do for date night.
-   - The about modal explains that there is only 8 decisions and 8 seconds for each so its definitely quick and the timer with the colour change adds a bit of excitement and more fun to it, the cartoon type result pictures add to the lightheartedness as well.
+        1. As admin, I want to be able to add, delete or edit a book.
+        2. As admin, I want to be able to add, delete or edit a genre.
+        3. As admin, I want to be able to delete a user.
+        4. As admin, I want to be able to make another user an admin.
+        5. As admin, I want to be able to reset a users password if they're having trouble logging in.
 
-     ![Picture showing a result image](assets/readme-assets/testing-images/result-image.png)
-     ![Picture showing timer](assets/readme-assets/testing-images/timer.png)
-
-- ### Returning Visitor
-
-   1. As a returning visitor, if my result is to go out to do something e.g cinema, I want to see where the cinemas are on google maps.
-    - There is a use my location button or the user has another option of putting in another location in the search box and markers will appear to show them their options.
-    - If geolocation is not supported or is blocked by their device settings then an alert box will appear.
-
-     ![Picture showing a result image](assets/readme-assets/testing-images/markers.png)
-     ![Picture showing the alert image](assets/readme-assets/testing-images/alert.png)
-
-   2. As a returning visitor, if I have a going out result I want to be able to choose what area to search for my resulting place.
-    - User can use the search box to search any area for their resulting activity.
-
-     ![Picture showing search box](assets/readme-assets/testing-images/search-box.png)
-
-   3. As a returning visitor, I want to be able to contact the owner with comments or questions.
-     - The link to the contact form is in the nav menu at the top of the page throughout. There is a text area for any comments and questions. The contact form will not send without the required information being filled out. On successful submission a personalised modal will pop up, the send form button changes to Sent! and upon closing the modal the user will be taken back to the home page. So their is plenty of feedback that the form has sent.
-
-     ![Picture showing form prompts](assets/readme-assets/testing-images/form-prompts.png)
-     ![Picture showing the submit button text change](assets/readme-assets/testing-images/submit-button.png)
-     ![Picture showing the submit button text change](assets/readme-assets/testing-images/submit-modal.png)
-
-   4. As a returning visitor, I want to see social media links so that I can follow on my chosen platforms.
-    - These are found at the bottom of the page throughout and they all open in their own tab.
-
-    ![Picture showing social links](assets/readme-assets/testing-images/social.png)
-
-- ### Frequent Visitor
-   1. As a frequent visitor I don't want to be choosing between the same two options each time e.g restaurant vs. club. 
-    - It was written in the function to use two random numbers each time, this is so that after the initial stay in or go out decision they aren't getting cinema or restaurant as decision 2 and then club or bar as decision 3 etc each time. This is so the game isn't predictable and boring. Below are images of 3 games showing the second decision of each. Staying in being the first decision that was made.
-
-    ![Picture showing decision 2 example](assets/readme-assets/testing-images/game1.png)
-    ![Picture showing decision 2 example 2](assets/readme-assets/testing-images/game2.png)
-    ![Picture showing decision 2 example 3](assets/readme-assets/testing-images/game3.png)
-
-   2. As a frequent visitor, I want to be able to contact the owner with suggestions of more options.
-    - As previously covered in story 3 of frequent visitor, link to contact page is at the top throughout. In addition to what has already been covered, the information from the contact form is linked to my email and so any suggestions would come straight to me and with the email address completed by the user I could respond to them.
-  
-    ![Picture showing email received with the information from the contact form](assets/readme-assets/testing-images/emailjs.png)
-
-   3. As a frequent visitor I want to use links to food delivery services if the result is takeaway.
-
-    - As with all the staying in results, there are useful links to get your date night going. These all open in their own tab.
-
-    ![Picture showing the useful links for the staying in results](assets/readme-assets/testing-images/tablet-in-result.png)
-
-   4. As a frequent visitor I want to see information about the markers on the map.
-    - When a marker is clicked on the map an info window pops up with the place name and address. When another marker is clicked the first window will close and the new information will appear.
-
-    ![Picture showing the marker information](assets/readme-assets/testing-images/info-window.png)
 
 ## Manual Testing
 
