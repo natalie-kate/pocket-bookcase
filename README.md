@@ -32,6 +32,13 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
 - [Testing](#testing)
    
 - [Deployment](#deployment)
+   * [Creation](#creation)
+   * [Forking](#forking)
+   * [Clone](#clone)
+   * [Setting up MongoDB](#setting-up-mongodb)
+   * [Setting Up App](#setting-up-app)
+   * [Connectiong to MongoDB](#connecting-to-mongodb)
+   * [Heroku Deployment](#heroku-deployment)
 
 - [Credits](#credits)
    * [Code](#code)
@@ -109,13 +116,43 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
 
 -   Social Links (build up media presence)
 
--   Ability to contact owner 
+-   Ability to contact owner via contact page.
+
+-   Contact form prefills the personal information for logged in users.
+
+-   Flash messages for feedback
+
+-   Confirmation modal and email on submission of contact form
+
+-   Tooltips on registration form to help users complete it correctly
+
+-   Changing nav menu and footer links and buttons in library depending on the users log in status, admin status and what books they have added.
+
+-   Search bar in home/library can be used to search for genre, title, author, added_by and series name.
+
+-   'Back to top' footer link on each page, saves users from having to scroll up to Nav bar especially on mobile devices.
+
+-   Logged in users can add books to the Library.
+
+-   Logged in user can add any book from library on home page to their profile.
+
+-   User can edit books in library that they themselves added. 
+
+-   User can move or delete books on their profile. Can move books they have read from the 'Books To Read' bookshelf to the 'Read Books' bookshelf and vice versa. Books they don't own can be added to 'Books I Own' bookshelf.
+
+-   User can edit their own account via the 'Edit Account' footer link. Put this in footer because I hate having to hunt for this on other sites. Here they can change their password, email address etc or delete their account if they so wish.
+
+-   Admin users can add, edit and delete any books.
+
+-   Admin user can add, edit and delete any genre.
+
+-   Admin user can search for other admins or for a username on Manage Genre page. They can make other users admin, reset another users password and edit their email if required.
 
 
    #### Features to implement in the future
 
--   Book suggestions based on the users favourite genre, which will crosscheck which books are in the library of that genre, which books they have on their profile and display 1 or 2 books at random so they also aren't seeing the same suggestions everytime they log in.
-- Users can add a review to books they didn't add.
+-  Book suggestions based on the users favourite genre, which will crosscheck which books are in the library of that genre, which books they have on their profile and display 1 or 2 books at random so they also aren't seeing the same suggestions everytime they log in.
+- Users can add a review to books they didn't add. As its a book tracker rather than review site this wasn't top priority for initial launch,likewise for the ratings below.
 - Users can rate books they didn't add, the rating displayed will then be the average.
 
 ### Structure
