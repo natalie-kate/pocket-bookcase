@@ -136,6 +136,9 @@ h3.footer {
     background-color: #012d50;
     border: 1px solid #231709;
 }
+.footer-link {
+    padding: 15px;
+}
 
 /*---- Buttons ----*/
 .my-btn {
