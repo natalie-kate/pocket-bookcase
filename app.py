@@ -53,10 +53,10 @@ def library():
     # If a user is logged in then admin will be passed
     # into template as well.
     if session:
-        return render_template('library.html', admin=admin(),
+        return render_template('index.html', admin=admin(),
                                books=pagination_books, page=page,
                                per_page=per_page, pagination=pagination)
-    return render_template('library.html', books=pagination_books, page=page,
+    return render_template('index.html', books=pagination_books, page=page,
                            per_page=per_page, pagination=pagination)
 
 
@@ -88,11 +88,11 @@ def search_library():
         if results:
             if session:
                 return render_template(
-                    "library.html", admin=admin(), results=pagination_results,
+                    "index.html", admin=admin(), results=pagination_results,
                     page=page, per_page=per_page, pagination=pagination)
             else:
                 return render_template(
-                    "library.html", results=pagination_results, page=page,
+                    "index.html", results=pagination_results, page=page,
                     per_page=per_page, pagination=pagination)
         # If there are no results then display flash message.
         else:
