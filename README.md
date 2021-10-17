@@ -424,6 +424,7 @@ Testing and results can be found [here](TESTING.md)
 -   [mozillazg on Github](https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9)(https://github.com/: Pagination code, but also needed [Sam Laubscher's](samlaubscher/Bristol-Blackbook/blob/main/app.py) and [Russ Oakham's](https://github.com/RussOakham/wanderlust-recipes/blob/master/app.py) pagination code to figure out why mine wasn't working.
 -   [Etdashou on stack overflow](https://stackoverflow.com/questions/3984287/how-to-show-alternate-image-if-source-image-is-not-found-onerror-working-in-ie): Attributes to add to my book images. In case the url provided by a user doesn't work, the backup image will show instead.
 
+
 ### Content
 
 -   Content was created by Natalie Alexander.
@@ -443,8 +444,8 @@ Testing and results can be found [here](TESTING.md)
  
 ### Acknowledgements
 
--   Code institute.
--   My mentor Spencer Barriball
+-   Code Institute and Tim Nelson for task manager walk through project. Used the videos a fair bit to get me started.
+-   My mentor Spencer Barriball for his time and feedback.
 -   My mini feb 2021 team on slack for their feedback and support.
 -   The slack community.
 -   My partner for taking the lions share of raising our baby and the cooking so that I can study.
