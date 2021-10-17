@@ -373,12 +373,38 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
   - Friends, family and slack peer review used. Devices and browsers were iphone 11: Safari (x3), iphone XS Max: Safari, iphone 6: Chrome, iphone XR: safari, iphone 11 Pro: Safari, iphone 10: Safari, Samsung S20 FE: Chrome, Samsung S10 and Sony Xperia I3: Chrome. 
   - Chrome devtools used to test responsiveness throughout the development process see bugs found below. Viewed all pages on all of the available devices at the end of the project to ensure everything still looked good.
   - Viewed physically on Macbook air 13", Huawei tablet, HP Chrome book, Dell 21" HD screen, iphone 11, Dell 17" laptop and Pixel 4XL phone to ensure that after all issues found and resolved that there was nothing else appearing
-  
+  - Security wise, I copied restricted url's into a wordfile, I then logged out and tried them all, logged in and tried the admin only ones and tried to edit a book the logged in user didn't add. 
+     * First try it came up with a debugger page, realised that I hadn't put else statements in to redirect user if user wasn't admin. Added redirects and flash messages if not admin.
+     * Also if user not logged in it didn't know what session["user"] was so went back in and added session checks for all functions requiring logging in, and redirect with a flash message if they weren't.
+
 ## Bugs
 
    ### Found and Fixed 
 
    In addition to those found in manual testing
 
-   ### Existing
+   - On peer code review channel a user had got an error when trying to edit a book they had added. 
+      * Had missed () to call the admin function.
+   - Realised that when an admin edits a book the add_by field changes to the admins user name. 
+      * Changed function to $set so that it wouldn't change that field.
+   - Nick on my mini feb team had pointed out that his flash message the book wasn't capitalised.
+      * Added .title() to flash message. Think i've caught them all.
+   - I had noticed and it also got pointed out by Nick that spacing around the submit buttons was a bit lacking.
+      * Added in margin-top: 10px to my-btn
+   - Icon in add-book.html didn't fit in on simulated Moto G4 screen size.
+      * Removed. Could have resized but liked the size of the h3 header and thought if I made the icon smaller it would look squeezed in.
+   - Edit user submit button was not centered.
+      * Fine on all other pages, realised I was missing a div in edit-user page so added in to be the same as the other pages.
+   - Realised some flash messages there was words joined together.
+      * This is due to some flash messages being concatenated and so I'd neglected to leave a space within one of the strings.
+   - One day my code was fine had went through pep8 validator and everything, next day in console I had 46 errors!
+      * Don't know if gitpod had had an update or something. Had 2 flash messages that were saying unassigned, these were concatenated f strings. So assigned the concatenation to a variable and passed that to flash.
+      * Most errors were for docstrings, I had put a comment above the functions explaining what they were, so moved them into the function as docstrings
+      * Unbalanced tuple warnings, this is from the pagination code, tried changing it and it made it worse, so left them.
+      * env imported but unused error, it is used.
+      * env.py line too long, this is the mongo URI. During the task manager walkthrough Tim said that was fine to leave, so i'm going to go with Tim.
 
+
+   ### Existing
+     
+   - I would say the fact you can still get duplicate books if its been spelled differently or if someones missed out 'The' at the beginning for example.
