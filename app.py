@@ -219,6 +219,10 @@ def profile_add(book_id):
         {"_id": ObjectId(book_id)})
     book_title = mongo.db.books.find_one(
         {"_id": ObjectId(book_id)})["title"]
+    read_books = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["read_books"]
+    books_to_read = mongo.db.profiles.find_one(
+        {"user_id": ObjectId(user_id)})["books_to_read"]
     # If form submitted get information from fields
     if request.method == "POST":
         read = request.form.get("read")
@@ -276,6 +280,10 @@ def profile_add(book_id):
             return redirect(url_for("library"))
     # Use profile add template passing in required variables
     if session["user"]:
+        if book_title in read_books or books_to_read:
+            flash(
+                f"{book_title.title()} has already been added to your profile")
+            return redirect(url_for("library"))
         return render_template(
             "profile-add.html", admin=admin(), book=book)
     else:
