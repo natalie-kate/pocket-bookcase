@@ -288,35 +288,50 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
 ## Manual Testing
 
--  The website was viewed with browsers: Google chrome, Safari, Microsoft Edge, Firefox, Opera and Internet Explorer. Viewed all pages on each and checked the following:
+-  The website was viewed with browsers: Google chrome, Safari, Microsoft Edge, Firefox and Opera. Viewed all pages on each and checked the following:
 	- Nav links work from all three pages to all links.
-	- Clicking on social links from all pages work, opening in a new tab
-	- Clicking the start button loads the decisions.html and starts the timer.
-   - Decision counter works correctly.
-	- When the time runs out the start again button reloads decisions.html and timer starts.
-	- Timer colour change and pulse effect at 0 works
-	- For each result, correct information is shown.
-	- All resource links open the correct page in a new tab.
-	- For going out results, map shows instead of resources links
-	- Map shows pins of results when location is either input in the search box or use my location button is used.
-	- If geolocation not supported or blocked by users, alert box shows.
-         + <span style="color: grey;">Alert box appearing below the map and so on mobile screens this wasn't obvious to the user and so moved it to pop up between the input box and map.</span>
-	- When pin is clicked open info window with Name of place and address.
-         + <span style="color: grey;">When clicking on a second marker the original info window didn't close. It had done previously, realised when I was tidying up my code I had declared the infoWindow variable in the function where previously I had declared it at the top of my JS and so I changed it back.</span>
-	- The pictures that required an attribute had links that opened in a new tab to the correct places.
+  - Book search bar works for genre, added_by, series, book title and author 
+  - All buttons take user to the correct page
+  - Add book button should only show for logged in user.
+  - Add book form doesn't allow user to add book without required fields being completed.
+  - Add book form doesn't allow a book that already exists in library to be added.
+  - Add book form doesn't allow a book with spaces as a name to be added.
+  - Book successfully added to library
+  - If book url not supplied or broken, back up image shown.
+  - Flash messages pop up where required, providing feedback to users actions.
+  - Correct buttons appear for the correct users beside books. e.g all three for admin, two against book that a user added, one for logged in users, none for non logged in users.
+  - Edit book form should prefill with current details, title should not be able to be edited except for admin.
+  - Edit book form will not sumbit wihout required information.
+  - Book information successfully edited.
+  - Delete book, only allowed for admin, confirmation before deletion required, successfully deleted from library.
+  - Registration form won't submit without required information.
+  - Registration successfully adds a new user and their profile.
+  - Add to profile switches put books on the correct profile bookshelves.
+  - If user adds a book to profile that they have already added, duplicate book should not appear.
+  - Using book buttons on profile should move books correctly. Remove button should remove book from that bookshelf only.
+  - Edit account form should be pre-filled with existing information (not password)
+  - Edit account should successfully update a users information.
+  - If user tries to change their password, their existing password must be correct to proceed. And their new password must match the confirm password field.
+  - Edit account page allows a user to delete their account after confirmation
+  - Manage genre page allows admin to successfully add a new genre.
+  - Manage genre page allows admin to update a genre.
+  - Manage genre page allows admin to successfully delete a genre after confirmation
+  - Manage users allows admin to search for admin users or a user by username.
+  - Manage users page allows admin to open a users edit user page to successfully make then an admin.
+  - Manage users page allows admin to open a users edit user page to successfully reset their password.
+  - Manage users page allows admin to successfully delete a user after confirmation.
+  - Cancel buttons take user of of the edit page they were on or close the delete confirmation.
+	- Clicking on social links work, opening in a new tab.
+  - Footer links all go to the correct place, back to top link correct on each page.
+  - Footer links appearing appropriately, logged in vs non logged. 
 	- Hover effects work on social icons and all links and buttons.
-         + <span style="color: grey;"> I had given one of my buttons a btn-hover instead of hover-btn class so fixed that. Had also not given the modal button the hover-btn class in contact.html so added that in too.</span>
-	- Form will not submit without all three required personal details being completed and comment box. Can type in text area, On successful form submission, personalised modal appears, both close buttons take user back to home page and star rating works.
-         + <span style="color: grey;">Realised that the star ratings were being skipped over by keyboard control and screen reader and so added in a tab-index</span>
+	- Contact form will not submit without all three required personal details and comment box being completed . Can type in text area, On successful form submission, personalised modal appears, both close buttons take user back to home page and star rating works.
 	- Upon successful submission, receive an email with details taken from the form by email.js and send button has changed to sent.
-         + <span style="color: grey;">I was getting a 412 error, when I went to my JS account it said I needed to reconnect my google account which as far as I could tell hadn't disconnected, created a new service which fixed the issue.</span>
+  - Upon contact form submission user also recieves a personalised acknowledgment email.
 	- 404.html back to home button works.
 	- 404 report issue link takes user to contact form.
 	- About modal close buttons work.
-   - Friends, family and slack peer review used. Devices and browsers were iphone 11: Safari (x3), iphone XS Max: Safari, iphone 6: Chrome, iphone XR: safari, iphone 11 Pro: Safari, iphone 10: Safari, Samsung S20 FE: Chrome, Samsung S10 and Sony Xperia I3: Chrome. 
-        + There was a few comments about seeing the same option more than once, once I explained you start with 8, choose 4, then from those 4 you choose 2 and then pick from those 2, so the max you'll see one option is 3 times, they then understood what was going on. So I put a note on the landing page so people would know to expect to see some options more than once.
-        + Another comment was that when the hover effect was transitioning it affected the neighbouring social link icons. I changed the structure of the footer so that the individual links were in individual columns and so the other icons weren't jostled about when another was hovered over.
-        + Comment that tissue mask in pamper night result text was a typo. This highlighted that this isn't a well known beauty product so changed the wording to be clearer
+  - Friends, family and slack peer review used. Devices and browsers were iphone 11: Safari (x3), iphone XS Max: Safari, iphone 6: Chrome, iphone XR: safari, iphone 11 Pro: Safari, iphone 10: Safari, Samsung S20 FE: Chrome, Samsung S10 and Sony Xperia I3: Chrome. 
    - Chrome devtools used to test responsiveness throughout the development process see bugs found below. Viewed all pages on all of the available devices at the end of the project to ensure everything still looked good.
    - Viewed physically on Macbook air 13", Huawei tablet, HP Chrome book, Dell 21" HD screen, iphone 11, Dell 17" laptop and Pixel 4XL phone to ensure that after all issues found and resolved that there was nothing else appearing
   
@@ -324,17 +339,5 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
    ### Found and Fixed 
 
-   In addition to the issues found in manual testing, I also found the below.
-
-   -  On iphone 11 had a massive gap between content and footer, played about with margins, trying to fix it. Realised I had put margin of 10vh on both top and bottom, when I just wanted it on the top. 
-   -  Footer was taking up more room that it should, it was escaping the container. Because I had changed the footer to put the icons in their own columns (see manual testing) bootstrap padding had been introduced, removed this.
-   -  Realised that once I'd picked going out or staying in the top button was coming up with the same option every time. When I looked at the function, realised that when I had changed a variable name from length to arrayLength after it been flagged by the JSHint, I had only changed two out of three of the placed it had been used.
-   -  On mobile the map obviously being smaller meant that the default satellite/ terrain options at the top left of the map were taking up alot of room and when an info window was opened, the information was being overlapped. Changed map type options to a dropdown menu using the Google Maps API documentation.
-
    ### Existing
 
-   -  Colours not supported on internet explorer so everything is pretty much white. Looked into fixes for this but the slack community advised against it due to Internet explorer no longer being supported.
-   -  Still not happy with the view on mobile. On dev tools all the mobile views look fine, no scrolling required. I have everything bar the footer in a container, min-height: 90vh and footer being 10vh. But on my phone I'm not seeing the social icons in the same view as the nav menu. I don't know if its because newer mobiles have full size screens but have overlays at the top and bottom. and thats why I'm not seeing everything, because they are included in the 100vh maybe? I tried changing heights in dev tools which just gives gaps. So i thought it best to stick with a bit of vertical scrolling than gaps.
-
-  ![iphone11 view](assets/readme-assets/testing-images/iphone.png)
-  ![Second iphone11 view](assets/readme-assets/testing-images/iphone2.png)
