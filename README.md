@@ -269,8 +269,22 @@ Changed a few things from the wireframes:
 
 ## Challenges 
    These are aspects of the development that took me a while to figure out due to inexperience.
-   -  <br> 
-       + <span style="color: grey;"></span>
+   - Getting background image on my-btn's. Wanted to see an ornate spine on my page so thought it would be nice to use as the buttons, upladed an image that I had cropped, tried to rotate it using transform:rotate(90deg) but wasn't filling the button and looked a bit rubbish. <br> 
+       + <span style="color: grey;">Solution: Edited the picture and re-uploaded</span>
+   - CSS wasn't working on my profile page but the styling was working on other templates fine so didn't think it was anything to do with file path.<br>
+       + <span style="color: grey;">Solution: Added / to begininning of file path as seen on stack overflow</span>
+   - Getting logic to work for menu nav items. Tried if session.user && admin and session["user]["admin"] before realising the user document isn't getting passed in so you can't access that information. I then passed in admin into template and used if admin but this didn't work either as admin key having a string (true of false) wouldn't matter both would be true.<br>
+       + <span style="color: grey;">Solution: Got admin status of user and passed into template and changed data type of admin in database to boolean and then if admin works. Realised later that admin would have to get passed into all templates so that the menu would be correct across the board for an admin user, so refactured admin check into its own function as same line of code was in alot of functions. Repeated this for genre aswell.</span>
+   - Is this a series switch on add-book page wasn't working. This was a custom checkbox from bootstrap, checked the script link, removed outer div to make it a normal checkbox, this also did not check. Went back to basics and wrote in a normal checkbox input, which could check and then added in the bootstrap classes this stopped it from working again. Found code online which pointed out I had missed the input id which now allowed it to check.<br>
+       + <span style="color: grey;">Solution: Added name and id attributes into input, matching for attribute in label. </span>
+   - On manage users page wanted search bar to look for admin or a username. In search_users function had if search == "admin": users = list(mongo.db.users.find({"admin": "true"})), this wasn't doing anything and none of the flash messages were coming up from the elif or else statements or anything. Figured out the search was working,it was just returning all the users as they all had an entry for admin and thus were deemed true.<br>
+       + <span style="color: grey;">Solution: Changed to {"admin": bool("true")} and then only users that were admin got returned. </span>
+    - Had issues getting profile-add template to render, had written alot of the function (daft I now know) and so had to delete it and go back to the bare bones to fins an issue as it was indicating no errors in console and no jinja errors page.<br>
+       + <span style="color: grey;">Solution: I hadn't put " " around base.html in {% extends "base.html" %}</span>
+     - Had issues getting profile-add template to render again when I started passing in book_id, passing in book_id worked fine for edit_book and delete_book, so couldn't figure out what I had done, was staring at the code and could not see a difference between them and profile_add code.<br>
+       + <span style="color: grey;">Solution: I had clearly gone eye tired, I had put book_id = book.id it should have been book._id, had missed the underscore. May have missed ObjectId in one of the many iterations I tried aswell.</span>
+     - Took me hours to push a book to the profile, so many issues, I hadn't put user_id data type in profile as ObjectId, also profiles didn't exist as I had neglected to create them so added in register function to create profile with the three empty arrays at that point. This was still not creating profiles yet.<br>
+       + <span style="color: grey;">Solution: Create profiles in register function, change data type of user_id to Object_Id and add in a missing bracket into register function.</span>
 
 
 ## Testing
