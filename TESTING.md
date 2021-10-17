@@ -209,35 +209,35 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
    - #### Returning Visitor Goals
 
-      1. As a returning visitor, I want to add books to my "bookshelves".
+      1. As a returning visitor, I want to add books to my "bookshelves".<br>
          Next to every book is an 'Add to profile' button, which takes you to the add to profile page where user just has to answer two questions to determine which bookshelf or bookshelves to add book to.
 
          ![profile-add button](static/images/testing-images/user-stories/profile-add.png)
          ![profile-add form](static/images/testing-images/user-stories/profile-add-form.png)
 
-      2. As a returning visitor, I want to follow on social media so I can hear of any new features.
+      2. As a returning visitor, I want to follow on social media so I can hear of any new features.<br>
          Social media links are in the footer of all pages.
 
          ![app footer links](static/images/testing-images/user-stories/footer-links.png)
 
-      3. As a returning visitor, I want to be able to add books to the applications library.
+      3. As a returning visitor, I want to be able to add books to the applications library.<br>
          Right at the top of the home page, above the library is a large 'Add Book' button which takes user to the add book form
          
          ![add book button](static/images/testing-images/user-stories/add-book.png)
          ![add book form](static/images/testing-images/user-stories/add-book-form.png)
         
-      4. As a returning visitor, I want to be able to change my password.
+      4. As a returning visitor, I want to be able to change my password.<br>
          In the footer on all pages is an 'Edit Account' link, this opens an edit account page which has a collapsible for change password. This is so that the user doesn't feel that if its there they have to fill it in ,which they may if it was part of the main form. 
 
          ![edit account form](static/images/testing-images/user-stories/edit-account.png)
          ![change password collapsible](static/images/testing-images/user-stories/password-change.png)
         
-      5. As a returning visitor, I want to be able to rate the app.
+      5. As a returning visitor, I want to be able to rate the app.<br>
          On contact form which is a nav link in the menu there is a section for rate us where you can select stars out of five.
         
          ![rating stars on contact form](static/images/testing-images/user-stories/rate.png)
          
-      6. As a returning visitor, I want to get feedback so I know that something has went through or if i've been redirected, why.
+      6. As a returning visitor, I want to get feedback so I know that something has went through or if i've been redirected, why.<br>
          When the contact form is submitted a submission modal pops up. In addition the user will get an email to acknowledge their message.<br> Also there are flash messages for logging out, moving books in your profile, editing books, genres, users and deleting books, genres and users. There are also flash messages for access e.g trying to access restricted pages, trying to edit a book that you didn't add and trying to perform an action which user is required to be logged in to perform. Others are for username already exists, book already exists in library, log in details don't match records etc.
 
          ![confirmation modal](static/images/testing-images/user-stories/modal.png)
@@ -249,28 +249,28 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
    - #### Frequent Visitor Goals
 
-      1. As a frequent visitor, I want to be able to edit a book that I've added to the applications library.
+      1. As a frequent visitor, I want to be able to edit a book that I've added to the applications library.<br>
          If the user has added a book to the library, an edit button will be available to the user beside the books they added. This button takes the user to the update book page. The form is prefilled so the user only has to edit the field they want to and not fill everything back in again.
 
          ![edit book button](static/images/testing-images/user-stories/profile-add.png)
          ![update book form](static/images/testing-images/user-stories/update-book.png)
 
-      2. As a frequent visitor, I want to be able to contact the owner with suggestions.
+      2. As a frequent visitor, I want to be able to contact the owner with suggestions.<br>
          Contact is a main nav link, this takes the user to the contact form which for logged in users is prefilled with the personal information. The comment box is available for users to submit a comment.
 
          ![contact form](static/images/testing-images/user-stories/contact.png)
 
-      3. As a frequent visitor, I want to be able to move or delete books on my "bookshelves".
+      3. As a frequent visitor, I want to be able to move or delete books on my "bookshelves".<br>
          Its easy for a user to move books between bookshelves. Beside each book are buttons, if the user does not own a book then an 'Own' button is there to add it to the 'Books I own' bookshelf if the user then buys it.<br> In the Read books bookshelf, there is a 'Not Read' button which moves it to the 'Books to Read' bookshelf and vice versa. All books have a remove button to delete them from the users profile. 
 
          ![profile buttons](static/images/testing-images/user-stories/profile-buttons.png)
 
-      4. As a frequent visitor, I want to be able to change my account information
+      4. As a frequent visitor, I want to be able to change my account information<br>
          In the footer on all pages is an 'Edit Account' link, this opens an edit account page, they can change all details apart from the username, due to books being connected to the username.
 
          ![edit account form](static/images/testing-images/user-stories/edit-account.png)
 
-      5. As a frequent visitor, I don't want to have never ending scrolling up or down.
+      5. As a frequent visitor, I don't want to have never ending scrolling up or down.<br>
          Made the bookshelves on profile page collapsible as quickly the number of books on all three bookshelves could become lengthy.<br> Added pagination for the library as again the number of books in it will just get longer and can become overwhelming.<br> In the footer of all pages there is a back to top link so user doesn't have to scroll to get back to the menu.
 
          ![collapsible bookshelved](static/images/testing-images/user-stories/profile.png)
@@ -279,17 +279,46 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
    - #### Admin goals
       
-      1. As admin, I want to be able to add, delete or edit a book.
-      2. As admin, I want to be able to add, delete or edit a genre.
-      3. As admin, I want to be able to delete a user.
-      4. As admin, I want to be able to make another user an admin.
-      5. As admin, I want to be able to reset a users password if they're having trouble logging in.
+      1. As admin, I want to be able to add, delete or edit a book.<br>
+         For admin one they are logged in they will see the add book button like any other user.
+         Admin will have all three buttons beside every book not just the one they themselves have added to library. The admins update user allows admin to update ook title which a normal user cannot.
+
+        ![Add book button](static/images/testing-images/user-stories/add-book.png)
+        ![Delete and edit book buttons](static/images/testing-images/user-stories/profile-add.png)
+        ![Admin update book page](static/images/testing-images/user-stories/admin-update-book.png)
+        ![Admin Delete book ](static/images/testing-images/user-stories/admin-delete-book.png)
 
 
+      2. As admin, I want to be able to add, delete or edit a genre.<br>
+         Admin has a manage genre page which is a nav link in their main menu. Here they can edit a genre via a collapsible text box which is prefilled. They can also delete a genre after confirmation. There is also an add genre text input field.
+
+         ![Manage genre page showing add genre section](static/images/testing-images/user-stories/manage-genre.png)
+         ![Edit genre collapsible](static/images/testing-images/user-stories/edit-genre.png)
+         ![Delete genre and confirmation](static/images/testing-images/user-stories/delete-genre.png)
+
+      3. As admin, I want to be able to delete a user.<br>
+         Admin has a mange user page via their menu. Beside each user there is delete button which opens a confirmation collapsible with a cancel if it was a mistake or a delete button to delete the user.
+
+         ![Manage user page showing delete buttons](static/images/testing-images/user-stories/manage-users.png)
+         ![Delete user confirmation](static/images/testing-images/user-stories/delete-user.png)
+         
+      4. As admin, I want to be able to make another user an admin.<br>
+         Beside each username on the manage users page there is an edit button, this opens the edit user page which has a switch for turning on admin capabilites for a user.
+
+         ![Update user confirmation](static/images/testing-images/user-stories/update-user.png)
+
+
+      5. As admin, I want to be able to reset a users password if they're having trouble logging in.<br>
+         Beside each username on the manage users page there is an edit button, this opens the edit user page. If a user requests help logging in, the admin can open the reset password in edit user page and make a new password for them. They are then reminded to email user with new password, and they will be told to change it again themselves.
+         
+         ![Reset users password](static/images/testing-images/user-stories/reset-password.png)
+         ![Password reset](static/images/testing-images/user-stories/password-flash.png)
+         
+      
 ## Manual Testing
 
 -  The website was viewed with browsers: Google chrome, Safari, Microsoft Edge, Firefox and Opera. Viewed all pages on each and checked the following:
-	- Nav links work from all three pages to all links.
+  - Nav links work from all three pages to all links.
   - Book search bar works for genre, added_by, series, book title and author 
   - All buttons take user to the correct page
   - Add book button should only show for logged in user.
@@ -321,19 +350,19 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
   - Manage users page allows admin to open a users edit user page to successfully reset their password.
   - Manage users page allows admin to successfully delete a user after confirmation.
   - Cancel buttons take user of of the edit page they were on or close the delete confirmation.
-	- Clicking on social links work, opening in a new tab.
+  - Clicking on social links work, opening in a new tab.
   - Footer links all go to the correct place, back to top link correct on each page.
   - Footer links appearing appropriately, logged in vs non logged. 
-	- Hover effects work on social icons and all links and buttons.
-	- Contact form will not submit without all three required personal details and comment box being completed . Can type in text area, On successful form submission, personalised modal appears, both close buttons take user back to home page and star rating works.
-	- Upon successful submission, receive an email with details taken from the form by email.js and send button has changed to sent.
+  - Hover effects work on social icons and all links and buttons.
+  - Contact form will not submit without all three required personal details and comment box being completed . Can type in text area, On successful form submission, personalised modal appears, both close buttons take user back to home page and star rating works.
+  - Upon successful submission, receive an email with details taken from the form by email.js and send button has changed to sent.
   - Upon contact form submission user also recieves a personalised acknowledgment email.
-	- 404.html back to home button works.
-	- 404 report issue link takes user to contact form.
-	- About modal close buttons work.
+  - 404.html back to home button works.
+  - 404 report issue link takes user to contact form.
+  - About modal close buttons work.
   - Friends, family and slack peer review used. Devices and browsers were iphone 11: Safari (x3), iphone XS Max: Safari, iphone 6: Chrome, iphone XR: safari, iphone 11 Pro: Safari, iphone 10: Safari, Samsung S20 FE: Chrome, Samsung S10 and Sony Xperia I3: Chrome. 
-   - Chrome devtools used to test responsiveness throughout the development process see bugs found below. Viewed all pages on all of the available devices at the end of the project to ensure everything still looked good.
-   - Viewed physically on Macbook air 13", Huawei tablet, HP Chrome book, Dell 21" HD screen, iphone 11, Dell 17" laptop and Pixel 4XL phone to ensure that after all issues found and resolved that there was nothing else appearing
+  - Chrome devtools used to test responsiveness throughout the development process see bugs found below. Viewed all pages on all of the available devices at the end of the project to ensure everything still looked good.
+  - Viewed physically on Macbook air 13", Huawei tablet, HP Chrome book, Dell 21" HD screen, iphone 11, Dell 17" laptop and Pixel 4XL phone to ensure that after all issues found and resolved that there was nothing else appearing
   
 ## Bugs
 
