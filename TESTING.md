@@ -320,10 +320,12 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 -  The website was viewed with browsers: Google chrome, Safari, Microsoft Edge, Firefox and Opera. Viewed all pages on each and checked the following:
   - Nav links work from all three pages to all links.
   - Book search bar works for genre, added_by, series, book title and author 
+  - Pagination links work.
   - All buttons take user to the correct page
   - Add book button should only show for logged in user.
   - Add book form doesn't allow user to add book without required fields being completed.
   - Add book form doesn't allow a book that already exists in library to be added.
+    * Yes and no, if you spell it exactly the same then it won't let you, but if there is a letter different or you miss out "The" at the beginning for example it can get added when really its the same book.
   - Add book form doesn't allow a book with spaces as a name to be added.
   - Book successfully added to library
   - If book url not supplied or broken, back up image shown.
@@ -337,9 +339,12 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
   - Registration successfully adds a new user and their profile.
   - Add to profile switches put books on the correct profile bookshelves.
   - If user adds a book to profile that they have already added, duplicate book should not appear.
+      * When testing, added a book to profile, then went back and added same book selecting the same options, this as expected didn’t give duplicate books in profile list. Then went back and added same book again, this time not selecting either switch. This resulted in the book being in the read and to read books. Added in a check to see if book is in profile already, if it is flash message will appear and user won't be taken to profile-add page.
   - Using book buttons on profile should move books correctly. Remove button should remove book from that bookshelf only.
   - Edit account form should be pre-filled with existing information (not password)
   - Edit account should successfully update a users information.
+  - Delete account should open confirmation and then successfully remove user if they proceed with deletion.
+     * Link did not open confirmation, had missed a # in the href to target the collapsible.
   - If user tries to change their password, their existing password must be correct to proceed. And their new password must match the confirm password field.
   - Edit account page allows a user to delete their account after confirmation
   - Manage genre page allows admin to successfully add a new genre.
