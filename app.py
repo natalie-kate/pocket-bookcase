@@ -110,10 +110,8 @@ def register():
             {"username": request.form.get("username").lower()})
         # If username taken display flash message and reload page.
         if existing:
-            flash(
-                "Username is taken, try adding numbers or choose",
-                " another username"
-                )
+            flash("Username is taken, try adding numbers" +
+                  " or choose another username")
             return redirect(url_for("register"))
         # If password and confirmation password don't match
         # display flash message and reload page.
@@ -280,7 +278,11 @@ def profile_add(book_id):
             return redirect(url_for("library"))
     # Use profile add template passing in required variables
     if session["user"]:
-        if book_title in read_books or books_to_read:
+        if book_title in read_books:
+            flash(
+                f"{book_title.title()} has already been added to your profile")
+            return redirect(url_for("library"))
+        elif book_title in books_to_read:
             flash(
                 f"{book_title.title()} has already been added to your profile")
             return redirect(url_for("library"))
