@@ -863,7 +863,7 @@ def delete_account():
     mongo.db.users.remove({"username": session["user"]})
     session.pop("user")
     flash("Account Successfully Deleted, We're sorry to see you go.")
-    return redirect(url_for("library"))
+    return redirect(url_for("register"))
 
 
 @app.errorhandler(404)
