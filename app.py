@@ -112,7 +112,7 @@ def register():
         if existing:
             flash(
                 "Username is taken, try adding numbers or choose",
-                "another username"
+                " another username"
                 )
             return redirect(url_for("register"))
         # If password and confirmation password don't match
@@ -740,7 +740,7 @@ def edit_user(user_id):
                     mongo.db.users.update(
                         {"_id": ObjectId(user_id)}, {"$set": update_user})
                     flash_message = (f"Thankyou {username} has been") + (
-                        "updated, email them with their new password")
+                        " updated, email them with their new password")
                     flash(flash_message)
                     return redirect(url_for("manage_users"))
                 # If password not needing updated, update two fields in the
