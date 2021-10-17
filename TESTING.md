@@ -147,17 +147,105 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
     
 -   ## [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) in devtools
     
-    ### Initial scores 
+    ### index.html
 
-    #### 
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-home.pdf))
 
-    + Initial mobile
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-home.png)
 
-    ### Actions taken from initial test.
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-home.pdf))
 
-    ### Final test 
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-home.png)
 
-    #### 
+    ### about.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-about.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-about.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-about.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-about.png)
+
+    ### profile.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-profile.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-profile.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-profile.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-profile.png)
+
+    ### contact.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-contact.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-contact.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-contact.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-contact.png)
+
+    ### register.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-register.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-register.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-register.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-register.png)
+
+    ### manage-genres.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-manage-genre.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-manage-genre.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-manage-genre.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-manage-genre.png)
+
+    ### manage-users.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-manage-user.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-manage-users.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-manage-users.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-manage-users.png)
+
+    ### edit-book.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-edit-book.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-edit-book.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-edit-book.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-edit-book.png)
+
+    ### sign-in.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-sign-in.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-sign-in.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-sign-in.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-sign-in.png)
+
+    ### profile-add.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-profile-add.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-profile-add.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-profile-app.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-profile-app.png)
 
 
 ## Testing User Stories 
