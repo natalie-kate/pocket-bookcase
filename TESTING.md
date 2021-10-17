@@ -317,29 +317,32 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
       
 ## Manual Testing
 
--  The website was viewed with browsers: Google chrome, Safari, Microsoft Edge, Firefox and Opera. Viewed all pages on each and checked the following:
+-  I generally test as I'm developing as well as at the end so some of the findings are from during development. The website was viewed with browsers: Google chrome, Safari, Microsoft Edge, Firefox and Opera. Viewed all pages on each and checked the following:
   - Nav links work from all three pages to all links.
   - Book search bar works for genre, added_by, series, book title and author 
   - Pagination links work.
   - All buttons take user to the correct page
   - Add book button should only show for logged in user.
   - Add book form doesn't allow user to add book without required fields being completed.
+    * Removed required from review as it occurred to me if a user was adding a book to their 'Books to Read' bookshelf they won't have a review yet.
   - Add book form doesn't allow a book that already exists in library to be added.
     * Yes and no, if you spell it exactly the same then it won't let you, but if there is a letter different or you miss out "The" at the beginning for example it can get added when really its the same book.
   - Add book form doesn't allow a book with spaces as a name to be added.
   - Book successfully added to library
   - If book url not supplied or broken, back up image shown.
   - Flash messages pop up where required, providing feedback to users actions.
+    * Found that "Does not match our records" flash wasn't displaying full message. It was one of the flash messages that had to get split between two lines as the line was too long, put in a string concatenation.
   - Correct buttons appear for the correct users beside books. e.g all three for admin, two against book that a user added, one for logged in users, none for non logged in users.
   - Edit book form should prefill with current details, title should not be able to be edited except for admin.
-  - Edit book form will not sumbit wihout required information.
+  - Edit book form will not submit wihout required information.
   - Book information successfully edited.
   - Delete book, only allowed for admin, confirmation before deletion required, successfully deleted from library.
   - Registration form won't submit without required information.
   - Registration successfully adds a new user and their profile.
   - Add to profile switches put books on the correct profile bookshelves.
   - If user adds a book to profile that they have already added, duplicate book should not appear.
-      * When testing, added a book to profile, then went back and added same book selecting the same options, this as expected didn’t give duplicate books in profile list. Then went back and added same book again, this time not selecting either switch. This resulted in the book being in the read and to read books. Added in a check to see if book is in profile already, if it is flash message will appear and user won't be taken to profile-add page.
+      * Found during development that addToSet would stop this from happening so changed from push which is what I initially had.
+      * When testing, added a book to profile, then went back and added same book selecting the same options, this as expected didn’t give duplicate books in profile list. Then went back and added same book again, this time not selecting either switch. This resulted in the book being in the read and to read books. Added in a check to see if book is in profile already, if it is flash message will appear and user won't be taken to profile-add page. 
   - Using book buttons on profile should move books correctly. Remove button should remove book from that bookshelf only.
   - Edit account form should be pre-filled with existing information (not password)
   - Edit account should successfully update a users information.
@@ -349,12 +352,14 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
   - Edit account page allows a user to delete their account after confirmation
   - Manage genre page allows admin to successfully add a new genre.
   - Manage genre page allows admin to update a genre.
+    * Science fiction edit collapsible wouldn't open. Had missed a genre.name.replace(' ', '').
   - Manage genre page allows admin to successfully delete a genre after confirmation
   - Manage users allows admin to search for admin users or a user by username.
   - Manage users page allows admin to open a users edit user page to successfully make then an admin.
   - Manage users page allows admin to open a users edit user page to successfully reset their password.
   - Manage users page allows admin to successfully delete a user after confirmation.
   - Cancel buttons take user of of the edit page they were on or close the delete confirmation.
+     * Hadn't put a cancel button in edit_user and edit_book pages.
   - Clicking on social links work, opening in a new tab.
   - Footer links all go to the correct place, back to top link correct on each page.
   - Footer links appearing appropriately, logged in vs non logged. 
@@ -372,6 +377,8 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 ## Bugs
 
    ### Found and Fixed 
+
+   In addition to those found in manual testing
 
    ### Existing
 
