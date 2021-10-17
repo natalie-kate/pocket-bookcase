@@ -188,10 +188,10 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
          The site was built with mobile first in mind. I have hidden icons on the buttons for small screens as the buttons were taking up too much real estate. Also the book cover is on top of the book text rather than beside as otherwise the book image would be too small to fully appreciate the covers. But aim was that site would look good on all devices.
 
          ![mobile view](static/images/testing-images/user-stories/mobile.png)
-         ![mobile view](static/images/testing-images/user-stories/about.png)
-         ![mobile view](static/images/testing-images/user-stories/profile.png)
-         ![mobile view](static/images/testing-images/user-stories/sign-in.png)
-         ![mobile view](static/images/testing-images/user-stories/contact.png)
+         ![mobile view about page](static/images/testing-images/user-stories/about.png)
+         ![mobile view profile page](static/images/testing-images/user-stories/profile.png)
+         ![mobile view sign-in page](static/images/testing-images/user-stories/sign-in.png)
+         ![mobile view contact page](static/images/testing-images/user-stories/contact.png)
          ![tablet view](static/images/testing-images/user-stories/tablet.png)
          ![desktop view](static/images/testing-images/user-stories/desktop.png)
 
@@ -201,28 +201,81 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
          ![app search bar](static/images/testing-images/user-stories/search-bar.png)
 
       7. As a first time visitor, I want to easily register.<br>
-         There is a nav link in the menu to sign-up, aswell as in the footer, there is also another one on the sign-in page. When there, the registration form is no different from any other online forms and you won't be allowed to submit it without the required information.
+         There is a nav link in the menu to sign-up, aswell as in the footer, there is also another one on the sign-in page. When there, the registration form is no different from any other online forms and you won't be allowed to submit it without the required information. In addition there are tooltips so that username and password are the correct format.
 
          ![app register link](static/images/testing-images/user-stories/register-link.png)
          ![app registration form](static/images/testing-images/user-stories/register-form.png)
+         ![tooltips](static/images/testing-images/user-stories/tooltips.png)
 
    - #### Returning Visitor Goals
 
       1. As a returning visitor, I want to add books to my "bookshelves".
+         Next to every book is an 'Add to profile' button, which takes you to the add to profile page where user just has to answer two questions to determine which bookshelf or bookshelves to add book to.
+
+         ![profile-add button](static/images/testing-images/user-stories/profile-add.png)
+         ![profile-add form](static/images/testing-images/user-stories/profile-add-form.png)
+
       2. As a returning visitor, I want to follow on social media so I can hear of any new features.
+         Social media links are in the footer of all pages.
+
+         ![app footer links](static/images/testing-images/user-stories/footer-links.png)
+
       3. As a returning visitor, I want to be able to add books to the applications library.
+         Right at the top of the home page, above the library is a large 'Add Book' button which takes user to the add book form
+         
+         ![add book button](static/images/testing-images/user-stories/add-book.png)
+         ![add book form](static/images/testing-images/user-stories/add-book-form.png)
+        
       4. As a returning visitor, I want to be able to change my password.
+         In the footer on all pages is an 'Edit Account' link, this opens an edit account page which has a collapsible for change password. This is so that the user doesn't feel that if its there they have to fill it in ,which they may if it was part of the main form. 
+
+         ![edit account form](static/images/testing-images/user-stories/edit-account.png)
+         ![change password collapsible](static/images/testing-images/user-stories/password-change.png)
+        
       5. As a returning visitor, I want to be able to rate the app.
+         On contact form which is a nav link in the menu there is a section for rate us where you can select stars out of five.
+        
+         ![rating stars on contact form](static/images/testing-images/user-stories/rate.png)
+         
       6. As a returning visitor, I want to get feedback so I know that something has went through or if i've been redirected, why.
+         When the contact form is submitted a submission modal pops up. In addition the user will get an email to acknowledge their message.<br> Also there are flash messages for logging out, moving books in your profile, editing books, genres, users and deleting books, genres and users. There are also flash messages for access e.g trying to access restricted pages, trying to edit a book that you didn't add and trying to perform an action which user is required to be logged in to perform. Others are for username already exists, book already exists in library, log in details don't match records etc.
+
+         ![confirmation modal](static/images/testing-images/user-stories/modal.png)
+         ![email acknowledgment](static/images/testing-images/user-stories/email.png)
+         ![admin flash](static/images/testing-images/user-stories/admin-flash.png)
+         ![can't edit flash](static/images/testing-images/user-stories/cant-edit-flash.png)
+         ![login flash](static/images/testing-images/user-stories/login-flash.png)
+         ![logout flash](static/images/testing-images/user-stories/logout-flash.png)
 
    - #### Frequent Visitor Goals
 
       1. As a frequent visitor, I want to be able to edit a book that I've added to the applications library.
+         If the user has added a book to the library, an edit button will be available to the user beside the books they added. This button takes the user to the update book page. The form is prefilled so the user only has to edit the field they want to and not fill everything back in again.
+
+         ![edit book button](static/images/testing-images/user-stories/profile-add.png)
+         ![update book form](static/images/testing-images/user-stories/update-book.png)
+
       2. As a frequent visitor, I want to be able to contact the owner with suggestions.
+         Contact is a main nav link, this takes the user to the contact form which for logged in users is prefilled with the personal information. The comment box is available for users to submit a comment.
+
+         ![contact form](static/images/testing-images/user-stories/contact.png)
+
       3. As a frequent visitor, I want to be able to move or delete books on my "bookshelves".
-      4. As a frequent visitor, I want to be able to update my profile.
-      5. As a frequent visitor, I want to be able to change my account information
-      6. As a frequent visitor, I don't want to have never ending scrolling up or down.
+         Its easy for a user to move books between bookshelves. Beside each book are buttons, if the user does not own a book then an 'Own' button is there to add it to the 'Books I own' bookshelf if the user then buys it.<br> In the Read books bookshelf, there is a 'Not Read' button which moves it to the 'Books to Read' bookshelf and vice versa. All books have a remove button to delete them from the users profile. 
+
+         ![profile buttons](static/images/testing-images/user-stories/profile-buttons.png)
+
+      4. As a frequent visitor, I want to be able to change my account information
+         In the footer on all pages is an 'Edit Account' link, this opens an edit account page, they can change all details apart from the username, due to books being connected to the username.
+
+         ![edit account form](static/images/testing-images/user-stories/edit-account.png)
+
+      5. As a frequent visitor, I don't want to have never ending scrolling up or down.
+         Made the bookshelves on profile page collapsible as quickly the number of books on all three bookshelves could become lengthy.<br> Added pagination for the library as again the number of books in it will just get longer and can become overwhelming.<br> In the footer of all pages there is a back to top link so user doesn't have to scroll to get back to the menu.
+
+         ![collapsible bookshelved](static/images/testing-images/user-stories/profile.png)
+         ![pagination](static/images/testing-images/user-stories/pagination.png)
+         ![back to top link](static/images/testing-images/user-stories/footer-links.png)
 
    - #### Admin goals
       
