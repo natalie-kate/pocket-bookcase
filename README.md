@@ -148,6 +148,10 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
 
 -   Admin user can search for other admins or for a username on Manage Genre page. They can make other users admin, reset another users password and edit their email if required.
 
+-   Before anything is deleted a confirmation is required preventing accidental deletion.
+
+-   Cancel buttons on edit pages in case user changed their mind or got there accidentally.
+
 
    #### Features to implement in the future
 
