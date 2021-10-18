@@ -20,7 +20,7 @@
   <div class="row">
     <div class="col-10 offset-1 col-md-6 offset-md-3">
       <label for="new-genre">Genre name:</label>
-      <input id="new-genre" type="text" name="name" placeholder="e.g Fantasy" required /><br />
+      <input id="new-genre" type="text" name="name" placeholder="e.g Fantasy" pattern="[a-zA-Z][a-zA-Z ]+" data-toggle="tooltip" data-placement="top" title="Letters and spaces only" required /><br />
     </div>
     <!-- Add genre submit button -->
     <div class="col-8 offset-2 col-md-4 offset-md-4 text-center genres-btn">
@@ -68,7 +68,7 @@
   <div class="row">
     <div class="col-5 offset-1 col-md-6 offset-md-1 edit-genre">
       <label for="{{ genre.name.replace(' ', '') }}-update">Genre name:</label>
-      <input id="{{ genre.name.replace(' ', '') }}-update" type="text" name="name" required value="{{ genre.name.title() }}" />
+      <input id="{{ genre.name.replace(' ', '') }}-update" type="text" name="name" pattern="[a-zA-Z][a-zA-Z ]+" data-toggle="tooltip" data-placement="top" title="Letters and spaces only" required value="{{ genre.name.title() }}" />
     </div>
     <!-- Edit genre submit and cancel buttons -->
     <div class="col-6 col-md-5 offset-md-0 genre-edit text-center">
