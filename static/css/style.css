@@ -420,6 +420,11 @@ img {
     }
     
 }
+@media(max-width:780px) {
+    .profile-books {
+        text-align: center;
+    }
+}
 @media(min-width:770px){
     .profile-books {
         text-align: left;
