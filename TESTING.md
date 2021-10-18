@@ -145,7 +145,10 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
       ![Initial contact javascript test](static/images/testing-images/validations/python-validation.png)
 
     
--   ## [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) in devtools
+-   ## [Lighthouse testing](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) in devtools.
+    The performance scores are not as high as I would like for mobile, mostly due to third party. resources.<br>
+    Had reduced score for SEO for profile page as the pagination links weren't crawlable due to no href beng present on page 1 link when it loads. The pagination links are generated within the library function in app.py so I couldn't just add it in, tried adding one in with JS but wasn't happening.<br>
+    Also was losing points for best practices because some of the pages weren't https, I couldn't understand why so I couldn't fix that either.
     
     ### index.html
 
@@ -243,9 +246,19 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
        ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-profile-add.png)
 
-     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-profile-app.pdf))
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-profile-add.pdf))
 
-       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-profile-app.png)
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-profile-add.png)
+
+    ### edit-user.html
+
+     + Mobile (see report [here](static/readme-assets/lighthouse-reports/mobile-edit-user.pdf))
+
+       ![index.html page scores for mobile](static/images/testing-images/lighthouse/mobile-edit-user.png)
+
+     + Desktop (see report [here](static/readme-assets/lighthouse-reports/desktop-edit-user.pdf))
+
+       ![index.html page scores for desktop](static/images/testing-images/lighthouse/desktop-edit-user.png)
 
 
 ## Testing User Stories 
@@ -495,7 +508,7 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
       * Most errors were for docstrings, I had put a comment above the functions explaining what they were, so moved them into the function as docstrings
       * Unbalanced tuple warnings, this is from the pagination code, tried changing it and it made it worse, so left them.
       * env imported but unused error, it is used.
-      * env.py line too long, this is the mongo URI. During the task manager walkthrough Tim said that was fine to leave, so i'm going to go with Tim.
+      * env py line too long, this is the mongo URI. During the task manager walkthrough Tim said that was fine to leave, so i'm going to go with Tim.
    -  Users profile h2 with their name wasn't capitalised, added in .title()
    -  Profile books Own books bookshelf, book title text was escaping so removed lg bootsrap class as the other bookshelves didn't have it and they were fine.
    -  The profile book buttons are left aligned between 760px and 780px when they would look better center-aligned so added in another media query for them.
