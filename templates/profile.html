@@ -114,5 +114,5 @@
 
 <!-- Footer link specific for the page -->
 {% block link %}
-<a class="footer-link" href="{{ url_for('profile', username=session['user']) }}">Back to top</a><br>
+<p><a class="footer-link" href="{{ url_for('profile', username=session['user']) }}">Back to top</a></p>
 {% endblock %}
