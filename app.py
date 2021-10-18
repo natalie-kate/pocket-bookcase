@@ -594,7 +594,7 @@ def add_genre():
                 # If genre already exists display message and refresh form
                 if existing_genre:
                     flash("This genre is already in our collection")
-                    return redirect(url_for("add_genre"))
+                    return redirect(url_for("manage_genre"))
                 # If genre doesn't exist insert new genre document, display
                 # message and reload manage_genre
                 else:
