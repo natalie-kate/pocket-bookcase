@@ -423,6 +423,7 @@ Testing and results can be found [here](TESTING.md)
 -   [Cédric Julien on stack overflow](https://stackoverflow.com/questions/8270092/remove-all-whitespace-in-a-string): Used to change genre names to one word e.g in the case of science fiction to sciencefiction as use the genre name as id and the space doesn't work for that.
 -   [mozillazg on Github](https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9)(https://github.com/: Pagination code, but also needed [Sam Laubscher's](samlaubscher/Bristol-Blackbook/blob/main/app.py) and [Russ Oakham's](https://github.com/RussOakham/wanderlust-recipes/blob/master/app.py) pagination code to figure out why mine wasn't working.
 -   [Etdashou on stack overflow](https://stackoverflow.com/questions/3984287/how-to-show-alternate-image-if-source-image-is-not-found-onerror-working-in-ie): Attributes to add to my book images. In case the url provided by a user doesn't work, the backup image will show instead.
+-   [Sunil Kumar B M on stack overflow](https://stackoverflow.com/questions/9289451/regular-expression-for-alphabets-with-spaces): Pattern attribute to allow letters and spaces only
 
 
 ### Content
