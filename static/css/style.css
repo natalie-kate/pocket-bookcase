@@ -415,6 +415,10 @@ img {
     .header h2 {
         padding-top: 7vh;
     }
+    .profile-books {
+        text-align: center;
+    }
+    
 }
 @media(min-width:770px){
     .profile-books {
