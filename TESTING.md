@@ -439,9 +439,11 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
   - If user tries to change their password, their existing password must be correct to proceed. And their new password must match the confirm password field.
   - Edit account page allows a user to delete their account after confirmation
   - Manage genre page allows admin to successfully add a new genre.
+    * When trying to add a genre that was already in the database an error occurred, realised that I had redirected to add_genre rather than manage_genre.
   - Manage genre page allows admin to update a genre.
     * Science fiction edit collapsible wouldn't open. Had missed a genre.name.replace(' ', '').
   - Manage genre page allows admin to successfully delete a genre after confirmation
+    * Found that Action & Adventure buttons wouldn't do anything, realised similar to a previous issue that this was due to the id being generated from it having an "&". So in add genre input added a pattern and tooltip attributes so that this could be prevented from occurring. 
   - Manage users allows admin to search for admin users or a user by username.
   - Manage users page allows admin to open a users edit user page to successfully make then an admin.
   - Manage users page allows admin to open a users edit user page to successfully reset their password.
