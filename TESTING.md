@@ -407,6 +407,7 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
 -  I generally test as I'm developing as well as at the end so some of the findings are from during development. The website was viewed with browsers: Google chrome, Safari, Microsoft Edge, Firefox and Opera. Viewed all pages on each and checked the following:
   - Nav links work from all three pages to all links.
+  - Pocket Bookcase brand name takes user to home.
   - Book search bar works for genre, added_by, series, book title and author 
   - Pagination links work.
   - All buttons take user to the correct page
@@ -415,7 +416,7 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
     * Removed required from review as it occurred to me if a user was adding a book to their 'Books to Read' bookshelf they won't have a review yet.
   - Add book form doesn't allow a book that already exists in library to be added.
     * Yes and no, if you spell it exactly the same then it won't let you, but if there is a letter different or you miss out "The" at the beginning for example it can get added when really its the same book.
-  - Add book form doesn't allow a book with spaces as a name to be added.
+  - Add book form doesn't allow a book with only spaces as a name to be added.
   - Book successfully added to library
   - If book url not supplied or broken, back up image shown.
   - Flash messages pop up where required, providing feedback to users actions.
@@ -437,7 +438,6 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
   - Delete account should open confirmation and then successfully remove user if they proceed with deletion.
      * Link did not open confirmation, had missed a # in the href to target the collapsible.
   - If user tries to change their password, their existing password must be correct to proceed. And their new password must match the confirm password field.
-  - Edit account page allows a user to delete their account after confirmation
   - Manage genre page allows admin to successfully add a new genre.
     * When trying to add a genre that was already in the database an error occurred, realised that I had redirected to add_genre rather than manage_genre.
   - Manage genre page allows admin to update a genre.
@@ -445,16 +445,19 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
   - Manage genre page allows admin to successfully delete a genre after confirmation
     * Found that Action & Adventure buttons wouldn't do anything, realised similar to a previous issue that this was due to the id being generated from it having an "&". So in add genre input added a pattern and tooltip attributes so that this could be prevented from occurring. 
   - Manage users allows admin to search for admin users or a user by username.
-  - Manage users page allows admin to open a users edit user page to successfully make then an admin.
+  - Manage users page allows admin to open a users edit user page to successfully make them an admin.
   - Manage users page allows admin to open a users edit user page to successfully reset their password.
   - Manage users page allows admin to successfully delete a user after confirmation.
-  - Cancel buttons take user of of the edit page they were on or close the delete confirmation.
+  - Cancel buttons take user off of the edit page/section they were on or close the delete confirmation.
      * Hadn't put a cancel button in edit_user and edit_book pages.
   - Clicking on social links work, opening in a new tab.
   - Footer links all go to the correct place, back to top link correct on each page.
-  - Footer links appearing appropriately, logged in vs non logged. 
+     * Was having issued on mobile device clicking the correct link, put anchor into paragraph tags as that was the only way I could get them to space out.
+  - Footer links appearing appropriately, logged in vs non logged in. 
   - Hover effects work on social icons and all links and buttons.
-  - Contact form will not submit without all three required personal details and comment box being completed . Can type in text area, On successful form submission, personalised modal appears, both close buttons take user back to home page and star rating works.
+  - Contact form will not submit without all three required personal details and comment box being completed . 
+  - Can type in contact form text area, star ratings work and on successful form submission, personalised modal appears
+  - Both modal close buttons take user back to home page.
   - Upon successful submission, receive an email with details taken from the form by email.js and send button has changed to sent.
   - Upon contact form submission user also recieves a personalised acknowledgment email.
   - 404.html back to home button works.
@@ -493,6 +496,9 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
       * Unbalanced tuple warnings, this is from the pagination code, tried changing it and it made it worse, so left them.
       * env imported but unused error, it is used.
       * env.py line too long, this is the mongo URI. During the task manager walkthrough Tim said that was fine to leave, so i'm going to go with Tim.
+   -  Users profile h2 with their name wasn't capitalised, added in .title()
+   -  Profile books Own books bookshelf, book title text was escaping so removed lg bootsrap class as the other bookshelves didn't have it and they were fine.
+   -  The profile book buttons are left aligned between 760px and 780px when they would look better center-aligned so added in another media query for them.
 
 
    ### Existing
