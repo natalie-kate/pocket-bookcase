@@ -146,7 +146,7 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 
     
 -   ## [Lighthouse testing](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) in devtools.
-    The performance scores are not as high as I would like for mobile, mostly due to third party. resources.<br>
+    The performance scores are not as high as I would like for mobile, mostly due to third party resources.<br>
     Had reduced score for SEO for profile page as the pagination links weren't crawlable due to no href beng present on page 1 link when it loads. The pagination links are generated within the library function in app.py so I couldn't just add it in, tried adding one in with JS but wasn't happening.<br>
     Also was losing points for best practices because some of the pages weren't https, I couldn't understand why so I couldn't fix that either.
     
@@ -421,7 +421,8 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
 -  I generally test as I'm developing as well as at the end so some of the findings are from during development. The website was viewed with browsers: Google chrome, Safari, Microsoft Edge, Firefox and Opera. Viewed all pages on each and checked the following:
   - Nav links work from all three pages to all links.
   - Pocket Bookcase brand name takes user to home.
-  - Book search bar works for genre, added_by, series, book title and author 
+  - Book search bar works for genre, added_by, series, book title and author for logged in and non logged in users.
+    * Got an error when I searched an empty input box for non-logged in user. Realised I hadn't put required attribute in the search box but now same thing happens when user searches for something that isn't there. Its when it redirects the user back to library the if session code is running and comes up with a KeyError at session["user"]. I thought only logged in users are in session but evidently not, so I have changed if session to if "user" in session and that seems to work.
   - Pagination links work.
   - All buttons take user to the correct page
   - Add book button should only show for logged in user.
@@ -451,6 +452,7 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
   - Delete account should open confirmation and then successfully remove user if they proceed with deletion.
      * Link did not open confirmation, had missed a # in the href to target the collapsible.
   - If user tries to change their password, their existing password must be correct to proceed. And their new password must match the confirm password field.
+    * Realised I hadn't put the tooltips in to help user with required format.
   - Manage genre page allows admin to successfully add a new genre.
     * When trying to add a genre that was already in the database an error occurred, realised that I had redirected to add_genre rather than manage_genre.
   - Manage genre page allows admin to update a genre.
