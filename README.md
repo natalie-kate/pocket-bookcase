@@ -424,6 +424,7 @@ Testing and results can be found [here](TESTING.md)
 -   [mozillazg on Github](https://gist.github.com/mozillazg/69fb40067ae6d80386e10e105e6803c9)(https://github.com/: Pagination code, but also needed [Sam Laubscher's](samlaubscher/Bristol-Blackbook/blob/main/app.py) and [Russ Oakham's](https://github.com/RussOakham/wanderlust-recipes/blob/master/app.py) pagination code to figure out why mine wasn't working.
 -   [Etdashou on stack overflow](https://stackoverflow.com/questions/3984287/how-to-show-alternate-image-if-source-image-is-not-found-onerror-working-in-ie): Attributes to add to my book images. In case the url provided by a user doesn't work, the backup image will show instead.
 -   [Sunil Kumar B M on stack overflow](https://stackoverflow.com/questions/9289451/regular-expression-for-alphabets-with-spaces): Pattern attribute to allow letters and spaces only
+-   [Yeong Jong Lim on Stack overflow](https://stackoverflow.com/questions/67781467/keyerror-user-when-i-use-sessions-with-templates-jinja-python-flask):For 'if "user" in session' idea to fix search_library redirect for user not logged in.
 
 
 ### Content
