@@ -5,7 +5,8 @@
       * [HTML validation](#w3c-markup-validator)
       * [CSS validation](#w3c-css-validator)
       * [JS validation](#jshint-javascript-validator)
-      * [Lighthouse testing](#lighthouse-in-devtools)
+      * [Pep8 validation](#pep8-validation)
+      * [Lighthouse testing](#lighthouse-testing-in-devtools)
    - [Testing User Stories](#testing-user-stories)
    - [Manual testing](#manual-testing)
    - [Bugs](#bugs)
@@ -145,9 +146,9 @@ The W3C Markup Validator and W3C CSS Validator were used to validate every page 
       ![Initial contact javascript test](static/images/testing-images/validations/python-validation.png)
 
     
--   ## [Lighthouse testing](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) in devtools.
+-   ## [Lighthouse testing in devtools](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=en) 
     The performance scores are not as high as I would like for mobile, mostly due to third party resources.<br>
-    Had reduced score for SEO for profile page as the pagination links weren't crawlable due to no href beng present on page 1 link when it loads. The pagination links are generated within the library function in app.py so I couldn't just add it in, tried adding one in with JS but wasn't happening.<br>
+    Had reduced score for SEO for profile page as the pagination links weren't crawlable due to no href being present on the page 1 link when it loads. The pagination links are generated within the library function in app.py so I couldn't just add it in, tried adding one in with JS but wasn't happening.<br>
     Also was losing points for best practices because some of the pages weren't https, I couldn't understand why so I couldn't fix that either.
     
     ### index.html
