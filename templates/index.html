@@ -24,7 +24,7 @@
 <form id="search-form" method="POST" action="{{ url_for ('search_library') }}">
   <div class="row search-box">
     <div class="col-8 col-xl-4 offset-xl-4">
-      <input type="text" name="search" id="search" placeholder="e.g genre or title" aria-label="Search library">
+      <input type="text" name="search" id="search" placeholder="e.g genre or title" aria-label="Search library" required>
     </div>
     <div class="col-4 col-lg-2">
       <button type="submit" class="btn btn-md search-btn hover">Search <i class="fas fa-search"
