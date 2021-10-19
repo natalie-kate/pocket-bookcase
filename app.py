@@ -52,7 +52,7 @@ def library():
         css_framework='bootstrap4')
     # If a user is logged in then admin will be passed
     # into template as well.
-    if session:
+    if "user" in session:
         return render_template('index.html', admin=admin(),
                                books=pagination_books, page=page,
                                per_page=per_page, pagination=pagination)
@@ -86,7 +86,7 @@ def search_library():
         # If there are results then check whether user logged in
         # to determine whether admin needs passed in or not.
         if results:
-            if session:
+            if "user" in session:
                 return render_template(
                     "index.html", admin=admin(), results=pagination_results,
                     page=page, per_page=per_page, pagination=pagination)
@@ -189,7 +189,7 @@ def profile(username):
     name = mongo.db.users.find_one(
         {"username": username})["first_name"]
     # If user logged in get profile information to pass into template
-    if session:
+    if "user" in session:
         user_id = mongo.db.users.find_one(
             {"username": session["user"]})["_id"]
         user_profile = mongo.db.profiles.find_one(
@@ -277,7 +277,7 @@ def profile_add(book_id):
             flash("Sorry something went wrong, please try again")
             return redirect(url_for("library"))
     # Use profile add template passing in required variables
-    if session["user"]:
+    if "user" in session:
         if book_title in read_books:
             flash(
                 f"{book_title.title()} has already been added to your profile")
@@ -429,7 +429,7 @@ def contact():
     """ contact view to display contact template """
     # if user logged in user info passed in with template to prefill
     # contact form
-    if session:
+    if "user" in session:
         name = mongo.db.users.find_one(
           {"username": session["user"]})["first_name"]
         surname = mongo.db.users.find_one(
@@ -446,7 +446,7 @@ def contact():
 def about():
     """ about view to display about template """
     # if user logged in admin status passed in with template
-    if session:
+    if "user" in session:
         return render_template("about.html", admin=admin())
     return render_template("about.html")
 
@@ -493,7 +493,7 @@ def add_book():
                     f' {title.title()} has now been added')
                 return redirect(url_for("library"))
     # Use add_book template, passing in admin and genre
-    if session:
+    if "user" in session:
         return render_template("add-book.html", genres=genres(), admin=admin())
     else:
         flash("You need to be signed in to do that")
@@ -531,7 +531,7 @@ def edit_book(book_id):
         return redirect(url_for("library"))
     # Check user is logged in before using edit_book template and pass
     # in genre, book and admin variables
-    elif session:
+    elif "user" in session:
         if admin():
             return render_template(
                 "edit-book.html", genres=genres(), book=book, admin=admin)
@@ -549,7 +549,7 @@ def edit_book(book_id):
 @app.route("/delete_book, <book_id>")
 def delete_book(book_id):
     """delete_book view to delete book from library """
-    if session:
+    if "user" in session:
         if admin():
             # Delete book, display message and reload library
             title = mongo.db.books.find_one(
@@ -567,7 +567,7 @@ def delete_book(book_id):
 @app.route("/manage_genre")
 def manage_genre():
     """ manage_genre view to see all current genres """
-    if session:
+    if "user" in session:
         # if user is an admin use manage_genres template
         if admin():
             return render_template(
@@ -583,7 +583,7 @@ def manage_genre():
 @app.route("/add_genre", methods=["GET", "POST"])
 def add_genre():
     """ add_genre view to add genre """
-    if session:
+    if "user" in session:
         # Check if user is admin prior to commencing
         if admin():
             # If form submitted get info from form field
@@ -616,7 +616,7 @@ def add_genre():
 @app.route("/edit_genre, <genre_id>", methods=["GET", "POST"])
 def edit_genre(genre_id):
     """ edit_genre view to edit current genres """
-    if session:
+    if "user" in session:
         # Check if user is admin prior to commencing
         if admin():
             # if form submitted get info from field form, display
@@ -646,7 +646,7 @@ def edit_genre(genre_id):
 @app.route("/delete_genre, <genre_id>")
 def delete_genre(genre_id):
     """ delete_genre" view to delete a genre document from database """
-    if session:
+    if "user" in session:
         # if user an admin then delete genre, display message
         # and reload manage_genre.
         if admin():
@@ -666,7 +666,7 @@ def delete_genre(genre_id):
 @app.route("/manage_users")
 def manage_users():
     """manage_users view to allow admin to view current users """
-    if session:
+    if "user" in session:
         # if user is an admin use manage_users template
         if admin():
             # Assign data from database to variables to send into template
@@ -684,7 +684,7 @@ def manage_users():
 @app.route("/search_users", methods=["GET", "POST"])
 def search_users():
     """ search_users view to search current users by admin """
-    if session:
+    if "user" in session:
         # Check if user is an admin
         if admin():
             # If form submitted get info from form fields
@@ -722,7 +722,7 @@ def search_users():
 @app.route("/edit_user, <user_id>", methods=["GET", "POST"])
 def edit_user(user_id):
     """ edit_user view to edit users information by admin """
-    if session:
+    if "user" in session:
         # Check if user is an admin
         if admin():
             user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
@@ -778,7 +778,7 @@ def edit_user(user_id):
 @app.route("/delete_user, <user_id>")
 def delete_user(user_id):
     """ delete_user view to delete users account by admin """
-    if session:
+    if "user" in session:
         # If admin delete user, display message and reload page
         if admin():
             username = mongo.db.users.find_one(
@@ -799,7 +799,7 @@ def delete_user(user_id):
 def edit_account():
     """edit_account view for user to edit their information """
     # Check user is logged in prior to commencing
-    if session:
+    if "user" in session:
         # Get information from db and assign to variables
         user = mongo.db.users.find_one(
             {"username": session["user"]})
