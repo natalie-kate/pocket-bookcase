@@ -45,10 +45,13 @@
                     <!-- Change password collapse section so that cannot accidentally change password. -->
                     <div id="reset-password" class="collapse password">
                         <label for="password">Password:</label><br>
-                        <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$"><br>
+                        <input id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$"
+                            data-toggle="tooltip" data-placement="top" 
+                            title="Between 5 & 15 characters with no spaces."><br>
                         <label for="password">Confirm Password:</label><br>
                         <input id="confirm-password" type="password" name="confirm-password"
-                            pattern="^[a-zA-Z0-9]{5,15}$"><br>
+                            pattern="^[a-zA-Z0-9]{5,15}$" data-toggle="tooltip" 
+                            data-placement="top" title="Between 5 & 15 characters with no spaces."><br>
                     </div>
                 </fieldset>
             </div>
