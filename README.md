@@ -25,7 +25,7 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
      + [Imagery](#imagery)
 - [Technologies](#technologies)
    * [Languages used](#languages-used)
-   * [Frameworks, Libraries & Programs Used](#frameworks-libraries-&-programs-used)
+   * [Frameworks, Libraries & Programs Used](#frameworks-libraries-and-programs-used)
 
 - [Challenges](#challenges)
 
@@ -37,7 +37,7 @@ Upon pitching my idea to a few people, I was met with how useful that would be a
    * [Clone](#clone)
    * [Setting up MongoDB](#setting-up-mongodb)
    * [Setting Up App](#setting-up-app)
-   * [Connectiong to MongoDB](#connecting-to-mongodb)
+   * [Connecting to MongoDB](#connecting-to-mongodb)
    * [Heroku Deployment](#heroku-deployment)
 
 - [Credits](#credits)
@@ -223,7 +223,7 @@ Changed a few things from the wireframes:
 -   [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 -   [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 
-### Frameworks, Libraries & Programs Used
+### Frameworks, Libraries and Programs Used
 
 1. [Bootstrap v4.6.0](https://getbootstrap.com/docs/4.6.0/getting-started/introduction/)
     - Bootstrap was used for the initial layout and styling before customising it.
@@ -442,7 +442,7 @@ Testing and results can be found [here](TESTING.md)
  - [Jess Bailey Designs](https://www.pexels.com/@jessbaileydesign?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels): Pile of books used for back up image.
  - Book cover images I have used to start the database have came from [wikipedia](https://en.wikipedia.org/wiki/Main_Page).
  - Book synopsis text have come from [Waterstones](https://www.waterstones.com/)
- - Some reviews are quotes and such are within quotation marks and attributed.
+ - Some reviews are quotes and so are within quotation marks and attributed.
  
 ### Acknowledgements
 
